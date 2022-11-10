@@ -13,5 +13,7 @@
         public int ClinicId { get; set; }
 
         public Clinic Clinic { get; set; }
+
+        public ICollection<Specialization> Specializations { get; set; }
     }
 }

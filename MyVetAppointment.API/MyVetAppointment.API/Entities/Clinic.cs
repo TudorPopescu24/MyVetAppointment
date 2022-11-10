@@ -12,6 +12,6 @@
 
         public string? Address { get; set; }
 
-        public ICollection<Doctor> Doctors { get; set; }
+        public ICollection<Doctor>? Doctors { get; set; }
     }
 }
