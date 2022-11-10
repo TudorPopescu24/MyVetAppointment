@@ -11,5 +11,7 @@
         public string? WebsiteUrl { get; set; }
 
         public string? Address { get; set; }
+
+        public ICollection<Doctor> Doctors { get; set; }
     }
 }
