@@ -8,6 +8,6 @@
 
         public DateTime ExpirationDate { get; set; }
 
-        public ICollection<Drug> Drugs { get; set; }
+        public Drug Drug { get; set; }
     }
 }

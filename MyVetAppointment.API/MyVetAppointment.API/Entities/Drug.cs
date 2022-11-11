@@ -12,5 +12,7 @@
 
         public string Prospect { get; set; }
 
+        public int Price { get; set; }
+
     }
 }
