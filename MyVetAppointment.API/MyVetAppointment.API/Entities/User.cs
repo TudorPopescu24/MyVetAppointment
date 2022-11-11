@@ -12,6 +12,6 @@
 
         public string? Address { get; set; }
 
-        public ICollection<Animal>? Animals { get; set; }
+        public ICollection<Pet>? Pets { get; set; }
     }
 }
