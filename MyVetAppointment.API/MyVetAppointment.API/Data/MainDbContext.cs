@@ -22,6 +22,10 @@ namespace MyVetAppointment.API.Data
 
         public DbSet<DrugStock> DrugStocks { get; set; }
 
+        public DbSet<Pet> Pets { get; set; }
+
+        public DbSet<Promotion> Promotions { get; set; }
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

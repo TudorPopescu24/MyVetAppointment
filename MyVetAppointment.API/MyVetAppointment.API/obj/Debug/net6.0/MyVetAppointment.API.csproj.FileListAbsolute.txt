@@ -146,3 +146,13 @@ C:\Users\Tudor Popescu\Desktop\I.NET\Project\MyVetAppointment\MyVetAppointment.A
 C:\Users\Tudor Popescu\Desktop\I.NET\Project\MyVetAppointment\MyVetAppointment.API\MyVetAppointment.API\obj\Debug\net6.0\MyVetAppointment.API.pdb
 C:\Users\Tudor Popescu\Desktop\I.NET\Project\MyVetAppointment\MyVetAppointment.API\MyVetAppointment.API\obj\Debug\net6.0\MyVetAppointment.API.genruntimeconfig.cache
 C:\Users\Tudor Popescu\Desktop\I.NET\Project\MyVetAppointment\MyVetAppointment.API\MyVetAppointment.API\obj\Debug\net6.0\ref\MyVetAppointment.API.dll
+C:\Users\raluca nastasa\Documents\Facultate III\.NET\MyVetAppointment\MyVetAppointment.API\MyVetAppointment.API\obj\Debug\net6.0\MyVetAppointment.API.csproj.AssemblyReference.cache
+C:\Users\raluca nastasa\Documents\Facultate III\.NET\MyVetAppointment\MyVetAppointment.API\MyVetAppointment.API\obj\Debug\net6.0\MyVetAppointment.API.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\raluca nastasa\Documents\Facultate III\.NET\MyVetAppointment\MyVetAppointment.API\MyVetAppointment.API\obj\Debug\net6.0\MyVetAppointment.API.AssemblyInfoInputs.cache
+C:\Users\raluca nastasa\Documents\Facultate III\.NET\MyVetAppointment\MyVetAppointment.API\MyVetAppointment.API\obj\Debug\net6.0\MyVetAppointment.API.AssemblyInfo.cs
+C:\Users\raluca nastasa\Documents\Facultate III\.NET\MyVetAppointment\MyVetAppointment.API\MyVetAppointment.API\obj\Debug\net6.0\MyVetAppointment.API.csproj.CoreCompileInputs.cache
+C:\Users\raluca nastasa\Documents\Facultate III\.NET\MyVetAppointment\MyVetAppointment.API\MyVetAppointment.API\obj\Debug\net6.0\MyVetAppointment.API.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\raluca nastasa\Documents\Facultate III\.NET\MyVetAppointment\MyVetAppointment.API\MyVetAppointment.API\obj\Debug\net6.0\MyVetAppointment.API.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\raluca nastasa\Documents\Facultate III\.NET\MyVetAppointment\MyVetAppointment.API\MyVetAppointment.API\obj\Debug\net6.0\MyVetAppointment.API.dll
+C:\Users\raluca nastasa\Documents\Facultate III\.NET\MyVetAppointment\MyVetAppointment.API\MyVetAppointment.API\obj\Debug\net6.0\refint\MyVetAppointment.API.dll
+C:\Users\raluca nastasa\Documents\Facultate III\.NET\MyVetAppointment\MyVetAppointment.API\MyVetAppointment.API\obj\Debug\net6.0\MyVetAppointment.API.pdb

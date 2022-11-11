@@ -12,5 +12,9 @@
 
         public string Prospect { get; set; }
 
+        public int Price { get; set; }
+
+        public DrugStock DrugStock { get; set; }    
+
     }
 }
