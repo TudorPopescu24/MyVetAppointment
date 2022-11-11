@@ -2,10 +2,10 @@
 {
     public interface IRepository<TEntity>
     {
-        void Add(TEntity category);
+        void Add(TEntity entity);
 
         void Delete(int id);
 
-        void Update(TEntity category);
+        void Update(TEntity entity);
     }
 }
