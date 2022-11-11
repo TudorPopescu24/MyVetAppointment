@@ -8,6 +8,8 @@
 
         public DateTime ExpirationDate { get; set; }
 
+        public int DrugId { get; set; }
+
         public Drug Drug { get; set; }
     }
 }

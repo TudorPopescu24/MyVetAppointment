@@ -1,3 +1,4 @@
+using MyVetAppointment.API.Data;
 using MyVetAppointment.API.Entities;
 using MyVetAppointment.API.Repositories.Implementations;
 using MyVetAppointment.API.Repositories.Interfaces;
@@ -14,6 +15,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Dependency Injection
+builder.Services.AddDbContext<MainDbContext>();
 builder.Services.AddScoped<IRepository<Clinic>, ClinicRepository>();
 builder.Services.AddScoped<IClinicService, ClinicService>();
 

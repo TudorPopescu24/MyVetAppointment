@@ -12,7 +12,7 @@ namespace MyVetAppointment.API.Entities
 
         public string Currency { get; set; }
 
-        public ICollection<string>  Products { get; set; }
+        public ICollection<Drug> Drugs { get; set; }
 
         public DateTime DateTime { get; set; }
 
