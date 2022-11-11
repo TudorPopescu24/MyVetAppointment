@@ -20,6 +20,9 @@ namespace MyVetAppointment.API.Data
 
         public DbSet<Drug> Drugs { get; set; }
 
+        public DbSet<DrugStock> DrugStocks { get; set; }
+
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlite("Data Source = MyVetAppointment.db");
