@@ -6,6 +6,8 @@
 
         public int Quantity { get; set; }
 
-        public ICollection<Drug> Drugs { get; set; }
+        public DateTime ExpirationDate { get; set; }
+
+        public Drug Drug { get; set; }
     }
 }
