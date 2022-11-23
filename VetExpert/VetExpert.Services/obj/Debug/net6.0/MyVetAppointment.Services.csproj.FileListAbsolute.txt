@@ -1,0 +1,17 @@
+C:\Users\Tudor Popescu\Desktop\I.NET\Project\MyVetAppointment\MyVetAppointment.API\MyVetAppointment.Services\bin\Debug\net6.0\MyVetAppointment.Services.deps.json
+C:\Users\Tudor Popescu\Desktop\I.NET\Project\MyVetAppointment\MyVetAppointment.API\MyVetAppointment.Services\bin\Debug\net6.0\MyVetAppointment.Services.dll
+C:\Users\Tudor Popescu\Desktop\I.NET\Project\MyVetAppointment\MyVetAppointment.API\MyVetAppointment.Services\bin\Debug\net6.0\MyVetAppointment.Services.pdb
+C:\Users\Tudor Popescu\Desktop\I.NET\Project\MyVetAppointment\MyVetAppointment.API\MyVetAppointment.Services\bin\Debug\net6.0\MyVetAppointment.Domain.dll
+C:\Users\Tudor Popescu\Desktop\I.NET\Project\MyVetAppointment\MyVetAppointment.API\MyVetAppointment.Services\bin\Debug\net6.0\MyVetAppointment.Infrastructure.dll
+C:\Users\Tudor Popescu\Desktop\I.NET\Project\MyVetAppointment\MyVetAppointment.API\MyVetAppointment.Services\bin\Debug\net6.0\MyVetAppointment.Domain.pdb
+C:\Users\Tudor Popescu\Desktop\I.NET\Project\MyVetAppointment\MyVetAppointment.API\MyVetAppointment.Services\bin\Debug\net6.0\MyVetAppointment.Infrastructure.pdb
+C:\Users\Tudor Popescu\Desktop\I.NET\Project\MyVetAppointment\MyVetAppointment.API\MyVetAppointment.Services\obj\Debug\net6.0\MyVetAppointment.Services.csproj.AssemblyReference.cache
+C:\Users\Tudor Popescu\Desktop\I.NET\Project\MyVetAppointment\MyVetAppointment.API\MyVetAppointment.Services\obj\Debug\net6.0\MyVetAppointment.Services.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Tudor Popescu\Desktop\I.NET\Project\MyVetAppointment\MyVetAppointment.API\MyVetAppointment.Services\obj\Debug\net6.0\MyVetAppointment.Services.AssemblyInfoInputs.cache
+C:\Users\Tudor Popescu\Desktop\I.NET\Project\MyVetAppointment\MyVetAppointment.API\MyVetAppointment.Services\obj\Debug\net6.0\MyVetAppointment.Services.AssemblyInfo.cs
+C:\Users\Tudor Popescu\Desktop\I.NET\Project\MyVetAppointment\MyVetAppointment.API\MyVetAppointment.Services\obj\Debug\net6.0\MyVetAppointment.Services.csproj.CoreCompileInputs.cache
+C:\Users\Tudor Popescu\Desktop\I.NET\Project\MyVetAppointment\MyVetAppointment.API\MyVetAppointment.Services\obj\Debug\net6.0\MyVetAppointment.Services.csproj.CopyComplete
+C:\Users\Tudor Popescu\Desktop\I.NET\Project\MyVetAppointment\MyVetAppointment.API\MyVetAppointment.Services\obj\Debug\net6.0\MyVetAppointment.Services.dll
+C:\Users\Tudor Popescu\Desktop\I.NET\Project\MyVetAppointment\MyVetAppointment.API\MyVetAppointment.Services\obj\Debug\net6.0\refint\MyVetAppointment.Services.dll
+C:\Users\Tudor Popescu\Desktop\I.NET\Project\MyVetAppointment\MyVetAppointment.API\MyVetAppointment.Services\obj\Debug\net6.0\MyVetAppointment.Services.pdb
+C:\Users\Tudor Popescu\Desktop\I.NET\Project\MyVetAppointment\MyVetAppointment.API\MyVetAppointment.Services\obj\Debug\net6.0\ref\MyVetAppointment.Services.dll

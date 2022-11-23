@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32922.545
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VetExpert.API", "MyVetAppointment.API\VetExpert.API.csproj", "{D02E1BEF-18AA-4275-A181-99E97E3947F3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{1F39B4B8-F16E-49C5-BA49-2B3750DBD53A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VetExpert.Domain", "MyVetAppointment.Domain\VetExpert.Domain.csproj", "{BC6BD08C-24DF-467D-95B1-24F09986F983}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{8B20439F-6D21-4940-B6B8-33A61F7CF29C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VetExpert.Infrastructure", "MyVetAppointment.Infrastructure\VetExpert.Infrastructure.csproj", "{ED659656-6126-4F52-9114-82124E14806D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{9DECCD82-28C0-42EA-8844-BD78B25ACC3A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VetExpert.Services", "MyVetAppointment.Services\VetExpert.Services.csproj", "{6F0D40D4-E860-4596-A221-D24D61B16133}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebUI", "WebUI", "{D43431BC-1C58-4916-B36F-1F17FEED96CB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D02E1BEF-18AA-4275-A181-99E97E3947F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D02E1BEF-18AA-4275-A181-99E97E3947F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D02E1BEF-18AA-4275-A181-99E97E3947F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D02E1BEF-18AA-4275-A181-99E97E3947F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC6BD08C-24DF-467D-95B1-24F09986F983}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC6BD08C-24DF-467D-95B1-24F09986F983}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC6BD08C-24DF-467D-95B1-24F09986F983}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC6BD08C-24DF-467D-95B1-24F09986F983}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED659656-6126-4F52-9114-82124E14806D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED659656-6126-4F52-9114-82124E14806D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED659656-6126-4F52-9114-82124E14806D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED659656-6126-4F52-9114-82124E14806D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F0D40D4-E860-4596-A221-D24D61B16133}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F0D40D4-E860-4596-A221-D24D61B16133}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F0D40D4-E860-4596-A221-D24D61B16133}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F0D40D4-E860-4596-A221-D24D61B16133}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D02E1BEF-18AA-4275-A181-99E97E3947F3} = {D43431BC-1C58-4916-B36F-1F17FEED96CB}
+		{BC6BD08C-24DF-467D-95B1-24F09986F983} = {1F39B4B8-F16E-49C5-BA49-2B3750DBD53A}
+		{ED659656-6126-4F52-9114-82124E14806D} = {8B20439F-6D21-4940-B6B8-33A61F7CF29C}
+		{6F0D40D4-E860-4596-A221-D24D61B16133} = {9DECCD82-28C0-42EA-8844-BD78B25ACC3A}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F3C26093-45D9-4BC1-B0D5-B09BECA4FB8C}
+	EndGlobalSection
+EndGlobal
