@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MyVetAppointment.Domain\VetExpert.Domain.csproj" />
+    <ProjectReference Include="..\VetExpert.Domain\VetExpert.Domain.csproj" />
   </ItemGroup>
 
 </Project>

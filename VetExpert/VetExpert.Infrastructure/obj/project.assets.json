@@ -1349,8 +1349,8 @@
     },
     "VetExpert.Domain/1.0.0": {
       "type": "project",
-      "path": "../MyVetAppointment.Domain/VetExpert.Domain.csproj",
-      "msbuildProject": "../MyVetAppointment.Domain/VetExpert.Domain.csproj"
+      "path": "../VetExpert.Domain/VetExpert.Domain.csproj",
+      "msbuildProject": "../VetExpert.Domain/VetExpert.Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -1368,11 +1368,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Tudor Popescu\\Desktop\\I.NET\\Project\\MyVetAppointment\\MyVetAppointment.API\\MyVetAppointment.Infrastructure\\VetExpert.Infrastructure.csproj",
+      "projectUniqueName": "C:\\Users\\Tudor Popescu\\Desktop\\I.NET\\Project\\VetExpert\\VetExpert\\VetExpert.Infrastructure\\VetExpert.Infrastructure.csproj",
       "projectName": "VetExpert.Infrastructure",
-      "projectPath": "C:\\Users\\Tudor Popescu\\Desktop\\I.NET\\Project\\MyVetAppointment\\MyVetAppointment.API\\MyVetAppointment.Infrastructure\\VetExpert.Infrastructure.csproj",
+      "projectPath": "C:\\Users\\Tudor Popescu\\Desktop\\I.NET\\Project\\VetExpert\\VetExpert\\VetExpert.Infrastructure\\VetExpert.Infrastructure.csproj",
       "packagesPath": "C:\\Users\\Tudor Popescu\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Tudor Popescu\\Desktop\\I.NET\\Project\\MyVetAppointment\\MyVetAppointment.API\\MyVetAppointment.Infrastructure\\obj\\",
+      "outputPath": "C:\\Users\\Tudor Popescu\\Desktop\\I.NET\\Project\\VetExpert\\VetExpert\\VetExpert.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Tudor Popescu\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1389,8 +1389,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\Tudor Popescu\\Desktop\\I.NET\\Project\\MyVetAppointment\\MyVetAppointment.API\\MyVetAppointment.Domain\\VetExpert.Domain.csproj": {
-              "projectPath": "C:\\Users\\Tudor Popescu\\Desktop\\I.NET\\Project\\MyVetAppointment\\MyVetAppointment.API\\MyVetAppointment.Domain\\VetExpert.Domain.csproj"
+            "C:\\Users\\Tudor Popescu\\Desktop\\I.NET\\Project\\VetExpert\\VetExpert\\VetExpert.Domain\\VetExpert.Domain.csproj": {
+              "projectPath": "C:\\Users\\Tudor Popescu\\Desktop\\I.NET\\Project\\VetExpert\\VetExpert\\VetExpert.Domain\\VetExpert.Domain.csproj"
             }
           }
         }

@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Tudor Popescu\\Desktop\\I.NET\\Project\\MyVetAppointment\\MyVetAppointment.API\\MyVetAppointment.Domain\\VetExpert.Domain.csproj",
+      "projectUniqueName": "C:\\Users\\Tudor Popescu\\Desktop\\I.NET\\Project\\VetExpert\\VetExpert\\VetExpert.Domain\\VetExpert.Domain.csproj",
       "projectName": "VetExpert.Domain",
-      "projectPath": "C:\\Users\\Tudor Popescu\\Desktop\\I.NET\\Project\\MyVetAppointment\\MyVetAppointment.API\\MyVetAppointment.Domain\\VetExpert.Domain.csproj",
+      "projectPath": "C:\\Users\\Tudor Popescu\\Desktop\\I.NET\\Project\\VetExpert\\VetExpert\\VetExpert.Domain\\VetExpert.Domain.csproj",
       "packagesPath": "C:\\Users\\Tudor Popescu\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Tudor Popescu\\Desktop\\I.NET\\Project\\MyVetAppointment\\MyVetAppointment.API\\MyVetAppointment.Domain\\obj\\",
+      "outputPath": "C:\\Users\\Tudor Popescu\\Desktop\\I.NET\\Project\\VetExpert\\VetExpert\\VetExpert.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Tudor Popescu\\AppData\\Roaming\\NuGet\\NuGet.Config",

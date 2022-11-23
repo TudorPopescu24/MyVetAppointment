@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Uk6IN77vUqkKWXcU3TQrehF7/5vt2V9RCYjD4nzVTLC6TanaQPzS9lnXQlRUQdAlLm+oejVNIyKYc+aaAdykyw==",
+  "dgSpecHash": "l5QHRrJ11mQHRs6TnJQK4vO5bXzla4hY2Sr+Ug7yNsvPk69hAAgDwX0cu2HtV77uvJALth3g7ImV6crCKM6WhQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Tudor Popescu\\Desktop\\I.NET\\Project\\MyVetAppointment\\MyVetAppointment.API\\MyVetAppointment.Services\\VetExpert.Services.csproj",
+  "projectFilePath": "C:\\Users\\Tudor Popescu\\Desktop\\I.NET\\Project\\VetExpert\\VetExpert\\VetExpert.Services\\VetExpert.Services.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Tudor Popescu\\.nuget\\packages\\microsoft.data.sqlite.core\\7.0.0\\microsoft.data.sqlite.core.7.0.0.nupkg.sha512",
     "C:\\Users\\Tudor Popescu\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.0\\microsoft.entityframeworkcore.7.0.0.nupkg.sha512",

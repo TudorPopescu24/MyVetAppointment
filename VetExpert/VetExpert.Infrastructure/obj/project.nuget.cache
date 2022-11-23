@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Kkt8hMm0EAOOHAhZd/CFX7nxuOnaC9R4OKoWDb/APsS7WGyS1teGx8ba2r+dcOe1ySOjd1HGXaDC7soxX7WXzw==",
+  "dgSpecHash": "8i7Ne/CoGdd6CBoCXuF2GjJ4lKGnOjT1MI+DRBDxud/anJ5v0QI59ZydHKC934n7epkmhmHYjKh4iHZGachVDA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Tudor Popescu\\Desktop\\I.NET\\Project\\MyVetAppointment\\MyVetAppointment.API\\MyVetAppointment.Infrastructure\\VetExpert.Infrastructure.csproj",
+  "projectFilePath": "C:\\Users\\Tudor Popescu\\Desktop\\I.NET\\Project\\VetExpert\\VetExpert\\VetExpert.Infrastructure\\VetExpert.Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Tudor Popescu\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Tudor Popescu\\.nuget\\packages\\microsoft.data.sqlite.core\\7.0.0\\microsoft.data.sqlite.core.7.0.0.nupkg.sha512",

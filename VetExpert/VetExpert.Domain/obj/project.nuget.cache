@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+/l97XLJZH+3nuZ4wIBVdNR6nL6u74uPDllQ/xMjUJ96Q4xKaYDsbk4TGY6t2icXR5zcw+xbiMx6IORKBY1tAA==",
+  "dgSpecHash": "ZXZlyTvZpFnOwqHLPkIdsYF6vdb/ZX0/VfzymMobqu0ftrBTYNSesSB2bKVMrOqmJNaKtfXVNYCQ8CciS6b/KQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Tudor Popescu\\Desktop\\I.NET\\Project\\MyVetAppointment\\MyVetAppointment.API\\MyVetAppointment.Domain\\VetExpert.Domain.csproj",
+  "projectFilePath": "C:\\Users\\Tudor Popescu\\Desktop\\I.NET\\Project\\VetExpert\\VetExpert\\VetExpert.Domain\\VetExpert.Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MyVetAppointment.Domain\VetExpert.Domain.csproj" />
-    <ProjectReference Include="..\MyVetAppointment.Infrastructure\VetExpert.Infrastructure.csproj" />
+    <ProjectReference Include="..\VetExpert.Domain\VetExpert.Domain.csproj" />
+    <ProjectReference Include="..\VetExpert.Infrastructure\VetExpert.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
