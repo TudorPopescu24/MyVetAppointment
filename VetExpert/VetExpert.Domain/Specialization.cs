@@ -2,12 +2,12 @@
 {
     public class Specialization
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         public string Name { get; set; }
 
         public string Description { get; set; }
 
-        public ICollection<Doctor> Doctors { get; set; }
+        public virtual ICollection<DoctorSpecialization> DoctorSpecializations { get; set; } = new List<DoctorSpecialization>();
     }
 }

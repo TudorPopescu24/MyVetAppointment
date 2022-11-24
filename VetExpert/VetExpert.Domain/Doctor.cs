@@ -2,7 +2,7 @@
 {
     public class Doctor
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         public string FirstName { get; set; }
 
@@ -10,8 +10,10 @@
 
         public string Email { get; set; }
 
-        public Clinic Clinic { get; set; }
+        public Guid ClinicId { get; set; }
 
-        public ICollection<Specialization> Specializations { get; set; }
+        public virtual Clinic Clinic { get; set; }
+
+        public virtual ICollection<DoctorSpecialization> DoctorSpecializations { get; set; } = new List<DoctorSpecialization>();
     }
 }

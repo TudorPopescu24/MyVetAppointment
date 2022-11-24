@@ -21,11 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Dto\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\VetExpert.Infrastructure\VetExpert.Infrastructure.csproj" />
   </ItemGroup>
 

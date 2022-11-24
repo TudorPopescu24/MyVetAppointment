@@ -8,9 +8,11 @@ namespace VetExpert.Infrastructure
     {
         //Configure dbcontext appsettings.json
         public DbSet<Clinic> Clinics { get; set; }
+
         public DbSet<Admin> Admins { get; set; }
 
         public DbSet<User> Users { get; set; }
+
         public DbSet<Doctor> Doctors { get; set; }
 
         public DbSet<Bill> Bills { get; set; }
@@ -18,6 +20,8 @@ namespace VetExpert.Infrastructure
         public DbSet<Appointment> Appointments { get; set; }
 
         public DbSet<Specialization> Specializations { get; set; }
+
+        public DbSet<DoctorSpecialization> DoctorSpecializations { get; set; }
 
         public DbSet<Drug> Drugs { get; set; }
 
@@ -35,6 +39,16 @@ namespace VetExpert.Infrastructure
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<DoctorSpecialization>()
+                .HasKey(x => new { x.DoctorId, x.SpecializationId });
+            modelBuilder.Entity<DoctorSpecialization>()
+                .HasOne(x => x.Doctor)
+                .WithMany(x => x.DoctorSpecializations)
+                .HasForeignKey(x => x.DoctorId);
+            modelBuilder.Entity<DoctorSpecialization>()
+                .HasOne(x => x.Specialization)
+                .WithMany(x => x.DoctorSpecializations)
+                .HasForeignKey(x => x.SpecializationId);
         }
     }
 }

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VetExpert.Infrastructure;
 
@@ -10,12 +11,29 @@ using VetExpert.Infrastructure;
 namespace MyVetAppointment.Infrastructure.Migrations
 {
     [DbContext(typeof(MainDbContext))]
-    partial class MainDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221124151804_InitialCreate2")]
+    partial class InitialCreate2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.0");
+
+            modelBuilder.Entity("DoctorSpecialization", b =>
+                {
+                    b.Property<Guid>("DoctorsId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("SpecializationsId")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("DoctorsId", "SpecializationsId");
+
+                    b.HasIndex("SpecializationsId");
+
+                    b.ToTable("DoctorSpecialization");
+                });
 
             modelBuilder.Entity("VetExpert.Domain.Admin", b =>
                 {
@@ -143,21 +161,6 @@ namespace MyVetAppointment.Infrastructure.Migrations
                     b.HasIndex("ClinicId");
 
                     b.ToTable("Doctors");
-                });
-
-            modelBuilder.Entity("VetExpert.Domain.DoctorSpecialization", b =>
-                {
-                    b.Property<Guid>("DoctorId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("SpecializationId")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("DoctorId", "SpecializationId");
-
-                    b.HasIndex("SpecializationId");
-
-                    b.ToTable("DoctorSpecializations");
                 });
 
             modelBuilder.Entity("VetExpert.Domain.Drug", b =>
@@ -320,6 +323,21 @@ namespace MyVetAppointment.Infrastructure.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("DoctorSpecialization", b =>
+                {
+                    b.HasOne("VetExpert.Domain.Doctor", null)
+                        .WithMany()
+                        .HasForeignKey("DoctorsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("VetExpert.Domain.Specialization", null)
+                        .WithMany()
+                        .HasForeignKey("SpecializationsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("VetExpert.Domain.Appointment", b =>
                 {
                     b.HasOne("VetExpert.Domain.Clinic", "Clinic")
@@ -377,25 +395,6 @@ namespace MyVetAppointment.Infrastructure.Migrations
                     b.Navigation("Clinic");
                 });
 
-            modelBuilder.Entity("VetExpert.Domain.DoctorSpecialization", b =>
-                {
-                    b.HasOne("VetExpert.Domain.Doctor", "Doctor")
-                        .WithMany("DoctorSpecializations")
-                        .HasForeignKey("DoctorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("VetExpert.Domain.Specialization", "Specialization")
-                        .WithMany("DoctorSpecializations")
-                        .HasForeignKey("SpecializationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Doctor");
-
-                    b.Navigation("Specialization");
-                });
-
             modelBuilder.Entity("VetExpert.Domain.Drug", b =>
                 {
                     b.HasOne("VetExpert.Domain.Bill", null)
@@ -446,19 +445,9 @@ namespace MyVetAppointment.Infrastructure.Migrations
                     b.Navigation("Doctors");
                 });
 
-            modelBuilder.Entity("VetExpert.Domain.Doctor", b =>
-                {
-                    b.Navigation("DoctorSpecializations");
-                });
-
             modelBuilder.Entity("VetExpert.Domain.Drug", b =>
                 {
                     b.Navigation("DrugStocks");
-                });
-
-            modelBuilder.Entity("VetExpert.Domain.Specialization", b =>
-                {
-                    b.Navigation("DoctorSpecializations");
                 });
 
             modelBuilder.Entity("VetExpert.Domain.User", b =>

@@ -2,7 +2,7 @@
 {
     public class Drug
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         public string Name { get; set; }
 
@@ -14,7 +14,7 @@
 
         public int Price { get; set; }
 
-        public DrugStock DrugStock { get; set; }
+        public virtual ICollection<DrugStock> DrugStocks { get; set; } = new List<DrugStock>();
 
     }
 }
