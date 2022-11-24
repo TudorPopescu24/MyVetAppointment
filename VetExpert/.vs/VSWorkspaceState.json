@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\MyVetAppointment.API",
+    "\\MyVetAppointment.API\\Data",
+    "\\MyVetAppointment.API\\Entities",
+    "\\MyVetAppointment.API\\Repositories",
+    "\\MyVetAppointment.API\\Repositories\\Implementations",
+    "\\MyVetAppointment.API\\Repositories\\Interfaces"
+  ],
+  "SelectedNode": "\\MyVetAppointment.API\\Entities\\Appointment.cs",
+  "PreviewInSolutionExplorer": false
+}
