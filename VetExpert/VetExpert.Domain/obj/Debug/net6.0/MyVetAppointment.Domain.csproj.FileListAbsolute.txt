@@ -1,0 +1,12 @@
+C:\Users\Tudor Popescu\Desktop\I.NET\Project\MyVetAppointment\MyVetAppointment.API\MyVetAppointment.Domain\bin\Debug\net6.0\MyVetAppointment.Domain.deps.json
+C:\Users\Tudor Popescu\Desktop\I.NET\Project\MyVetAppointment\MyVetAppointment.API\MyVetAppointment.Domain\bin\Debug\net6.0\MyVetAppointment.Domain.dll
+C:\Users\Tudor Popescu\Desktop\I.NET\Project\MyVetAppointment\MyVetAppointment.API\MyVetAppointment.Domain\bin\Debug\net6.0\MyVetAppointment.Domain.pdb
+C:\Users\Tudor Popescu\Desktop\I.NET\Project\MyVetAppointment\MyVetAppointment.API\MyVetAppointment.Domain\obj\Debug\net6.0\MyVetAppointment.Domain.csproj.AssemblyReference.cache
+C:\Users\Tudor Popescu\Desktop\I.NET\Project\MyVetAppointment\MyVetAppointment.API\MyVetAppointment.Domain\obj\Debug\net6.0\MyVetAppointment.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Tudor Popescu\Desktop\I.NET\Project\MyVetAppointment\MyVetAppointment.API\MyVetAppointment.Domain\obj\Debug\net6.0\MyVetAppointment.Domain.AssemblyInfoInputs.cache
+C:\Users\Tudor Popescu\Desktop\I.NET\Project\MyVetAppointment\MyVetAppointment.API\MyVetAppointment.Domain\obj\Debug\net6.0\MyVetAppointment.Domain.AssemblyInfo.cs
+C:\Users\Tudor Popescu\Desktop\I.NET\Project\MyVetAppointment\MyVetAppointment.API\MyVetAppointment.Domain\obj\Debug\net6.0\MyVetAppointment.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Tudor Popescu\Desktop\I.NET\Project\MyVetAppointment\MyVetAppointment.API\MyVetAppointment.Domain\obj\Debug\net6.0\MyVetAppointment.Domain.dll
+C:\Users\Tudor Popescu\Desktop\I.NET\Project\MyVetAppointment\MyVetAppointment.API\MyVetAppointment.Domain\obj\Debug\net6.0\refint\MyVetAppointment.Domain.dll
+C:\Users\Tudor Popescu\Desktop\I.NET\Project\MyVetAppointment\MyVetAppointment.API\MyVetAppointment.Domain\obj\Debug\net6.0\MyVetAppointment.Domain.pdb
+C:\Users\Tudor Popescu\Desktop\I.NET\Project\MyVetAppointment\MyVetAppointment.API\MyVetAppointment.Domain\obj\Debug\net6.0\ref\MyVetAppointment.Domain.dll

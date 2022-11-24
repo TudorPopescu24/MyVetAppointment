@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "vWMbo2vBkbDbz15At6wrKq9mZMnep0QzADC4cLehQq8=",
+  "Source": "VetExpert.API",
+  "BasePath": "_content/VetExpert.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
