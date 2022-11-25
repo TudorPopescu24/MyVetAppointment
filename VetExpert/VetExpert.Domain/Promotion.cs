@@ -2,12 +2,14 @@
 {
     public class Promotion
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         public string Name { get; set; }
 
         public string Description { get; set; }
 
-        public Clinic Clinic { get; set; }
+        public Guid ClinicId { get; set; }
+
+        public virtual Clinic Clinic { get; set; }
     }
 }
