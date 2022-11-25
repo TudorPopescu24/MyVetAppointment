@@ -8,9 +8,17 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = VetExpert.API
 build_property.RootNamespace = VetExpert.API
+<<<<<<< HEAD
 build_property.ProjectDir = C:\Users\raluca nastasa\Documents\Facultate III\Proiect .NET\MyVetAppointment\VetExpert\VetExpert.API\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
 build_property.MSBuildProjectDirectory = C:\Users\raluca nastasa\Documents\Facultate III\Proiect .NET\MyVetAppointment\VetExpert\VetExpert.API
+=======
+build_property.ProjectDir = C:\Users\ilinc\Desktop\FACULTATE\An.III.Sem.I\.NET\Proiect\MyVetAppointment\VetExpert\VetExpert.API\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\ilinc\Desktop\FACULTATE\An.III.Sem.I\.NET\Proiect\MyVetAppointment\VetExpert\VetExpert.API
+>>>>>>> bf4610c44b71f61d31be6cfd8aaf8968c0ceca63
 build_property._RazorSourceGeneratorDebug = 
