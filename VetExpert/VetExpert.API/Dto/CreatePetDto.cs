@@ -1,8 +1,8 @@
-﻿namespace VetExpert.Domain
+﻿namespace VetExpert.API.Dto
 {
-    public class Pet
+    public class CreatePetDto
     {
-        public Guid Id { get; set; }
+        public Guid UserId { get; set; }
 
         public string Name { get; set; }
 
@@ -15,14 +15,5 @@
         public bool IsVaccinated { get; set; }
 
         public DateTime DateOfVaccine { get; set; }
-
-        public Guid UserId { get; set; }
-
-        public virtual User User { get; set; }
-
-        public Pet()
-        {
-            Id = new Guid();
-        }
     }
 }

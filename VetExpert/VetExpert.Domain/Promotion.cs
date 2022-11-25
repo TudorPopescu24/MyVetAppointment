@@ -11,5 +11,10 @@
         public Guid ClinicId { get; set; }
 
         public virtual Clinic Clinic { get; set; }
-    }
+
+        public Promotion()
+        {
+            Id = new Guid();
+        }
+    }    
 }

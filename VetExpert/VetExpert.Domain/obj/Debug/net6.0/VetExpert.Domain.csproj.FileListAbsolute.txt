@@ -22,3 +22,15 @@ C:\Users\Tudor Popescu\Desktop\I.NET\Project\VetExpert\VetExpert\VetExpert.Domai
 C:\Users\Tudor Popescu\Desktop\I.NET\Project\VetExpert\VetExpert\VetExpert.Domain\obj\Debug\net6.0\refint\VetExpert.Domain.dll
 C:\Users\Tudor Popescu\Desktop\I.NET\Project\VetExpert\VetExpert\VetExpert.Domain\obj\Debug\net6.0\VetExpert.Domain.pdb
 C:\Users\Tudor Popescu\Desktop\I.NET\Project\VetExpert\VetExpert\VetExpert.Domain\obj\Debug\net6.0\ref\VetExpert.Domain.dll
+C:\Users\raluca nastasa\Documents\Facultate III\Proiect .NET\MyVetAppointment\VetExpert\VetExpert.Domain\bin\Debug\net6.0\VetExpert.Domain.deps.json
+C:\Users\raluca nastasa\Documents\Facultate III\Proiect .NET\MyVetAppointment\VetExpert\VetExpert.Domain\bin\Debug\net6.0\VetExpert.Domain.dll
+C:\Users\raluca nastasa\Documents\Facultate III\Proiect .NET\MyVetAppointment\VetExpert\VetExpert.Domain\bin\Debug\net6.0\VetExpert.Domain.pdb
+C:\Users\raluca nastasa\Documents\Facultate III\Proiect .NET\MyVetAppointment\VetExpert\VetExpert.Domain\obj\Debug\net6.0\VetExpert.Domain.csproj.AssemblyReference.cache
+C:\Users\raluca nastasa\Documents\Facultate III\Proiect .NET\MyVetAppointment\VetExpert\VetExpert.Domain\obj\Debug\net6.0\VetExpert.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\raluca nastasa\Documents\Facultate III\Proiect .NET\MyVetAppointment\VetExpert\VetExpert.Domain\obj\Debug\net6.0\VetExpert.Domain.AssemblyInfoInputs.cache
+C:\Users\raluca nastasa\Documents\Facultate III\Proiect .NET\MyVetAppointment\VetExpert\VetExpert.Domain\obj\Debug\net6.0\VetExpert.Domain.AssemblyInfo.cs
+C:\Users\raluca nastasa\Documents\Facultate III\Proiect .NET\MyVetAppointment\VetExpert\VetExpert.Domain\obj\Debug\net6.0\VetExpert.Domain.csproj.CoreCompileInputs.cache
+C:\Users\raluca nastasa\Documents\Facultate III\Proiect .NET\MyVetAppointment\VetExpert\VetExpert.Domain\obj\Debug\net6.0\VetExpert.Domain.dll
+C:\Users\raluca nastasa\Documents\Facultate III\Proiect .NET\MyVetAppointment\VetExpert\VetExpert.Domain\obj\Debug\net6.0\refint\VetExpert.Domain.dll
+C:\Users\raluca nastasa\Documents\Facultate III\Proiect .NET\MyVetAppointment\VetExpert\VetExpert.Domain\obj\Debug\net6.0\VetExpert.Domain.pdb
+C:\Users\raluca nastasa\Documents\Facultate III\Proiect .NET\MyVetAppointment\VetExpert\VetExpert.Domain\obj\Debug\net6.0\ref\VetExpert.Domain.dll

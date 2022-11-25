@@ -19,5 +19,12 @@ namespace VetExpert.Domain
         public Guid ClinicId { get; set; }
 
         public virtual Clinic Clinic { get; set; }
+
+
+        public Bill()
+        {
+            Id=Guid.NewGuid();
+        }
+
     }
 }
