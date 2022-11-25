@@ -54,29 +54,29 @@ namespace VetExpert.API.Controllers
             return Created(nameof(Get), clinic);
         }
 
-        [HttpPost("{clinicId:guid}/doctors")]
-        public IActionResult RegisterDoctors(Guid clinicId,
-            [FromBody] List<CreateDoctorDto> doctorDtos)
-        {
-            var clinic = _clinicRepository.Get(clinicId);
-            if (clinic == null)
-            {
-                return NotFound();
-            }
+        //[HttpPost("{clinicId:guid}/doctors")]
+        //public IActionResult RegisterDoctors(Guid clinicId,
+        //    [FromBody] List<CreateDoctorDto> doctorDtos)
+        //{
+        //    var clinic = _clinicRepository.Get(clinicId);
+        //    if (clinic == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            List<Doctor> doctors = doctorDtos.Select(d => new Doctor
-            {
-                FirstName = d.FirstName,
-                LastName = d.LastName,
-                Email = d.Email,
-                ClinicId = clinicId
-            }).ToList();
+        //    List<Doctor> doctors = doctorDtos.Select(d => new Doctor
+        //    {
+        //        FirstName = d.FirstName,
+        //        LastName = d.LastName,
+        //        Email = d.Email,
+        //        ClinicId = clinicId
+        //    }).ToList();
 
-            doctors.ForEach(x => _doctorRepository.Add(x));
-            _doctorRepository.SaveChanges();
+        //    doctors.ForEach(x => _doctorRepository.Add(x));
+        //    _doctorRepository.SaveChanges();
 
-            return NoContent();
-        }
+        //    return NoContent();
+        //}
 
         [HttpDelete("{clinicId:guid}")]
         public IActionResult Delete(Guid clinicId)
