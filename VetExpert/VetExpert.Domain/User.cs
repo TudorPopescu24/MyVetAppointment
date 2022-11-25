@@ -13,5 +13,10 @@
         public string? Address { get; set; }
 
         public virtual ICollection<Pet> Pets { get; set; } = new List<Pet>();
+
+        public User()
+        {
+            Id=Guid.NewGuid();
+        }
     }
 }
