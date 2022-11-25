@@ -12,17 +12,24 @@ namespace VetExpert.API.Controllers
     {
         private readonly IRepository<Clinic> _clinicRepository;
         private readonly IRepository<Doctor> _doctorRepository;
+        private readonly IRepository<Specialization> _specializationRepository;
+        private readonly IRepository<DoctorSpecialization> _doctorSpecializationRepository;
 
-        public DoctorsController(IRepository<Clinic> clinicRepository, IRepository<Doctor> doctorRepository)
+        public DoctorsController(IRepository<Clinic> clinicRepository, 
+            IRepository<Doctor> doctorRepository, 
+            IRepository<Specialization> specializationRepository,
+            IRepository<DoctorSpecialization> doctorSpecializationRepository)
         {
             _clinicRepository = clinicRepository;
             _doctorRepository = doctorRepository;
+            _specializationRepository = specializationRepository;
+            _doctorSpecializationRepository = doctorSpecializationRepository;
         }
 
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(_clinicRepository.GetAll());
+            return Ok(_doctorRepository.GetAll());
         }
 
         [HttpGet("{doctorId:guid}")]
@@ -93,6 +100,33 @@ namespace VetExpert.API.Controllers
             _doctorRepository.SaveChanges();
 
             return Ok(doctor);
+        }
+
+        [HttpPost("{doctorId:guid}/specializations/{specializationId:guid}")]
+        public IActionResult RegisterSpecialization(Guid doctorId, Guid specialiationId)
+        {
+            var doctor = _doctorRepository.Get(doctorId);
+            if (doctor == null)
+            {
+                return NotFound();
+            }
+
+            var specialization = _specializationRepository.Get(specialiationId);
+            if (specialization == null)
+            {
+                return NotFound();
+            }
+
+            DoctorSpecialization doctorSpecialization = new DoctorSpecialization
+            {
+                DoctorId = doctor.Id,
+                SpecializationId = specialization.Id
+            };
+
+            _doctorSpecializationRepository.Add(doctorSpecialization);
+            _doctorSpecializationRepository.SaveChanges();
+
+            return Ok(doctorSpecialization);
         }
     }
 }

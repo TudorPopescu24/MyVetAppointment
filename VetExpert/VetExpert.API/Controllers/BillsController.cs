@@ -78,10 +78,6 @@ namespace VetExpert.API.Controllers
         }
 
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 2bed1a66f535b50800bc78fd4d0228c9b7c8ebec
         [HttpDelete("{billId:guid}")]
         public IActionResult Delete(Guid billId)
         {
@@ -98,16 +94,6 @@ namespace VetExpert.API.Controllers
         }
 
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 2bed1a66f535b50800bc78fd4d0228c9b7c8ebec
-=======
->>>>>>> 2bed1a66f535b50800bc78fd4d0228c9b7c8ebec
-=======
->>>>>>> 2bed1a66f535b50800bc78fd4d0228c9b7c8ebec
-=======
->>>>>>> 2bed1a66f535b50800bc78fd4d0228c9b7c8ebec
 
     }
 }
