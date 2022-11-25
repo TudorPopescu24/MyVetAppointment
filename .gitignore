@@ -2,8 +2,12 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
+/.vs
+
+/MyVetAppointment
+
 /VetExpert/.vs
 
-/VetExpert//VetExpert.API/obj
+/VetExpert/VetExpert.API/obj
 
-/VetExpert//VetExpert.API/bin
+/VetExpert/VetExpert.API/bin
