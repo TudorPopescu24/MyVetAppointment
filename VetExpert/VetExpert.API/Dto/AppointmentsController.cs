@@ -28,6 +28,7 @@ namespace VetExpert.API.Dto
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         [HttpPost]
         public IActionResult Create(Guid petId, Guid doctorId)
         {
@@ -36,12 +37,17 @@ namespace VetExpert.API.Dto
 =======
 =======
 >>>>>>> 2bed1a66f535b50800bc78fd4d0228c9b7c8ebec
+=======
+>>>>>>> 2bed1a66f535b50800bc78fd4d0228c9b7c8ebec
         [HttpPost("{appointmentId:guid}")]
         public IActionResult Create([FromBody] CreateAppointmentDto appointmentDto)
         {
 
             var pet = _petRepository.Get(appointmentDto.PetId);
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 2bed1a66f535b50800bc78fd4d0228c9b7c8ebec
+=======
 >>>>>>> 2bed1a66f535b50800bc78fd4d0228c9b7c8ebec
 =======
 >>>>>>> 2bed1a66f535b50800bc78fd4d0228c9b7c8ebec
@@ -51,7 +57,11 @@ namespace VetExpert.API.Dto
             }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             var doctor = _doctorRepository.Get(doctorId);
+=======
+            var doctor = _doctorRepository.Get(appointmentDto.DoctorId);
+>>>>>>> 2bed1a66f535b50800bc78fd4d0228c9b7c8ebec
 =======
             var doctor = _doctorRepository.Get(appointmentDto.DoctorId);
 >>>>>>> 2bed1a66f535b50800bc78fd4d0228c9b7c8ebec
@@ -68,8 +78,13 @@ namespace VetExpert.API.Dto
             {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 PetId = petId,
                 DoctorId = doctorId
+=======
+                PetId = appointmentDto.PetId,
+                DoctorId = appointmentDto.DoctorId
+>>>>>>> 2bed1a66f535b50800bc78fd4d0228c9b7c8ebec
 =======
                 PetId = appointmentDto.PetId,
                 DoctorId = appointmentDto.DoctorId
@@ -89,7 +104,10 @@ namespace VetExpert.API.Dto
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 2bed1a66f535b50800bc78fd4d0228c9b7c8ebec
 =======
 >>>>>>> 2bed1a66f535b50800bc78fd4d0228c9b7c8ebec
 
@@ -113,6 +131,9 @@ namespace VetExpert.API.Dto
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 2bed1a66f535b50800bc78fd4d0228c9b7c8ebec
+=======
 >>>>>>> 2bed1a66f535b50800bc78fd4d0228c9b7c8ebec
 =======
 >>>>>>> 2bed1a66f535b50800bc78fd4d0228c9b7c8ebec
