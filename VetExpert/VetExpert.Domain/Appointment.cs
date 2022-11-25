@@ -14,8 +14,10 @@ namespace VetExpert.Domain
 
 		public virtual Doctor Doctor { get; set; }
 
-		public Guid ClinicId { get; set; }
-
-		public virtual Clinic Clinic { get; set; }
+		public Appointment()
+		{
+			DateTime = DateTime.Now();
+			Id= Guid.NewGuid();
+		}
 	}
 }
