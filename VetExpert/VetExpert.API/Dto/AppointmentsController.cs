@@ -26,16 +26,16 @@ namespace VetExpert.API.Dto
 
         
 
-        [HttpPost]
-        public IActionResult Create(Guid petId, Guid doctorId)
+        [HttpPost("{appointmentId:guid}")]
+        public IActionResult Create([FromBody] CreateAppointmentDto appointmentDto)
         {
 
-            var pet = _petRepository.Get(petId);
+            var pet = _petRepository.Get(appointmentDto.PetId);
             if (pet == null)
             {
                 return NotFound();
             }
-            var doctor = _doctorRepository.Get(doctorId);
+            var doctor = _doctorRepository.Get(appointmentDto.DoctorId);
             if (doctor == null)
             {
                 return NotFound();
@@ -44,8 +44,8 @@ namespace VetExpert.API.Dto
 
             Appointment appointment = new Appointment
             {
-                PetId = petId,
-                DoctorId = doctorId
+                PetId = appointmentDto.PetId,
+                DoctorId = appointmentDto.DoctorId
 
             };
 
@@ -54,6 +54,26 @@ namespace VetExpert.API.Dto
 
             return Created(nameof(Get), appointment);
         }
+
+
+
+
+
+        [HttpDelete("{appointmentId:guid}")]
+        public IActionResult Delete(Guid appointmentId)
+        {
+            var appointment = _appointmentRepository.Get(appointmentId);
+            if (appointment == null)
+            {
+                return NotFound();
+            }
+
+            _appointmentRepository.Delete(appointment);
+            _appointmentRepository.SaveChanges();
+
+            return Ok();
+        }
+
 
     }
 }

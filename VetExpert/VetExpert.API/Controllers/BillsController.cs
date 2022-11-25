@@ -78,6 +78,22 @@ namespace VetExpert.API.Controllers
         }
 
 
+        [HttpDelete("{billId:guid}")]
+        public IActionResult Delete(Guid billId)
+        {
+            var bill = _billRepository.Get(billId);
+            if (bill == null)
+            {
+                return NotFound();
+            }
+
+            _billRepository.Delete(bill);
+            _billRepository.SaveChanges();
+
+            return Ok();
+        }
+
+
 
     }
 }
