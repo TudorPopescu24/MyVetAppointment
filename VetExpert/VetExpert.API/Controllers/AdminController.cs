@@ -35,5 +35,39 @@ namespace VetExpert.API.Controllers
 
             return Created(nameof(Get), admin);
         }
+
+        [HttpDelete("{adminId:guid}")]
+        public IActionResult Delete(Guid adminId)
+        {
+            var admin = _adminRepository.Get(adminId);
+            if (admin == null)
+            {
+                return NotFound();
+            }
+
+            _adminRepository.Delete(admin);
+            _adminRepository.SaveChanges();
+
+            return Ok();
+        }
+
+        [HttpPut("{adminId:guid}")]
+        public IActionResult Update(Guid adminId,
+            [FromBody] CreateAdminDto adminDto)
+        {
+            var admin = _adminRepository.Get(adminId);
+            if (admin == null)
+            {
+                return NotFound();
+            }
+
+            admin.UserName = adminDto.UserName;
+
+            _adminRepository.Update(admin);
+            _adminRepository.SaveChanges();
+
+            return Ok(admin);
+        }
     }
 }
+

@@ -66,5 +66,42 @@ namespace VetExpert.API.Controllers
             return NoContent();
         }
         */
+
+        [HttpDelete("{userId:guid}")]
+        public IActionResult Delete(Guid userId)
+        {
+            var user = _userRepository.Get(userId);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            _userRepository.Delete(user);
+            _userRepository.SaveChanges();
+
+            return Ok();
+        }
+
+
+        [HttpPut("{userId:guid}")]
+        public IActionResult Update(Guid userId,
+            [FromBody] CreateUserDto userDto)
+        {
+            var user = _userRepository.Get(userId);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            user.Name = userDto.Name;
+            user.Address = userDto.Address;
+            user.Email = userDto.Email;
+            user.PhoneNumber = userDto.PhoneNumber;
+
+            _userRepository.Update(user);
+            _userRepository.SaveChanges();
+
+            return Ok(user);
+        }
     }
 }
