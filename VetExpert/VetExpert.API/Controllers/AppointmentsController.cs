@@ -5,7 +5,7 @@ using VetExpert.Infrastructure;
 using VetExpert.API.Dto;
 using VetExpert.Domain;
 
-namespace VetExpert.API.Dto
+namespace VetExpert.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -24,7 +24,7 @@ namespace VetExpert.API.Dto
         }
 
 
-        
+
 
         [HttpPost("{appointmentId:guid}")]
         public IActionResult Create([FromBody] CreateAppointmentDto appointmentDto)

@@ -16,7 +16,7 @@ namespace VetExpert.Domain
 
 		public Appointment()
 		{
-			DateTime = DateTime.Now();
+			DateTime = DateTime.Now;
 			Id= Guid.NewGuid();
 		}
 	}
