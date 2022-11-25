@@ -8,12 +8,12 @@ namespace VetExpert.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ClinicsController : ControllerBase
+    public class ClinicController : ControllerBase
     {
         private readonly IRepository<Clinic> _clinicRepository;
         private readonly IRepository<Doctor> _doctorRepository;
 
-        public ClinicsController(IRepository<Clinic> clinicRepository, IRepository<Doctor> doctorRepository)
+        public ClinicController(IRepository<Clinic> clinicRepository, IRepository<Doctor> doctorRepository)
         {
             _clinicRepository = clinicRepository;
             _doctorRepository = doctorRepository;
@@ -23,18 +23,6 @@ namespace VetExpert.API.Controllers
         public IActionResult Get()
         {
             return Ok(_clinicRepository.GetAll());
-        }
-
-        [HttpGet("{clinicId:guid}")]
-        public IActionResult Get(Guid clinicId)
-        {
-            var clinic = _clinicRepository.Get(clinicId);
-            if (clinic == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(clinic);
         }
 
         [HttpPost]
@@ -78,40 +66,10 @@ namespace VetExpert.API.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{clinicId:guid}")]
-        public IActionResult Delete(Guid clinicId)
-        {
-            var clinic = _clinicRepository.Get(clinicId);
-            if (clinic == null)
-            {
-                return NotFound();
-            }
+        //Delete
 
-            _clinicRepository.Delete(clinic);
-            _clinicRepository.SaveChanges();
+        //Update
 
-            return Ok();
-        }
-
-        [HttpPut("{clinicId:guid}")]
-        public IActionResult Update(Guid clinicId,
-            [FromBody] CreateClinicDto clinicDto)
-        {
-            var clinic = _clinicRepository.Get(clinicId);
-            if (clinic == null)
-            {
-                return NotFound();
-            }
-
-            clinic.Name = clinicDto.Name;
-            clinic.Address = clinicDto.Address;
-            clinic.Email = clinicDto.Email;
-            clinic.WebsiteUrl = clinicDto.WebsiteUrl;
-
-            _clinicRepository.Update(clinic);
-            _clinicRepository.SaveChanges();
-
-            return Ok(clinic);
-        }
+        //Get by Id
     }
 }

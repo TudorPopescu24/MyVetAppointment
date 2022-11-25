@@ -44,10 +44,5 @@ namespace VetExpert.Infrastructure
         {
             context.SaveChanges();
         }
-
-        public void Update(TEntity entity)
-        {
-            context.Update(entity);
-        }
     }
 }
