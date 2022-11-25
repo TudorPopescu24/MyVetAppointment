@@ -29,12 +29,15 @@ namespace VetExpert.API.Dto
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         [HttpPost]
         public IActionResult Create(Guid petId, Guid doctorId)
         {
 
             var pet = _petRepository.Get(petId);
 =======
+=======
+>>>>>>> 2bed1a66f535b50800bc78fd4d0228c9b7c8ebec
 =======
 >>>>>>> 2bed1a66f535b50800bc78fd4d0228c9b7c8ebec
 =======
@@ -46,6 +49,9 @@ namespace VetExpert.API.Dto
             var pet = _petRepository.Get(appointmentDto.PetId);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 2bed1a66f535b50800bc78fd4d0228c9b7c8ebec
+=======
 >>>>>>> 2bed1a66f535b50800bc78fd4d0228c9b7c8ebec
 =======
 >>>>>>> 2bed1a66f535b50800bc78fd4d0228c9b7c8ebec
@@ -58,7 +64,11 @@ namespace VetExpert.API.Dto
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             var doctor = _doctorRepository.Get(doctorId);
+=======
+            var doctor = _doctorRepository.Get(appointmentDto.DoctorId);
+>>>>>>> 2bed1a66f535b50800bc78fd4d0228c9b7c8ebec
 =======
             var doctor = _doctorRepository.Get(appointmentDto.DoctorId);
 >>>>>>> 2bed1a66f535b50800bc78fd4d0228c9b7c8ebec
@@ -79,8 +89,13 @@ namespace VetExpert.API.Dto
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 PetId = petId,
                 DoctorId = doctorId
+=======
+                PetId = appointmentDto.PetId,
+                DoctorId = appointmentDto.DoctorId
+>>>>>>> 2bed1a66f535b50800bc78fd4d0228c9b7c8ebec
 =======
                 PetId = appointmentDto.PetId,
                 DoctorId = appointmentDto.DoctorId
@@ -105,7 +120,10 @@ namespace VetExpert.API.Dto
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 2bed1a66f535b50800bc78fd4d0228c9b7c8ebec
 =======
 >>>>>>> 2bed1a66f535b50800bc78fd4d0228c9b7c8ebec
 =======
@@ -132,6 +150,9 @@ namespace VetExpert.API.Dto
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 2bed1a66f535b50800bc78fd4d0228c9b7c8ebec
+=======
 >>>>>>> 2bed1a66f535b50800bc78fd4d0228c9b7c8ebec
 =======
 >>>>>>> 2bed1a66f535b50800bc78fd4d0228c9b7c8ebec
