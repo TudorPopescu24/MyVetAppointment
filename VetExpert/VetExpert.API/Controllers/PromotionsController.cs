@@ -41,6 +41,12 @@ namespace VetExpert.API.Controllers
 
         public IActionResult Create([FromBody] CreatePromotionDto promotionDto)
         {
+            var clinic = _clinicRepository.Get(promotionDto.ClinicId);
+            if (clinic == null)
+            {
+                return NotFound();
+            }
+
             var promotion = new Promotion
             {
                 Name = promotionDto.Name,

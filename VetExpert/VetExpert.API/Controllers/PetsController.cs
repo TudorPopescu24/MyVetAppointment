@@ -42,6 +42,12 @@ namespace VetExpert.API.Controllers
 
         public IActionResult Create([FromBody] CreatePetDto petDto)
         {
+            var user = _userRepository.Get(petDto.UserId);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
             var pet = new Pet
             {
                 Name = petDto.Name,
@@ -49,6 +55,7 @@ namespace VetExpert.API.Controllers
                 Age = petDto.Age,
                 Weight = petDto.Weight,
                 IsVaccinated = petDto.IsVaccinated,
+                DateOfVaccine = petDto.DateOfVaccine,
             };
 
             _petRepository.Add(pet);
@@ -88,6 +95,7 @@ namespace VetExpert.API.Controllers
             petDto.Age = petDto.Age;
             petDto.Weight = petDto.Weight;
             petDto.IsVaccinated = petDto.IsVaccinated;
+            petDto.DateOfVaccine = petDto.DateOfVaccine;
 
             _petRepository.Update(pet);
             _petRepository.SaveChanges();
