@@ -15,7 +15,13 @@ namespace VetExpert.API.Controllers
         private readonly IRepository<Doctor> _doctorRepository;
         private readonly IRepository<Appointment> _appointmentRepository;
 
-
+        public AppointmentsController(IRepository<Pet> petRepository, IRepository<Doctor> doctorRepository,
+             IRepository<Appointment> appointmentRepository)
+        {
+            _petRepository = petRepository;
+            _doctorRepository = doctorRepository;
+            _appointmentRepository = appointmentRepository;
+        }
 
         [HttpGet]
         public IActionResult Get()
