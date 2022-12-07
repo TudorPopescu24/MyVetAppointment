@@ -11,4 +11,9 @@
     <ProjectReference Include="..\VetExpert.Infrastructure\VetExpert.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\Implementations\" />
+    <Folder Include="Services\Interfaces\" />
+  </ItemGroup>
+
 </Project>

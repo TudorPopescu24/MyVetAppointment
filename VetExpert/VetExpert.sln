@@ -23,6 +23,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{A7E4
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VetExpert.Testing", "VetExpert.Testing\VetExpert.Testing.csproj", "{E3CC6496-F7E5-43A5-B55A-C8E7EA8F5A00}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VetExpert.UI", "VetExpert.UI\VetExpert.UI.csproj", "{93D137EA-F3B0-468A-9B2A-87360BBE3F8C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{E3CC6496-F7E5-43A5-B55A-C8E7EA8F5A00}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E3CC6496-F7E5-43A5-B55A-C8E7EA8F5A00}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E3CC6496-F7E5-43A5-B55A-C8E7EA8F5A00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93D137EA-F3B0-468A-9B2A-87360BBE3F8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93D137EA-F3B0-468A-9B2A-87360BBE3F8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93D137EA-F3B0-468A-9B2A-87360BBE3F8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93D137EA-F3B0-468A-9B2A-87360BBE3F8C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -59,6 +65,7 @@ Global
 		{3A6C5C6C-59F3-47AF-B823-B80D6A7B091A} = {8B20439F-6D21-4940-B6B8-33A61F7CF29C}
 		{88D7042C-1655-43C4-9DC2-8D62268986E7} = {1F39B4B8-F16E-49C5-BA49-2B3750DBD53A}
 		{E3CC6496-F7E5-43A5-B55A-C8E7EA8F5A00} = {A7E401F2-2481-4D80-B590-2B880372DE34}
+		{93D137EA-F3B0-468A-9B2A-87360BBE3F8C} = {D43431BC-1C58-4916-B36F-1F17FEED96CB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F3C26093-45D9-4BC1-B0D5-B09BECA4FB8C}

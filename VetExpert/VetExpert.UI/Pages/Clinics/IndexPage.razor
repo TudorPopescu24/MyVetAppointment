@@ -1,0 +1,29 @@
+﻿@page "/clinics"
+@inherits IndexPageBase
+
+<h3>Clinici</h3>
+
+@if (Clinics != null && Clinics.Count > 0)
+{
+	<table>
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Address</th>
+				<th>Email</th>
+				<th>Website</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (Clinic clinic in Clinics) 
+			{
+				<tr>
+					<td>@clinic.Name</td>
+					<td>@clinic.Address</td>
+					<td>@clinic.Email</td>
+					<td>@clinic.WebsiteUrl</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+}

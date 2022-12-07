@@ -16,6 +16,14 @@ builder.Services.AddControllers().AddJsonOptions(x =>
 builder.Services.AddDbContext<MainDbContext>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
+builder.Services.AddCors(options =>
+{
+	options.AddPolicy("vetExpertCors", policy =>
+	{
+		policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+	});
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -26,6 +34,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors("vetExpertCors");
 
 app.UseAuthorization();
 
