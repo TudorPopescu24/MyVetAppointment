@@ -9,5 +9,10 @@
         public string Description { get; set; }
 
         public virtual ICollection<DoctorSpecialization> DoctorSpecializations { get; set; } = new List<DoctorSpecialization>();
+
+        public Specialization()
+        {
+            Id = Guid.NewGuid();
+        }
     }
 }

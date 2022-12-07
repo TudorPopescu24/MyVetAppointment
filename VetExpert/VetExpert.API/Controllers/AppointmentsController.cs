@@ -5,7 +5,7 @@ using VetExpert.Infrastructure;
 using VetExpert.API.Dto;
 using VetExpert.Domain;
 
-namespace VetExpert.API.Dto
+namespace VetExpert.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -15,7 +15,13 @@ namespace VetExpert.API.Dto
         private readonly IRepository<Doctor> _doctorRepository;
         private readonly IRepository<Appointment> _appointmentRepository;
 
-
+        public AppointmentsController(IRepository<Pet> petRepository, IRepository<Doctor> doctorRepository,
+             IRepository<Appointment> appointmentRepository)
+        {
+            _petRepository = petRepository;
+            _doctorRepository = doctorRepository;
+            _appointmentRepository = appointmentRepository;
+        }
 
         [HttpGet]
         public IActionResult Get()
@@ -24,7 +30,7 @@ namespace VetExpert.API.Dto
         }
 
 
-        
+
 
         [HttpPost("{appointmentId:guid}")]
         public IActionResult Create([FromBody] CreateAppointmentDto appointmentDto)
