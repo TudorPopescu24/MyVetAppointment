@@ -7,6 +7,10 @@ namespace VetExpert.Infrastructure
     public class MainDbContext : DbContext
     {
         //Configure dbcontext appsettings.json
+        public MainDbContext(DbContextOptions<MainDbContext> options) : base(options)
+        {
+            this.Database.EnsureCreated();
+        }
         public DbSet<Clinic> Clinics { get; set; }
 
         public DbSet<Admin> Admins { get; set; }
@@ -34,7 +38,7 @@ namespace VetExpert.Infrastructure
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source = MyVetAppointment.db");
+            //optionsBuilder.UseSqlite("Data Source = MyVetAppointment.db");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
