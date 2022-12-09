@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,10 @@ using Assert = NUnit.Framework.Assert;
 
 namespace VetExpert.Testing
 {
+    [TestClass]
     public class Doctors
     {
-
+        [TestMethod]
 
         public void DoctorValid()
         {

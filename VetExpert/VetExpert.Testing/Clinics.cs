@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,8 +8,10 @@ using VetExpert.Domain;
 
 namespace VetExpert.Testing
 {
+    [TestClass]
     public class Clinics
     {
+        [TestMethod]
 
         public void ClinicValid()
         {
@@ -16,7 +19,7 @@ namespace VetExpert.Testing
 
 
 
-            Assert.NotEqual(clinic.Id, Guid.Empty);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreNotEqual(clinic.Id, Guid.Empty);
             Xunit.Assert.NotNull(clinic.Name);
             Xunit.Assert.NotNull(clinic.Email);
 
