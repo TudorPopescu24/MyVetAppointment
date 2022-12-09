@@ -9,8 +9,10 @@ using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace VetExpert.Testing
 {
+    [TestClass]
     public class Bills
     {
+        [TestMethod]
         public void BillValid()
         {
             Bill bill = new Bill();

@@ -21,5 +21,10 @@ namespace VetExpert.Domain
         {
             Id = new Guid();
         }
+
+        public static implicit operator Clinic(User v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
