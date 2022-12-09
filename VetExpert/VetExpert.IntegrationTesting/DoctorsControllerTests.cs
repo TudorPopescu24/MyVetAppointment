@@ -17,14 +17,11 @@ namespace VetExpert.IntegrationTesting
     {
         private const string ApiURL = "/api/Doctors";
 
-        public DoctorControllerTests()
-        {
-            CleanDatabases();
-        }
+       
         [Fact]
         public async void When_CreatedDoctor_Then_ShouldReturnDoctorInTheGetRequest()
         {
-
+            CleanDatabases();
             CreateDoctorDto DoctorDto = CreateSUT();
             // Act
             var createDoctorResponse = await HttpClient.PostAsJsonAsync(ApiURL, DoctorDto);

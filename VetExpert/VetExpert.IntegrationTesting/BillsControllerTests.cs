@@ -17,14 +17,11 @@ namespace VetExpert.IntegrationTesting
     {
         private const string ApiURL = "/api/Bills";
 
-        public BillControllerTests()
-        {
-            CleanDatabases();
-        }
+       
         [Fact]
         public async void When_CreatedBill_Then_ShouldReturnBillInTheGetRequest()
         {
-
+            CleanDatabases();
             CreateBillDto BillDto = CreateSUT();
             // Act
             var createBillResponse = await HttpClient.PostAsJsonAsync(ApiURL, BillDto);

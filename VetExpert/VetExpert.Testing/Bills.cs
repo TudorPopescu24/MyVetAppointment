@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VetExpert.Domain;
+using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace VetExpert.Testing
 {
@@ -15,7 +17,10 @@ namespace VetExpert.Testing
 
 
 
-            Xunit.Assert.NotNull(bill.Id);
+            Assert.AreNotEqual(bill.Id, Guid.Empty);
+            Assert.IsNotNull(bill.Value);
+            Assert.IsNotNull(bill.DateTime);
+
 
         }
     }

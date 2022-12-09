@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc.Testing;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualStudio.TestPlatform.TestHost;
 using VetExpert.API.Controllers;
 using VetExpert.Infrastructure;
 
@@ -16,7 +18,7 @@ namespace VetExpert.Testing
 
         protected BaseIntegrationTests()
         {
-            var application = new WebApplicationFactory<DrugsController>()
+            var application = new WebApplicationFactory<Program>()
                 .WithWebHostBuilder(builder => { });
             HttpClient = application.CreateClient();
             databaseContext = new MainDbContext(options);
@@ -25,10 +27,14 @@ namespace VetExpert.Testing
 
         protected void CleanDatabases()
         {
-               databaseContext.DrugStocks.RemoveRange(databaseContext.DrugStocks.ToList());
-               databaseContext.Drugs.RemoveRange(databaseContext.Drugs.ToList());
-               databaseContext.SaveChanges();
-               databaseContext.Database.EnsureDeleted();
+            databaseContext.Users.RemoveRange(databaseContext.Users.ToList());
+            databaseContext.Admins.RemoveRange(databaseContext.Admins.ToList());
+            databaseContext.Pets.RemoveRange(databaseContext.Pets.ToList());
+            databaseContext.Clinics.RemoveRange(databaseContext.Clinics.ToList());
+            databaseContext.Appointments.RemoveRange(databaseContext.Appointments.ToList());
+            databaseContext.SaveChanges();
+            
+
         }
     }
 }
