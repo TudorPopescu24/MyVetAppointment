@@ -27,11 +27,13 @@ namespace VetExpert.Testing
 
         protected void CleanDatabases()
         {
+            databaseContext.Drugs.RemoveRange(databaseContext.Drugs.ToList());
             databaseContext.Users.RemoveRange(databaseContext.Users.ToList());
             databaseContext.Admins.RemoveRange(databaseContext.Admins.ToList());
             databaseContext.Pets.RemoveRange(databaseContext.Pets.ToList());
             databaseContext.Clinics.RemoveRange(databaseContext.Clinics.ToList());
             databaseContext.Appointments.RemoveRange(databaseContext.Appointments.ToList());
+            databaseContext.Specializations.RemoveRange(databaseContext.Specializations.ToList());
             databaseContext.SaveChanges();
             
 
