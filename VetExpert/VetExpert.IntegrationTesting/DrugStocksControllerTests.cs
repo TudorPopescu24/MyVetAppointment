@@ -2,9 +2,10 @@
 using Newtonsoft.Json;
 using System.Net.Http.Json;
 using VetExpert.API.Dto;
+using VetExpert.Testing;
 using Xunit;
 
-namespace VetExpert.Testing
+namespace VetExpert.IntegrationTesting
 {
     public class DrugStocksControllerTests : BaseIntegrationTests, IDisposable
     {
