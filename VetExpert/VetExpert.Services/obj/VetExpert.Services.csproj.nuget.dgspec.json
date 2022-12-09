@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Tudor Popescu\\Desktop\\I.NET\\Project\\VetExpert\\VetExpert\\VetExpert.Services\\VetExpert.Services.csproj": {}
+    "C:\\Users\\mihai\\Desktop\\MyVetAppointment\\VetExpert\\VetExpert.Services\\VetExpert.Services.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Tudor Popescu\\Desktop\\I.NET\\Project\\VetExpert\\VetExpert\\VetExpert.Domain\\VetExpert.Domain.csproj": {
+    "C:\\Users\\mihai\\Desktop\\MyVetAppointment\\VetExpert\\VetExpert.Domain\\VetExpert.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Tudor Popescu\\Desktop\\I.NET\\Project\\VetExpert\\VetExpert\\VetExpert.Domain\\VetExpert.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\mihai\\Desktop\\MyVetAppointment\\VetExpert\\VetExpert.Domain\\VetExpert.Domain.csproj",
         "projectName": "VetExpert.Domain",
-        "projectPath": "C:\\Users\\Tudor Popescu\\Desktop\\I.NET\\Project\\VetExpert\\VetExpert\\VetExpert.Domain\\VetExpert.Domain.csproj",
-        "packagesPath": "C:\\Users\\Tudor Popescu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Tudor Popescu\\Desktop\\I.NET\\Project\\VetExpert\\VetExpert\\VetExpert.Domain\\obj\\",
+        "projectPath": "C:\\Users\\mihai\\Desktop\\MyVetAppointment\\VetExpert\\VetExpert.Domain\\VetExpert.Domain.csproj",
+        "packagesPath": "C:\\Users\\mihai\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mihai\\Desktop\\MyVetAppointment\\VetExpert\\VetExpert.Domain\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Tudor Popescu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\mihai\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -59,17 +64,21 @@
         }
       }
     },
-    "C:\\Users\\Tudor Popescu\\Desktop\\I.NET\\Project\\VetExpert\\VetExpert\\VetExpert.Infrastructure\\VetExpert.Infrastructure.csproj": {
+    "C:\\Users\\mihai\\Desktop\\MyVetAppointment\\VetExpert\\VetExpert.Infrastructure\\VetExpert.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Tudor Popescu\\Desktop\\I.NET\\Project\\VetExpert\\VetExpert\\VetExpert.Infrastructure\\VetExpert.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\mihai\\Desktop\\MyVetAppointment\\VetExpert\\VetExpert.Infrastructure\\VetExpert.Infrastructure.csproj",
         "projectName": "VetExpert.Infrastructure",
-        "projectPath": "C:\\Users\\Tudor Popescu\\Desktop\\I.NET\\Project\\VetExpert\\VetExpert\\VetExpert.Infrastructure\\VetExpert.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\Tudor Popescu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Tudor Popescu\\Desktop\\I.NET\\Project\\VetExpert\\VetExpert\\VetExpert.Infrastructure\\obj\\",
+        "projectPath": "C:\\Users\\mihai\\Desktop\\MyVetAppointment\\VetExpert\\VetExpert.Infrastructure\\VetExpert.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\mihai\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mihai\\Desktop\\MyVetAppointment\\VetExpert\\VetExpert.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Tudor Popescu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\mihai\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -77,14 +86,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\Tudor Popescu\\Desktop\\I.NET\\Project\\VetExpert\\VetExpert\\VetExpert.Domain\\VetExpert.Domain.csproj": {
-                "projectPath": "C:\\Users\\Tudor Popescu\\Desktop\\I.NET\\Project\\VetExpert\\VetExpert\\VetExpert.Domain\\VetExpert.Domain.csproj"
+              "C:\\Users\\mihai\\Desktop\\MyVetAppointment\\VetExpert\\VetExpert.Domain\\VetExpert.Domain.csproj": {
+                "projectPath": "C:\\Users\\mihai\\Desktop\\MyVetAppointment\\VetExpert\\VetExpert.Domain\\VetExpert.Domain.csproj"
               }
             }
           }
@@ -140,17 +150,21 @@
         }
       }
     },
-    "C:\\Users\\Tudor Popescu\\Desktop\\I.NET\\Project\\VetExpert\\VetExpert\\VetExpert.Services\\VetExpert.Services.csproj": {
+    "C:\\Users\\mihai\\Desktop\\MyVetAppointment\\VetExpert\\VetExpert.Services\\VetExpert.Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Tudor Popescu\\Desktop\\I.NET\\Project\\VetExpert\\VetExpert\\VetExpert.Services\\VetExpert.Services.csproj",
+        "projectUniqueName": "C:\\Users\\mihai\\Desktop\\MyVetAppointment\\VetExpert\\VetExpert.Services\\VetExpert.Services.csproj",
         "projectName": "VetExpert.Services",
-        "projectPath": "C:\\Users\\Tudor Popescu\\Desktop\\I.NET\\Project\\VetExpert\\VetExpert\\VetExpert.Services\\VetExpert.Services.csproj",
-        "packagesPath": "C:\\Users\\Tudor Popescu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Tudor Popescu\\Desktop\\I.NET\\Project\\VetExpert\\VetExpert\\VetExpert.Services\\obj\\",
+        "projectPath": "C:\\Users\\mihai\\Desktop\\MyVetAppointment\\VetExpert\\VetExpert.Services\\VetExpert.Services.csproj",
+        "packagesPath": "C:\\Users\\mihai\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mihai\\Desktop\\MyVetAppointment\\VetExpert\\VetExpert.Services\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Tudor Popescu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\mihai\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -158,17 +172,18 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\Tudor Popescu\\Desktop\\I.NET\\Project\\VetExpert\\VetExpert\\VetExpert.Domain\\VetExpert.Domain.csproj": {
-                "projectPath": "C:\\Users\\Tudor Popescu\\Desktop\\I.NET\\Project\\VetExpert\\VetExpert\\VetExpert.Domain\\VetExpert.Domain.csproj"
+              "C:\\Users\\mihai\\Desktop\\MyVetAppointment\\VetExpert\\VetExpert.Domain\\VetExpert.Domain.csproj": {
+                "projectPath": "C:\\Users\\mihai\\Desktop\\MyVetAppointment\\VetExpert\\VetExpert.Domain\\VetExpert.Domain.csproj"
               },
-              "C:\\Users\\Tudor Popescu\\Desktop\\I.NET\\Project\\VetExpert\\VetExpert\\VetExpert.Infrastructure\\VetExpert.Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\Tudor Popescu\\Desktop\\I.NET\\Project\\VetExpert\\VetExpert\\VetExpert.Infrastructure\\VetExpert.Infrastructure.csproj"
+              "C:\\Users\\mihai\\Desktop\\MyVetAppointment\\VetExpert\\VetExpert.Infrastructure\\VetExpert.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\mihai\\Desktop\\MyVetAppointment\\VetExpert\\VetExpert.Infrastructure\\VetExpert.Infrastructure.csproj"
               }
             }
           }
