@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "NG6/jCZ7LpcWDC8cKARArBRDcQq2yic/erhNW3Nx3lwSokcNwqvE5zSYWIpWfcoikYw8A7Wul6y60ybNxwuMIA==",
+  "dgSpecHash": "qR+XIkz4JB+slSj/2rUJ2gB8K4uFwK/61adE8naWktgqIaUl+8ABz8ttP/CNrhDWMxuUE/b9z4d8VJST3MqD8g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Tudor Popescu\\Desktop\\I.NET\\Project\\VetExpert\\VetExpert\\VetExpert.Domain\\VetExpert.Domain.csproj",
+  "projectFilePath": "C:\\Users\\raluca nastasa\\Documents\\Facultate III\\dotnet project\\MyVetAppointment\\VetExpert\\VetExpert.Domain\\VetExpert.Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

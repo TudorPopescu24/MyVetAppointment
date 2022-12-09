@@ -1,10 +1,13 @@
-﻿namespace VetExpert.Domain
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace VetExpert.Domain
 {
     public class User
     {
         public Guid Id { get; set; }
 
-        public string Name { get; set; }
+		[Required(ErrorMessage = "Name is required.")]
+		public string Name { get; set; }
 
         public string Email { get; set; }
 
@@ -18,5 +21,9 @@
         {
             Id=Guid.NewGuid();
         }
-    }
+		public static implicit operator User(Clinic v)
+		{
+			throw new NotImplementedException();
+		}
+	}
 }
