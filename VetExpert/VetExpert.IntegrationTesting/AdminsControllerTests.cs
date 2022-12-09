@@ -21,8 +21,8 @@ namespace VetExpert.IntegrationTesting
         [Fact]
         public async void When_CreatedAdmin_Then_ShouldReturnadminInTheGetRequest()
         {
-           
-            
+
+            CleanDatabases();
             CreateAdminDto adminDto = CreateSUT();
             // Act
             var createAdminResponse = await HttpClient.PostAsJsonAsync(ApiURL, adminDto);

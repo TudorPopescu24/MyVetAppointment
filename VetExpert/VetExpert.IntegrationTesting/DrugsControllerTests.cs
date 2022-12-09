@@ -7,6 +7,7 @@ using Xunit;
 
 namespace VetExpert.IntegrationTesting
 {
+    [Collection("Database tests")]
     public class DrugsControllerTests : BaseIntegrationTests, IDisposable
     {
         private const string ApiURL = "/api/drugs";

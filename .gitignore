@@ -3,6 +3,9 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
+bin
+obj
+
 # User-specific files
 *.rsuser
 *.suo
@@ -396,3 +399,19 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+./VetExpert/VetExpert.API/obj
+./VetExpert/VetExpert.Domain/obj
+./VetExpert/VetExpert.Infrastructure/obj
+./VetExpert/VetExpert.IntegrationTesting/obj
+./VetExpert/VetExpert.Services/obj
+./VetExpert/VetExpert.Testing/obj
+./VetExpert/VetExpert.UI/obj
+
+./VetExpert/VetExpert.API/bin
+./VetExpert/VetExpert.Domain/bin
+./VetExpert/VetExpert.Infrastructure/bin
+./VetExpert/VetExpert.IntegrationTesting/bin
+./VetExpert/VetExpert.Services/bin
+./VetExpert/VetExpert.Testing/bin
+./VetExpert/VetExpert.UI/bin

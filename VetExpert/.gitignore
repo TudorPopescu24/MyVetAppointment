@@ -396,3 +396,19 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+./VetExpert.API/obj
+./VetExpert.Domain/obj
+./VetExpert.Infrastructure/obj
+./VetExpert.IntegrationTesting/obj
+./VetExpert.Services/obj
+./VetExpert.Testing/obj
+./VetExpert.UI/obj
+
+./VetExpert.API/bin
+./VetExpert.Domain/bin
+./VetExpert.Infrastructure/bin
+./VetExpert.IntegrationTesting/bin
+./VetExpert.Services/bin
+./VetExpert.Testing/bin
+./VetExpert.UI/bin
