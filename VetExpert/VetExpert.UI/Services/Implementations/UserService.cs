@@ -7,7 +7,7 @@ namespace VetExpert.UI.Services.Implementations
 {
     public class UserService : IUserService
     {
-        private const string ApiURL = "https://localhost:7231/api/Users";
+        private const string ApiURL = "https://localhost:7231/api/User";
         private readonly HttpClient httpClient;
 
         public UserService(HttpClient httpClient)
