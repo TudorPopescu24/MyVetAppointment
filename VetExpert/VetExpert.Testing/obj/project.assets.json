@@ -3606,19 +3606,40 @@
     ]
   },
   "packageFolders": {
+<<<<<<< Updated upstream
     "C:\\Users\\ilinc\\.nuget\\packages\\": {}
+=======
+    "C:\\Users\\mihai\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+>>>>>>> Stashed changes
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< Updated upstream
       "projectUniqueName": "C:\\Users\\ilinc\\Desktop\\FACULTATE\\An.III.Sem.I\\.NET\\Proiect\\MyVetAppointment\\VetExpert\\VetExpert.Testing\\VetExpert.Testing.csproj",
       "projectName": "VetExpert.Testing",
       "projectPath": "C:\\Users\\ilinc\\Desktop\\FACULTATE\\An.III.Sem.I\\.NET\\Proiect\\MyVetAppointment\\VetExpert\\VetExpert.Testing\\VetExpert.Testing.csproj",
       "packagesPath": "C:\\Users\\ilinc\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\ilinc\\Desktop\\FACULTATE\\An.III.Sem.I\\.NET\\Proiect\\MyVetAppointment\\VetExpert\\VetExpert.Testing\\obj\\",
+=======
+      "projectUniqueName": "C:\\Users\\mihai\\Desktop\\MyVetAppointment\\VetExpert\\VetExpert.Testing\\VetExpert.Testing.csproj",
+      "projectName": "VetExpert.Testing",
+      "projectPath": "C:\\Users\\mihai\\Desktop\\MyVetAppointment\\VetExpert\\VetExpert.Testing\\VetExpert.Testing.csproj",
+      "packagesPath": "C:\\Users\\mihai\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\mihai\\Desktop\\MyVetAppointment\\VetExpert\\VetExpert.Testing\\obj\\",
+>>>>>>> Stashed changes
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
+<<<<<<< Updated upstream
         "C:\\Users\\ilinc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+        "C:\\Users\\mihai\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+>>>>>>> Stashed changes
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3626,18 +3647,31 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+<<<<<<< Updated upstream
         "https://api.nuget.org/v3/index.json": {},
         "https://packagesource": {}
+=======
+        "C:\\Program Files\\dotnet\\library-packs": {},
+        "https://api.nuget.org/v3/index.json": {}
+>>>>>>> Stashed changes
       },
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
+<<<<<<< Updated upstream
             "C:\\Users\\ilinc\\Desktop\\FACULTATE\\An.III.Sem.I\\.NET\\Proiect\\MyVetAppointment\\VetExpert\\VetExpert.Domain\\VetExpert.Domain.csproj": {
               "projectPath": "C:\\Users\\ilinc\\Desktop\\FACULTATE\\An.III.Sem.I\\.NET\\Proiect\\MyVetAppointment\\VetExpert\\VetExpert.Domain\\VetExpert.Domain.csproj"
             },
             "C:\\Users\\ilinc\\Desktop\\FACULTATE\\An.III.Sem.I\\.NET\\Proiect\\MyVetAppointment\\VetExpert\\VetExpert.Infrastructure\\VetExpert.Infrastructure.csproj": {
               "projectPath": "C:\\Users\\ilinc\\Desktop\\FACULTATE\\An.III.Sem.I\\.NET\\Proiect\\MyVetAppointment\\VetExpert\\VetExpert.Infrastructure\\VetExpert.Infrastructure.csproj"
+=======
+            "C:\\Users\\mihai\\Desktop\\MyVetAppointment\\VetExpert\\VetExpert.Domain\\VetExpert.Domain.csproj": {
+              "projectPath": "C:\\Users\\mihai\\Desktop\\MyVetAppointment\\VetExpert\\VetExpert.Domain\\VetExpert.Domain.csproj"
+            },
+            "C:\\Users\\mihai\\Desktop\\MyVetAppointment\\VetExpert\\VetExpert.Infrastructure\\VetExpert.Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\mihai\\Desktop\\MyVetAppointment\\VetExpert\\VetExpert.Infrastructure\\VetExpert.Infrastructure.csproj"
+>>>>>>> Stashed changes
             }
           }
         }

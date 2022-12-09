@@ -14,19 +14,14 @@ using Xunit;
 namespace VetExpert.IntegrationTesting
 {
     [Collection("Database tests")]
-
     public class AppointmentControllerTests : BaseIntegrationTests, IDisposable
     {
         private const string ApiURL = "/api/Appointments/0";
 
-        public AppointmentControllerTests()
-        {
-            CleanDatabases();
-        }
         [Fact]
         public async void When_CreatedAppointment_Then_ShouldReturnAppointmentInTheGetRequest()
         {
-
+            CleanDatabases();
             CreateAppointmentDto AppointmentDto = CreateSUT();
             // Act
             var createAppointmentResponse = await HttpClient.PostAsJsonAsync(ApiURL, AppointmentDto);
