@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 using VetExpert.Infrastructure;
 
@@ -13,8 +14,16 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddControllers().AddJsonOptions(x =>
    x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
 
-builder.Services.AddDbContext<MainDbContext>();
+builder.Services.AddDbContext<MainDbContext>(options => options.UseSqlite(builder.Configuration.GetConnectionString("MyVetAppointmentDb"), b=>b.MigrationsAssembly(typeof(MainDbContext).Assembly.FullName)));
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+
+builder.Services.AddCors(options =>
+{
+	options.AddPolicy("vetExpertCors", policy =>
+	{
+		policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+	});
+});
 
 var app = builder.Build();
 
@@ -26,6 +35,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors("vetExpertCors");
 
 app.UseAuthorization();
 
