@@ -176,6 +176,9 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
+              "C:\\Users\\raluca nastasa\\Documents\\Facultate III\\dotnet project\\MyVetAppointment\\VetExpert\\VetExpert.Domain\\VetExpert.Domain.csproj": {
+                "projectPath": "C:\\Users\\raluca nastasa\\Documents\\Facultate III\\dotnet project\\MyVetAppointment\\VetExpert\\VetExpert.Domain\\VetExpert.Domain.csproj"
+              },
               "C:\\Users\\raluca nastasa\\Documents\\Facultate III\\dotnet project\\MyVetAppointment\\VetExpert\\VetExpert.Infrastructure\\VetExpert.Infrastructure.csproj": {
                 "projectPath": "C:\\Users\\raluca nastasa\\Documents\\Facultate III\\dotnet project\\MyVetAppointment\\VetExpert\\VetExpert.Infrastructure\\VetExpert.Infrastructure.csproj"
               }
@@ -192,6 +195,10 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "MSTest.TestFramework": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
             "Microsoft.AspNetCore.Mvc.Testing": {
               "target": "Package",
               "version": "[7.0.0, )"
@@ -203,6 +210,10 @@
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
               "version": "[17.4.0, )"
+            },
+            "NUnit": {
+              "target": "Package",
+              "version": "[3.13.3, )"
             },
             "coverlet.collector": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
