@@ -12,7 +12,7 @@ namespace VetExpert.Domain
 
         public virtual ICollection<Drug> Drugs { get; set; } = new List<Drug>();
 
-        public DateTime DateTime { get; set; } = DateTime.UtcNow();
+        public DateTime DateTime { get; set; } = DateTime.UtcNow;
         
         public Guid UserId { get; set; }
 
