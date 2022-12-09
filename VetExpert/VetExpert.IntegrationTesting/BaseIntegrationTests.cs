@@ -10,7 +10,7 @@ namespace VetExpert.Testing
     public class BaseIntegrationTests
     {
         private DbContextOptions<MainDbContext> options = new DbContextOptionsBuilder<MainDbContext>()
-                .UseSqlite("Data Source = MyTests.db").Options;
+                .UseSqlite("Data Source = MyVetAppointment.db").Options;
 
         protected HttpClient HttpClient { get; private set; }
 
