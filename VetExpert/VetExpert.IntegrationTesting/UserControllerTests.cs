@@ -17,14 +17,10 @@ namespace VetExpert.IntegrationTesting
     {
         private const string ApiURL = "/api/User";
 
-        public UserControllerTests()
-        {
-            CleanDatabases();
-        }
         [Fact]
         public async void When_CreatedUser_Then_ShouldReturnUserInTheGetRequest()
-        { 
-           
+        {
+            Dispose();
             CreateUserDto userDto = CreateSUT();
             // Act
             var createUserResponse = await HttpClient.PostAsJsonAsync(ApiURL, userDto);
