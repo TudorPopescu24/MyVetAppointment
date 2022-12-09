@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ZkwrVUwSytnysgwmCuxefS/Dof5nMQ6bHhvG3YyJ/b6vyS345l2UlvAMmVQ91cNeTEeP7Q/x0uDXwRFrSx92gg==",
+  "dgSpecHash": "WlhyyfXwe/KD/3+XfHBAggoCwTJ1m4osdBMeEUHiuYoTr6QRIV2eaKcIkOeOetT/kwlUle4ieMZ1l4hRr1sbIg==",
   "success": true,
   "projectFilePath": "C:\\Users\\ilinc\\Desktop\\FACULTATE\\An.III.Sem.I\\.NET\\Proiect\\MyVetAppointment\\VetExpert\\VetExpert.Testing\\VetExpert.Testing.csproj",
   "expectedPackageFiles": [
@@ -48,6 +48,7 @@
     "C:\\Users\\ilinc\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\ilinc\\.nuget\\packages\\microsoft.testplatform.objectmodel\\17.4.0\\microsoft.testplatform.objectmodel.17.4.0.nupkg.sha512",
     "C:\\Users\\ilinc\\.nuget\\packages\\microsoft.testplatform.testhost\\17.4.0\\microsoft.testplatform.testhost.17.4.0.nupkg.sha512",
+    "C:\\Users\\ilinc\\.nuget\\packages\\mstest.testframework\\3.0.0\\mstest.testframework.3.0.0.nupkg.sha512",
     "C:\\Users\\ilinc\\.nuget\\packages\\netstandard.library\\2.0.0\\netstandard.library.2.0.0.nupkg.sha512",
     "C:\\Users\\ilinc\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\ilinc\\.nuget\\packages\\nuget.frameworks\\5.11.0\\nuget.frameworks.5.11.0.nupkg.sha512",

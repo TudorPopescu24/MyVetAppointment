@@ -15,7 +15,7 @@ namespace VetExpert.Testing
 
 
 
-            Xunit.Assert.NotNull(specialization.Id);
+            Assert.NotEqual(specialization.Id, Guid.Empty);
 
         }
     }

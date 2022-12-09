@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VetExpert.Domain;
+using Assert = NUnit.Framework.Assert;
 
 namespace VetExpert.Testing
 {
@@ -18,8 +19,13 @@ namespace VetExpert.Testing
 
 
 
-            Xunit.Assert.NotNull(doctor.Id);
- 
+            Assert.AreNotEqual(doctor.Id, Guid.Empty);
+            Assert.AreNotEqual(doctor.ClinicId, Guid.Empty);
+            Xunit.Assert.NotNull(doctor.LastName);
+            Xunit.Assert.NotNull(doctor.Clinic);
+
+
+
         }
 
 

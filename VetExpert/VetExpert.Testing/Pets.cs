@@ -16,7 +16,22 @@ namespace VetExpert.Testing
 
 
 
-            Xunit.Assert.NotNull(pet.Id);
+            Assert.NotEqual(pet.Id, Guid.Empty);
+            Xunit.Assert.NotNull(pet.Name);
+            Xunit.Assert.NotNull(pet.TypeOfPet);
+
+
+        }
+
+
+        public void PetVaccineInfo()
+        {
+            Pet pet = new Pet();
+
+            pet.IsVaccinated = true;
+
+            Assert.NotNull(pet.DateOfVaccine);
+
 
         }
 
