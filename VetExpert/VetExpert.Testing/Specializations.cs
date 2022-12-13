@@ -19,6 +19,11 @@ namespace VetExpert.Testing
 
 
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreNotEqual(specialization.Id, Guid.Empty);
+            Assert.IsNotNull(specialization.Name);
+            Assert.IsNotNull(specialization.Description);
+            Assert.IsNotNull(specialization.DoctorSpecializations);
+
+
 
         }
     }

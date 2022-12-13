@@ -19,6 +19,7 @@ namespace VetExpert.Testing
 
 
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreNotEqual(admin.Id, Guid.Empty);
+            Assert.NotNull(admin.UserName);
 
         }
 

@@ -20,8 +20,10 @@ namespace VetExpert.Testing
 
 
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreNotEqual(clinic.Id, Guid.Empty);
-            Xunit.Assert.NotNull(clinic.Name);
-            Xunit.Assert.NotNull(clinic.Email);
+            Assert.NotNull(clinic.Name);
+            Assert.NotNull(clinic.Email);
+            Assert.NotNull(clinic.Doctors);
+            Assert.NotNull(clinic.Email);
 
 
         }

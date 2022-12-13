@@ -20,8 +20,14 @@ namespace VetExpert.Testing
 
 
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreNotEqual(pet.Id, Guid.Empty);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreNotEqual(pet.UserId, Guid.Empty);
             Xunit.Assert.NotNull(pet.Name);
+            Xunit.Assert.NotNull(pet.IsVaccinated);
+            Xunit.Assert.NotNull(pet.Age);
+            Xunit.Assert.NotNull(pet.DateOfVaccine);
             Xunit.Assert.NotNull(pet.TypeOfPet);
+            Xunit.Assert.NotNull(pet.User);
+
 
 
         }
