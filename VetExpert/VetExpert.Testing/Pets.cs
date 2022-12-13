@@ -26,6 +26,7 @@ namespace VetExpert.Testing
 
         }
 
+        [TestMethod]
 
         public void PetVaccineInfo()
         {
