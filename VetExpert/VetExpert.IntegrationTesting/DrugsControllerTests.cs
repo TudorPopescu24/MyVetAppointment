@@ -10,11 +10,12 @@ namespace VetExpert.IntegrationTesting
     [Collection("Database tests")]
     public class DrugsControllerTests : BaseIntegrationTests, IDisposable
     {
-        private const string ApiURL = "/api/drugs";
+        private const string ApiURL = "/api/Drugs";
 
         [Fact]
         public async void When_CreatedDrug_Then_ShouldReturnDrugInTheGetRequest()
         {
+            CleanDatabases();
             CreateDrugDto drugDto = CreateSUT();
             // Act
             var createDrugResponse = await HttpClient.PostAsJsonAsync(ApiURL, drugDto);
@@ -31,7 +32,7 @@ namespace VetExpert.IntegrationTesting
             drugs.Count.Should().Be(1);
             drugs.Should().HaveCount(1);
             drugs.Should().NotBeNull();
-            CleanDatabases();
+            Dispose();
         }
 
         private static CreateDrugDto CreateSUT()
