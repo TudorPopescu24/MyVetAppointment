@@ -21,15 +21,16 @@ namespace VetExpert.API.Controllers
         }
 
         [HttpGet]
-        public IActionResult Get()
+        public async Task<IActionResult> Get()
         {
-            return Ok(_drugStockRepository.GetAll());
+            var drugStocks = await _drugRepository.GetAll();
+            return Ok(drugStocks);
         }
 
         [HttpGet("{drugStockId:guid}")]
-        public IActionResult Get(Guid drugStockId)
+        public async Task<IActionResult> Get(Guid drugStockId)
         {
-            var drugStock = _drugStockRepository.Get(drugStockId);
+            var drugStock = await _drugStockRepository.Get(drugStockId);
             if (drugStock == null)
             {
                 return NotFound();
@@ -39,9 +40,9 @@ namespace VetExpert.API.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] CreateDrugStockDto drugStockDto)
+        public async Task<IActionResult> Create([FromBody] CreateDrugStockDto drugStockDto)
         {
-            var drug = _drugRepository.Get(drugStockDto.DrugId);
+            var drug = await _drugRepository.Get(drugStockDto.DrugId);
             if (drug == null)
             {
                 return NotFound();
@@ -54,32 +55,32 @@ namespace VetExpert.API.Controllers
                 ExpirationDate = drugStockDto.ExpirationDate
             };
 
-            _drugStockRepository.Add(drugStock);
-            _drugStockRepository.SaveChanges();
+            await _drugStockRepository.Add(drugStock);
+            await _drugStockRepository.SaveChangesAsync();
 
             return Created(nameof(Get), drugStock);
         }
 
         [HttpDelete("{drugStockId:guid}")]
-        public IActionResult Delete(Guid drugStockId)
+        public async Task<IActionResult> Delete(Guid drugStockId)
         {
-            var drugStock = _drugStockRepository.Get(drugStockId);
+            var drugStock = await _drugStockRepository.Get(drugStockId);
             if (drugStock == null)
             {
                 return NotFound();
             }
 
             _drugStockRepository.Delete(drugStock);
-            _drugStockRepository.SaveChanges();
+            await _drugStockRepository.SaveChangesAsync();
 
             return Ok();
         }
 
         [HttpPut("{drugStockId:guid}")]
-        public IActionResult Update(Guid drugStockId,
+        public async Task<IActionResult> Update(Guid drugStockId,
             [FromBody] CreateDrugStockDto drugStockDto)
         {
-            var drugStock = _drugStockRepository.Get(drugStockId);
+            var drugStock = await _drugStockRepository.Get(drugStockId);
             if (drugStock == null)
             {
                 return NotFound();
@@ -89,7 +90,7 @@ namespace VetExpert.API.Controllers
             drugStock.ExpirationDate = drugStockDto.ExpirationDate;
 
             _drugStockRepository.Update(drugStock);
-            _drugStockRepository.SaveChanges();
+            await _drugStockRepository.SaveChangesAsync();
 
             return Ok(drugStock);
         }
