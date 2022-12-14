@@ -1,4 +1,5 @@
-﻿using System.Linq.Expressions;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace VetExpert.Infrastructure
 {
@@ -11,9 +12,9 @@ namespace VetExpert.Infrastructure
             this.context = context;
         }
 
-        public void Add(TEntity entity)
+        public async Task Add(TEntity entity)
         {
-            context.Set<TEntity>().Add(entity);
+            await context.Set<TEntity>().AddAsync(entity);
         }
 
         public void Delete(TEntity entity)
@@ -21,33 +22,39 @@ namespace VetExpert.Infrastructure
             context.Set<TEntity>().Remove(entity);
         }
 
-        public TEntity? Get(Guid id)
+        public async Task<TEntity?> Get(Guid id)
         {
-            return context.Find<TEntity>(id);
+            return await context.FindAsync<TEntity>(id);
         }
 
-        public IEnumerable<TEntity> GetAll()
+        public async Task<IEnumerable<TEntity>> GetAll()
         {
-            return context
+            return await context
                 .Set<TEntity>()
-                .ToList();
+                .ToListAsync();
         }
 
-        public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
+        public async Task<IEnumerable<TEntity>> Find(Expression<Func<TEntity, bool>> predicate)
         {
-            return context.Set<TEntity>()
+            return await context.Set<TEntity>()
                 .AsQueryable()
-                .Where(predicate).ToList();
+                .Where(predicate).ToListAsync();
         }
 
-        public void SaveChanges()
+		public void Update(TEntity entity)
+		{
+			context.Update(entity);
+		}
+
+		public void SaveChanges()
         {
             context.SaveChanges();
         }
 
-        public void Update(TEntity entity)
-        {
-            context.Update(entity);
-        }
-    }
+		public async Task SaveChangesAsync()
+		{
+			await context.SaveChangesAsync();
+		}
+
+	}
 }

@@ -20,15 +20,18 @@ namespace VetExpert.API.Controllers
         }
 
         [HttpGet]
-        public IActionResult Get()
+        public async Task<IActionResult> Get()
         {
-            return Ok(_clinicRepository.GetAll());
+            var clinics = await _clinicRepository.GetAll();
+
+            return Ok(clinics);
         }
 
         [HttpGet("{clinicId:guid}")]
-        public IActionResult Get(Guid clinicId)
+        public async Task<IActionResult> Get(Guid clinicId)
         {
-            var clinic = _clinicRepository.Get(clinicId);
+            var clinic = await _clinicRepository.Get(clinicId);
+
             if (clinic == null)
             {
                 return NotFound();
@@ -38,7 +41,7 @@ namespace VetExpert.API.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] CreateClinicDto clinicDto)
+        public async Task<IActionResult> Create([FromBody] CreateClinicDto clinicDto)
         {
             var clinic = new Clinic
             {
@@ -48,56 +51,34 @@ namespace VetExpert.API.Controllers
                 Address = clinicDto.Address
             };
 
-            _clinicRepository.Add(clinic);
-            _clinicRepository.SaveChanges();
+            await _clinicRepository.Add(clinic);
+            await _clinicRepository.SaveChangesAsync();
 
             return Created(nameof(Get), clinic);
         }
 
-        //[HttpPost("{clinicId:guid}/doctors")]
-        //public IActionResult RegisterDoctors(Guid clinicId,
-        //    [FromBody] List<CreateDoctorDto> doctorDtos)
-        //{
-        //    var clinic = _clinicRepository.Get(clinicId);
-        //    if (clinic == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    List<Doctor> doctors = doctorDtos.Select(d => new Doctor
-        //    {
-        //        FirstName = d.FirstName,
-        //        LastName = d.LastName,
-        //        Email = d.Email,
-        //        ClinicId = clinicId
-        //    }).ToList();
-
-        //    doctors.ForEach(x => _doctorRepository.Add(x));
-        //    _doctorRepository.SaveChanges();
-
-        //    return NoContent();
-        //}
-
         [HttpDelete("{clinicId:guid}")]
-        public IActionResult Delete(Guid clinicId)
+        public async Task<IActionResult> Delete(Guid clinicId)
         {
-            var clinic = _clinicRepository.Get(clinicId);
+            var clinic = await _clinicRepository.Get(clinicId);
+
             if (clinic == null)
             {
                 return NotFound();
             }
 
             _clinicRepository.Delete(clinic);
-            _clinicRepository.SaveChanges();
+            await _clinicRepository.SaveChangesAsync();
 
             return Ok();
         }
 
         [HttpPut("{clinicId:guid}")]
-        public IActionResult Update(Guid clinicId,
+        public async Task<IActionResult> Update(Guid clinicId,
             [FromBody] CreateClinicDto clinicDto)
         {
-            var clinic = _clinicRepository.Get(clinicId);
+            var clinic = await _clinicRepository.Get(clinicId);
+
             if (clinic == null)
             {
                 return NotFound();
@@ -109,7 +90,7 @@ namespace VetExpert.API.Controllers
             clinic.WebsiteUrl = clinicDto.WebsiteUrl;
 
             _clinicRepository.Update(clinic);
-            _clinicRepository.SaveChanges();
+            await _clinicRepository.SaveChangesAsync();
 
             return Ok(clinic);
         }
