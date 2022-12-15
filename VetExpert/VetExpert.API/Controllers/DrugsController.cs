@@ -20,13 +20,27 @@ namespace VetExpert.API.Controllers
         }
 
         [HttpGet]
-        public IActionResult Get()
+        public async Task<IActionResult> Get()
         {
-            return Ok(_drugRepository.GetAll());
+            var drugs = await _drugRepository.GetAll();
+            return Ok(drugs);
+        }
+
+        [HttpGet("{drugId:guid}")]
+        public async Task<IActionResult> Get(Guid drugId)
+        {
+            var drug = await _drugRepository.Get(drugId);
+
+            if (drug == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(drug);
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] CreateDrugDto drugDto)
+        public async Task<IActionResult> Create([FromBody] CreateDrugDto drugDto)
         {
             var drug = new Drug
             {
@@ -37,33 +51,33 @@ namespace VetExpert.API.Controllers
                 Price = drugDto.Price
             };
 
-            _drugRepository.Add(drug);
-            _drugRepository.SaveChanges();
+            await _drugRepository.Add(drug);
+            await _drugRepository.SaveChangesAsync();
 
             return Created(nameof(Get), drug);
         }
 
 
         [HttpDelete("{drugId:guid}")]
-        public IActionResult Delete(Guid drugId)
+        public async Task<IActionResult> Delete(Guid drugId)
         {
-            var drug = _drugRepository.Get(drugId);
+            var drug = await _drugRepository.Get(drugId);
             if (drug == null)
             {
                 return NotFound();
             }
 
             _drugRepository.Delete(drug);
-            _drugRepository.SaveChanges();
+            await _drugRepository.SaveChangesAsync();
 
             return Ok();
         }
 
         [HttpPut("{drugId:guid}")]
-        public IActionResult Update(Guid drugId,
+        public async Task<IActionResult> Update(Guid drugId,
            [FromBody] CreateDrugDto drugDto)
         {
-            var drug = _drugRepository.Get(drugId);
+            var drug = await _drugRepository.Get(drugId);
             if (drug == null)
             {
                 return NotFound();
@@ -76,11 +90,9 @@ namespace VetExpert.API.Controllers
             drug.Price = drugDto.Price;
 
             _drugRepository.Update(drug);
-            _drugRepository.SaveChanges();
+            await _drugRepository.SaveChangesAsync();
 
             return Ok(drug);
         }
-
-        //Get by Id
     }
 }
