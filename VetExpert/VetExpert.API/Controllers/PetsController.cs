@@ -21,15 +21,17 @@ namespace VetExpert.API.Controllers
 
 
         [HttpGet]
-        public IActionResult Get()
+        public async Task<IActionResult> Get()
         {
-            return Ok(_petRepository.GetAll());
+            var pets = await _petRepository.GetAll();
+            return Ok(pets);
         }
 
         [HttpGet("{petId:guid}")]
-        public IActionResult Get(Guid petId)
+        public async Task<IActionResult> Get(Guid petId)
         {
-            var pet = _petRepository.Get(petId);
+            var pet = await _petRepository.Get(petId);
+
             if (pet == null)
             {
                 return NotFound();
@@ -40,9 +42,9 @@ namespace VetExpert.API.Controllers
 
         [HttpPost]
 
-        public IActionResult Create([FromBody] CreatePetDto petDto)
+        public async Task<IActionResult> Create([FromBody] CreatePetDto petDto)
         {
-            var user = _userRepository.Get(petDto.UserId);
+            var user = await _userRepository.Get(petDto.UserId);
             if (user == null)
             {
                 return NotFound();
@@ -58,33 +60,33 @@ namespace VetExpert.API.Controllers
                 DateOfVaccine = petDto.DateOfVaccine,
             };
 
-            _petRepository.Add(pet);
-            _petRepository.SaveChanges();
+            await _petRepository.Add(pet);
+            await _petRepository.SaveChangesAsync();
 
             return Created(nameof(Get), pet);
         }
 
 
         [HttpDelete("{petId:guid}")]
-        public IActionResult Delete(Guid petId)
+        public async Task<IActionResult> Delete(Guid petId)
         {
-            var pet = _petRepository.Get(petId);
+            var pet = await _petRepository.Get(petId);
             if (pet == null)
             {
                 return NotFound();
             }
 
             _petRepository.Delete(pet);
-            _petRepository.SaveChanges();
+            await _petRepository.SaveChangesAsync();
 
             return Ok();
         }
 
         [HttpPut("{petId:guid}")]
-        public IActionResult Update(Guid petId,
+        public async Task< IActionResult> Update(Guid petId,
             [FromBody] CreatePetDto petDto)
         {
-            var pet = _petRepository.Get(petId);
+            var pet = await _petRepository.Get(petId);
             if (pet == null)
             {
                 return NotFound();
@@ -98,7 +100,7 @@ namespace VetExpert.API.Controllers
             petDto.DateOfVaccine = petDto.DateOfVaccine;
 
             _petRepository.Update(pet);
-            _petRepository.SaveChanges();
+            await _petRepository.SaveChangesAsync();
 
             return Ok(pet);
         }

@@ -20,15 +20,16 @@ namespace VetExpert.API.Controllers
         }
 
         [HttpGet]
-        public IActionResult Get()
+        public async Task<IActionResult> Get()
         {
-            return Ok(_promotionRepository.GetAll());
+            var promotions = await _promotionRepository.GetAll();
+            return Ok(promotions);
         }
 
         [HttpGet("{promotionId:guid}")]
-        public IActionResult Get(Guid promotionId)
+        public async Task<IActionResult> Get(Guid promotionId)
         {
-            var promotion = _promotionRepository.Get(promotionId);
+            var promotion = await _promotionRepository.Get(promotionId);
             if (promotion == null)
             {
                 return NotFound();
@@ -39,9 +40,9 @@ namespace VetExpert.API.Controllers
 
         [HttpPost]
 
-        public IActionResult Create([FromBody] CreatePromotionDto promotionDto)
+        public async Task<IActionResult> Create([FromBody] CreatePromotionDto promotionDto)
         {
-            var clinic = _clinicRepository.Get(promotionDto.ClinicId);
+            var clinic = await _clinicRepository.Get(promotionDto.ClinicId);
             if (clinic == null)
             {
                 return NotFound();
@@ -53,33 +54,33 @@ namespace VetExpert.API.Controllers
                 Description = promotionDto.Description
             };
 
-            _promotionRepository.Add(promotion);
-            _promotionRepository.SaveChanges();
+           await _promotionRepository.Add(promotion);
+           await _promotionRepository.SaveChangesAsync();
 
             return Created(nameof(Get), promotion);
         }
 
 
         [HttpDelete("{promotionId:guid}")]
-        public IActionResult Delete(Guid promotionId)
+        public async Task<IActionResult> Delete(Guid promotionId)
         {
-            var promotion = _promotionRepository.Get(promotionId);
+            var promotion = await _promotionRepository.Get(promotionId);
             if (promotion == null)
             {
                 return NotFound();
             }
 
             _promotionRepository.Delete(promotion);
-            _promotionRepository.SaveChanges();
+            await _promotionRepository.SaveChangesAsync();
 
             return Ok();
         }
 
         [HttpPut("{promotionId:guid}")]
-        public IActionResult Update(Guid promotionId,
+        public async Task<IActionResult> Update(Guid promotionId,
             [FromBody] CreatePromotionDto promotionDto)
         {
-            var promotion = _promotionRepository.Get(promotionId);
+            var promotion = await _promotionRepository.Get(promotionId);
             if (promotion == null)
             {
                 return NotFound();
@@ -89,7 +90,7 @@ namespace VetExpert.API.Controllers
             promotion.Description = promotionDto.Description;
 
             _promotionRepository.Update(promotion);
-            _promotionRepository.SaveChanges();
+            await _promotionRepository.SaveChangesAsync();
 
             return Ok(promotion);
         }
