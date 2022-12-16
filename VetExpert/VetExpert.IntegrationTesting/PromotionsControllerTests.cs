@@ -10,7 +10,7 @@ namespace VetExpert.IntegrationTesting
     [Collection("Database tests")]
     public class PromotionsControllerTests : BaseIntegrationTests, IDisposable
     {
-        private const string ApiURL = "/api/promotion";
+        private const string ApiURL = "/api/promotions";
 
 
         [Fact]

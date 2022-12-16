@@ -18,15 +18,16 @@ namespace VetExpert.API.Controllers
         }
 
         [HttpGet]
-        public IActionResult Get()
+        public async Task<IActionResult> Get()
         {
-            return Ok(_specializationRepository.GetAll());
+            var specializations = await _specializationRepository.GetAll();
+            return Ok(specializations);
         }
 
         [HttpGet("{specializationId:guid}")]
-        public IActionResult Get(Guid specializationId)
+        public async Task<IActionResult> Get(Guid specializationId)
         {
-            var specialization = _specializationRepository.Get(specializationId);
+            var specialization = await _specializationRepository.Get(specializationId);
             if (specialization == null)
             {
                 return NotFound();
@@ -36,7 +37,7 @@ namespace VetExpert.API.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] CreateSpecializationDto specializationDto)
+        public async Task<IActionResult> Create([FromBody] CreateSpecializationDto specializationDto)
         {
             var specialization = new Specialization
             {
@@ -44,32 +45,32 @@ namespace VetExpert.API.Controllers
                 Description = specializationDto.Description,
             };
 
-            _specializationRepository.Add(specialization);
-            _specializationRepository.SaveChanges();
+            await _specializationRepository.Add(specialization);
+            await _specializationRepository.SaveChangesAsync();
 
             return Created(nameof(Get), specialization);
         }
 
         [HttpDelete("{specializationId:guid}")]
-        public IActionResult Delete(Guid specializationId)
+        public async Task<IActionResult> Delete(Guid specializationId)
         {
-            var specialization = _specializationRepository.Get(specializationId);
+            var specialization = await _specializationRepository.Get(specializationId);
             if (specialization == null)
             {
                 return NotFound();
             }
 
             _specializationRepository.Delete(specialization);
-            _specializationRepository.SaveChanges();
+            await _specializationRepository.SaveChangesAsync();
 
             return Ok();
         }
 
         [HttpPut("{specializationId:guid}")]
-        public IActionResult Update(Guid specializationId,
+        public async Task<IActionResult> Update(Guid specializationId,
             [FromBody] CreateSpecializationDto specializationDto)
         {
-            var specialization = _specializationRepository.Get(specializationId);
+            var specialization = await _specializationRepository.Get(specializationId);
             if (specialization == null)
             {
                 return NotFound();
@@ -79,7 +80,7 @@ namespace VetExpert.API.Controllers
             specialization.Name = specializationDto.Name;
 
             _specializationRepository.Update(specialization);
-            _specializationRepository.SaveChanges();
+            await _specializationRepository.SaveChangesAsync();
 
             return Ok(specialization);
         }

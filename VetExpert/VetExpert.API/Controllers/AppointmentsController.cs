@@ -24,16 +24,18 @@ namespace VetExpert.API.Controllers
         }
 
         [HttpGet]
-        public IActionResult Get()
+        public async Task<IActionResult> Get()
         {
-            return Ok(_appointmentRepository.GetAll());
+            var app = await _appointmentRepository.GetAll();
+
+            return Ok(app);
         }
 
 
 
 
         [HttpPost("{appointmentId:guid}")]
-        public IActionResult Create([FromBody] CreateAppointmentDto appointmentDto)
+        public async Task<IActionResult> Create([FromBody] CreateAppointmentDto appointmentDto)
         {
 
             var pet = _petRepository.Get(appointmentDto.PetId);
@@ -55,8 +57,8 @@ namespace VetExpert.API.Controllers
 
             };
 
-            _appointmentRepository.Add(appointment);
-            _appointmentRepository.SaveChanges();
+            await _appointmentRepository.Add(appointment);
+            await _appointmentRepository.SaveChangesAsync();
 
             return Created(nameof(Get), appointment);
         }
@@ -66,16 +68,16 @@ namespace VetExpert.API.Controllers
 
 
         [HttpDelete("{appointmentId:guid}")]
-        public IActionResult Delete(Guid appointmentId)
+        public async Task<IActionResult> Delete(Guid appointmentId)
         {
-            var appointment = _appointmentRepository.Get(appointmentId);
+            var appointment = await _appointmentRepository.Get(appointmentId);
             if (appointment == null)
             {
                 return NotFound();
             }
 
             _appointmentRepository.Delete(appointment);
-            _appointmentRepository.SaveChanges();
+            await _appointmentRepository.SaveChangesAsync();
 
             return Ok();
         }

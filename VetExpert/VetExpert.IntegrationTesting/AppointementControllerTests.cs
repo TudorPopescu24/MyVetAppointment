@@ -16,7 +16,7 @@ namespace VetExpert.IntegrationTesting
     [Collection("Database tests")]
     public class AppointmentControllerTests : BaseIntegrationTests, IDisposable
     {
-        private const string ApiURL = "/api/Appointments/0";
+        private const string ApiURL = "/api/Appointments";
 
         [Fact]
         public async void When_CreatedAppointment_Then_ShouldReturnAppointmentInTheGetRequest()
@@ -25,7 +25,7 @@ namespace VetExpert.IntegrationTesting
             CreateAppointmentDto AppointmentDto = CreateSUT();
             // Act
             var createAppointmentResponse = await HttpClient.PostAsJsonAsync(ApiURL, AppointmentDto);
-            var getAppointmentResult = await HttpClient.GetStringAsync("/api/Appointments");
+            var getAppointmentResult = await HttpClient.GetStringAsync(ApiURL);
             // Assert
             createAppointmentResponse.EnsureSuccessStatusCode();
             createAppointmentResponse.StatusCode.Should().Be(System.Net.HttpStatusCode.Created);

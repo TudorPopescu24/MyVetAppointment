@@ -18,44 +18,45 @@ namespace VetExpert.API.Controllers
         }
 
         [HttpGet]
-        public IActionResult Get()
+        public async Task<IActionResult> Get()
         {
-            return Ok(_adminRepository.GetAll());
+            var admins = await _adminRepository.GetAll();
+            return Ok(admins);
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] CreateAdminDto adminDto)
+        public async Task<IActionResult> Create([FromBody] CreateAdminDto adminDto)
         {
             var admin = new Admin
             {
                 UserName = adminDto.UserName
             };
-            _adminRepository.Add(admin);
-            _adminRepository.SaveChanges();
+            await _adminRepository.Add(admin);
+            await _adminRepository.SaveChangesAsync();
 
             return Created(nameof(Get), admin);
         }
 
         [HttpDelete("{adminId:guid}")]
-        public IActionResult Delete(Guid adminId)
+        public async Task<IActionResult> Delete(Guid adminId)
         {
-            var admin = _adminRepository.Get(adminId);
+            var admin = await _adminRepository.Get(adminId);
             if (admin == null)
             {
                 return NotFound();
             }
 
             _adminRepository.Delete(admin);
-            _adminRepository.SaveChanges();
+            await _adminRepository.SaveChangesAsync();
 
             return Ok();
         }
 
         [HttpPut("{adminId:guid}")]
-        public IActionResult Update(Guid adminId,
+        public async Task<IActionResult> Update(Guid adminId,
             [FromBody] CreateAdminDto adminDto)
         {
-            var admin = _adminRepository.Get(adminId);
+            var admin = await _adminRepository.Get(adminId);
             if (admin == null)
             {
                 return NotFound();
@@ -64,7 +65,7 @@ namespace VetExpert.API.Controllers
             admin.UserName = adminDto.UserName;
 
             _adminRepository.Update(admin);
-            _adminRepository.SaveChanges();
+            await _adminRepository.SaveChangesAsync();
 
             return Ok(admin);
         }

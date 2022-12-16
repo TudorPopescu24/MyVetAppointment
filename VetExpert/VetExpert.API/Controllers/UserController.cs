@@ -21,13 +21,14 @@ namespace VetExpert.API.Controllers
         }
 
         [HttpGet]
-        public IActionResult Get()
+        public async Task<IActionResult> Get()
         {
-            return Ok(_userRepository.GetAll());
+            var users = await _userRepository.GetAll();
+            return Ok(users);
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] CreateUserDto userDto)
+        public async Task<IActionResult> Create([FromBody] CreateUserDto userDto)
         {
             var user = new User
             {
@@ -36,8 +37,8 @@ namespace VetExpert.API.Controllers
                 PhoneNumber = userDto.PhoneNumber,
                 Address = userDto.Address
             };
-            _userRepository.Add(user);
-            _userRepository.SaveChanges();
+            await _userRepository.Add(user);
+            await _userRepository.SaveChangesAsync();
 
             return Created(nameof(Get), user);
         }
@@ -68,26 +69,26 @@ namespace VetExpert.API.Controllers
         */
 
         [HttpDelete("{userId:guid}")]
-        public IActionResult Delete(Guid userId)
+        public async Task<IActionResult> Delete(Guid userId)
         {
-            var user = _userRepository.Get(userId);
+            var user = await _userRepository.Get(userId);
             if (user == null)
             {
                 return NotFound();
             }
 
             _userRepository.Delete(user);
-            _userRepository.SaveChanges();
+            await _userRepository.SaveChangesAsync();
 
             return Ok();
         }
 
 
         [HttpPut("{userId:guid}")]
-        public IActionResult Update(Guid userId,
+        public async Task<IActionResult> Update(Guid userId,
             [FromBody] CreateUserDto userDto)
         {
-            var user = _userRepository.Get(userId);
+            var user = await _userRepository.Get(userId);
             if (user == null)
             {
                 return NotFound();
@@ -99,7 +100,7 @@ namespace VetExpert.API.Controllers
             user.PhoneNumber = userDto.PhoneNumber;
 
             _userRepository.Update(user);
-            _userRepository.SaveChanges();
+            await _userRepository.SaveChangesAsync();
 
             return Ok(user);
         }
