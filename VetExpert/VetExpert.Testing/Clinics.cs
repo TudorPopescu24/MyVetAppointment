@@ -19,11 +19,11 @@ namespace VetExpert.Testing
 
 
 
-            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreNotEqual(clinic.Id, Guid.Empty);
-            Assert.NotNull(clinic.Name);
-            Assert.NotNull(clinic.Email);
-            Assert.NotNull(clinic.Doctors);
-            Assert.NotNull(clinic.Email);
+            Assert.AreNotEqual(clinic.Id, Guid.Empty);
+            Assert.IsNotNull(clinic.Name);
+            Assert.IsNotNull(clinic.Email);
+            Assert.IsNotNull(clinic.Doctors);
+            Assert.IsNotNull(clinic.Email);
 
 
         }

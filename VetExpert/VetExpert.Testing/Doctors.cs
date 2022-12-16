@@ -11,7 +11,7 @@ namespace VetExpert.Testing
     [TestClass]
     public class Doctors
     {
-[       [TestMethod]
+       [TestMethod]
         public void DoctorValid()
         {
             Doctor doctor= new Doctor();
@@ -20,11 +20,11 @@ namespace VetExpert.Testing
 
             Assert.AreNotEqual(doctor.Id, Guid.Empty);
             Assert.AreNotEqual(doctor.ClinicId, Guid.Empty);
-            Assert.NotNull(doctor.FirstName);
-            Assert.NotNull(doctor.LastName);
-            Assert.NotNull(doctor.Email);
-            Assert.NotNull(doctor.Clinic);
-            Assert.NotNull(doctor.DoctorSpecializations);
+            Assert.IsNotNull(doctor.FirstName);
+            Assert.IsNotNull(doctor.LastName);
+            Assert.IsNotNull(doctor.Email);
+            Assert.IsNotNull(doctor.Clinic);
+            Assert.IsNotNull(doctor.DoctorSpecializations);
 
 
 
