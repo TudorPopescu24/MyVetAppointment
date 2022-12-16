@@ -1,6 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 using VetExpert.Infrastructure;
+using FluentValidation;
+using System.Reflection;
+using System;
+using VetExpert.Domain;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,8 +15,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddControllers().AddJsonOptions(x =>
-   x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
+builder.Services.AddControllers()
+	.AddJsonOptions(x =>
+		x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
 
 builder.Services.AddDbContext<MainDbContext>(options => options.UseSqlite(builder.Configuration.GetConnectionString("MyVetAppointmentDb"), b=>b.MigrationsAssembly(typeof(MainDbContext).Assembly.FullName)));
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
@@ -28,6 +33,10 @@ builder.Services.AddCors(options =>
 								.AllowAnyMethod();
 		});
 });
+
+builder.Services.AddAutoMapper(typeof(Program));
+
+builder.Services.AddScoped<IValidator<Clinic>, ClinicValidator>();
 
 var app = builder.Build();
 

@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using FluentValidation;
+using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace VetExpert.Domain
 {
@@ -27,4 +29,14 @@ namespace VetExpert.Domain
             throw new NotImplementedException();
         }
     }
+
+	public class ClinicValidator : AbstractValidator<Clinic>
+	{
+		public ClinicValidator()
+		{
+			RuleFor(x => x.Id).NotEmpty();
+			RuleFor(x => x.Name).NotEmpty();
+			RuleFor(x => x.Email).EmailAddress();
+		}
+	}
 }

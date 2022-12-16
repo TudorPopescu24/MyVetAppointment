@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "DSAFDCE2HL7gYKATSJEq/HC+s32Cmz0OI0EgIHr7ShIv398nWT+mVWM6FnJKvMEKtT8B8lr+5njDaqf00I7t0Q==",
+  "dgSpecHash": "2Zr3+WqAwocsJ7UkEwjclO4IW2fO43dTcZmucD3bG0KK1lpmLpGKrkjfyyDA+xdxDcXj/M0WaZxTxn4LGAsWdw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Tudor Popescu\\Desktop\\I.NET\\Project\\VetExpert\\VetExpert\\VetExpert.Services\\VetExpert.Services.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Tudor Popescu\\.nuget\\packages\\fluentvalidation\\11.4.0\\fluentvalidation.11.4.0.nupkg.sha512",
     "C:\\Users\\Tudor Popescu\\.nuget\\packages\\microsoft.data.sqlite.core\\7.0.0\\microsoft.data.sqlite.core.7.0.0.nupkg.sha512",
     "C:\\Users\\Tudor Popescu\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.0\\microsoft.entityframeworkcore.7.0.0.nupkg.sha512",
     "C:\\Users\\Tudor Popescu\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.0\\microsoft.entityframeworkcore.abstractions.7.0.0.nupkg.sha512",

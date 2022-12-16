@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using FluentValidation;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using VetExpert.API.Dto;
 using VetExpert.Domain;
 using VetExpert.Infrastructure;
@@ -12,11 +15,18 @@ namespace VetExpert.API.Controllers
     {
         private readonly IRepository<Clinic> _clinicRepository;
         private readonly IRepository<Doctor> _doctorRepository;
+        private readonly IMapper _mapper;
+		private IValidator<Clinic> _validator;
 
-        public ClinicsController(IRepository<Clinic> clinicRepository, IRepository<Doctor> doctorRepository)
+		public ClinicsController(IRepository<Clinic> clinicRepository, 
+            IRepository<Doctor> doctorRepository,
+            IMapper mapper,
+            IValidator<Clinic> validator)
         {
             _clinicRepository = clinicRepository;
             _doctorRepository = doctorRepository;
+            _mapper = mapper;
+            _validator = validator;
         }
 
         [HttpGet]
@@ -43,16 +53,15 @@ namespace VetExpert.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateClinicDto clinicDto)
         {
-            var clinic = new Clinic
-            {
-                Name = clinicDto.Name,
-                Email = clinicDto.Email,
-                WebsiteUrl = clinicDto.WebsiteUrl,
-                Address = clinicDto.Address
-            };
+            var clinic = _mapper.Map<Clinic>(clinicDto);
 
-            await _clinicRepository.Add(clinic);
-            await _clinicRepository.SaveChangesAsync();
+            var validationResult = _validator.Validate(clinic);
+
+            if (validationResult.IsValid)
+            {
+				await _clinicRepository.Add(clinic);
+				await _clinicRepository.SaveChangesAsync();
+			}
 
             return Created(nameof(Get), clinic);
         }

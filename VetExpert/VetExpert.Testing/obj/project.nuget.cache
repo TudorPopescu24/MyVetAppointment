@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "gLUc7cD5/xj0qIQYl5VgjjRNXJgPsSiTLiX1u8NPb6FkiKQYp2yddRjZgSr/+FxaIkW5M0uIu1cOLsBycZtLDA==",
+  "dgSpecHash": "Mjt48BdQZxqjmLcstTTATc1vhoy+DC1xbakNrO1SvGlxRE9FwYwq+U7akazr+GPIftTrpk4vAyb4h30tWymcKA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Tudor Popescu\\Desktop\\I.NET\\Project\\VetExpert\\VetExpert\\VetExpert.Testing\\VetExpert.Testing.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Tudor Popescu\\.nuget\\packages\\coverlet.collector\\3.2.0\\coverlet.collector.3.2.0.nupkg.sha512",
+    "C:\\Users\\Tudor Popescu\\.nuget\\packages\\fluentvalidation\\11.4.0\\fluentvalidation.11.4.0.nupkg.sha512",
     "C:\\Users\\Tudor Popescu\\.nuget\\packages\\microsoft.aspnetcore.mvc.testing\\7.0.0\\microsoft.aspnetcore.mvc.testing.7.0.0.nupkg.sha512",
     "C:\\Users\\Tudor Popescu\\.nuget\\packages\\microsoft.aspnetcore.testhost\\7.0.0\\microsoft.aspnetcore.testhost.7.0.0.nupkg.sha512",
     "C:\\Users\\Tudor Popescu\\.nuget\\packages\\microsoft.codecoverage\\17.4.0\\microsoft.codecoverage.17.4.0.nupkg.sha512",
