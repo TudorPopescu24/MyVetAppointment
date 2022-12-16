@@ -33,7 +33,7 @@ namespace VetExpert.API.Controllers
         {
             var bills = await _billRepository.GetAll();
 
-            return bills;
+            return Ok(bills);
         }
 
 
@@ -52,7 +52,7 @@ namespace VetExpert.API.Controllers
             };
 
             await _billRepository.Add(bill);
-            await _billRepository.SaveChanges();
+            await _billRepository.SaveChangesAsync();
 
             return Created(nameof(Get), bill);
         }
@@ -82,7 +82,7 @@ namespace VetExpert.API.Controllers
         [HttpDelete("{billId:guid}")]
         public async Task<IActionResult> Delete(Guid billId)
         {
-            var bill = _billRepository.Get(billId);
+            var bill = await _billRepository.Get(billId);
             if (bill == null)
             {
                 return NotFound();

@@ -34,6 +34,10 @@ namespace VetExpert.Testing
             databaseContext.Clinics.RemoveRange(databaseContext.Clinics.ToList());
             databaseContext.Appointments.RemoveRange(databaseContext.Appointments.ToList());
             databaseContext.Specializations.RemoveRange(databaseContext.Specializations.ToList());
+            databaseContext.Bills.RemoveRange(databaseContext.Bills.ToList());
+            databaseContext.Doctors.RemoveRange(databaseContext.Doctors.ToList());
+            databaseContext.DrugStocks.RemoveRange(databaseContext.DrugStocks.ToList());
+            databaseContext.Promotions.RemoveRange(databaseContext.Promotions.ToList());
             databaseContext.SaveChanges();
             
 
