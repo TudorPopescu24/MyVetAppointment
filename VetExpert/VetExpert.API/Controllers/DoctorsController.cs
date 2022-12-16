@@ -29,7 +29,7 @@ namespace VetExpert.API.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var doctors = await _clinicRepository.GetAll();
+            var doctors = await _doctorRepository.GetAll();
 
             return Ok(doctors);
         }
