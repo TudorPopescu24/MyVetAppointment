@@ -17,12 +17,12 @@ namespace VetExpert.Testing
 
 
 
-            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreNotEqual(productBill.Id, Guid.Empty);
-            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreNotEqual(productBill.BillId, Guid.Empty);
-            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreNotEqual(productBill.DrugId, Guid.Empty);
-            Xunit.Assert.NotNull(productBill.Quantity);
-            Xunit.Assert.NotNull(productBill.Bill);
-            Xunit.Assert.NotNull(productBill.Drug);
+            Assert.AreNotEqual(productBill.Id, Guid.Empty);
+            Assert.AreNotEqual(productBill.BillId, Guid.Empty);
+            Assert.AreNotEqual(productBill.DrugId, Guid.Empty);
+            Assert.IsNotNull(productBill.Quantity);
+            Assert.IsNotNull(productBill.Bill);
+            Assert.IsNotNull(productBill.Drug);
            ;
 
 

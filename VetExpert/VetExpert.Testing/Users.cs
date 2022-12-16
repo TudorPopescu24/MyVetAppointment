@@ -14,7 +14,7 @@ namespace VetExpert.Testing
             User user = new User();
 
 
-            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreNotEqual(user.Id, Guid.Empty);
+            Assert.AreNotEqual(user.Id, Guid.Empty);
             Assert.IsNotNull(user.Name);
             Assert.IsNotNull(user.Email);
             Assert.IsNotNull(user.Pets);
