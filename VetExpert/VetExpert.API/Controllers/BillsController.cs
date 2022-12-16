@@ -29,9 +29,11 @@ namespace VetExpert.API.Controllers
 
 
         [HttpGet]
-        public IActionResult Get()
+        public async Task<IActionResult> Get()
         {
-            return Ok(_billRepository.GetAll());
+            var bills = await _billRepository.GetAll();
+
+            return bills;
         }
 
 
@@ -39,7 +41,7 @@ namespace VetExpert.API.Controllers
 //Cred ca trebuie din prima id-urile la clinica si user si primul drug 
 
         [HttpPost]
-        public IActionResult Create([FromBody] CreateBillDto billDto)
+        public async Task<IActionResult> Create([FromBody] CreateBillDto billDto)
         {
             var bill = new Bill
             {
@@ -49,8 +51,8 @@ namespace VetExpert.API.Controllers
 
             };
 
-            _billRepository.Add(bill);
-            _billRepository.SaveChanges();
+            await _billRepository.Add(bill);
+            await _billRepository.SaveChanges();
 
             return Created(nameof(Get), bill);
         }
@@ -58,15 +60,15 @@ namespace VetExpert.API.Controllers
 
 
        [HttpPut]
-        public IActionResult AddDrugs(Guid billId,
+        public async Task<IActionResult> AddDrugs(Guid billId,
            Guid drugId)
         {
-            var bill = _billRepository.Get(billId);
+            var bill =await  _billRepository.Get(billId);
             if (bill == null)
             {
                 return NotFound();
             }
-            var drug = _drugRepository.Get(drugId);
+            var drug =await  _drugRepository.Get(drugId);
             if(drug == null)
             {
                 return NotFound();
@@ -78,7 +80,7 @@ namespace VetExpert.API.Controllers
 
 
         [HttpDelete("{billId:guid}")]
-        public IActionResult Delete(Guid billId)
+        public async Task<IActionResult> Delete(Guid billId)
         {
             var bill = _billRepository.Get(billId);
             if (bill == null)
@@ -87,7 +89,7 @@ namespace VetExpert.API.Controllers
             }
 
             _billRepository.Delete(bill);
-            _billRepository.SaveChanges();
+           await  _billRepository.SaveChangesAsync();
 
             return Ok();
         }
