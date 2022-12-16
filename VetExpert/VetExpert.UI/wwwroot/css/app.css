@@ -1,7 +1,7 @@
 @import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 
-html, body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+body {
+    font-family: 'Acme', Acme, sans-serif;
 }
 
 h1:focus {
@@ -12,9 +12,14 @@ a, .btn-link {
     color: #0071c1;
 }
 
+.navbar-brand {
+    font-family: 'Rancho';
+    font-size: 22px;
+}
+
 .btn-primary {
     color: #fff;
-    background-color: #1b6ec2;
+    background-color: #C1573D;
     border-color: #1861ac;
 }
 
