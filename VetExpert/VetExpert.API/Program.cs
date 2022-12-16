@@ -19,10 +19,14 @@ builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
 builder.Services.AddCors(options =>
 {
-	options.AddPolicy("vetExpertCors", policy =>
-	{
-		policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
-	});
+	options.AddPolicy("vetExpertCors",
+		policy =>
+		{
+			policy.WithOrigins("https://localhost:7116",
+								"http://localhost:5116")
+								.AllowAnyHeader()
+								.AllowAnyMethod();
+		});
 });
 
 var app = builder.Build();
