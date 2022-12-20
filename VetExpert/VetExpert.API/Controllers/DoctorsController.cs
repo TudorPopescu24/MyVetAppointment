@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using VetExpert.API.Dto;
 using VetExpert.Domain;
@@ -14,16 +15,20 @@ namespace VetExpert.API.Controllers
         private readonly IRepository<Doctor> _doctorRepository;
         private readonly IRepository<Specialization> _specializationRepository;
         private readonly IRepository<DoctorSpecialization> _doctorSpecializationRepository;
+        private readonly IMapper _mapper;
 
-        public DoctorsController(IRepository<Clinic> clinicRepository, 
-            IRepository<Doctor> doctorRepository, 
+
+        public DoctorsController(IRepository<Clinic> clinicRepository,
+            IRepository<Doctor> doctorRepository,
             IRepository<Specialization> specializationRepository,
-            IRepository<DoctorSpecialization> doctorSpecializationRepository)
+            IRepository<DoctorSpecialization> doctorSpecializationRepository,
+            IMapper mapper)
         {
             _clinicRepository = clinicRepository;
             _doctorRepository = doctorRepository;
             _specializationRepository = specializationRepository;
             _doctorSpecializationRepository = doctorSpecializationRepository;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -57,13 +62,7 @@ namespace VetExpert.API.Controllers
                 return NotFound();
             }
 
-            var doctor = new Doctor
-            {
-                ClinicId = doctorDto.ClinicId,
-                FirstName = doctorDto.FirstName,
-                LastName = doctorDto.LastName,
-                Email = doctorDto.Email
-            };
+            var doctor = _mapper.Map<Doctor>(doctorDto);
 
             await _doctorRepository.Add(doctor);
             await _doctorRepository.SaveChangesAsync();

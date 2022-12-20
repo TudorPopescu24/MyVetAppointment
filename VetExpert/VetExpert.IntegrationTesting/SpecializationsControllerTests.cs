@@ -14,7 +14,7 @@ namespace VetExpert.IntegrationTesting
         [Fact]
         public async void When_CreatedSpecialization_Then_ShouldReturnSpecializationInTheGetRequest()
         {
-            CleanDatabases();
+            //CleanDatabases();
             CreateSpecializationDto specializationDto = CreateSUT();
             // Act
             var createSpecializationResponse = await HttpClient.PostAsJsonAsync(ApiURL, specializationDto);

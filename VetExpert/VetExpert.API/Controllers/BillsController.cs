@@ -4,6 +4,7 @@ using System.Numerics;
 using VetExpert.Infrastructure;
 using VetExpert.Domain;
 using VetExpert.API.Dto;
+using AutoMapper;
 
 namespace VetExpert.API.Controllers
 {
@@ -14,12 +15,19 @@ namespace VetExpert.API.Controllers
 
         private readonly IRepository<Bill> _billRepository;
         private readonly IRepository<Drug> _drugRepository;
+        private readonly IRepository<User> _userRepository;
+        private readonly IRepository<Clinic> _clinicRepository;
+        private readonly IMapper _mapper;
 
 
-        public BillsController(IRepository<Bill> billRepository, IRepository<Drug> drugRepository)
+        public BillsController(IRepository<Bill> billRepository, IRepository<Drug> drugRepository,
+                                IRepository<User> userRepository, IRepository<Clinic> clinicRepository, IMapper mapper)
         {
             _billRepository = billRepository;
             _drugRepository = drugRepository;
+            _userRepository = userRepository;
+            _clinicRepository = clinicRepository;
+            _mapper = mapper;
         }
 
 
@@ -38,13 +46,7 @@ namespace VetExpert.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateBillDto billDto)
         {
-            var bill = new Bill
-            {
-                Value = billDto.Value,
-                Currency = billDto.Currency,
-                DateTime = billDto.DateTime
-
-            };
+            var bill = _mapper.Map<Bill>(billDto);
 
             await _billRepository.Add(bill);
             await _billRepository.SaveChangesAsync();

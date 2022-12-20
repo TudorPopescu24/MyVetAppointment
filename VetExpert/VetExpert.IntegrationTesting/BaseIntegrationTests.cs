@@ -39,8 +39,6 @@ namespace VetExpert.Testing
             databaseContext.DrugStocks.RemoveRange(databaseContext.DrugStocks.ToList());
             databaseContext.Promotions.RemoveRange(databaseContext.Promotions.ToList());
             databaseContext.SaveChanges();
-            
-
         }
     }
 }

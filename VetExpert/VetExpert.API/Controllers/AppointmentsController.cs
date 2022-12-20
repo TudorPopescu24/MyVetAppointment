@@ -4,6 +4,7 @@ using System.Numerics;
 using VetExpert.Infrastructure;
 using VetExpert.API.Dto;
 using VetExpert.Domain;
+using AutoMapper;
 
 namespace VetExpert.API.Controllers
 {
@@ -14,13 +15,16 @@ namespace VetExpert.API.Controllers
         private readonly IRepository<Pet> _petRepository;
         private readonly IRepository<Doctor> _doctorRepository;
         private readonly IRepository<Appointment> _appointmentRepository;
+        private readonly IMapper _mapper;
+
 
         public AppointmentsController(IRepository<Pet> petRepository, IRepository<Doctor> doctorRepository,
-             IRepository<Appointment> appointmentRepository)
+             IRepository<Appointment> appointmentRepository, IMapper mapper)
         {
             _petRepository = petRepository;
             _doctorRepository = doctorRepository;
             _appointmentRepository = appointmentRepository;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -50,12 +54,7 @@ namespace VetExpert.API.Controllers
             }
 
 
-            Appointment appointment = new Appointment
-            {
-                PetId = appointmentDto.PetId,
-                DoctorId = appointmentDto.DoctorId
-
-            };
+            Appointment appointment = _mapper.Map<Appointment>(appointmentDto);
 
             await _appointmentRepository.Add(appointment);
             await _appointmentRepository.SaveChangesAsync();

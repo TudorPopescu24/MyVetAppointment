@@ -21,7 +21,7 @@ namespace VetExpert.IntegrationTesting
         [Fact]
         public async void When_CreatedAppointment_Then_ShouldReturnAppointmentInTheGetRequest()
         {
-            CleanDatabases();
+            //CleanDatabases();
             CreateAppointmentDto AppointmentDto = CreateSUT();
             // Act
             var createAppointmentResponse = await HttpClient.PostAsJsonAsync(ApiURL, AppointmentDto);

@@ -21,7 +21,7 @@ namespace VetExpert.IntegrationTesting
         [Fact]
         public async void When_CreatedClinic_Then_ShouldReturnClinicInTheGetRequest()
         {
-            CleanDatabases();
+            //CleanDatabases();
             CreateClinicDto ClinicDto = CreateSUT();
             // Act
             var createClinicResponse = await HttpClient.PostAsJsonAsync(ApiURL, ClinicDto);

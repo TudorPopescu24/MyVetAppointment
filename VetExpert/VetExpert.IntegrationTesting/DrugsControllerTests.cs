@@ -15,7 +15,7 @@ namespace VetExpert.IntegrationTesting
         [Fact]
         public async void When_CreatedDrug_Then_ShouldReturnDrugInTheGetRequest()
         {
-            CleanDatabases();
+            //CleanDatabases();
             CreateDrugDto drugDto = CreateSUT();
             // Act
             var createDrugResponse = await HttpClient.PostAsJsonAsync(ApiURL, drugDto);

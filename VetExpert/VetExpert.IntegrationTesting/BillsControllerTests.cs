@@ -21,7 +21,7 @@ namespace VetExpert.IntegrationTesting
         [Fact]
         public async void When_CreatedBill_Then_ShouldReturnBillInTheGetRequest()
         {
-            CleanDatabases();
+            //CleanDatabases();
             CreateBillDto BillDto = CreateSUT();
             // Act
             var createBillResponse = await HttpClient.PostAsJsonAsync(ApiURL, BillDto);
