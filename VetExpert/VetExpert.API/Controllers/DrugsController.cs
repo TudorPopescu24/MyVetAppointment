@@ -12,14 +12,12 @@ namespace VetExpert.API.Controllers
     public class DrugsController : ControllerBase
     {
         private readonly IRepository<Drug> _drugRepository;
-        private readonly IRepository<DrugStock> _drugStockRepository;
         private readonly IMapper _mapper;
 
 
-        public DrugsController(IRepository<Drug> drugRepository, IRepository<DrugStock> drugStockRepository, IMapper mapper)
+        public DrugsController(IRepository<Drug> drugRepository, IMapper mapper)
         {
             _drugRepository = drugRepository;
-            _drugStockRepository = drugStockRepository;
             _mapper = mapper;
         }
 
