@@ -21,7 +21,7 @@ namespace VetExpert.IntegrationTesting
         [Fact]
         public async void When_CreatedDoctor_Then_ShouldReturnDoctorInTheGetRequest()
         {
-            CleanDatabases();
+            //CleanDatabases();
             CreateDoctorDto DoctorDto = CreateSUT();
             // Act
             var createDoctorResponse = await HttpClient.PostAsJsonAsync(ApiURL, DoctorDto);

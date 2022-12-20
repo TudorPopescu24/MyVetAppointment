@@ -16,7 +16,7 @@ namespace VetExpert.IntegrationTesting
         [Fact]
         public async void When_CreatedPromotion_Then_ShouldReturnPromotionInTheGetRequest()
         {
-            CleanDatabases();
+            //CleanDatabases();
             CreatePromotionDto promotionDto = CreateSUT();
             // Act
             var createPromotionResponse = await HttpClient.PostAsJsonAsync(ApiURL, promotionDto);

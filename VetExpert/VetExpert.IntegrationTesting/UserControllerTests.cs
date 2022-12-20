@@ -20,7 +20,7 @@ namespace VetExpert.IntegrationTesting
         [Fact]
         public async void When_CreatedUser_Then_ShouldReturnUserInTheGetRequest()
         {
-            Dispose();
+            //Dispose();
             CreateUserDto userDto = CreateSUT();
             // Act
             var createUserResponse = await HttpClient.PostAsJsonAsync(ApiURL, userDto);

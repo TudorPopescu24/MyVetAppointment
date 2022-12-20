@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using VetExpert.API.Dto;
 using VetExpert.Domain;
@@ -11,10 +12,13 @@ namespace VetExpert.API.Controllers
     public class AdminController : ControllerBase
     {
         private readonly IRepository<Admin> _adminRepository;
+        private readonly IMapper _mapper;
 
-        public AdminController(IRepository<Admin> adminRepository)
+
+        public AdminController(IRepository<Admin> adminRepository, IMapper mapper)
         {
             _adminRepository = adminRepository;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -27,10 +31,8 @@ namespace VetExpert.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateAdminDto adminDto)
         {
-            var admin = new Admin
-            {
-                UserName = adminDto.UserName
-            };
+            var admin = _mapper.Map<Admin>(adminDto);
+
             await _adminRepository.Add(admin);
             await _adminRepository.SaveChangesAsync();
 
