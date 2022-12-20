@@ -14,7 +14,7 @@
 
         public Promotion()
         {
-            Id = new Guid();
+            Id = Guid.NewGuid();
         }
     }    
 }

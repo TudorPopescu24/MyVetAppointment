@@ -24,17 +24,17 @@ namespace VetExpert.UI.Services.Implementations
 
         public async Task InsertUser(User user)
         {
-            var response = await httpClient.PostAsJsonAsync(ApiURL, user);
+            await httpClient.PostAsJsonAsync(ApiURL, user);
         }
 
         public async Task UpdateUser(User user)
         {
-            var response = await httpClient.PutAsJsonAsync($"{ApiURL}/{user.Id}", user);
+            await httpClient.PutAsJsonAsync($"{ApiURL}/{user.Id}", user);
         }
 
         public async Task DeleteUser(Guid userId)
         {
-            var response = await httpClient.DeleteAsync($"{ApiURL}/{userId}");
+            await httpClient.DeleteAsync($"{ApiURL}/{userId}");
         }
     }
 }

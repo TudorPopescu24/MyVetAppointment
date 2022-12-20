@@ -16,7 +16,7 @@ namespace VetExpert.UI.Services.Implementations
 
 		public async Task InsertDoctor(Doctor doctor)
 		{
-			var response = await httpClient.PostAsJsonAsync(ApiURL, doctor);
+			await httpClient.PostAsJsonAsync(ApiURL, doctor);
 		}
 	}
 }

@@ -28,17 +28,17 @@ namespace VetExpert.UI.Services.Implementations
 
 		public async Task InsertClinic(Clinic clinic)
 		{
-			var response = await httpClient.PostAsJsonAsync(ApiURL, clinic);
+			await httpClient.PostAsJsonAsync(ApiURL, clinic);
 		}
 
 		public async Task UpdateClinic(Clinic clinic)
 		{
-			var response = await httpClient.PutAsJsonAsync($"{ApiURL}/{clinic.Id}", clinic);
+			await httpClient.PutAsJsonAsync($"{ApiURL}/{clinic.Id}", clinic);
 		}
 
 		public async Task DeleteClinic(Guid clinicId)
 		{
-			var response = await httpClient.DeleteAsync($"{ApiURL}/{clinicId}");
+			await httpClient.DeleteAsync($"{ApiURL}/{clinicId}");
 		}
 	}
 }

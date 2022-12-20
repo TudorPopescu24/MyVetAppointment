@@ -11,12 +11,10 @@ namespace VetExpert.API.Controllers
     public class UserController : ControllerBase
     {
         private readonly IRepository<User> _userRepository;
-        private readonly IRepository<Pet> _petRepository;
 
-        public UserController(IRepository<User> userRepository, IRepository<Pet> petRepository)
+        public UserController(IRepository<User> userRepository)
         {
             _userRepository = userRepository;
-            _petRepository = petRepository;
 
         }
 
@@ -42,31 +40,6 @@ namespace VetExpert.API.Controllers
 
             return Created(nameof(Get), user);
         }
-
-        //[HttpPost("{userId:guid}/pets")]
-        /*public IActionResult RegisterPets(Guid userId,
-            [FromBody] List<CreatePetDto> petDtos)
-        {
-            var user = _userRepository.Get(userId);
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            List<Pet> pets = petDtos.Select(d => new Pet
-            {
-                FirstName = d.FirstName,
-                LastName = d.LastName,
-                Email = d.Email,
-                ClinicId = clinicId
-            }).ToList();
-            
-            pets.ForEach(x => _petRepository.Add(x));
-            _petRepository.SaveChanges();
-
-            return NoContent();
-        }
-        */
 
         [HttpDelete("{userId:guid}")]
         public async Task<IActionResult> Delete(Guid userId)

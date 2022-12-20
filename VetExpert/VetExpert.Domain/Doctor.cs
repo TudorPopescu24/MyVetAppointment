@@ -18,7 +18,7 @@
 
         public Doctor()
         {
-            Id = new Guid();
+            Id = Guid.NewGuid();
         }
     }
 }

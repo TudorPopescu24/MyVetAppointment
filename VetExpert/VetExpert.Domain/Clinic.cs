@@ -21,7 +21,7 @@ namespace VetExpert.Domain
 
         public Clinic()
         {
-            Id = new Guid();
+            Id = Guid.NewGuid();
         }
 
         public static implicit operator Clinic(User v)

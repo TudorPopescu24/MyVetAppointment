@@ -14,17 +14,12 @@ namespace VetExpert.API.Controllers
 
         private readonly IRepository<Bill> _billRepository;
         private readonly IRepository<Drug> _drugRepository;
-        private readonly IRepository<User> _userRepository;
-        private readonly IRepository<Clinic> _clinicRepository;
 
 
-        public BillsController(IRepository<Bill> billRepository, IRepository<Drug> drugRepository,
-                                IRepository<User> userRepository, IRepository<Clinic> clinicRepository)
+        public BillsController(IRepository<Bill> billRepository, IRepository<Drug> drugRepository)
         {
             _billRepository = billRepository;
             _drugRepository = drugRepository;
-            _userRepository = userRepository;
-            _clinicRepository = clinicRepository;
         }
 
 

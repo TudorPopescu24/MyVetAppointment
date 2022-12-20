@@ -14,17 +14,14 @@ namespace VetExpert.API.Controllers
     public class ClinicsController : ControllerBase
     {
         private readonly IRepository<Clinic> _clinicRepository;
-        private readonly IRepository<Doctor> _doctorRepository;
         private readonly IMapper _mapper;
-		private IValidator<Clinic> _validator;
+		private readonly IValidator<Clinic> _validator;
 
-		public ClinicsController(IRepository<Clinic> clinicRepository, 
-            IRepository<Doctor> doctorRepository,
+		public ClinicsController(IRepository<Clinic> clinicRepository,
             IMapper mapper,
             IValidator<Clinic> validator)
         {
             _clinicRepository = clinicRepository;
-            _doctorRepository = doctorRepository;
             _mapper = mapper;
             _validator = validator;
         }

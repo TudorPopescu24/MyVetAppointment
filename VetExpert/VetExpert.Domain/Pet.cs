@@ -22,7 +22,7 @@
 
         public Pet()
         {
-            Id = new Guid();
+            Id = Guid.NewGuid();
         }
     }
 }
