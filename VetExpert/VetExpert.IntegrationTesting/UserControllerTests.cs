@@ -30,12 +30,16 @@ namespace VetExpert.IntegrationTesting
             createUserResponse.StatusCode.Should().Be(System.Net.HttpStatusCode.Created);
 
 
-          
+
             var users = JsonConvert.DeserializeObject<List<CreateUserDto>>(getUserResult);
 
-            users.Count.Should().Be(1);
-            users.Should().HaveCount(1);
             users.Should().NotBeNull();
+
+            if (users != null)
+            {
+                users.Count.Should().Be(1);
+                users.Should().HaveCount(1);
+            }
 
             Dispose();
         }
@@ -46,10 +50,10 @@ namespace VetExpert.IntegrationTesting
             return new CreateUserDto
             {
                 Name = "user 1",
-                Address="my address",
-                Email= "myemail@email",
-                PhoneNumber="***"
-                
+                Address = "my address",
+                Email = "myemail@email",
+                PhoneNumber = "***"
+
             };
         }
 

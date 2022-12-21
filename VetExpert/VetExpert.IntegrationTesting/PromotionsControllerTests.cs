@@ -29,9 +29,14 @@ namespace VetExpert.IntegrationTesting
 
             var promotions = JsonConvert.DeserializeObject<List<CreatePromotionDto>>(getPromotionResult);
 
-            promotions.Count.Should().Be(1);
-            promotions.Should().HaveCount(1);
             promotions.Should().NotBeNull();
+
+            if (promotions != null)
+            {
+                promotions.Count.Should().Be(1);
+                promotions.Should().HaveCount(1);
+            }
+
             Dispose();
         }
         private static CreatePromotionDto CreateSUT()

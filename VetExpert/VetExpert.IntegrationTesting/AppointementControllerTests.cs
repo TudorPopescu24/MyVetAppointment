@@ -34,9 +34,13 @@ namespace VetExpert.IntegrationTesting
 
             var Appointments = JsonConvert.DeserializeObject<List<CreateAppointmentDto>>(getAppointmentResult);
 
-            Appointments.Count.Should().Be(1);
-            Appointments.Should().HaveCount(1);
             Appointments.Should().NotBeNull();
+
+            if (Appointments != null)
+            {
+                Appointments.Count.Should().Be(1);
+                Appointments.Should().HaveCount(1);
+            }
 
             Dispose();
         }
@@ -46,8 +50,8 @@ namespace VetExpert.IntegrationTesting
             // Arrange
             return new CreateAppointmentDto
             {
-              DoctorId=Guid.NewGuid(),
-              PetId=Guid.NewGuid()
+                DoctorId = Guid.NewGuid(),
+                PetId = Guid.NewGuid()
 
             };
         }

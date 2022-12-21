@@ -17,7 +17,7 @@ namespace VetExpert.IntegrationTesting
     {
         private const string ApiURL = "/api/Clinics";
 
-        
+
         [Fact]
         public async void When_CreatedClinic_Then_ShouldReturnClinicInTheGetRequest()
         {
@@ -34,9 +34,13 @@ namespace VetExpert.IntegrationTesting
 
             var Clinics = JsonConvert.DeserializeObject<List<CreateClinicDto>>(getClinicResult);
 
-            Clinics.Count.Should().Be(1);
-            Clinics.Should().HaveCount(1);
             Clinics.Should().NotBeNull();
+
+            if (Clinics != null)
+            {
+                Clinics.Count.Should().Be(1);
+                Clinics.Should().HaveCount(1);
+            }
 
             Dispose();
         }
@@ -49,8 +53,8 @@ namespace VetExpert.IntegrationTesting
                 Name = "Clinic 1",
                 Address = "my address",
                 Email = "myemail@email",
-               WebsiteUrl="@@@"
-               
+                WebsiteUrl = "@@@"
+
 
             };
         }

@@ -28,10 +28,15 @@ namespace VetExpert.IntegrationTesting
             /*      var drugs = await getDrugResult.Content
                       .ReadFromJsonAsync<List<CreateDrugDto>>();*/
             var drugs = JsonConvert.DeserializeObject<List<CreateDrugDto>>(getDrugResult);
-           
-            drugs.Count.Should().Be(1);
-            drugs.Should().HaveCount(1);
+
             drugs.Should().NotBeNull();
+
+            if (drugs != null)
+            {
+                drugs.Count.Should().Be(1);
+                drugs.Should().HaveCount(1);
+            }
+
             Dispose();
         }
 
