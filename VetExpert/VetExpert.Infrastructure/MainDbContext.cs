@@ -38,7 +38,6 @@ namespace VetExpert.Infrastructure
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //optionsBuilder.UseSqlite("Data Source = MyVetAppointment.db");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

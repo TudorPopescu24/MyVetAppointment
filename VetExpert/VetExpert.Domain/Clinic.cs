@@ -19,14 +19,4 @@ namespace VetExpert.Domain
 
         public virtual ICollection<Doctor> Doctors { get; set; } = new List<Doctor>();
     }
-
-	public class ClinicValidator : AbstractValidator<Clinic>
-	{
-		public ClinicValidator()
-		{
-			RuleFor(x => x.Id).NotEmpty();
-			RuleFor(x => x.Name).NotEmpty();
-			RuleFor(x => x.Email).EmailAddress();
-		}
-	}
 }
