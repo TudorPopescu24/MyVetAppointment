@@ -31,13 +31,16 @@ namespace VetExpert.IntegrationTesting
             createAdminResponse.EnsureSuccessStatusCode();
             createAdminResponse.StatusCode.Should().Be(System.Net.HttpStatusCode.Created);
 
-
-
             var admins = JsonConvert.DeserializeObject<List<CreateAdminDto>>(getAdminResult);
 
-            admins.Count.Should().Be(1);
-            admins.Should().HaveCount(1);
-            admins.Should().NotBeNull();
+			admins.Should().NotBeNull();
+
+            if (admins != null)
+            {
+				admins.Count.Should().Be(1);
+				admins.Should().HaveCount(1);
+			}
+			
             Dispose();
         }
 
