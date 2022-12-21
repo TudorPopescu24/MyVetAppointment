@@ -9,9 +9,9 @@ namespace VetExpert.UI.Pages.Users
     public partial class IndexPageBase : ComponentBase
     {
         [Inject]
-        private IUserService UserService { get; set; }
+        private IUserService? UserService { get; set; } = default!;
 
-        protected List<User>? Users { get; set; } = null;
+		protected List<User>? Users { get; set; } = null;
 
         protected bool ShowUserForm { get; set; } = false;
 

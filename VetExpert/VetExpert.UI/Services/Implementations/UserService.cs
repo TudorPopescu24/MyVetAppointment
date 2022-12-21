@@ -15,7 +15,7 @@ namespace VetExpert.UI.Services.Implementations
             this.httpClient = httpClient;
         }
 
-        public async Task<IEnumerable<User>> GetAllUsers()
+        public async Task<IEnumerable<User>?> GetAllUsers()
         {
             var result = await httpClient.GetStringAsync(ApiURL);
 
