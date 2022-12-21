@@ -30,9 +30,14 @@ namespace VetExpert.IntegrationTesting
 
             var pets = JsonConvert.DeserializeObject<List<CreatePetDto>>(getPetResult);
 
-            pets.Count.Should().Be(1);
-            pets.Should().HaveCount(1);
             pets.Should().NotBeNull();
+
+            if (pets != null)
+            {
+                pets.Count.Should().Be(1);
+                pets.Should().HaveCount(1);
+            }
+
             Dispose();
         }
 

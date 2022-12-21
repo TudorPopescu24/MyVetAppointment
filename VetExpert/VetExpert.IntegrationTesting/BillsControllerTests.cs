@@ -17,7 +17,7 @@ namespace VetExpert.IntegrationTesting
     {
         private const string ApiURL = "/api/Bills";
 
-       
+
         [Fact]
         public async void When_CreatedBill_Then_ShouldReturnBillInTheGetRequest()
         {
@@ -34,9 +34,13 @@ namespace VetExpert.IntegrationTesting
 
             var Bills = JsonConvert.DeserializeObject<List<CreateBillDto>>(getBillResult);
 
-            Bills.Count.Should().Be(1);
-            Bills.Should().HaveCount(1);
             Bills.Should().NotBeNull();
+
+            if (Bills != null)
+            {
+                Bills.Count.Should().Be(1);
+                Bills.Should().HaveCount(1);
+            }
 
             Dispose();
         }
@@ -48,7 +52,7 @@ namespace VetExpert.IntegrationTesting
             {
                 Currency = "lei",
                 DateTime = new DateTime(),
-                Value=100
+                Value = 100
 
             };
         }
