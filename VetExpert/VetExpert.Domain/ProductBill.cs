@@ -8,16 +8,16 @@ namespace VetExpert.Domain
 {
     public class ProductBill
     {
-        public Guid Id { get; set; }
+        public Guid Id { get; set; } = Guid.NewGuid();
 
-        public int Quantity { get; set; }
+        public int Quantity { get; set; } = 0;
 
-        public Guid BillId { get; set; }
+        public Guid BillId { get; set; } = Guid.Empty;
 
-        public virtual Bill Bill { get; set; }
+        public virtual Bill Bill { get; set; } = new Bill();
 
-        public Guid DrugId { get; set; }
+        public Guid DrugId { get; set; } = Guid.Empty;
 
-        public virtual Drug Drug { get; set; }
+        public virtual Drug Drug { get; set; } = new Drug();
     }
 }

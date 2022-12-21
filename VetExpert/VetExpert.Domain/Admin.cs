@@ -2,13 +2,8 @@
 {
     public class Admin
     {
-        public Guid Id { get; set; }
+        public Guid Id { get; set; } = Guid.NewGuid();
 
-        public string UserName { get; set; }
-
-        public Admin()
-        {
-            Id = Guid.NewGuid();
-        }
+        public string UserName { get; set; } = string.Empty;
     }
 }
