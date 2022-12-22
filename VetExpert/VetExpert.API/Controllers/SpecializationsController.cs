@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using VetExpert.API.Dto;
 using VetExpert.Domain;
@@ -11,10 +12,12 @@ namespace VetExpert.API.Controllers
     public class SpecializationsController : ControllerBase
     {
         private readonly IRepository<Specialization> _specializationRepository;
+        private readonly IMapper _mapper;
 
-        public SpecializationsController(IRepository<Specialization> specializationRepository)
+        public SpecializationsController(IRepository<Specialization> specializationRepository, IMapper mapper      )
         {
             _specializationRepository = specializationRepository;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -39,11 +42,7 @@ namespace VetExpert.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateSpecializationDto specializationDto)
         {
-            var specialization = new Specialization
-            {
-                Name = specializationDto.Name,
-                Description = specializationDto.Description,
-            };
+            var specialization = _mapper.Map<Specialization>(specializationDto);
 
             await _specializationRepository.Add(specialization);
             await _specializationRepository.SaveChangesAsync();

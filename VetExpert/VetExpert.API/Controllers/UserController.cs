@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using VetExpert.API.Dto;
 using VetExpert.Domain;
@@ -11,11 +12,13 @@ namespace VetExpert.API.Controllers
     public class UserController : ControllerBase
     {
         private readonly IRepository<User> _userRepository;
+        private readonly IMapper _mapper;
 
-        public UserController(IRepository<User> userRepository)
+
+        public UserController(IRepository<User> userRepository, IMapper mapper)
         {
             _userRepository = userRepository;
-
+            _mapper= mapper;
         }
 
         [HttpGet]
@@ -28,13 +31,7 @@ namespace VetExpert.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateUserDto userDto)
         {
-            var user = new User
-            {
-                Name = userDto.Name,
-                Email = userDto.Email,
-                PhoneNumber = userDto.PhoneNumber,
-                Address = userDto.Address
-            };
+            var user = _mapper.Map<User>(userDto);
             await _userRepository.Add(user);
             await _userRepository.SaveChangesAsync();
 

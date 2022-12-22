@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using VetExpert.API.Dto;
+using VetExpert.API.Mapping;
 using VetExpert.Domain;
 using VetExpert.Infrastructure;
 
@@ -12,12 +13,16 @@ namespace VetExpert.API.Controllers
     {
         private readonly IRepository<Drug> _drugRepository;
         private readonly IRepository<DrugStock> _drugStockRepository;
+        private readonly IMapper _mapper;
+
 
         public DrugStocksController(IRepository<Drug> drugRepository,
-            IRepository<DrugStock> drugStockRepository)
+            IRepository<DrugStock> drugStockRepository, IMapper mapper)
         {
             _drugRepository = drugRepository;
             _drugStockRepository = drugStockRepository;
+            _mapper = mapper;
+
         }
 
         [HttpGet]
@@ -42,18 +47,15 @@ namespace VetExpert.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateDrugStockDto drugStockDto)
         {
-            var drug = await _drugRepository.Get(drugStockDto.DrugId);
+
+         var drug = await _drugRepository.Get(drugStockDto.DrugId);
+
             if (drug == null)
             {
                 return NotFound();
             }
 
-            var drugStock = new DrugStock
-            {
-                DrugId = drugStockDto.DrugId,
-                Quantity = drugStockDto.Quantity,
-                ExpirationDate = drugStockDto.ExpirationDate
-            };
+            var drugStock = _mapper.Map<DrugStock>(drugStockDto);
 
             await _drugStockRepository.Add(drugStock);
             await _drugStockRepository.SaveChangesAsync();

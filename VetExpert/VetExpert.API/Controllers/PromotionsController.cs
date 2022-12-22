@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 using VetExpert.API.Dto;
+using VetExpert.API.Mapping;
 using VetExpert.Domain;
 using VetExpert.Infrastructure;
 
@@ -12,11 +14,13 @@ namespace VetExpert.API.Controllers
     {
         private readonly IRepository<Clinic> _clinicRepository;
         private readonly IRepository<Promotion> _promotionRepository;
+        private readonly IMapper _mapper;
 
-        public PromotionsController(IRepository<Clinic> clinicRepository, IRepository<Promotion> promotioncRepository)
+        public PromotionsController(IRepository<Clinic> clinicRepository, IRepository<Promotion> promotioncRepository, IMapper mapper )
         {
             _clinicRepository = clinicRepository;
             _promotionRepository = promotioncRepository;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -42,7 +46,11 @@ namespace VetExpert.API.Controllers
 
         public async Task<IActionResult> Create([FromBody] CreatePromotionDto promotionDto)
         {
-            var clinic = await _clinicRepository.Get(promotionDto.ClinicId);
+            // var clinic = await _clinicRepository.Get(promotionDto.ClinicId);
+
+            var clinic = _mapper.Map<Clinic>(promotionDto);
+
+
             if (clinic == null)
             {
                 return NotFound();

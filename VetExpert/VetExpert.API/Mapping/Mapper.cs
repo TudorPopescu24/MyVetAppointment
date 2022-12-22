@@ -25,6 +25,22 @@ namespace VetExpert.API.Mapping
 
             CreateMap<Drug, CreateDrugDto>();
             CreateMap<CreateDrugDto, Drug>();
+
+            CreateMap<DrugStock, CreateDrugStockDto>();
+            CreateMap<CreateDrugStockDto, DrugStock>();
+
+            CreateMap<Promotion, CreatePromotionDto>();
+            CreateMap<CreatePromotionDto, Promotion>();
+
+            CreateMap<Specialization, CreateSpecializationDto>();
+            CreateMap<CreateSpecializationDto, Specialization>();
+
+            CreateMap<User, CreateUserDto>();
+            CreateMap<CreateUserDto, User>();
+
+
+
+
         }
-	}
+    }
 }
