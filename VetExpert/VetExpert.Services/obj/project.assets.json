@@ -1209,23 +1209,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\raluca nastasa\\.nuget\\packages\\": {},
+    "C:\\Users\\Miruna\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\raluca nastasa\\Documents\\Facultate III\\dotnet project\\MyVetAppointment\\VetExpert\\VetExpert.Services\\VetExpert.Services.csproj",
+      "projectUniqueName": "C:\\Users\\Miruna\\Documents\\NET\\MyVetAppointment\\VetExpert\\VetExpert.Services\\VetExpert.Services.csproj",
       "projectName": "VetExpert.Services",
-      "projectPath": "C:\\Users\\raluca nastasa\\Documents\\Facultate III\\dotnet project\\MyVetAppointment\\VetExpert\\VetExpert.Services\\VetExpert.Services.csproj",
-      "packagesPath": "C:\\Users\\raluca nastasa\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\raluca nastasa\\Documents\\Facultate III\\dotnet project\\MyVetAppointment\\VetExpert\\VetExpert.Services\\obj\\",
+      "projectPath": "C:\\Users\\Miruna\\Documents\\NET\\MyVetAppointment\\VetExpert\\VetExpert.Services\\VetExpert.Services.csproj",
+      "packagesPath": "C:\\Users\\Miruna\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Miruna\\Documents\\NET\\MyVetAppointment\\VetExpert\\VetExpert.Services\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\raluca nastasa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Miruna\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -1234,17 +1234,18 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\raluca nastasa\\Documents\\Facultate III\\dotnet project\\MyVetAppointment\\VetExpert\\VetExpert.Domain\\VetExpert.Domain.csproj": {
-              "projectPath": "C:\\Users\\raluca nastasa\\Documents\\Facultate III\\dotnet project\\MyVetAppointment\\VetExpert\\VetExpert.Domain\\VetExpert.Domain.csproj"
+            "C:\\Users\\Miruna\\Documents\\NET\\MyVetAppointment\\VetExpert\\VetExpert.Domain\\VetExpert.Domain.csproj": {
+              "projectPath": "C:\\Users\\Miruna\\Documents\\NET\\MyVetAppointment\\VetExpert\\VetExpert.Domain\\VetExpert.Domain.csproj"
             },
-            "C:\\Users\\raluca nastasa\\Documents\\Facultate III\\dotnet project\\MyVetAppointment\\VetExpert\\VetExpert.Infrastructure\\VetExpert.Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\raluca nastasa\\Documents\\Facultate III\\dotnet project\\MyVetAppointment\\VetExpert\\VetExpert.Infrastructure\\VetExpert.Infrastructure.csproj"
+            "C:\\Users\\Miruna\\Documents\\NET\\MyVetAppointment\\VetExpert\\VetExpert.Infrastructure\\VetExpert.Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\Miruna\\Documents\\NET\\MyVetAppointment\\VetExpert\\VetExpert.Infrastructure\\VetExpert.Infrastructure.csproj"
             }
           }
         }
@@ -1274,7 +1275,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -42,7 +42,7 @@ namespace VetExpert.API.Controllers
         public async Task<IActionResult> Create([FromBody] CreateAppointmentDto appointmentDto)
         {
 
-            var pet = _petRepository.Get(appointmentDto.PetId);
+            var pet = await _petRepository.Get(appointmentDto.PetId);
             if (pet == null)
             {
                 return NotFound();

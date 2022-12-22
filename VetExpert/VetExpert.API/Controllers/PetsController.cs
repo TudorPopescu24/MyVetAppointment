@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using VetExpert.API.Dto;
+using VetExpert.API.Mapping;
 using VetExpert.Domain;
 using VetExpert.Infrastructure;
 
@@ -12,11 +14,16 @@ namespace VetExpert.API.Controllers
     {
         private readonly IRepository<User> _userRepository;
         private readonly IRepository<Pet> _petRepository;
+        private readonly IMapper _mapper;
 
-        public PetsController(IRepository<User> userRepository, IRepository<Pet> petRepository)
+
+        public PetsController(IRepository<User> userRepository, IRepository<Pet> petRepository,
+            IMapper mapper)
         {
             _petRepository = petRepository;
             _userRepository = userRepository;
+            _mapper = mapper;
+
         }
 
 
@@ -45,20 +52,15 @@ namespace VetExpert.API.Controllers
         public async Task<IActionResult> Create([FromBody] CreatePetDto petDto)
         {
             var user = await _userRepository.Get(petDto.UserId);
+
+
+
             if (user == null)
             {
                 return NotFound();
             }
 
-            var pet = new Pet
-            {
-                Name = petDto.Name,
-                TypeOfPet = petDto.TypeOfPet,
-                Age = petDto.Age,
-                Weight = petDto.Weight,
-                IsVaccinated = petDto.IsVaccinated,
-                DateOfVaccine = petDto.DateOfVaccine,
-            };
+            var pet = _mapper.Map<Pet>(petDto);
 
             await _petRepository.Add(pet);
             await _petRepository.SaveChangesAsync();
