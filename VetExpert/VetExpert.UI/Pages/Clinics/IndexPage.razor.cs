@@ -8,10 +8,10 @@ namespace VetExpert.UI.Pages.Clinics
     public partial class IndexPageBase : ComponentBase
     {
         [Inject]
-        private IClinicService ClinicService { get; set; }
+        private IClinicService ClinicService { get; set; } = default!;
 
 		[Inject]
-		private IDoctorService DoctorService { get; set; }
+		private IDoctorService DoctorService { get; set; } = default!;
 
 		protected List<Clinic>? Clinics { get; set; } = null;
 

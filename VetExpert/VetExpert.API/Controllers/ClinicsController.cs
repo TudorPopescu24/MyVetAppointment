@@ -15,15 +15,12 @@ namespace VetExpert.API.Controllers
     {
         private readonly IRepository<Clinic> _clinicRepository;
         private readonly IMapper _mapper;
-		private readonly IValidator<Clinic> _validator;
 
 		public ClinicsController(IRepository<Clinic> clinicRepository,
-            IMapper mapper,
-            IValidator<Clinic> validator)
+            IMapper mapper)
         {
             _clinicRepository = clinicRepository;
             _mapper = mapper;
-            _validator = validator;
         }
 
         [HttpGet]
@@ -52,13 +49,8 @@ namespace VetExpert.API.Controllers
         {
             var clinic = _mapper.Map<Clinic>(clinicDto);
 
-            var validationResult = _validator.Validate(clinic);
-
-            if (validationResult.IsValid)
-            {
-				await _clinicRepository.Add(clinic);
-				await _clinicRepository.SaveChangesAsync();
-			}
+			await _clinicRepository.Add(clinic);
+			await _clinicRepository.SaveChangesAsync();
 
             return Created(nameof(Get), clinic);
         }

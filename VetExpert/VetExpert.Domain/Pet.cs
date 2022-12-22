@@ -1,28 +1,26 @@
-﻿namespace VetExpert.Domain
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace VetExpert.Domain
 {
     public class Pet
     {
-        public Guid Id { get; set; }
+        public Guid Id { get; set; } = Guid.NewGuid();
 
-        public string Name { get; set; }
+		[Required(ErrorMessage = "Name is required.")]
+		public string Name { get; set; } = string.Empty;
 
-        public string TypeOfPet { get; set; }
+        public string TypeOfPet { get; set; } = string.Empty;
 
-        public int Age { get; set; }
+        public int Age { get; set; } = 0;
 
-        public int Weight { get; set; }
+        public int Weight { get; set; } = 0;
 
-        public bool IsVaccinated { get; set; }
+        public bool IsVaccinated { get; set; } = false;
+	
+		public DateTime? DateOfVaccine { get; set; }
 
-        public DateTime DateOfVaccine { get; set; }
+        public Guid UserId { get; set; } = Guid.Empty;
 
-        public Guid UserId { get; set; }
-
-        public virtual User User { get; set; }
-
-        public Pet()
-        {
-            Id = Guid.NewGuid();
-        }
+        public virtual User User { get; set; } = new User();
     }
 }

@@ -4,6 +4,9 @@ namespace VetExpert.UI.Services.Interfaces
 {
     public interface IDoctorService
     {
-        Task InsertDoctor(Doctor doctor);
-    }
+		Task<IEnumerable<Doctor>> GetAllDoctors();
+		Task InsertDoctor(Doctor doctor);
+		Task UpdateDoctor(Doctor doctor);
+		Task DeleteDoctor(Guid doctorId);
+	}
 }

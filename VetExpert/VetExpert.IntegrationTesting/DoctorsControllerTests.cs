@@ -17,7 +17,7 @@ namespace VetExpert.IntegrationTesting
     {
         private const string ApiURL = "/api/Doctors";
 
-       
+
         [Fact]
         public async void When_CreatedDoctor_Then_ShouldReturnDoctorInTheGetRequest()
         {
@@ -34,9 +34,13 @@ namespace VetExpert.IntegrationTesting
 
             var Doctors = JsonConvert.DeserializeObject<List<CreateDoctorDto>>(getDoctorResult);
 
-            Doctors.Count.Should().Be(1);
-            Doctors.Should().HaveCount(1);
             Doctors.Should().NotBeNull();
+
+            if (Doctors != null)
+            {
+                Doctors.Count.Should().Be(1);
+                Doctors.Should().HaveCount(1);
+            }
 
             Dispose();
         }
@@ -46,10 +50,10 @@ namespace VetExpert.IntegrationTesting
             // Arrange
             return new CreateDoctorDto
             {
-                ClinicId= Guid.NewGuid(),
-                Email="!!",
-                FirstName= "Test",
-                LastName= "Test"
+                ClinicId = Guid.NewGuid(),
+                Email = "!!",
+                FirstName = "Test",
+                LastName = "Test"
 
 
             };

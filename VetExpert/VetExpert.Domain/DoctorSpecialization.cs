@@ -8,12 +8,12 @@ namespace VetExpert.Domain
 {
     public class DoctorSpecialization
     {
-        public Guid DoctorId { get; set; }
+        public Guid DoctorId { get; set; } = Guid.Empty;
 
-        public virtual Doctor Doctor { get; set; }
+        public virtual Doctor Doctor { get; set; } = new Doctor();
 
-        public Guid SpecializationId { get; set; }
+        public Guid SpecializationId { get; set; } = Guid.Empty;
 
-        public virtual Specialization Specialization { get; set; }
+        public virtual Specialization Specialization { get; set; } = new Specialization();
     }
 }

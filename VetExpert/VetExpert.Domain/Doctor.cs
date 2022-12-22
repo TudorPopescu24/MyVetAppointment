@@ -1,24 +1,22 @@
-﻿namespace VetExpert.Domain
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace VetExpert.Domain
 {
     public class Doctor
     {
-        public Guid Id { get; set; }
+        public Guid Id { get; set; } = Guid.NewGuid();
 
-        public string FirstName { get; set; }
+		[Required(ErrorMessage = "First Name is required.")]
+		public string FirstName { get; set; } = string.Empty;
 
-        public string LastName { get; set; }
+        [Required(ErrorMessage = "Last Name is required.")]
+        public string LastName { get; set; } = string.Empty;
+		public string Email { get; set; } = string.Empty;
 
-        public string Email { get; set; }
+        public Guid ClinicId { get; set; } = Guid.Empty;
 
-        public Guid ClinicId { get; set; }
-
-        public virtual Clinic Clinic { get; set; }
+        public virtual Clinic Clinic { get; set; } = new Clinic();
 
         public virtual ICollection<DoctorSpecialization> DoctorSpecializations { get; set; } = new List<DoctorSpecialization>();
-
-        public Doctor()
-        {
-            Id = Guid.NewGuid();
-        }
     }
 }

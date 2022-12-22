@@ -2,12 +2,14 @@
 {
     public class CreateBillDto
     {
-        public int Value { get; set; }
+        public int Value { get; set; } = 0;
 
-        public string Currency { get; set; }
+        public string Currency { get; set; } = string.Empty;
 
-        public DateTime DateTime { get; set; }
+        public DateTime DateTime { get; set; } = DateTime.Now;
 
+		public Guid UserId { get; set; }
 
-    }
+		public Guid ClinicId { get; set; }
+	}
 }

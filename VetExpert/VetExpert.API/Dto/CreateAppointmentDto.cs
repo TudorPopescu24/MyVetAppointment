@@ -6,5 +6,6 @@
 
         public Guid DoctorId { get; set; }
 
-    }
+		public DateTime DateTime { get; set; } = DateTime.Now;
+	}
 }

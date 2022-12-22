@@ -35,12 +35,6 @@ namespace VetExpert.Infrastructure
 
         public DbSet<Promotion> Promotions { get; set; }
 
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            //optionsBuilder.UseSqlite("Data Source = MyVetAppointment.db");
-        }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<DoctorSpecialization>()
