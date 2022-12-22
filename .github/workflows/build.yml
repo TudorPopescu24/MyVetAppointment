@@ -42,7 +42,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: powershell
         run: |
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"TudorPopescu24_MyVetAppointment" /o:"tudorpopescu24" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.dotcover.reportsPaths=dotcover_report.html
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"TudorPopescu24_MyVetAppointment" /o:"tudorpopescu24" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.dotcover.reportsPaths=dotcover_report.xml
           dotnet build ./VetExpert/VetExpert.sln
-          dotnet dotcover test --dcReportType=HTML
+          dotnet dotcover test
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
