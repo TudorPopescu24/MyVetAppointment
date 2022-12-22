@@ -56,8 +56,7 @@ namespace VetExpert.UI.Pages.Users
 				Name = editUser.Name,
 				Email = editUser.Email,
 				PhoneNumber = editUser.PhoneNumber,
-				Address = editUser.Address,
-				Pets = editUser.Pets,
+				Address = editUser.Address
 
 			};
 			IsNewEntity = false;
