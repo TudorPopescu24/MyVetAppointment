@@ -1,14 +1,17 @@
-﻿namespace VetExpert.Domain
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace VetExpert.Domain
 {
     public class Doctor
     {
         public Guid Id { get; set; } = Guid.NewGuid();
 
-        public string FirstName { get; set; } = string.Empty;
+		[Required(ErrorMessage = "First Name is required.")]
+		public string FirstName { get; set; } = string.Empty;
 
+        [Required(ErrorMessage = "Last Name is required.")]
         public string LastName { get; set; } = string.Empty;
-
-        public string Email { get; set; } = string.Empty;
+		public string Email { get; set; } = string.Empty;
 
         public Guid ClinicId { get; set; } = Guid.Empty;
 

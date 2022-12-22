@@ -11,11 +11,17 @@ namespace VetExpert.UI.Pages.Users
         [Inject]
         private IUserService UserService { get; set; }
 
-        protected List<User>? Users { get; set; } = null;
+		[Inject]
+		private IPetService PetService { get; set; }
+
+		protected List<User>? Users { get; set; } = null;
 
         protected bool ShowUserForm { get; set; } = false;
+		protected bool ShowPetForm { get; set; } = false;
 
         protected User User { get; set; } = new User();
+
+		protected Pet Pet { get; set; } = new Pet();
 
         protected bool IsNewEntity { get; set; } = false;
 
@@ -29,6 +35,17 @@ namespace VetExpert.UI.Pages.Users
             User = new User();
 			IsNewEntity = true;
 			ShowUserForm = true;
+		}
+
+		protected void OnAddPetClick(User user)
+		{
+			Pet = new Pet
+			{
+				UserId = user.Id,
+				User = user
+			};
+
+			ShowPetForm = true;
 		}
 
 		protected void OnEditButtonClick(User editUser)
@@ -75,10 +92,23 @@ namespace VetExpert.UI.Pages.Users
 			await ReadUsersAsync();
 		}
 
+		protected void OnPetCancelButtonClick()
+		{
+			ShowPetForm = false;
+		}
+
+		protected async Task OnPetValidSubmitAsync()
+		{
+			await PetService.InsertPet(Pet);
+
+			ShowPetForm = false;
+		}
+
 
 		private async Task ReadUsersAsync()
         {
             Users = (await UserService.GetAllUsers()).ToList();
         }
+
     }
 }

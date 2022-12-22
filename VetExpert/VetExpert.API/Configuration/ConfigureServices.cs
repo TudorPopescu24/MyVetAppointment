@@ -23,7 +23,8 @@ namespace VetExpert.API.Configuration
 					policy =>
 					{
 						policy.WithOrigins("https://localhost:7116",
-											"http://localhost:5116")
+											"http://localhost:5116",
+											"https://localhost:44338")
 											.AllowAnyHeader()
 											.AllowAnyMethod();
 					});

@@ -24,6 +24,12 @@ builder.Services.AddHttpClient<IDoctorService, DoctorService>
 		client => client.BaseAddress
 		= new Uri(builder.HostEnvironment.BaseAddress)
 	);
+builder.Services.AddHttpClient<IPetService, PetService>
+	(
+		client => client.BaseAddress
+		= new Uri(builder.HostEnvironment.BaseAddress)
+	);
+
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
