@@ -28,9 +28,14 @@ namespace VetExpert.IntegrationTesting
                       .ReadFromJsonAsync<List<CreateDrugDto>>();*/
             var drugStocks = JsonConvert.DeserializeObject<List<CreateDrugStockDto>>(getDrugStockResult);
 
-            drugStocks.Count.Should().Be(1);
-            drugStocks.Should().HaveCount(1);
             drugStocks.Should().NotBeNull();
+
+            if (drugStocks != null)
+            {
+                drugStocks.Count.Should().Be(1);
+                drugStocks.Should().HaveCount(1);
+            }
+
             CleanDatabases();
         }
 

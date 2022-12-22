@@ -29,9 +29,14 @@ namespace VetExpert.IntegrationTesting
             //      .ReadFromJsonAsync<List<CreateDrugDto>>();
             var specializations = JsonConvert.DeserializeObject<List<CreateSpecializationDto>>(getSpecializationResult);
 
-            specializations.Count.Should().Be(1);
-            specializations.Should().HaveCount(1);
             specializations.Should().NotBeNull();
+
+            if (specializations != null)
+            {
+                specializations.Count.Should().Be(1);
+                specializations.Should().HaveCount(1);
+            }
+
             Dispose();
         }
 
