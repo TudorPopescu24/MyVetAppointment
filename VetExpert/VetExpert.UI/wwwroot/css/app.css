@@ -126,3 +126,7 @@ a, .btn-link {
     font-size: 20px;
     user-select: none;
 }
+
+.nav-scrollable {
+    background-image: linear-gradient(#0E363E, #24696E, #2D7E82, #3EA6A8, #C1573D);
+}

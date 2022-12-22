@@ -10,14 +10,7 @@ namespace VetExpert.UI.Pages.Doctors
 
 		[Inject]
 		private IDoctorService DoctorService { get; set; }
-		[Inject]
-		private IClinicService ClinicService { get; set; }
-
-		//protected List<Clinic>? Clinics { get; set; } = null;
 		protected List<Doctor>? Doctors { get; set; } = null;
-
-		//protected Clinic Clinic { get; set; } = new Clinic();
-
 		protected Doctor Doctor { get; set; } = new Doctor();
 
 		protected bool IsNewEntity { get; set; } = false;

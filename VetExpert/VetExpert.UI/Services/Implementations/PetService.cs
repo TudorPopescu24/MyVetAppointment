@@ -1,4 +1,5 @@
-﻿using System.Net.Http.Json;
+﻿using Newtonsoft.Json;
+using System.Net.Http.Json;
 using VetExpert.Domain;
 using VetExpert.UI.Services.Interfaces;
 
@@ -17,6 +18,25 @@ namespace VetExpert.UI.Services.Implementations
 		public async Task InsertPet(Pet pet)
 		{
 			await httpClient.PostAsJsonAsync(ApiURL, pet);
+		}
+
+		public async Task UpdatePet(Pet pet)
+		{
+			await httpClient.PutAsJsonAsync($"{ApiURL}/{pet.Id}", pet);
+		}
+
+
+
+		public async Task<IEnumerable<Pet>> GetAllPets()
+		{
+			var result = await httpClient.GetStringAsync(ApiURL);
+
+			return JsonConvert.DeserializeObject<IEnumerable<Pet>>(result);
+		}
+
+		public async Task DeletePet(Guid petId)
+		{
+			await httpClient.DeleteAsync($"{ApiURL}/{petId}");
 		}
 	}
 }
