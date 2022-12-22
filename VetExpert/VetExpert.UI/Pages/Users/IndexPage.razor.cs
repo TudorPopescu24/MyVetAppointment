@@ -11,7 +11,10 @@ namespace VetExpert.UI.Pages.Users
         [Inject]
         private IUserService UserService { get; set; } = default!;
 
-        protected List<User>? Users { get; set; } = null;
+		[Inject]
+		private IPetService PetService { get; set; } = default!;
+
+		protected List<User>? Users { get; set; } = null;
 
         protected bool ShowUserForm { get; set; } = false;
 		protected bool ShowPetForm { get; set; } = false;
