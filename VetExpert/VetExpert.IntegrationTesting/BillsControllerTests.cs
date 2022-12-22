@@ -1,31 +1,26 @@
 ﻿using FluentAssertions;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http.Json;
-using System.Text;
-using System.Threading.Tasks;
 using VetExpert.API.Dto;
-using VetExpert.Testing;
 using Xunit;
 
 namespace VetExpert.IntegrationTesting
 {
     [Collection("Database tests")]
-    public class BillControllerTests : BaseIntegrationTests, IDisposable
+    public class BillControllerTests :  IDisposable
     {
         private const string ApiURL = "/api/Bills";
 
-
+       
         [Fact]
         public async void When_CreatedBill_Then_ShouldReturnBillInTheGetRequest()
         {
             //CleanDatabases();
+            var http_client = new CustomWebApplicationFactory<Program>().CreateClient();
             CreateBillDto BillDto = CreateSUT();
             // Act
-            var createBillResponse = await HttpClient.PostAsJsonAsync(ApiURL, BillDto);
-            var getBillResult = await HttpClient.GetStringAsync(ApiURL);
+            var createBillResponse = await http_client.PostAsJsonAsync(ApiURL, BillDto);
+            var getBillResult = await http_client.GetStringAsync(ApiURL);
             // Assert
             createBillResponse.EnsureSuccessStatusCode();
             createBillResponse.StatusCode.Should().Be(System.Net.HttpStatusCode.Created);
@@ -34,15 +29,12 @@ namespace VetExpert.IntegrationTesting
 
             var Bills = JsonConvert.DeserializeObject<List<CreateBillDto>>(getBillResult);
 
+            Bills.Count.Should().Be(1);
+            Bills.Should().HaveCount(1);
             Bills.Should().NotBeNull();
 
-            if (Bills != null)
-            {
-                Bills.Count.Should().Be(1);
-                Bills.Should().HaveCount(1);
-            }
-
             Dispose();
+            
         }
 
         private static CreateBillDto CreateSUT()
@@ -52,14 +44,14 @@ namespace VetExpert.IntegrationTesting
             {
                 Currency = "lei",
                 DateTime = new DateTime(),
-                Value = 100
+                Value=100
 
             };
         }
 
         public void Dispose()
         {
-            CleanDatabases();
+            //CleanDatabases();
         }
     }
 }

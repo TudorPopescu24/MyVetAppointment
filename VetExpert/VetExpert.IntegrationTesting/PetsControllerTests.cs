@@ -2,50 +2,41 @@
 using Newtonsoft.Json;
 using System.Net.Http.Json;
 using VetExpert.API.Dto;
-using VetExpert.Testing;
+using VetExpert.Domain;
 using Xunit;
 
 namespace VetExpert.IntegrationTesting
 {
     [Collection("Database tests")]
-    public class PetsControllerTests : BaseIntegrationTests, IDisposable
+    public class PetsControllerTests :  IDisposable
     {
-        private const string ApiURL = "/api/pets";
+        private const string ApiURL = "/api/Pets";
 
 
         [Fact]
         public async void When_CreatedPet_Then_ShouldReturnPetInTheGetRequest()
         {
 
+            var http_client = new CustomWebApplicationFactory<Program>().CreateClient();
             //CleanDatabases();
-            CreatePetDto petDto = CreateSUT();
-            // Act
-            var createPetResponse = await HttpClient.PostAsJsonAsync(ApiURL, petDto);
-            var getPetResult = await HttpClient.GetStringAsync(ApiURL);
+            var getPetResult = await http_client.GetStringAsync(ApiURL);
             // Assert
-            createPetResponse.EnsureSuccessStatusCode();
-            createPetResponse.StatusCode.Should().Be(System.Net.HttpStatusCode.Created);
-
-
-
+           
             var pets = JsonConvert.DeserializeObject<List<CreatePetDto>>(getPetResult);
 
+            pets.Count.Should().Be(1);
+            pets.Should().HaveCount(1);
             pets.Should().NotBeNull();
-
-            if (pets != null)
-            {
-                pets.Count.Should().Be(1);
-                pets.Should().HaveCount(1);
-            }
-
             Dispose();
+            
         }
 
-        private static CreatePetDto CreateSUT()
+        private static CreatePetDto CreateSUT(User user)
         {
             // Arrange
             return new CreatePetDto
             {
+                UserId=user.Id,
                 Name = "Azorel",
                 TypeOfPet = "Catel",
                 Age = 5,
@@ -56,9 +47,24 @@ namespace VetExpert.IntegrationTesting
             };
         }
 
+
+        private static CreateUserDto CreateSUTUser(User user)
+        {
+
+            // Arrange
+            return new CreateUserDto
+            {
+                Address=user.Address,
+                Email= user.Email,
+                Name= user.Name, 
+                PhoneNumber=user.PhoneNumber
+
+            };
+        }
+
         public void Dispose()
         {
-            CleanDatabases();
+           // CleanDatabases();
         }
     }
 }

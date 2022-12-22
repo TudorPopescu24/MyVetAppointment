@@ -1,48 +1,36 @@
 ﻿using FluentAssertions;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http.Json;
-using System.Text;
-using System.Threading.Tasks;
 using VetExpert.API.Dto;
-using VetExpert.Testing;
 using Xunit;
 
 namespace VetExpert.IntegrationTesting
 {
     [Collection("Database tests")]
-    public class ClinicControllerTests : BaseIntegrationTests, IDisposable
+    public class ClinicControllerTests :  IDisposable
     {
         private const string ApiURL = "/api/Clinics";
 
-
+        
         [Fact]
         public async void When_CreatedClinic_Then_ShouldReturnClinicInTheGetRequest()
         {
             //CleanDatabases();
-            CreateClinicDto ClinicDto = CreateSUT();
+            var http_client = new CustomWebApplicationFactory<Program>().CreateClient();
+            
             // Act
-            var createClinicResponse = await HttpClient.PostAsJsonAsync(ApiURL, ClinicDto);
-            var getClinicResult = await HttpClient.GetStringAsync(ApiURL);
+           
+            var getClinicResult = await http_client.GetStringAsync(ApiURL);
             // Assert
-            createClinicResponse.EnsureSuccessStatusCode();
-            createClinicResponse.StatusCode.Should().Be(System.Net.HttpStatusCode.Created);
-
-
+           
 
             var Clinics = JsonConvert.DeserializeObject<List<CreateClinicDto>>(getClinicResult);
 
+            Clinics.Count.Should().Be(1);
+            Clinics.Should().HaveCount(1);
             Clinics.Should().NotBeNull();
 
-            if (Clinics != null)
-            {
-                Clinics.Count.Should().Be(1);
-                Clinics.Should().HaveCount(1);
-            }
-
-            Dispose();
+            
         }
 
         private static CreateClinicDto CreateSUT()
@@ -53,15 +41,15 @@ namespace VetExpert.IntegrationTesting
                 Name = "Clinic 1",
                 Address = "my address",
                 Email = "myemail@email",
-                WebsiteUrl = "@@@"
-
+               WebsiteUrl="@@@"
+               
 
             };
         }
 
         public void Dispose()
         {
-            CleanDatabases();
+            //CleanDatabases();
         }
     }
 }

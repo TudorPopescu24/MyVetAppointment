@@ -1,19 +1,13 @@
 ﻿using FluentAssertions;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http.Json;
-using System.Text;
-using System.Threading.Tasks;
 using VetExpert.API.Dto;
-using VetExpert.Testing;
 using Xunit;
 
 namespace VetExpert.IntegrationTesting
 {
     [Collection("Database tests")]
-    public class AdminControllerTests : BaseIntegrationTests, IDisposable
+    public class AdminControllerTests : IDisposable
     {
         private const string ApiURL = "/api/admin";
 
@@ -21,27 +15,24 @@ namespace VetExpert.IntegrationTesting
         [Fact]
         public async void When_CreatedAdmin_Then_ShouldReturnadminInTheGetRequest()
         {
+            var http_client = new CustomWebApplicationFactory<Program>().CreateClient();
 
-            //CleanDatabases();
             CreateAdminDto adminDto = CreateSUT();
             // Act
-            var createAdminResponse = await HttpClient.PostAsJsonAsync(ApiURL, adminDto);
-            var getAdminResult = await HttpClient.GetStringAsync(ApiURL);
+            var createAdminResponse = await http_client.PostAsJsonAsync(ApiURL, adminDto);
+            var getAdminResult = await http_client.GetStringAsync(ApiURL);
             // Assert
             createAdminResponse.EnsureSuccessStatusCode();
             createAdminResponse.StatusCode.Should().Be(System.Net.HttpStatusCode.Created);
 
+
+
             var admins = JsonConvert.DeserializeObject<List<CreateAdminDto>>(getAdminResult);
 
-			admins.Should().NotBeNull();
-
-            if (admins != null)
-            {
-				admins.Count.Should().Be(1);
-				admins.Should().HaveCount(1);
-			}
-			
-            Dispose();
+            admins.Count.Should().Be(1);
+            admins.Should().HaveCount(1);
+            admins.Should().NotBeNull();
+            
         }
 
         private static CreateAdminDto CreateSUT()
@@ -56,7 +47,7 @@ namespace VetExpert.IntegrationTesting
 
         public void Dispose()
         {
-            CleanDatabases();
+            //CleanDatabases();
         }
     }
 }

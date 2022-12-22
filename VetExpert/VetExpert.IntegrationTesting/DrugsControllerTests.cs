@@ -2,13 +2,11 @@
 using Newtonsoft.Json;
 using System.Net.Http.Json;
 using VetExpert.API.Dto;
-using VetExpert.Testing;
 using Xunit;
-
 namespace VetExpert.IntegrationTesting
 {
     [Collection("Database tests")]
-    public class DrugsControllerTests : BaseIntegrationTests, IDisposable
+    public class DrugsControllerTests : IDisposable
     {
         private const string ApiURL = "/api/Drugs";
 
@@ -16,27 +14,22 @@ namespace VetExpert.IntegrationTesting
         public async void When_CreatedDrug_Then_ShouldReturnDrugInTheGetRequest()
         {
             //CleanDatabases();
+            var http_client = new CustomWebApplicationFactory<Program>().CreateClient();
             CreateDrugDto drugDto = CreateSUT();
             // Act
-            var createDrugResponse = await HttpClient.PostAsJsonAsync(ApiURL, drugDto);
-            var getDrugResult = await HttpClient.GetStringAsync(ApiURL);
+            var createDrugResponse = await http_client.PostAsJsonAsync(ApiURL, drugDto);
+            var getDrugResult = await http_client.GetStringAsync(ApiURL);
             // Assert
             createDrugResponse.EnsureSuccessStatusCode();
             createDrugResponse.StatusCode.Should().Be(System.Net.HttpStatusCode.Created);
 
 
-            /*      var drugs = await getDrugResult.Content
-                      .ReadFromJsonAsync<List<CreateDrugDto>>();*/
+                 
             var drugs = JsonConvert.DeserializeObject<List<CreateDrugDto>>(getDrugResult);
-
+           
+            drugs.Count.Should().Be(1);
+            drugs.Should().HaveCount(1);
             drugs.Should().NotBeNull();
-
-            if (drugs != null)
-            {
-                drugs.Count.Should().Be(1);
-                drugs.Should().HaveCount(1);
-            }
-
             Dispose();
         }
 
@@ -55,7 +48,7 @@ namespace VetExpert.IntegrationTesting
 
         public void Dispose()
         {
-            CleanDatabases();
+           // CleanDatabases();
         }
     }
 }
