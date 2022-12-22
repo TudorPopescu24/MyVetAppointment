@@ -1,0 +1,1458 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SolutionRoot CoveredStatements="799" TotalStatements="1827" CoveragePercent="44" ReportType="Xml" DotCoverVersion="2022.3.1">
+  <SolutionFolder Name="Application" CoveredStatements="61" TotalStatements="110" CoveragePercent="55">
+    <Project Name="VetExpert.Application" CoveredStatements="61" TotalStatements="110" CoveragePercent="55">
+      <Namespace Name="VetExpert.Application" CoveredStatements="61" TotalStatements="110" CoveragePercent="55">
+        <Namespace Name="Commands.Bills" CoveredStatements="13" TotalStatements="30" CoveragePercent="43">
+          <Type Name="CreateBillCommand" CoveredStatements="13" TotalStatements="13" CoveragePercent="100">
+            <Constructor Name="CreateBillCommand()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" />
+            <AutoProperty Name="ClinicId:Guid" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+              <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+              <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            </AutoProperty>
+            <AutoProperty Name="Currency:string" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+              <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+              <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            </AutoProperty>
+            <AutoProperty Name="DateTime:DateTime" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+              <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+              <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            </AutoProperty>
+            <AutoProperty Name="UserId:Guid" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+              <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+              <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            </AutoProperty>
+            <AutoProperty Name="Value:int" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+              <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+              <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            </AutoProperty>
+          </Type>
+          <Type Name="DeleteBillCommand" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+            <AutoProperty Name="BillId:Guid" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+              <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+            </AutoProperty>
+          </Type>
+          <Type Name="UpdateBillCommand" CoveredStatements="0" TotalStatements="15" CoveragePercent="0">
+            <Constructor Name="UpdateBillCommand()" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+            <AutoProperty Name="BillId:Guid" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+              <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+            </AutoProperty>
+            <AutoProperty Name="ClinicId:Guid" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+              <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+            </AutoProperty>
+            <AutoProperty Name="Currency:string" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+              <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+            </AutoProperty>
+            <AutoProperty Name="DateTime:DateTime" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+              <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+            </AutoProperty>
+            <AutoProperty Name="UserId:Guid" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+              <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+            </AutoProperty>
+            <AutoProperty Name="Value:int" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+              <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+            </AutoProperty>
+          </Type>
+        </Namespace>
+        <Namespace Name="Handlers.Bills" CoveredStatements="21" TotalStatements="53" CoveragePercent="40">
+          <Type Name="CreateBillCommandHandler" CoveredStatements="12" TotalStatements="14" CoveragePercent="86">
+            <Constructor Name="CreateBillCommandHandler(IRepository&lt;Bill&gt;,IMapper)" CoveredStatements="5" TotalStatements="5" CoveragePercent="100" />
+            <Method Name="Handle(CreateBillCommand,CancellationToken):Task&lt;BillResponse&gt;" CoveredStatements="7" TotalStatements="9" CoveragePercent="78">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="7" TotalStatements="9" CoveragePercent="78" />
+            </Method>
+          </Type>
+          <Type Name="DeleteBillCommandHandler" CoveredStatements="0" TotalStatements="13" CoveragePercent="0">
+            <Constructor Name="DeleteBillCommandHandler(IRepository&lt;Bill&gt;)" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+            <Method Name="Handle(DeleteBillCommand,CancellationToken):Task&lt;Unit&gt;" CoveredStatements="0" TotalStatements="9" CoveragePercent="0">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="9" CoveragePercent="0" />
+            </Method>
+          </Type>
+          <Type Name="GetAllBillsQueryHandler" CoveredStatements="9" TotalStatements="9" CoveragePercent="100">
+            <Constructor Name="GetAllBillsQueryHandler(IRepository&lt;Bill&gt;,IMapper)" CoveredStatements="5" TotalStatements="5" CoveragePercent="100" />
+            <Method Name="Handle(GetAllBillsQuery,CancellationToken):Task&lt;List&lt;BillResponse&gt;&gt;" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" />
+            </Method>
+          </Type>
+          <Type Name="UpdateBillCommandHandler" CoveredStatements="0" TotalStatements="17" CoveragePercent="0">
+            <Constructor Name="UpdateBillCommandHandler(IRepository&lt;Bill&gt;,IMapper)" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+            <Method Name="Handle(UpdateBillCommand,CancellationToken):Task&lt;BillResponse&gt;" CoveredStatements="0" TotalStatements="12" CoveragePercent="0">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="12" CoveragePercent="0" />
+            </Method>
+          </Type>
+        </Namespace>
+        <Namespace Name="Mapper" CoveredStatements="7" TotalStatements="7" CoveragePercent="100">
+          <Type Name="Mapper" CoveredStatements="7" TotalStatements="7" CoveragePercent="100">
+            <Constructor Name="Mapper()" CoveredStatements="7" TotalStatements="7" CoveragePercent="100" />
+          </Type>
+        </Namespace>
+        <Namespace Name="Response.Bills" CoveredStatements="15" TotalStatements="15" CoveragePercent="100">
+          <Type Name="BillResponse" CoveredStatements="15" TotalStatements="15" CoveragePercent="100">
+            <Constructor Name="BillResponse()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" />
+            <AutoProperty Name="ClinicId:Guid" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+              <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+              <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            </AutoProperty>
+            <AutoProperty Name="Currency:string" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+              <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+              <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            </AutoProperty>
+            <AutoProperty Name="DateTime:DateTime" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+              <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+              <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            </AutoProperty>
+            <AutoProperty Name="Id:Guid" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+              <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+              <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            </AutoProperty>
+            <AutoProperty Name="UserId:Guid" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+              <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+              <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            </AutoProperty>
+            <AutoProperty Name="Value:int" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+              <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+              <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            </AutoProperty>
+          </Type>
+        </Namespace>
+        <Type Name="ConfigureServices" CoveredStatements="5" TotalStatements="5" CoveragePercent="100">
+          <Method Name="AddApplicationServices(IServiceCollection):IServiceCollection" CoveredStatements="5" TotalStatements="5" CoveragePercent="100" />
+        </Type>
+      </Namespace>
+    </Project>
+  </SolutionFolder>
+  <SolutionFolder Name="Domain" CoveredStatements="167" TotalStatements="222" CoveragePercent="75">
+    <Project Name="VetExpert.Domain" CoveredStatements="167" TotalStatements="222" CoveragePercent="75">
+      <Namespace Name="VetExpert.Domain" CoveredStatements="167" TotalStatements="222" CoveragePercent="75">
+        <Type Name="Admin" CoveredStatements="5" TotalStatements="6" CoveragePercent="83">
+          <Constructor Name="Admin()" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" />
+          <AutoProperty Name="Id:Guid" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </AutoProperty>
+          <AutoProperty Name="UserName:string" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          </AutoProperty>
+        </Type>
+        <Type Name="Appointment" CoveredStatements="17" TotalStatements="18" CoveragePercent="94">
+          <Constructor Name="Appointment()" CoveredStatements="6" TotalStatements="6" CoveragePercent="100" />
+          <AutoProperty Name="DateTime:DateTime" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          </AutoProperty>
+          <AutoProperty Name="Doctor:Doctor" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          </AutoProperty>
+          <AutoProperty Name="DoctorId:Guid" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          </AutoProperty>
+          <AutoProperty Name="Id:Guid" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </AutoProperty>
+          <AutoProperty Name="Pet:Pet" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          </AutoProperty>
+          <AutoProperty Name="PetId:Guid" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          </AutoProperty>
+        </Type>
+        <Type Name="Bill" CoveredStatements="22" TotalStatements="27" CoveragePercent="81">
+          <Constructor Name="Bill()" CoveredStatements="9" TotalStatements="9" CoveragePercent="100" />
+          <AutoProperty Name="Clinic:Clinic" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+            <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+            <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </AutoProperty>
+          <AutoProperty Name="ClinicId:Guid" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          </AutoProperty>
+          <AutoProperty Name="Currency:string" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          </AutoProperty>
+          <AutoProperty Name="DateTime:DateTime" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          </AutoProperty>
+          <AutoProperty Name="Drugs:ICollection&lt;Drug&gt;" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </AutoProperty>
+          <AutoProperty Name="Id:Guid" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </AutoProperty>
+          <AutoProperty Name="User:User" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </AutoProperty>
+          <AutoProperty Name="UserId:Guid" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          </AutoProperty>
+          <AutoProperty Name="Value:int" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          </AutoProperty>
+        </Type>
+        <Type Name="Clinic" CoveredStatements="14" TotalStatements="16" CoveragePercent="88">
+          <Constructor Name="Clinic()" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" />
+          <AutoProperty Name="Address:string" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          </AutoProperty>
+          <AutoProperty Name="Doctors:ICollection&lt;Doctor&gt;" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </AutoProperty>
+          <AutoProperty Name="Email:string" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          </AutoProperty>
+          <AutoProperty Name="Id:Guid" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </AutoProperty>
+          <AutoProperty Name="Name:string" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          </AutoProperty>
+          <AutoProperty Name="WebsiteUrl:string" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          </AutoProperty>
+        </Type>
+        <Type Name="Doctor" CoveredStatements="19" TotalStatements="21" CoveragePercent="90">
+          <Constructor Name="Doctor()" CoveredStatements="7" TotalStatements="7" CoveragePercent="100" />
+          <AutoProperty Name="Clinic:Clinic" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          </AutoProperty>
+          <AutoProperty Name="ClinicId:Guid" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          </AutoProperty>
+          <AutoProperty Name="DoctorSpecializations:ICollection&lt;DoctorSpecialization&gt;" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </AutoProperty>
+          <AutoProperty Name="Email:string" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          </AutoProperty>
+          <AutoProperty Name="FirstName:string" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          </AutoProperty>
+          <AutoProperty Name="Id:Guid" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </AutoProperty>
+          <AutoProperty Name="LastName:string" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          </AutoProperty>
+        </Type>
+        <Type Name="DoctorSpecialization" CoveredStatements="0" TotalStatements="12" CoveragePercent="0">
+          <Constructor Name="DoctorSpecialization()" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+          <AutoProperty Name="Doctor:Doctor" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+            <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+            <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </AutoProperty>
+          <AutoProperty Name="DoctorId:Guid" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+            <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+            <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </AutoProperty>
+          <AutoProperty Name="Specialization:Specialization" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+            <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+            <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </AutoProperty>
+          <AutoProperty Name="SpecializationId:Guid" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+            <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+            <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </AutoProperty>
+        </Type>
+        <Type Name="Drug" CoveredStatements="19" TotalStatements="21" CoveragePercent="90">
+          <Constructor Name="Drug()" CoveredStatements="7" TotalStatements="7" CoveragePercent="100" />
+          <AutoProperty Name="DrugStocks:ICollection&lt;DrugStock&gt;" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </AutoProperty>
+          <AutoProperty Name="Id:Guid" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </AutoProperty>
+          <AutoProperty Name="Manufacturer:string" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          </AutoProperty>
+          <AutoProperty Name="Name:string" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          </AutoProperty>
+          <AutoProperty Name="Price:int" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          </AutoProperty>
+          <AutoProperty Name="Prospect:string" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          </AutoProperty>
+          <AutoProperty Name="Weight:int" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          </AutoProperty>
+        </Type>
+        <Type Name="DrugStock" CoveredStatements="0" TotalStatements="14" CoveragePercent="0">
+          <Constructor Name="DrugStock()" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+          <AutoProperty Name="Drug:Drug" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+            <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+            <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </AutoProperty>
+          <AutoProperty Name="DrugId:Guid" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+            <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+            <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </AutoProperty>
+          <AutoProperty Name="ExpirationDate:DateTime" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+            <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+            <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </AutoProperty>
+          <AutoProperty Name="Id:Guid" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+            <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+            <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </AutoProperty>
+          <AutoProperty Name="Quantity:int" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+            <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+            <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </AutoProperty>
+        </Type>
+        <Type Name="Pet" CoveredStatements="25" TotalStatements="26" CoveragePercent="96">
+          <Constructor Name="Pet()" CoveredStatements="8" TotalStatements="8" CoveragePercent="100" />
+          <AutoProperty Name="Age:int" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          </AutoProperty>
+          <AutoProperty Name="DateOfVaccine:Nullable&lt;DateTime&gt;" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          </AutoProperty>
+          <AutoProperty Name="Id:Guid" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </AutoProperty>
+          <AutoProperty Name="IsVaccinated:bool" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          </AutoProperty>
+          <AutoProperty Name="Name:string" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          </AutoProperty>
+          <AutoProperty Name="TypeOfPet:string" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          </AutoProperty>
+          <AutoProperty Name="User:User" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          </AutoProperty>
+          <AutoProperty Name="UserId:Guid" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          </AutoProperty>
+          <AutoProperty Name="Weight:int" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          </AutoProperty>
+        </Type>
+        <Type Name="ProductBill" CoveredStatements="8" TotalStatements="18" CoveragePercent="44">
+          <Constructor Name="ProductBill()" CoveredStatements="6" TotalStatements="6" CoveragePercent="100" />
+          <AutoProperty Name="Bill:Bill" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+            <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+            <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </AutoProperty>
+          <AutoProperty Name="BillId:Guid" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </AutoProperty>
+          <AutoProperty Name="Drug:Drug" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+            <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+            <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </AutoProperty>
+          <AutoProperty Name="DrugId:Guid" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+            <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+            <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </AutoProperty>
+          <AutoProperty Name="Id:Guid" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </AutoProperty>
+          <AutoProperty Name="Quantity:int" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+            <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+            <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </AutoProperty>
+        </Type>
+        <Type Name="Promotion" CoveredStatements="14" TotalStatements="15" CoveragePercent="93">
+          <Constructor Name="Promotion()" CoveredStatements="5" TotalStatements="5" CoveragePercent="100" />
+          <AutoProperty Name="Clinic:Clinic" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          </AutoProperty>
+          <AutoProperty Name="ClinicId:Guid" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          </AutoProperty>
+          <AutoProperty Name="Description:string" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          </AutoProperty>
+          <AutoProperty Name="Id:Guid" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </AutoProperty>
+          <AutoProperty Name="Name:string" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          </AutoProperty>
+        </Type>
+        <Type Name="Specialization" CoveredStatements="10" TotalStatements="12" CoveragePercent="83">
+          <Constructor Name="Specialization()" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" />
+          <AutoProperty Name="Description:string" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          </AutoProperty>
+          <AutoProperty Name="DoctorSpecializations:ICollection&lt;DoctorSpecialization&gt;" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </AutoProperty>
+          <AutoProperty Name="Id:Guid" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </AutoProperty>
+          <AutoProperty Name="Name:string" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          </AutoProperty>
+        </Type>
+        <Type Name="User" CoveredStatements="14" TotalStatements="16" CoveragePercent="88">
+          <Constructor Name="User()" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" />
+          <AutoProperty Name="Address:string" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          </AutoProperty>
+          <AutoProperty Name="Email:string" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          </AutoProperty>
+          <AutoProperty Name="Id:Guid" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </AutoProperty>
+          <AutoProperty Name="Name:string" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          </AutoProperty>
+          <AutoProperty Name="Pets:ICollection&lt;Pet&gt;" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </AutoProperty>
+          <AutoProperty Name="PhoneNumber:string" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+            <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          </AutoProperty>
+        </Type>
+      </Namespace>
+    </Project>
+  </SolutionFolder>
+  <SolutionFolder Name="Testing" CoveredStatements="286" TotalStatements="373" CoveragePercent="77">
+    <Project Name="VetExpert.IntegrationTesting" CoveredStatements="232" TotalStatements="259" CoveragePercent="90">
+      <Namespace Name="VetExpert.IntegrationTesting" CoveredStatements="232" TotalStatements="259" CoveragePercent="90">
+        <Type Name="AdminControllerTests" CoveredStatements="17" TotalStatements="17" CoveragePercent="100">
+          <Method Name="CreateSUT():CreateAdminDto" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" />
+          <Method Name="Dispose():void" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" />
+          <Method Name="When_CreatedAdmin_Then_ShouldReturnadminInTheGetRequest():void" CoveredStatements="12" TotalStatements="12" CoveragePercent="100">
+            <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="12" TotalStatements="12" CoveragePercent="100" />
+          </Method>
+        </Type>
+        <Type Name="AppointmentControllerTests" CoveredStatements="10" TotalStatements="13" CoveragePercent="77">
+          <Method Name="CreateSUT():CreateAppointmentDto" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+          <Method Name="Dispose():void" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" />
+          <Method Name="When_CreatedAppointment_Then_ShouldReturnAppointmentInTheGetRequest():void" CoveredStatements="8" TotalStatements="8" CoveragePercent="100">
+            <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="8" TotalStatements="8" CoveragePercent="100" />
+          </Method>
+        </Type>
+        <Type Name="BillControllerTests" CoveredStatements="12" TotalStatements="18" CoveragePercent="67">
+          <Method Name="CreateSUT():CreateBillDto" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" />
+          <Method Name="Dispose():void" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" />
+          <Method Name="When_CreatedBill_Then_ShouldReturnBillInTheGetRequest():void" CoveredStatements="7" TotalStatements="13" CoveragePercent="54">
+            <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="7" TotalStatements="13" CoveragePercent="54" />
+          </Method>
+        </Type>
+        <Type Name="ClinicControllerTests" CoveredStatements="10" TotalStatements="13" CoveragePercent="77">
+          <Method Name="CreateSUT():CreateClinicDto" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+          <Method Name="Dispose():void" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" />
+          <Method Name="When_CreatedClinic_Then_ShouldReturnClinicInTheGetRequest():void" CoveredStatements="8" TotalStatements="8" CoveragePercent="100">
+            <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="8" TotalStatements="8" CoveragePercent="100" />
+          </Method>
+        </Type>
+        <Type Name="CustomWebApplicationFactory&lt;TStartup&gt;" CoveredStatements="24" TotalStatements="24" CoveragePercent="100">
+          <Method Name="ConfigureWebHost(IWebHostBuilder):void" CoveredStatements="24" TotalStatements="24" CoveragePercent="100">
+            <OwnCoverage CoveredStatements="3" TotalStatements="3" CoveragePercent="100" />
+            <AnonymousMethod Name="(IServiceCollection):void" CoveredStatements="21" TotalStatements="21" CoveragePercent="100">
+              <OwnCoverage CoveredStatements="17" TotalStatements="17" CoveragePercent="100" />
+              <AnonymousMethod Name="(ServiceDescriptor):bool" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+              <AnonymousMethod Name="(DbContextOptionsBuilder):void" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" />
+            </AnonymousMethod>
+          </Method>
+        </Type>
+        <Type Name="DbSeeding" CoveredStatements="61" TotalStatements="61" CoveragePercent="100">
+          <Constructor Name="DbSeeding()" CoveredStatements="6" TotalStatements="6" CoveragePercent="100" />
+          <Method Name="GetSeedingAppointments():List&lt;Appointment&gt;" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" />
+          <Method Name="GetSeedingClinics():List&lt;Clinic&gt;" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" />
+          <Method Name="GetSeedingDoctors():List&lt;Doctor&gt;" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" />
+          <Method Name="GetSeedingPets():List&lt;Pet&gt;" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" />
+          <Method Name="GetSeedingPromotions():List&lt;Promotion&gt;" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" />
+          <Method Name="GetSeedingSpecialization():List&lt;Specialization&gt;" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" />
+          <Method Name="GetSeedingUsers():List&lt;User&gt;" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" />
+          <Method Name="InitializeDbForTests(MainDbContext):void" CoveredStatements="16" TotalStatements="16" CoveragePercent="100" />
+          <Method Name="ReinitializeDbForTests(MainDbContext):void" CoveredStatements="12" TotalStatements="12" CoveragePercent="100" />
+        </Type>
+        <Type Name="DoctorControllerTests" CoveredStatements="11" TotalStatements="14" CoveragePercent="79">
+          <Method Name="CreateSUT():CreateDoctorDto" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+          <Method Name="Dispose():void" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" />
+          <Method Name="When_CreatedDoctor_Then_ShouldReturnDoctorInTheGetRequest():void" CoveredStatements="9" TotalStatements="9" CoveragePercent="100">
+            <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="9" TotalStatements="9" CoveragePercent="100" />
+          </Method>
+        </Type>
+        <Type Name="DrugsControllerTests" CoveredStatements="18" TotalStatements="18" CoveragePercent="100">
+          <Method Name="CreateSUT():CreateDrugDto" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" />
+          <Method Name="Dispose():void" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" />
+          <Method Name="When_CreatedDrug_Then_ShouldReturnDrugInTheGetRequest():void" CoveredStatements="13" TotalStatements="13" CoveragePercent="100">
+            <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="13" TotalStatements="13" CoveragePercent="100" />
+          </Method>
+        </Type>
+        <Type Name="DrugStocksControllerTests" CoveredStatements="14" TotalStatements="14" CoveragePercent="100">
+          <Method Name="CreateSUT():CreateDrugStockDto" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" />
+          <Method Name="Dispose():void" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" />
+          <Method Name="When_CreatedDrugStock_Then_ShouldReturnDrugStockInTheGetRequest():void" CoveredStatements="9" TotalStatements="9" CoveragePercent="100">
+            <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="9" TotalStatements="9" CoveragePercent="100" />
+          </Method>
+        </Type>
+        <Type Name="PetsControllerTests" CoveredStatements="11" TotalStatements="17" CoveragePercent="65">
+          <Method Name="CreateSUT(User):CreatePetDto" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+          <Method Name="CreateSUTUser(User):CreateUserDto" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+          <Method Name="Dispose():void" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" />
+          <Method Name="When_CreatedPet_Then_ShouldReturnPetInTheGetRequest():void" CoveredStatements="9" TotalStatements="9" CoveragePercent="100">
+            <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="9" TotalStatements="9" CoveragePercent="100" />
+          </Method>
+        </Type>
+        <Type Name="PromotionsControllerTests" CoveredStatements="11" TotalStatements="14" CoveragePercent="79">
+          <Method Name="CreateSUT():CreatePromotionDto" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+          <Method Name="Dispose():void" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" />
+          <Method Name="When_CreatedPromotion_Then_ShouldReturnPromotionInTheGetRequest():void" CoveredStatements="9" TotalStatements="9" CoveragePercent="100">
+            <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="9" TotalStatements="9" CoveragePercent="100" />
+          </Method>
+        </Type>
+        <Type Name="SpecializationsControllerTests" CoveredStatements="11" TotalStatements="14" CoveragePercent="79">
+          <Method Name="CreateSUT():CreateSpecializationDto" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+          <Method Name="Dispose():void" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" />
+          <Method Name="When_CreatedSpecialization_Then_ShouldReturnSpecializationInTheGetRequest():void" CoveredStatements="9" TotalStatements="9" CoveragePercent="100">
+            <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="9" TotalStatements="9" CoveragePercent="100" />
+          </Method>
+        </Type>
+        <Type Name="UserControllerTests" CoveredStatements="22" TotalStatements="22" CoveragePercent="100">
+          <Method Name="CreateSUT():CreateUserDto" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" />
+          <Method Name="Dispose():void" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" />
+          <Method Name="When_CreatedUser_Then_ShouldReturnUserInTheGetRequest():void" CoveredStatements="17" TotalStatements="17" CoveragePercent="100">
+            <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="17" TotalStatements="17" CoveragePercent="100" />
+          </Method>
+        </Type>
+      </Namespace>
+    </Project>
+    <Project Name="VetExpert.Testing" CoveredStatements="54" TotalStatements="114" CoveragePercent="47">
+      <Namespace Name="VetExpert.Testing" CoveredStatements="54" TotalStatements="92" CoveragePercent="59">
+        <Type Name="Admins" CoveredStatements="5" TotalStatements="5" CoveragePercent="100">
+          <Method Name="AdminValid():void" CoveredStatements="5" TotalStatements="5" CoveragePercent="100" />
+        </Type>
+        <Type Name="Appointments" CoveredStatements="5" TotalStatements="9" CoveragePercent="56">
+          <Method Name="AppointemtValid():void" CoveredStatements="5" TotalStatements="9" CoveragePercent="56" />
+        </Type>
+        <Type Name="Bills" CoveredStatements="9" TotalStatements="12" CoveragePercent="75">
+          <Method Name="BillValid():void" CoveredStatements="9" TotalStatements="12" CoveragePercent="75" />
+        </Type>
+        <Type Name="Clinics" CoveredStatements="8" TotalStatements="8" CoveragePercent="100">
+          <Method Name="ClinicValid():void" CoveredStatements="8" TotalStatements="8" CoveragePercent="100" />
+        </Type>
+        <Type Name="Doctors" CoveredStatements="4" TotalStatements="10" CoveragePercent="40">
+          <Method Name="DoctorValid():void" CoveredStatements="4" TotalStatements="10" CoveragePercent="40" />
+        </Type>
+        <Type Name="Pets" CoveredStatements="8" TotalStatements="16" CoveragePercent="50">
+          <Method Name="PetVaccineInfo():void" CoveredStatements="4" TotalStatements="5" CoveragePercent="80" />
+          <Method Name="PetValid():void" CoveredStatements="4" TotalStatements="11" CoveragePercent="36" />
+        </Type>
+        <Type Name="ProductBills" CoveredStatements="4" TotalStatements="10" CoveragePercent="40">
+          <Method Name="ProductBillValid():void" CoveredStatements="4" TotalStatements="10" CoveragePercent="40" />
+        </Type>
+        <Type Name="Promotions" CoveredStatements="4" TotalStatements="8" CoveragePercent="50">
+          <Method Name="PromotionValid():void" CoveredStatements="4" TotalStatements="8" CoveragePercent="50" />
+        </Type>
+        <Type Name="Specializations" CoveredStatements="7" TotalStatements="7" CoveragePercent="100">
+          <Method Name="PromotionValid():void" CoveredStatements="7" TotalStatements="7" CoveragePercent="100" />
+        </Type>
+        <Type Name="Users" CoveredStatements="0" TotalStatements="7" CoveragePercent="0">
+          <Method Name="UserValid():void" CoveredStatements="0" TotalStatements="7" CoveragePercent="0" />
+        </Type>
+      </Namespace>
+      <Type Name="Program" CoveredStatements="0" TotalStatements="22" CoveragePercent="0">
+        <Method Name="&lt;Main&gt;$(string[]):void" CoveredStatements="0" TotalStatements="22" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="13" CoveragePercent="0" />
+          <AnonymousMethod Name="(JsonOptions):void" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <AnonymousMethod Name="(DbContextOptionsBuilder):void" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+            <OwnCoverage CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+            <AnonymousMethod Name="(SqliteDbContextOptionsBuilder):void" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </AnonymousMethod>
+          <AnonymousMethod Name="(CorsOptions):void" CoveredStatements="0" TotalStatements="6" CoveragePercent="0">
+            <OwnCoverage CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+            <AnonymousMethod Name="(CorsPolicyBuilder):void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+          </AnonymousMethod>
+        </Method>
+      </Type>
+    </Project>
+  </SolutionFolder>
+  <SolutionFolder Name="WebUI" CoveredStatements="285" TotalStatements="1122" CoveragePercent="25">
+    <Project Name="VetExpert.API" CoveredStatements="285" TotalStatements="704" CoveragePercent="40">
+      <Namespace Name="VetExpert.API" CoveredStatements="267" TotalStatements="686" CoveragePercent="39">
+        <Namespace Name="Configuration" CoveredStatements="16" TotalStatements="18" CoveragePercent="89">
+          <Type Name="ConfigureServices" CoveredStatements="16" TotalStatements="18" CoveragePercent="89">
+            <Method Name="RegisterServices(IServiceCollection,IConfiguration):IServiceCollection" CoveredStatements="16" TotalStatements="18" CoveragePercent="89">
+              <OwnCoverage CoveredStatements="10" TotalStatements="10" CoveragePercent="100" />
+              <AnonymousMethod Name="(CorsOptions):void" CoveredStatements="6" TotalStatements="6" CoveragePercent="100">
+                <OwnCoverage CoveredStatements="3" TotalStatements="3" CoveragePercent="100" />
+                <AnonymousMethod Name="(CorsPolicyBuilder):void" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" />
+              </AnonymousMethod>
+              <AnonymousMethod Name="(DbContextOptionsBuilder):void" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+                <OwnCoverage CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+                <AnonymousMethod Name="(SqliteDbContextOptionsBuilder):void" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              </AnonymousMethod>
+            </Method>
+          </Type>
+        </Namespace>
+        <Namespace Name="Controllers" CoveredStatements="128" TotalStatements="467" CoveragePercent="27">
+          <Type Name="AdminController" CoveredStatements="15" TotalStatements="34" CoveragePercent="44">
+            <Constructor Name="AdminController(IRepository&lt;Admin&gt;,IMapper)" CoveredStatements="5" TotalStatements="5" CoveragePercent="100" />
+            <Method Name="Create(CreateAdminDto):Task&lt;IActionResult&gt;" CoveredStatements="6" TotalStatements="6" CoveragePercent="100">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="6" TotalStatements="6" CoveragePercent="100" />
+            </Method>
+            <Method Name="Delete(Guid):Task&lt;IActionResult&gt;" CoveredStatements="0" TotalStatements="9" CoveragePercent="0">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="9" CoveragePercent="0" />
+            </Method>
+            <Method Name="Get():Task&lt;IActionResult&gt;" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" />
+            </Method>
+            <Method Name="Update(Guid,CreateAdminDto):Task&lt;IActionResult&gt;" CoveredStatements="0" TotalStatements="10" CoveragePercent="0">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="10" CoveragePercent="0" />
+            </Method>
+          </Type>
+          <Type Name="AppointmentsController" CoveredStatements="11" TotalStatements="34" CoveragePercent="32">
+            <Constructor Name="AppointmentsController(IRepository&lt;Pet&gt;,IRepository&lt;Doctor&gt;,IRepository&lt;Appointment&gt;,IMapper)" CoveredStatements="7" TotalStatements="7" CoveragePercent="100" />
+            <Method Name="Create(CreateAppointmentDto):Task&lt;IActionResult&gt;" CoveredStatements="0" TotalStatements="14" CoveragePercent="0">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="14" CoveragePercent="0" />
+            </Method>
+            <Method Name="Delete(Guid):Task&lt;IActionResult&gt;" CoveredStatements="0" TotalStatements="9" CoveragePercent="0">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="9" CoveragePercent="0" />
+            </Method>
+            <Method Name="Get():Task&lt;IActionResult&gt;" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" />
+            </Method>
+          </Type>
+          <Type Name="BillsController" CoveredStatements="12" TotalStatements="22" CoveragePercent="55">
+            <Constructor Name="BillsController(IMapper,IMediator)" CoveredStatements="5" TotalStatements="5" CoveragePercent="100" />
+            <Method Name="Create(CreateBillCommand):Task&lt;IActionResult&gt;" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" />
+            </Method>
+            <Method Name="Delete(Guid):Task&lt;IActionResult&gt;" CoveredStatements="0" TotalStatements="4" CoveragePercent="0">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+            </Method>
+            <Method Name="Get():Task&lt;List&lt;BillResponse&gt;&gt;" CoveredStatements="3" TotalStatements="3" CoveragePercent="100">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" />
+            </Method>
+            <Method Name="Update(Guid,CreateBillDto):Task&lt;IActionResult&gt;" CoveredStatements="0" TotalStatements="6" CoveragePercent="0">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="6" CoveragePercent="0" />
+            </Method>
+          </Type>
+          <Type Name="ClinicsController" CoveredStatements="9" TotalStatements="44" CoveragePercent="20">
+            <Constructor Name="ClinicsController(IRepository&lt;Clinic&gt;,IMapper)" CoveredStatements="5" TotalStatements="5" CoveragePercent="100" />
+            <Method Name="Create(CreateClinicDto):Task&lt;IActionResult&gt;" CoveredStatements="0" TotalStatements="6" CoveragePercent="0">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="6" CoveragePercent="0" />
+            </Method>
+            <Method Name="Delete(Guid):Task&lt;IActionResult&gt;" CoveredStatements="0" TotalStatements="9" CoveragePercent="0">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="9" CoveragePercent="0" />
+            </Method>
+            <Method Name="Get():Task&lt;IActionResult&gt;" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" />
+            </Method>
+            <Method Name="Get(Guid):Task&lt;IActionResult&gt;" CoveredStatements="0" TotalStatements="7" CoveragePercent="0">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="7" CoveragePercent="0" />
+            </Method>
+            <Method Name="Update(Guid,CreateClinicDto):Task&lt;IActionResult&gt;" CoveredStatements="0" TotalStatements="13" CoveragePercent="0">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="13" CoveragePercent="0" />
+            </Method>
+          </Type>
+          <Type Name="DoctorsController" CoveredStatements="12" TotalStatements="64" CoveragePercent="19">
+            <Constructor Name="DoctorsController(IRepository&lt;Clinic&gt;,IRepository&lt;Doctor&gt;,IRepository&lt;Specialization&gt;,IRepository&lt;DoctorSpecialization&gt;,IMapper)" CoveredStatements="8" TotalStatements="8" CoveragePercent="100" />
+            <Method Name="Create(CreateDoctorDto):Task&lt;IActionResult&gt;" CoveredStatements="0" TotalStatements="10" CoveragePercent="0">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="10" CoveragePercent="0" />
+            </Method>
+            <Method Name="Delete(Guid):Task&lt;IActionResult&gt;" CoveredStatements="0" TotalStatements="9" CoveragePercent="0">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="9" CoveragePercent="0" />
+            </Method>
+            <Method Name="Get():Task&lt;IActionResult&gt;" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" />
+            </Method>
+            <Method Name="Get(Guid):Task&lt;IActionResult&gt;" CoveredStatements="0" TotalStatements="7" CoveragePercent="0">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="7" CoveragePercent="0" />
+            </Method>
+            <Method Name="RegisterSpecialization(Guid,Guid):Task&lt;IActionResult&gt;" CoveredStatements="0" TotalStatements="14" CoveragePercent="0">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="14" CoveragePercent="0" />
+            </Method>
+            <Method Name="Update(Guid,CreateDoctorDto):Task&lt;IActionResult&gt;" CoveredStatements="0" TotalStatements="12" CoveragePercent="0">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="12" CoveragePercent="0" />
+            </Method>
+          </Type>
+          <Type Name="DrugsController" CoveredStatements="15" TotalStatements="45" CoveragePercent="33">
+            <Constructor Name="DrugsController(IRepository&lt;Drug&gt;,IMapper)" CoveredStatements="5" TotalStatements="5" CoveragePercent="100" />
+            <Method Name="Create(CreateDrugDto):Task&lt;IActionResult&gt;" CoveredStatements="6" TotalStatements="6" CoveragePercent="100">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="6" TotalStatements="6" CoveragePercent="100" />
+            </Method>
+            <Method Name="Delete(Guid):Task&lt;IActionResult&gt;" CoveredStatements="0" TotalStatements="9" CoveragePercent="0">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="9" CoveragePercent="0" />
+            </Method>
+            <Method Name="Get():Task&lt;IActionResult&gt;" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" />
+            </Method>
+            <Method Name="Get(Guid):Task&lt;IActionResult&gt;" CoveredStatements="0" TotalStatements="7" CoveragePercent="0">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="7" CoveragePercent="0" />
+            </Method>
+            <Method Name="Update(Guid,CreateDrugDto):Task&lt;IActionResult&gt;" CoveredStatements="0" TotalStatements="14" CoveragePercent="0">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="14" CoveragePercent="0" />
+            </Method>
+          </Type>
+          <Type Name="DrugStocksController" CoveredStatements="10" TotalStatements="47" CoveragePercent="21">
+            <Constructor Name="DrugStocksController(IRepository&lt;Drug&gt;,IRepository&lt;DrugStock&gt;,IMapper)" CoveredStatements="6" TotalStatements="6" CoveragePercent="100" />
+            <Method Name="Create(CreateDrugStockDto):Task&lt;IActionResult&gt;" CoveredStatements="0" TotalStatements="10" CoveragePercent="0">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="10" CoveragePercent="0" />
+            </Method>
+            <Method Name="Delete(Guid):Task&lt;IActionResult&gt;" CoveredStatements="0" TotalStatements="9" CoveragePercent="0">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="9" CoveragePercent="0" />
+            </Method>
+            <Method Name="Get():Task&lt;IActionResult&gt;" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" />
+            </Method>
+            <Method Name="Get(Guid):Task&lt;IActionResult&gt;" CoveredStatements="0" TotalStatements="7" CoveragePercent="0">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="7" CoveragePercent="0" />
+            </Method>
+            <Method Name="Update(Guid,CreateDrugStockDto):Task&lt;IActionResult&gt;" CoveredStatements="0" TotalStatements="11" CoveragePercent="0">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="11" CoveragePercent="0" />
+            </Method>
+          </Type>
+          <Type Name="PetsController" CoveredStatements="10" TotalStatements="51" CoveragePercent="20">
+            <Constructor Name="PetsController(IRepository&lt;User&gt;,IRepository&lt;Pet&gt;,IMapper)" CoveredStatements="6" TotalStatements="6" CoveragePercent="100" />
+            <Method Name="Create(CreatePetDto):Task&lt;IActionResult&gt;" CoveredStatements="0" TotalStatements="10" CoveragePercent="0">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="10" CoveragePercent="0" />
+            </Method>
+            <Method Name="Delete(Guid):Task&lt;IActionResult&gt;" CoveredStatements="0" TotalStatements="9" CoveragePercent="0">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="9" CoveragePercent="0" />
+            </Method>
+            <Method Name="Get():Task&lt;IActionResult&gt;" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" />
+            </Method>
+            <Method Name="Get(Guid):Task&lt;IActionResult&gt;" CoveredStatements="0" TotalStatements="7" CoveragePercent="0">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="7" CoveragePercent="0" />
+            </Method>
+            <Method Name="Update(Guid,CreatePetDto):Task&lt;IActionResult&gt;" CoveredStatements="0" TotalStatements="15" CoveragePercent="0">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="15" CoveragePercent="0" />
+            </Method>
+          </Type>
+          <Type Name="PromotionsController" CoveredStatements="10" TotalStatements="47" CoveragePercent="21">
+            <Constructor Name="PromotionsController(IRepository&lt;Clinic&gt;,IRepository&lt;Promotion&gt;,IMapper)" CoveredStatements="6" TotalStatements="6" CoveragePercent="100" />
+            <Method Name="Create(CreatePromotionDto):Task&lt;IActionResult&gt;" CoveredStatements="0" TotalStatements="10" CoveragePercent="0">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="10" CoveragePercent="0" />
+            </Method>
+            <Method Name="Delete(Guid):Task&lt;IActionResult&gt;" CoveredStatements="0" TotalStatements="9" CoveragePercent="0">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="9" CoveragePercent="0" />
+            </Method>
+            <Method Name="Get():Task&lt;IActionResult&gt;" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" />
+            </Method>
+            <Method Name="Get(Guid):Task&lt;IActionResult&gt;" CoveredStatements="0" TotalStatements="7" CoveragePercent="0">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="7" CoveragePercent="0" />
+            </Method>
+            <Method Name="Update(Guid,CreatePromotionDto):Task&lt;IActionResult&gt;" CoveredStatements="0" TotalStatements="11" CoveragePercent="0">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="11" CoveragePercent="0" />
+            </Method>
+          </Type>
+          <Type Name="SpecializationsController" CoveredStatements="9" TotalStatements="42" CoveragePercent="21">
+            <Constructor Name="SpecializationsController(IRepository&lt;Specialization&gt;,IMapper)" CoveredStatements="5" TotalStatements="5" CoveragePercent="100" />
+            <Method Name="Create(CreateSpecializationDto):Task&lt;IActionResult&gt;" CoveredStatements="0" TotalStatements="6" CoveragePercent="0">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="6" CoveragePercent="0" />
+            </Method>
+            <Method Name="Delete(Guid):Task&lt;IActionResult&gt;" CoveredStatements="0" TotalStatements="9" CoveragePercent="0">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="9" CoveragePercent="0" />
+            </Method>
+            <Method Name="Get():Task&lt;IActionResult&gt;" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" />
+            </Method>
+            <Method Name="Get(Guid):Task&lt;IActionResult&gt;" CoveredStatements="0" TotalStatements="7" CoveragePercent="0">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="7" CoveragePercent="0" />
+            </Method>
+            <Method Name="Update(Guid,CreateSpecializationDto):Task&lt;IActionResult&gt;" CoveredStatements="0" TotalStatements="11" CoveragePercent="0">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="11" CoveragePercent="0" />
+            </Method>
+          </Type>
+          <Type Name="UserController" CoveredStatements="15" TotalStatements="37" CoveragePercent="41">
+            <Constructor Name="UserController(IRepository&lt;User&gt;,IMapper)" CoveredStatements="5" TotalStatements="5" CoveragePercent="100" />
+            <Method Name="Create(CreateUserDto):Task&lt;IActionResult&gt;" CoveredStatements="6" TotalStatements="6" CoveragePercent="100">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="6" TotalStatements="6" CoveragePercent="100" />
+            </Method>
+            <Method Name="Delete(Guid):Task&lt;IActionResult&gt;" CoveredStatements="0" TotalStatements="9" CoveragePercent="0">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="9" CoveragePercent="0" />
+            </Method>
+            <Method Name="Get():Task&lt;IActionResult&gt;" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" />
+            </Method>
+            <Method Name="Update(Guid,CreateUserDto):Task&lt;IActionResult&gt;" CoveredStatements="0" TotalStatements="13" CoveragePercent="0">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="13" CoveragePercent="0" />
+            </Method>
+          </Type>
+        </Namespace>
+        <Namespace Name="Dto" CoveredStatements="81" TotalStatements="109" CoveragePercent="74">
+          <Type Name="CreateAdminDto" CoveredStatements="3" TotalStatements="3" CoveragePercent="100">
+            <Constructor Name="CreateAdminDto()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <AutoProperty Name="UserName:string" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+              <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+              <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            </AutoProperty>
+          </Type>
+          <Type Name="CreateAppointmentDto" CoveredStatements="4" TotalStatements="7" CoveragePercent="57">
+            <Constructor Name="CreateAppointmentDto()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <AutoProperty Name="DateTime:DateTime" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+              <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            </AutoProperty>
+            <AutoProperty Name="DoctorId:Guid" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+              <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            </AutoProperty>
+            <AutoProperty Name="PetId:Guid" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+              <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            </AutoProperty>
+          </Type>
+          <Type Name="CreateBillDto" CoveredStatements="11" TotalStatements="13" CoveragePercent="85">
+            <Constructor Name="CreateBillDto()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" />
+            <AutoProperty Name="ClinicId:Guid" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+              <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+              <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+            </AutoProperty>
+            <AutoProperty Name="Currency:string" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+              <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+              <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            </AutoProperty>
+            <AutoProperty Name="DateTime:DateTime" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+              <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+              <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            </AutoProperty>
+            <AutoProperty Name="UserId:Guid" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+              <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+              <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+            </AutoProperty>
+            <AutoProperty Name="Value:int" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+              <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+              <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            </AutoProperty>
+          </Type>
+          <Type Name="CreateClinicDto" CoveredStatements="6" TotalStatements="10" CoveragePercent="60">
+            <Constructor Name="CreateClinicDto()" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" />
+            <AutoProperty Name="Address:string" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+              <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            </AutoProperty>
+            <AutoProperty Name="Email:string" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+              <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            </AutoProperty>
+            <AutoProperty Name="Name:string" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+              <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            </AutoProperty>
+            <AutoProperty Name="WebsiteUrl:string" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+              <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            </AutoProperty>
+          </Type>
+          <Type Name="CreateDoctorDto" CoveredStatements="7" TotalStatements="11" CoveragePercent="64">
+            <Constructor Name="CreateDoctorDto()" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" />
+            <AutoProperty Name="ClinicId:Guid" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+              <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            </AutoProperty>
+            <AutoProperty Name="Email:string" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+              <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            </AutoProperty>
+            <AutoProperty Name="FirstName:string" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+              <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            </AutoProperty>
+            <AutoProperty Name="LastName:string" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+              <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            </AutoProperty>
+          </Type>
+          <Type Name="CreateDrugDto" CoveredStatements="15" TotalStatements="15" CoveragePercent="100">
+            <Constructor Name="CreateDrugDto()" CoveredStatements="5" TotalStatements="5" CoveragePercent="100" />
+            <AutoProperty Name="Manufacturer:string" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+              <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+              <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            </AutoProperty>
+            <AutoProperty Name="Name:string" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+              <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+              <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            </AutoProperty>
+            <AutoProperty Name="Price:int" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+              <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+              <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            </AutoProperty>
+            <AutoProperty Name="Prospect:string" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+              <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+              <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            </AutoProperty>
+            <AutoProperty Name="Weight:int" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+              <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+              <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            </AutoProperty>
+          </Type>
+          <Type Name="CreateDrugStockDto" CoveredStatements="4" TotalStatements="7" CoveragePercent="57">
+            <Constructor Name="CreateDrugStockDto()" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <AutoProperty Name="DrugId:Guid" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+              <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            </AutoProperty>
+            <AutoProperty Name="ExpirationDate:DateTime" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+              <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            </AutoProperty>
+            <AutoProperty Name="Quantity:int" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+              <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            </AutoProperty>
+          </Type>
+          <Type Name="CreatePetDto" CoveredStatements="12" TotalStatements="19" CoveragePercent="63">
+            <Constructor Name="CreatePetDto()" CoveredStatements="5" TotalStatements="5" CoveragePercent="100" />
+            <AutoProperty Name="Age:int" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+              <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            </AutoProperty>
+            <AutoProperty Name="DateOfVaccine:Nullable&lt;DateTime&gt;" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+              <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            </AutoProperty>
+            <AutoProperty Name="IsVaccinated:bool" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+              <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            </AutoProperty>
+            <AutoProperty Name="Name:string" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+              <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            </AutoProperty>
+            <AutoProperty Name="TypeOfPet:string" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+              <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            </AutoProperty>
+            <AutoProperty Name="UserId:Guid" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+              <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            </AutoProperty>
+            <AutoProperty Name="Weight:int" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+              <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            </AutoProperty>
+          </Type>
+          <Type Name="CreatePromotionDto" CoveredStatements="5" TotalStatements="8" CoveragePercent="63">
+            <Constructor Name="CreatePromotionDto()" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" />
+            <AutoProperty Name="ClinicId:Guid" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+              <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            </AutoProperty>
+            <AutoProperty Name="Description:string" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+              <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            </AutoProperty>
+            <AutoProperty Name="Name:string" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+              <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            </AutoProperty>
+          </Type>
+          <Type Name="CreateSpecializationDto" CoveredStatements="4" TotalStatements="6" CoveragePercent="67">
+            <Constructor Name="CreateSpecializationDto()" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" />
+            <AutoProperty Name="Description:string" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+              <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            </AutoProperty>
+            <AutoProperty Name="Name:string" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+              <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            </AutoProperty>
+          </Type>
+          <Type Name="CreateUserDto" CoveredStatements="10" TotalStatements="10" CoveragePercent="100">
+            <Constructor Name="CreateUserDto()" CoveredStatements="2" TotalStatements="2" CoveragePercent="100" />
+            <AutoProperty Name="Address:string" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+              <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+              <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            </AutoProperty>
+            <AutoProperty Name="Email:string" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+              <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+              <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            </AutoProperty>
+            <AutoProperty Name="Name:string" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+              <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+              <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            </AutoProperty>
+            <AutoProperty Name="PhoneNumber:string" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+              <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+              <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            </AutoProperty>
+          </Type>
+        </Namespace>
+        <Namespace Name="Mapping" CoveredStatements="25" TotalStatements="25" CoveragePercent="100">
+          <Type Name="Mapper" CoveredStatements="25" TotalStatements="25" CoveragePercent="100">
+            <Constructor Name="Mapper()" CoveredStatements="25" TotalStatements="25" CoveragePercent="100" />
+          </Type>
+        </Namespace>
+        <Namespace Name="Validators" CoveredStatements="17" TotalStatements="67" CoveragePercent="25">
+          <Type Name="CreateAdminDtoValidator" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
+            <Constructor Name="CreateAdminDtoValidator()" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" />
+          </Type>
+          <Type Name="CreateAppointmentDtoValidator" CoveredStatements="0" TotalStatements="6" CoveragePercent="0">
+            <Constructor Name="CreateAppointmentDtoValidator()" CoveredStatements="0" TotalStatements="6" CoveragePercent="0" />
+          </Type>
+          <Type Name="CreateBillDtoValidator" CoveredStatements="0" TotalStatements="6" CoveragePercent="0">
+            <Constructor Name="CreateBillDtoValidator()" CoveredStatements="0" TotalStatements="6" CoveragePercent="0" />
+          </Type>
+          <Type Name="CreateClinicDtoValidator" CoveredStatements="0" TotalStatements="5" CoveragePercent="0">
+            <Constructor Name="CreateClinicDtoValidator()" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+          </Type>
+          <Type Name="CreateDoctorDtoValidator" CoveredStatements="0" TotalStatements="7" CoveragePercent="0">
+            <Constructor Name="CreateDoctorDtoValidator()" CoveredStatements="0" TotalStatements="7" CoveragePercent="0" />
+          </Type>
+          <Type Name="CreateDrugDtoValidator" CoveredStatements="8" TotalStatements="8" CoveragePercent="100">
+            <Constructor Name="CreateDrugDtoValidator()" CoveredStatements="8" TotalStatements="8" CoveragePercent="100" />
+          </Type>
+          <Type Name="CreateDrugStockDtoValidator" CoveredStatements="0" TotalStatements="6" CoveragePercent="0">
+            <Constructor Name="CreateDrugStockDtoValidator()" CoveredStatements="0" TotalStatements="6" CoveragePercent="0" />
+          </Type>
+          <Type Name="CreatePetDtoValidator" CoveredStatements="0" TotalStatements="9" CoveragePercent="0">
+            <Constructor Name="CreatePetDtoValidator()" CoveredStatements="0" TotalStatements="9" CoveragePercent="0" />
+          </Type>
+          <Type Name="CreatePromotionDtoValidator" CoveredStatements="0" TotalStatements="6" CoveragePercent="0">
+            <Constructor Name="CreatePromotionDtoValidator()" CoveredStatements="0" TotalStatements="6" CoveragePercent="0" />
+          </Type>
+          <Type Name="CreateSpecializationDtoValidator" CoveredStatements="0" TotalStatements="5" CoveragePercent="0">
+            <Constructor Name="CreateSpecializationDtoValidator()" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+          </Type>
+          <Type Name="CreateUserDtoValidator" CoveredStatements="5" TotalStatements="5" CoveragePercent="100">
+            <Constructor Name="CreateUserDtoValidator()" CoveredStatements="5" TotalStatements="5" CoveragePercent="100" />
+          </Type>
+        </Namespace>
+      </Namespace>
+      <Type Name="Program" CoveredStatements="18" TotalStatements="18" CoveragePercent="100">
+        <Method Name="&lt;Main&gt;$(string[]):void" CoveredStatements="18" TotalStatements="18" CoveragePercent="100">
+          <OwnCoverage CoveredStatements="17" TotalStatements="17" CoveragePercent="100" />
+          <AnonymousMethod Name="(JsonOptions):void" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+        </Method>
+      </Type>
+    </Project>
+    <Project Name="VetExpert.UI" CoveredStatements="0" TotalStatements="418" CoveragePercent="0">
+      <Namespace Name="VetExpert.UI" CoveredStatements="0" TotalStatements="413" CoveragePercent="0">
+        <Namespace Name="Configuration" CoveredStatements="0" TotalStatements="13" CoveragePercent="0">
+          <Type Name="ConfigureServices" CoveredStatements="0" TotalStatements="13" CoveragePercent="0">
+            <Method Name="RegisterServices(IServiceCollection,IWebAssemblyHostEnvironment):IServiceCollection" CoveredStatements="0" TotalStatements="13" CoveragePercent="0">
+              <OwnCoverage CoveredStatements="0" TotalStatements="8" CoveragePercent="0" />
+              <AnonymousMethod Name="(HttpClient):void" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              <AnonymousMethod Name="(HttpClient):void" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              <AnonymousMethod Name="(HttpClient):void" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              <AnonymousMethod Name="(HttpClient):void" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              <AnonymousMethod Name="(IServiceProvider):HttpClient" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+            </Method>
+          </Type>
+        </Namespace>
+        <Namespace Name="Pages" CoveredStatements="0" TotalStatements="323" CoveragePercent="0">
+          <Namespace Name="Clinics" CoveredStatements="0" TotalStatements="91" CoveragePercent="0">
+            <Type Name="IndexPage" CoveredStatements="0" TotalStatements="22" CoveragePercent="0">
+              <Method Name="BuildRenderTree(RenderTreeBuilder):void" CoveredStatements="0" TotalStatements="22" CoveragePercent="0">
+                <OwnCoverage CoveredStatements="0" TotalStatements="19" CoveragePercent="0" />
+                <AnonymousMethod Name="():Task" CoveredStatements="0" TotalStatements="1" CoveragePercent="0">
+                  <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+                </AnonymousMethod>
+                <AnonymousMethod Name="():void" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+                <AnonymousMethod Name="():Task" CoveredStatements="0" TotalStatements="1" CoveragePercent="0">
+                  <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+                </AnonymousMethod>
+              </Method>
+            </Type>
+            <Type Name="IndexPageBase" CoveredStatements="0" TotalStatements="69" CoveragePercent="0">
+              <Constructor Name="IndexPageBase()" CoveredStatements="0" TotalStatements="8" CoveragePercent="0" />
+              <AutoProperty Name="Clinic:Clinic" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+                <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+                <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              </AutoProperty>
+              <AutoProperty Name="Clinics:List&lt;Clinic&gt;" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+                <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+                <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              </AutoProperty>
+              <AutoProperty Name="ClinicService:IClinicService" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+                <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+                <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              </AutoProperty>
+              <AutoProperty Name="Doctor:Doctor" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+                <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+                <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              </AutoProperty>
+              <AutoProperty Name="DoctorService:IDoctorService" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+                <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+                <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              </AutoProperty>
+              <AutoProperty Name="IsNewEntity:bool" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+                <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+                <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              </AutoProperty>
+              <AutoProperty Name="ShowClinicForm:bool" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+                <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+                <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              </AutoProperty>
+              <AutoProperty Name="ShowDoctorForm:bool" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+                <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+                <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              </AutoProperty>
+              <Method Name="OnAddButtonClick():void" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+              <Method Name="OnAddDoctorClick(Clinic):void" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+              <Method Name="OnCancelButtonClick():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+              <Method Name="OnDeleteAsync(Clinic):Task" CoveredStatements="0" TotalStatements="4" CoveragePercent="0">
+                <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+              </Method>
+              <Method Name="OnDoctorCancelButtonClick():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+              <Method Name="OnDoctorValidSubmitAsync():Task" CoveredStatements="0" TotalStatements="4" CoveragePercent="0">
+                <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+              </Method>
+              <Method Name="OnEditButtonClick(Clinic):void" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+              <Method Name="OnInitializedAsync():Task" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+                <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+              </Method>
+              <Method Name="OnValidSubmitAsync():Task" CoveredStatements="0" TotalStatements="11" CoveragePercent="0">
+                <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="11" CoveragePercent="0" />
+              </Method>
+              <Method Name="ReadClinicsAsync():Task" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+                <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+              </Method>
+            </Type>
+          </Namespace>
+          <Namespace Name="Doctors" CoveredStatements="0" TotalStatements="54" CoveragePercent="0">
+            <Type Name="IndexPage" CoveredStatements="0" TotalStatements="17" CoveragePercent="0">
+              <Method Name="BuildRenderTree(RenderTreeBuilder):void" CoveredStatements="0" TotalStatements="17" CoveragePercent="0">
+                <OwnCoverage CoveredStatements="0" TotalStatements="15" CoveragePercent="0" />
+                <AnonymousMethod Name="():void" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+                <AnonymousMethod Name="():Task" CoveredStatements="0" TotalStatements="1" CoveragePercent="0">
+                  <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+                </AnonymousMethod>
+              </Method>
+            </Type>
+            <Type Name="IndexPageBase" CoveredStatements="0" TotalStatements="37" CoveragePercent="0">
+              <Constructor Name="IndexPageBase()" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+              <AutoProperty Name="Doctor:Doctor" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+                <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+                <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              </AutoProperty>
+              <AutoProperty Name="Doctors:List&lt;Doctor&gt;" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+                <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+                <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              </AutoProperty>
+              <AutoProperty Name="DoctorService:IDoctorService" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+                <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+                <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              </AutoProperty>
+              <AutoProperty Name="IsNewEntity:bool" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+                <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+                <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              </AutoProperty>
+              <AutoProperty Name="ShowDoctorForm:bool" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+                <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+                <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              </AutoProperty>
+              <Method Name="OnCancelButtonClick():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+              <Method Name="OnDeleteAsync(Doctor):Task" CoveredStatements="0" TotalStatements="4" CoveragePercent="0">
+                <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+              </Method>
+              <Method Name="OnEditButtonClick(Doctor):void" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+              <Method Name="OnInitializedAsync():Task" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+                <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+              </Method>
+              <Method Name="OnValidSubmitAsync():Task" CoveredStatements="0" TotalStatements="5" CoveragePercent="0">
+                <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+              </Method>
+              <Method Name="ReadDoctorsAsync():Task" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+                <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+              </Method>
+            </Type>
+          </Namespace>
+          <Namespace Name="Pets" CoveredStatements="0" TotalStatements="57" CoveragePercent="0">
+            <Type Name="IndexPage" CoveredStatements="0" TotalStatements="20" CoveragePercent="0">
+              <Method Name="BuildRenderTree(RenderTreeBuilder):void" CoveredStatements="0" TotalStatements="20" CoveragePercent="0">
+                <OwnCoverage CoveredStatements="0" TotalStatements="18" CoveragePercent="0" />
+                <AnonymousMethod Name="():void" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+                <AnonymousMethod Name="():Task" CoveredStatements="0" TotalStatements="1" CoveragePercent="0">
+                  <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+                </AnonymousMethod>
+              </Method>
+            </Type>
+            <Type Name="IndexPageBase" CoveredStatements="0" TotalStatements="37" CoveragePercent="0">
+              <Constructor Name="IndexPageBase()" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+              <AutoProperty Name="IsNewEntity:bool" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+                <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+                <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              </AutoProperty>
+              <AutoProperty Name="Pet:Pet" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+                <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+                <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              </AutoProperty>
+              <AutoProperty Name="Pets:List&lt;Pet&gt;" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+                <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+                <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              </AutoProperty>
+              <AutoProperty Name="PetService:IPetService" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+                <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+                <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              </AutoProperty>
+              <AutoProperty Name="ShowPetForm:bool" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+                <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+                <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              </AutoProperty>
+              <Method Name="OnCancelButtonClick():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+              <Method Name="OnDeleteAsync(Pet):Task" CoveredStatements="0" TotalStatements="4" CoveragePercent="0">
+                <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+              </Method>
+              <Method Name="OnEditButtonClick(Pet):void" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+              <Method Name="OnInitializedAsync():Task" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+                <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+              </Method>
+              <Method Name="OnValidSubmitAsync():Task" CoveredStatements="0" TotalStatements="5" CoveragePercent="0">
+                <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+              </Method>
+              <Method Name="ReadPetsAsync():Task" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+                <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+              </Method>
+            </Type>
+          </Namespace>
+          <Namespace Name="Users" CoveredStatements="0" TotalStatements="91" CoveragePercent="0">
+            <Type Name="IndexPage" CoveredStatements="0" TotalStatements="22" CoveragePercent="0">
+              <Method Name="BuildRenderTree(RenderTreeBuilder):void" CoveredStatements="0" TotalStatements="22" CoveragePercent="0">
+                <OwnCoverage CoveredStatements="0" TotalStatements="19" CoveragePercent="0" />
+                <AnonymousMethod Name="():Task" CoveredStatements="0" TotalStatements="1" CoveragePercent="0">
+                  <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+                </AnonymousMethod>
+                <AnonymousMethod Name="():void" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+                <AnonymousMethod Name="():Task" CoveredStatements="0" TotalStatements="1" CoveragePercent="0">
+                  <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+                </AnonymousMethod>
+              </Method>
+            </Type>
+            <Type Name="IndexPageBase" CoveredStatements="0" TotalStatements="69" CoveragePercent="0">
+              <Constructor Name="IndexPageBase()" CoveredStatements="0" TotalStatements="8" CoveragePercent="0" />
+              <AutoProperty Name="IsNewEntity:bool" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+                <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+                <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              </AutoProperty>
+              <AutoProperty Name="Pet:Pet" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+                <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+                <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              </AutoProperty>
+              <AutoProperty Name="PetService:IPetService" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+                <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+                <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              </AutoProperty>
+              <AutoProperty Name="ShowPetForm:bool" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+                <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+                <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              </AutoProperty>
+              <AutoProperty Name="ShowUserForm:bool" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+                <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+                <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              </AutoProperty>
+              <AutoProperty Name="User:User" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+                <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+                <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              </AutoProperty>
+              <AutoProperty Name="Users:List&lt;User&gt;" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+                <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+                <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              </AutoProperty>
+              <AutoProperty Name="UserService:IUserService" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+                <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+                <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              </AutoProperty>
+              <Method Name="OnAddButtonClick():void" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+              <Method Name="OnAddPetClick(User):void" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+              <Method Name="OnCancelButtonClick():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+              <Method Name="OnDeleteAsync(User):Task" CoveredStatements="0" TotalStatements="4" CoveragePercent="0">
+                <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+              </Method>
+              <Method Name="OnEditButtonClick(User):void" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+              <Method Name="OnInitializedAsync():Task" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+                <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+              </Method>
+              <Method Name="OnPetCancelButtonClick():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+              <Method Name="OnPetValidSubmitAsync():Task" CoveredStatements="0" TotalStatements="4" CoveragePercent="0">
+                <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+              </Method>
+              <Method Name="OnValidSubmitAsync():Task" CoveredStatements="0" TotalStatements="11" CoveragePercent="0">
+                <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="11" CoveragePercent="0" />
+              </Method>
+              <Method Name="ReadUsersAsync():Task" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+                <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+              </Method>
+            </Type>
+          </Namespace>
+          <Type Name="Counter" CoveredStatements="0" TotalStatements="5" CoveragePercent="0">
+            <Constructor Name="Counter()" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+            <Method Name="BuildRenderTree(RenderTreeBuilder):void" CoveredStatements="0" TotalStatements="1" CoveragePercent="0">
+              <OwnCoverage CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+            </Method>
+            <Method Name="IncrementCount():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+          </Type>
+          <Type Name="FetchData" CoveredStatements="0" TotalStatements="25" CoveragePercent="0">
+            <Type Name="WeatherForecast" CoveredStatements="0" TotalStatements="7" CoveragePercent="0">
+              <AutoProperty Name="Date:DateOnly" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+                <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+                <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              </AutoProperty>
+              <AutoProperty Name="Summary:string" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+                <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+                <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              </AutoProperty>
+              <AutoProperty Name="TemperatureC:int" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+                <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+                <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              </AutoProperty>
+              <Property Name="TemperatureF:int" CoveredStatements="0" TotalStatements="1" CoveragePercent="0">
+                <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              </Property>
+            </Type>
+            <Method Name="BuildRenderTree(RenderTreeBuilder):void" CoveredStatements="0" TotalStatements="15" CoveragePercent="0">
+              <OwnCoverage CoveredStatements="0" TotalStatements="15" CoveragePercent="0" />
+            </Method>
+            <Method Name="OnInitializedAsync():Task" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+            </Method>
+          </Type>
+        </Namespace>
+        <Namespace Name="Services.Implementations" CoveredStatements="0" TotalStatements="68" CoveragePercent="0">
+          <Type Name="ClinicService" CoveredStatements="0" TotalStatements="17" CoveragePercent="0">
+            <Constructor Name="ClinicService(HttpClient)" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+            <Method Name="DeleteClinic(Guid):Task" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+            </Method>
+            <Method Name="GetAllClinics():Task&lt;IEnumerable&lt;Clinic&gt;&gt;" CoveredStatements="0" TotalStatements="4" CoveragePercent="0">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+            </Method>
+            <Method Name="InsertClinic(Clinic):Task" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+            </Method>
+            <Method Name="UpdateClinic(Clinic):Task" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+            </Method>
+          </Type>
+          <Type Name="DoctorService" CoveredStatements="0" TotalStatements="17" CoveragePercent="0">
+            <Constructor Name="DoctorService(HttpClient)" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+            <Method Name="DeleteDoctor(Guid):Task" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+            </Method>
+            <Method Name="GetAllDoctors():Task&lt;IEnumerable&lt;Doctor&gt;&gt;" CoveredStatements="0" TotalStatements="4" CoveragePercent="0">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+            </Method>
+            <Method Name="InsertDoctor(Doctor):Task" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+            </Method>
+            <Method Name="UpdateDoctor(Doctor):Task" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+            </Method>
+          </Type>
+          <Type Name="PetService" CoveredStatements="0" TotalStatements="17" CoveragePercent="0">
+            <Constructor Name="PetService(HttpClient)" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+            <Method Name="DeletePet(Guid):Task" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+            </Method>
+            <Method Name="GetAllPets():Task&lt;IEnumerable&lt;Pet&gt;&gt;" CoveredStatements="0" TotalStatements="4" CoveragePercent="0">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+            </Method>
+            <Method Name="InsertPet(Pet):Task" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+            </Method>
+            <Method Name="UpdatePet(Pet):Task" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+            </Method>
+          </Type>
+          <Type Name="UserService" CoveredStatements="0" TotalStatements="17" CoveragePercent="0">
+            <Constructor Name="UserService(HttpClient)" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+            <Method Name="DeleteUser(Guid):Task" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+            </Method>
+            <Method Name="GetAllUsers():Task&lt;IEnumerable&lt;User&gt;&gt;" CoveredStatements="0" TotalStatements="4" CoveragePercent="0">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+            </Method>
+            <Method Name="InsertUser(User):Task" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+            </Method>
+            <Method Name="UpdateUser(User):Task" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+              <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+            </Method>
+          </Type>
+        </Namespace>
+        <Namespace Name="Shared" CoveredStatements="0" TotalStatements="9" CoveragePercent="0">
+          <Type Name="MainLayout" CoveredStatements="0" TotalStatements="1" CoveragePercent="0">
+            <Method Name="BuildRenderTree(RenderTreeBuilder):void" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </Type>
+          <Type Name="NavMenu" CoveredStatements="0" TotalStatements="5" CoveragePercent="0">
+            <Constructor Name="NavMenu()" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+            <Property Name="NavMenuCssClass:string" CoveredStatements="0" TotalStatements="1" CoveragePercent="0">
+              <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+            </Property>
+            <Method Name="ToggleNavMenu():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+          </Type>
+          <Type Name="SurveyPrompt" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+            <AutoProperty Name="Title:string" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+              <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+            </AutoProperty>
+            <Method Name="BuildRenderTree(RenderTreeBuilder):void" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </Type>
+        </Namespace>
+      </Namespace>
+      <Type Name="Program" CoveredStatements="0" TotalStatements="5" CoveragePercent="0">
+        <Method Name="&lt;Main&gt;$(string[]):Task" CoveredStatements="0" TotalStatements="5" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+        </Method>
+      </Type>
+    </Project>
+  </SolutionFolder>
+</SolutionRoot>
