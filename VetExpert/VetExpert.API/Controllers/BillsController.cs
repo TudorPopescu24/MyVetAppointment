@@ -1,13 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System.Numerics;
-using VetExpert.Infrastructure;
-using VetExpert.Domain;
-using VetExpert.API.Dto;
-using AutoMapper;
+﻿using AutoMapper;
 using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using VetExpert.API.Dto;
 using VetExpert.Application.Commands.Bills;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 using VetExpert.Application.Queries.Bills;
 using VetExpert.Application.Response.Bills;
 
@@ -17,19 +12,13 @@ namespace VetExpert.API.Controllers
     [ApiController]
     public class BillsController : ControllerBase
     {
-
-        private readonly IRepository<Bill> _billRepository;
-        private readonly IRepository<Drug> _drugRepository;
         private readonly IMapper _mapper;
         private readonly IMediator _mediator;
 
-        public BillsController(IRepository<Bill> billRepository,
-            IRepository<Drug> drugRepository,
+        public BillsController(
             IMapper mapper,
             IMediator mediator)
         {
-            _billRepository = billRepository;
-            _drugRepository = drugRepository;
             _mapper = mapper;
             _mediator = mediator;
         }
