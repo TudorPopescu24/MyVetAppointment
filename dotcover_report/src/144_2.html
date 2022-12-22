@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Users\Tudor Popescu\Desktop\I.NET\Project\VetExpert\VetExpert\VetExpert.Application\Handlers\Bills\CreateBillCommandHandler.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using AutoMapper;
+using MediatR;
+using VetExpert.Application.Commands.Bills;
+using VetExpert.Application.Response.Bills;
+using VetExpert.Domain;
+using VetExpert.Infrastructure;
+
+namespace VetExpert.Application.Handlers.Bills
+{
+	public class CreateBillCommandHandler : IRequestHandler&lt;CreateBillCommand, BillResponse&gt;
+	{
+		private readonly IRepository&lt;Bill&gt; _repository;
+		private readonly IMapper _mapper;
+
+		public CreateBillCommandHandler(IRepository&lt;Bill&gt; repository, IMapper mapper)
+		{
+			_repository = repository;
+			_mapper = mapper;
+		}
+		public async Task&lt;BillResponse&gt; Handle(CreateBillCommand request, CancellationToken cancellationToken)
+		{
+			var bill = _mapper.Map&lt;Bill&gt;(request);
+
+			if (bill == null)
+			{
+				throw new ApplicationException(&quot;Issue with the mapper&quot;);
+			}
+
+			await _repository.Add(bill);
+			await _repository.SaveChangesAsync();
+
+			return _mapper.Map&lt;BillResponse&gt;(bill);
+		}
+	}
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[15,3,15,80,1],[16,3,16,4,1],[17,4,17,29,1],[18,4,18,21,1],[19,3,19,4,1],[21,3,21,4,1],[22,4,22,42,1],[24,4,24,21,1],[25,4,25,5,0],[26,5,26,61,0],[29,4,29,32,1],[30,4,30,41,1],[32,4,32,43,1],[33,3,33,4,1]]);
+    </script>
+  </body>
+</html>

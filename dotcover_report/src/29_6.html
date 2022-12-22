@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Users\Tudor Popescu\Desktop\I.NET\Project\VetExpert\VetExpert\VetExpert.API\Validators\CreateClinicDtoValidator.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using FluentValidation;
+using VetExpert.API.Dto;
+
+namespace VetExpert.API.Validators
+{
+	public class CreateClinicDtoValidator : AbstractValidator&lt;CreateClinicDto&gt;
+	{
+		public CreateClinicDtoValidator()
+		{
+			RuleFor(x =&gt; x.Name).NotEmpty().NotNull();
+			RuleFor(x =&gt; x.Email).NotEmpty().NotNull().EmailAddress();
+		}
+	}
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[8,3,8,36,0],[9,3,9,4,0],[10,4,10,46,0],[11,4,11,62,0],[12,3,12,4,0]]);
+    </script>
+  </body>
+</html>

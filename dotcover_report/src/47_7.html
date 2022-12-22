@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Users\Tudor Popescu\Desktop\I.NET\Project\VetExpert\VetExpert\VetExpert.UI\Pages\Pets\IndexPage.razor.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using Microsoft.AspNetCore.Components;
+using System;
+using VetExpert.Domain;
+using VetExpert.UI.Services.Interfaces;
+
+namespace VetExpert.UI.Pages.Pets
+{
+    public partial class IndexPageBase : ComponentBase
+    {
+
+		[Inject]
+		private IPetService PetService { get; set; }
+		protected List&lt;Pet&gt;? Pets { get; set; } = null;
+
+		protected Pet Pet { get; set; } = new Pet();
+
+		protected bool IsNewEntity { get; set; } = false;
+
+		protected bool ShowPetForm { get; set; } = false;
+
+
+
+		protected async override Task OnInitializedAsync()
+		{
+			await ReadPetsAsync();
+		}
+
+		private async Task ReadPetsAsync()
+        {
+			Pets = (await PetService.GetAllPets()).ToList();
+		}
+
+		protected void OnEditButtonClick(Pet editPet)
+		{
+			Pet = new Pet
+			{
+				Id = editPet.Id,
+				Name = editPet.Name,
+				TypeOfPet = editPet.TypeOfPet,
+				Weight = editPet.Weight,
+				Age= editPet.Age,
+				IsVaccinated= editPet.IsVaccinated,
+				DateOfVaccine= editPet.DateOfVaccine
+			};
+			IsNewEntity = false;
+			ShowPetForm = true;
+		}
+
+		protected async Task OnValidSubmitAsync()
+		{
+			
+				await PetService.UpdatePet(Pet);
+			
+
+			ShowPetForm = false;
+
+			await ReadPetsAsync();
+		}
+
+		protected async Task OnDeleteAsync(Pet deletePet)
+		{
+			await PetService.DeletePet(deletePet.Id);
+
+			await ReadPetsAsync();
+		}
+
+		protected void OnCancelButtonClick()
+		{
+			ShowPetForm = false;
+		}
+	}
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[12,36,12,40,0],[12,41,12,45,0],[13,31,13,35,0],[13,36,13,40,0],[13,45,13,49,0],[15,23,15,27,0],[15,28,15,32,0],[15,37,15,46,0],[17,32,17,36,0],[17,37,17,41,0],[17,46,17,51,0],[19,32,19,36,0],[19,37,19,41,0],[19,46,19,51,0],[24,3,24,4,0],[25,4,25,26,0],[26,3,26,4,0],[29,9,29,10,0],[30,4,30,52,0],[31,3,31,4,0],[34,3,34,4,0],[35,4,44,6,0],[45,4,45,24,0],[46,4,46,23,0],[47,3,47,4,0],[50,3,50,4,0],[52,5,52,37,0],[55,4,55,24,0],[57,4,57,26,0],[58,3,58,4,0],[61,3,61,4,0],[62,4,62,45,0],[64,4,64,26,0],[65,3,65,4,0],[68,3,68,4,0],[69,4,69,24,0],[70,3,70,4,0]]);
+    </script>
+  </body>
+</html>

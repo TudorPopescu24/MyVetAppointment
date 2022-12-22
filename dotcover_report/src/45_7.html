@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Users\Tudor Popescu\Desktop\I.NET\Project\VetExpert\VetExpert\VetExpert.UI\Pages\Clinics\IndexPage.razor.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using Microsoft.AspNetCore.Components;
+using System;
+using VetExpert.Domain;
+using VetExpert.UI.Services.Interfaces;
+
+namespace VetExpert.UI.Pages.Clinics
+{
+    public partial class IndexPageBase : ComponentBase
+    {
+        [Inject]
+        private IClinicService ClinicService { get; set; } = default!;
+
+		[Inject]
+		private IDoctorService DoctorService { get; set; } = default!;
+
+		protected List&lt;Clinic&gt;? Clinics { get; set; } = null;
+
+        protected bool ShowClinicForm { get; set; } = false;
+
+		protected bool ShowDoctorForm { get; set; } = false;
+
+        protected Clinic Clinic { get; set; } = new Clinic();
+
+		protected Doctor Doctor { get; set; } = new Doctor();
+
+		protected bool IsNewEntity { get; set; } = false;
+
+        protected async override Task OnInitializedAsync()
+        {
+            await ReadClinicsAsync();
+		}
+
+        protected void OnAddButtonClick()
+        {
+            Clinic = new Clinic();
+			IsNewEntity = true;
+			ShowClinicForm = true;
+		}
+
+		protected void OnAddDoctorClick(Clinic clinic)
+		{
+			Doctor = new Doctor
+			{
+				ClinicId = clinic.Id,
+				Clinic = clinic
+			};
+
+			ShowDoctorForm = true;
+		}
+
+		protected void OnEditButtonClick(Clinic editClinic)
+		{
+			Clinic = new Clinic
+			{
+				Id = editClinic.Id,
+				Name = editClinic.Name,
+				Address = editClinic.Address,
+				Email = editClinic.Email,
+				WebsiteUrl = editClinic.WebsiteUrl
+			};
+			IsNewEntity = false;
+			ShowClinicForm = true;
+		}
+
+		protected void OnCancelButtonClick()
+        {
+			ShowClinicForm = false;
+		}
+
+		protected void OnDoctorCancelButtonClick()
+		{
+			ShowDoctorForm = false;
+		}
+
+		protected async Task OnValidSubmitAsync()
+        {
+			if (IsNewEntity)
+			{
+				await ClinicService.InsertClinic(Clinic);
+			}
+			else
+			{
+				await ClinicService.UpdateClinic(Clinic);
+			}
+
+			ShowClinicForm = false;
+
+			await ReadClinicsAsync();
+		}
+
+		protected async Task OnDeleteAsync(Clinic deleteClinic)
+		{
+			await ClinicService.DeleteClinic(deleteClinic.Id);
+
+			await ReadClinicsAsync();
+		}
+
+		protected async Task OnDoctorValidSubmitAsync()
+		{
+			await DoctorService.InsertDoctor(Doctor);
+
+			ShowDoctorForm = false;
+		}
+
+
+		private async Task ReadClinicsAsync()
+        {
+			Clinics = (await ClinicService.GetAllClinics()).ToList();
+		}
+	}
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[11,48,11,52,0],[11,53,11,57,0],[11,62,11,70,0],[14,42,14,46,0],[14,47,14,51,0],[14,56,14,64,0],[16,37,16,41,0],[16,42,16,46,0],[16,51,16,55,0],[18,41,18,45,0],[18,46,18,50,0],[18,55,18,60,0],[20,35,20,39,0],[20,40,20,44,0],[20,49,20,54,0],[22,35,22,39,0],[22,40,22,44,0],[22,49,22,61,0],[24,29,24,33,0],[24,34,24,38,0],[24,43,24,55,0],[26,32,26,36,0],[26,37,26,41,0],[26,46,26,51,0],[29,9,29,10,0],[30,13,30,38,0],[31,3,31,4,0],[34,9,34,10,0],[35,13,35,35,0],[36,4,36,23,0],[37,4,37,26,0],[38,3,38,4,0],[41,3,41,4,0],[42,4,46,6,0],[48,4,48,26,0],[49,3,49,4,0],[52,3,52,4,0],[53,4,60,6,0],[61,4,61,24,0],[62,4,62,26,0],[63,3,63,4,0],[66,9,66,10,0],[67,4,67,27,0],[68,3,68,4,0],[71,3,71,4,0],[72,4,72,27,0],[73,3,73,4,0],[76,9,76,10,0],[77,4,77,20,0],[78,4,78,5,0],[79,5,79,46,0],[80,4,80,5,0],[82,4,82,5,0],[83,5,83,46,0],[84,4,84,5,0],[86,4,86,27,0],[88,4,88,29,0],[89,3,89,4,0],[92,3,92,4,0],[93,4,93,54,0],[95,4,95,29,0],[96,3,96,4,0],[99,3,99,4,0],[100,4,100,45,0],[102,4,102,27,0],[103,3,103,4,0],[107,9,107,10,0],[108,4,108,61,0],[109,3,109,4,0]]);
+    </script>
+  </body>
+</html>

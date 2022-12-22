@@ -13,8 +13,6 @@ namespace VetExpert.Application
         {
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddMediatR(Assembly.GetExecutingAssembly());
-            services.AddFluentValidationAutoValidation();
-            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             return services;
 
         }

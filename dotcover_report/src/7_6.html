@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Users\Tudor Popescu\Desktop\I.NET\Project\VetExpert\VetExpert\VetExpert.API\Controllers\DrugsController.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using AutoMapper;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using VetExpert.API.Dto;
+using VetExpert.Domain;
+using VetExpert.Infrastructure;
+
+namespace VetExpert.API.Controllers
+{
+    [Route(&quot;api/[controller]&quot;)]
+    [ApiController]
+    public class DrugsController : ControllerBase
+    {
+        private readonly IRepository&lt;Drug&gt; _drugRepository;
+        private readonly IMapper _mapper;
+
+
+        public DrugsController(IRepository&lt;Drug&gt; drugRepository, IMapper mapper)
+        {
+            _drugRepository = drugRepository;
+            _mapper = mapper;
+        }
+
+        [HttpGet]
+        public async Task&lt;IActionResult&gt; Get()
+        {
+            var drugs = await _drugRepository.GetAll();
+            return Ok(drugs);
+        }
+
+        [HttpGet(&quot;{drugId:guid}&quot;)]
+        public async Task&lt;IActionResult&gt; Get(Guid drugId)
+        {
+            var drug = await _drugRepository.Get(drugId);
+
+            if (drug == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(drug);
+        }
+
+        [HttpPost]
+        public async Task&lt;IActionResult&gt; Create([FromBody] CreateDrugDto drugDto)
+        {
+            var drug = _mapper.Map&lt;Drug&gt;(drugDto);
+
+            await _drugRepository.Add(drug);
+            await _drugRepository.SaveChangesAsync();
+
+            return Created(nameof(Get), drug);
+        }
+
+
+        [HttpDelete(&quot;{drugId:guid}&quot;)]
+        public async Task&lt;IActionResult&gt; Delete(Guid drugId)
+        {
+            var drug = await _drugRepository.Get(drugId);
+            if (drug == null)
+            {
+                return NotFound();
+            }
+
+            _drugRepository.Delete(drug);
+            await _drugRepository.SaveChangesAsync();
+
+            return Ok();
+        }
+
+        [HttpPut(&quot;{drugId:guid}&quot;)]
+        public async Task&lt;IActionResult&gt; Update(Guid drugId,
+           [FromBody] CreateDrugDto drugDto)
+        {
+            var drug = await _drugRepository.Get(drugId);
+            if (drug == null)
+            {
+                return NotFound();
+            }
+
+            drug.Name = drugDto.Name;
+            drug.Manufacturer = drugDto.Manufacturer;
+            drug.Weight = drugDto.Weight;
+            drug.Prospect = drugDto.Prospect;
+            drug.Price = drugDto.Price;
+
+            _drugRepository.Update(drug);
+            await _drugRepository.SaveChangesAsync();
+
+            return Ok(drug);
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[18,9,18,81,1],[19,9,19,10,1],[20,13,20,46,1],[21,13,21,30,1],[22,9,22,10,1],[26,9,26,10,1],[27,13,27,56,1],[28,13,28,30,1],[29,9,29,10,1],[33,9,33,10,0],[34,13,34,58,0],[36,13,36,30,0],[37,13,37,14,0],[38,17,38,35,0],[41,13,41,29,0],[42,9,42,10,0],[46,9,46,10,1],[47,13,47,51,1],[49,13,49,45,1],[50,13,50,54,1],[52,13,52,47,1],[53,9,53,10,1],[58,9,58,10,0],[59,13,59,58,0],[60,13,60,30,0],[61,13,61,14,0],[62,17,62,35,0],[65,13,65,42,0],[66,13,66,54,0],[68,13,68,25,0],[69,9,69,10,0],[74,9,74,10,0],[75,13,75,58,0],[76,13,76,30,0],[77,13,77,14,0],[78,17,78,35,0],[81,13,81,38,0],[82,13,82,54,0],[83,13,83,42,0],[84,13,84,46,0],[85,13,85,40,0],[87,13,87,42,0],[88,13,88,54,0],[90,13,90,29,0],[91,9,91,10,0]]);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Users\Tudor Popescu\Desktop\I.NET\Project\VetExpert\VetExpert\VetExpert.UI\Pages\FetchData.razor</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+@page &quot;/fetchdata&quot;
+@inject HttpClient Http
+
+&lt;PageTitle&gt;Weather forecast&lt;/PageTitle&gt;
+
+&lt;h1&gt;Weather forecast&lt;/h1&gt;
+
+&lt;p&gt;This component demonstrates fetching data from the server.&lt;/p&gt;
+
+@if (forecasts == null)
+{
+    &lt;p&gt;&lt;em&gt;Loading...&lt;/em&gt;&lt;/p&gt;
+}
+else
+{
+    &lt;table class=&quot;table&quot;&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th&gt;Date&lt;/th&gt;
+                &lt;th&gt;Temp. (C)&lt;/th&gt;
+                &lt;th&gt;Temp. (F)&lt;/th&gt;
+                &lt;th&gt;Summary&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+            @foreach (var forecast in forecasts)
+            {
+                &lt;tr&gt;
+                    &lt;td&gt;@forecast.Date.ToShortDateString()&lt;/td&gt;
+                    &lt;td&gt;@forecast.TemperatureC&lt;/td&gt;
+                    &lt;td&gt;@forecast.TemperatureF&lt;/td&gt;
+                    &lt;td&gt;@forecast.Summary&lt;/td&gt;
+                &lt;/tr&gt;
+            }
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+}
+
+@code {
+    private WeatherForecast[]? forecasts;
+
+    protected override async Task OnInitializedAsync()
+    {
+        forecasts = await Http.GetFromJsonAsync&lt;WeatherForecast[]&gt;(&quot;sample-data/weather.json&quot;);
+    }
+
+    public class WeatherForecast
+    {
+        public DateOnly Date { get; set; }
+
+        public int TemperatureC { get; set; }
+
+        public string? Summary { get; set; }
+
+        public int TemperatureF =&gt; 32 + (int)(TemperatureC / 0.5556);
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[10,2,10,24,0],[11,1,11,2,0],[13,1,13,2,0],[15,1,15,2,0],[26,14,26,21,0],[26,23,26,35,0],[26,36,26,38,0],[26,39,26,48,0],[27,13,27,14,0],[29,26,29,60,0],[30,26,30,48,0],[31,26,31,48,0],[32,26,32,43,0],[34,13,34,14,0],[37,1,37,2,0],[43,5,43,6,0],[44,9,44,96,0],[45,5,45,6,0],[49,32,49,36,0],[49,37,49,41,0],[51,35,51,39,0],[51,40,51,44,0],[53,34,53,38,0],[53,39,53,43,0],[55,36,55,69,0]]);
+    </script>
+  </body>
+</html>

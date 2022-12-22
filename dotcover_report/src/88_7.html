@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Users\Tudor Popescu\Desktop\I.NET\Project\VetExpert\VetExpert\VetExpert.UI\Pages\Clinics\IndexPage.razor</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+@page &quot;/clinics&quot;
+@inherits IndexPageBase
+
+&lt;PageTitle&gt;Clinics&lt;/PageTitle&gt;
+&lt;link href=&#39;https://fonts.googleapis.com/css?family=Acme&#39; rel=&#39;stylesheet&#39;&gt;
+&lt;div class=&quot;d-flex flex-row&quot;&gt;
+	&lt;div class=&quot;d-flex flex-column&quot;&gt;
+		&lt;h1&gt;Clinics&lt;/h1&gt;
+	&lt;/div&gt;
+	&lt;button class=&quot;btn btn-primary btn-lg btn-icon ms-auto&quot; style=&quot;height: 3rem&quot; @onclick=&quot;OnAddButtonClick&quot;&gt;
+		&lt;i class=&quot;oi oi-plus&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; Add clinic
+	&lt;/button&gt;
+&lt;/div&gt;
+
+
+@if (Clinics != null &amp;&amp; Clinics.Count &gt; 0)
+{
+	&lt;table class=&quot;table&quot;&gt;
+		&lt;thead&gt;
+			&lt;tr&gt;
+				&lt;th&gt;Name&lt;/th&gt;
+				&lt;th&gt;Address&lt;/th&gt;
+				&lt;th&gt;Email&lt;/th&gt;
+				&lt;th&gt;Website&lt;/th&gt;
+				&lt;th&gt;Actions&lt;/th&gt;
+			&lt;/tr&gt;
+		&lt;/thead&gt;
+		&lt;tbody&gt;
+			@foreach (Clinic clinic in Clinics) 
+			{
+				&lt;tr&gt;
+					&lt;td&gt;@clinic.Name&lt;/td&gt;
+					&lt;td&gt;@clinic.Address&lt;/td&gt;
+					&lt;td&gt;@clinic.Email&lt;/td&gt;
+					&lt;td&gt;@clinic.WebsiteUrl&lt;/td&gt;
+					&lt;td&gt;
+						&lt;div class=&quot;d-flex flex-row align-items-center&quot;&gt;
+							&lt;button class=&quot;btn btn-light btn-circle px-2 me-2&quot; title=&quot;Add doctor&quot; @onclick=&quot;(async () =&gt; OnAddDoctorClick(clinic))&quot;&gt;
+								&lt;i class=&quot;oi oi-plus&quot;&gt;&lt;/i&gt;
+							&lt;/button&gt;
+							&lt;button class=&quot;btn btn-light btn-circle px-2 me-2&quot; title=&quot;Edit clinic&quot; @onclick=&quot;(() =&gt; OnEditButtonClick(clinic))&quot;&gt;
+								&lt;i class=&quot;oi oi-pencil&quot;&gt;&lt;/i&gt;
+							&lt;/button&gt;
+							&lt;button class=&quot;btn btn-light btn-circle px-2&quot; tile=&quot;Delete clinic&quot; @onclick=&quot;(async () =&gt; await OnDeleteAsync(clinic))&quot;&gt;
+								&lt;i class=&quot;oi oi-trash&quot;&gt;&lt;/i&gt;
+							&lt;/button&gt;
+						&lt;/div&gt;
+					&lt;/td&gt;
+				&lt;/tr&gt;
+			}
+		&lt;/tbody&gt;
+	&lt;/table&gt;
+}
+
+@if (ShowClinicForm) 
+{
+	&lt;h3 class=&quot;mt-4&quot;&gt;Add/Edit Clinic:&lt;/h3&gt;
+
+	&lt;EditForm Model=&quot;Clinic&quot; OnValidSubmit=&quot;OnValidSubmitAsync&quot;&gt;
+		&lt;DataAnnotationsValidator /&gt;
+		&lt;ValidationSummary /&gt;
+		&lt;div class=&quot;row&quot;&gt;
+			&lt;div class=&quot;form-group col-6 mt-3&quot;&gt;
+				&lt;label&gt;Name&lt;/label&gt;
+				&lt;InputText class=&quot;form-control form-control-lg w-100&quot; @bind-Value=&quot;Clinic.Name&quot; /&gt;
+			&lt;/div&gt;
+			&lt;div class=&quot;form-group col-6 mt-3&quot;&gt;
+				&lt;label&gt;Address&lt;/label&gt;
+				&lt;InputText class=&quot;form-control form-control-lg w-100&quot; @bind-Value=&quot;Clinic.Address&quot; /&gt;
+			&lt;/div&gt;
+			&lt;div class=&quot;form-group col-6 mt-3&quot;&gt;
+				&lt;label&gt;Email&lt;/label&gt;
+				&lt;InputText class=&quot;form-control form-control-lg w-100&quot; @bind-Value=&quot;Clinic.Email&quot; /&gt;
+			&lt;/div&gt;
+			&lt;div class=&quot;form-group col-6 mt-3&quot;&gt;
+				&lt;label&gt;Website URL&lt;/label&gt;
+				&lt;InputText class=&quot;form-control form-control-lg w-100&quot; @bind-Value=&quot;Clinic.WebsiteUrl&quot; /&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+
+		&lt;div class=&quot;d-flex flex-row-reverse mt-3&quot;&gt;
+			&lt;button class=&quot;btn btn-primary btn-lg btn-icon&quot; type=&quot;submit&quot;&gt;
+				&lt;i class=&quot;oi oi-plus&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; Save
+			&lt;/button&gt;
+			&lt;button class=&quot;btn btn-secondary btn-lg btn-icon me-2&quot; @onclick=&quot;OnCancelButtonClick&quot;&gt;
+				&lt;i class=&quot;oi oi-x&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; Cancel
+			&lt;/button&gt;
+		&lt;/div&gt;
+	&lt;/EditForm&gt;
+}
+
+@if (ShowDoctorForm)
+{
+	&lt;h3 class=&quot;mt-4&quot;&gt;Add Doctor for Clinic:&lt;/h3&gt;
+
+	&lt;EditForm Model=&quot;Doctor&quot; OnValidSubmit=&quot;OnDoctorValidSubmitAsync&quot;&gt;
+		&lt;DataAnnotationsValidator /&gt;
+		&lt;ValidationSummary /&gt;
+		&lt;div class=&quot;row&quot;&gt;
+			&lt;div class=&quot;form-group col-6 mt-3&quot;&gt;
+				&lt;label&gt;First Name&lt;/label&gt;
+				&lt;InputText class=&quot;form-control form-control-lg w-100&quot; @bind-Value=&quot;Doctor.FirstName&quot; /&gt;
+			&lt;/div&gt;
+			&lt;div class=&quot;form-group col-6 mt-3&quot;&gt;
+				&lt;label&gt;Last Name&lt;/label&gt;
+				&lt;InputText class=&quot;form-control form-control-lg w-100&quot; @bind-Value=&quot;Doctor.LastName&quot; /&gt;
+			&lt;/div&gt;
+			&lt;div class=&quot;form-group col-6 mt-3&quot;&gt;
+				&lt;label&gt;Email&lt;/label&gt;
+				&lt;InputText class=&quot;form-control form-control-lg w-100&quot; @bind-Value=&quot;Doctor.Email&quot; /&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+
+		&lt;div class=&quot;d-flex flex-row-reverse mt-3&quot;&gt;
+			&lt;button class=&quot;btn btn-primary btn-lg btn-icon&quot; type=&quot;submit&quot;&gt;
+				&lt;i class=&quot;oi oi-plus&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; Save
+			&lt;/button&gt;
+			&lt;button class=&quot;btn btn-secondary btn-lg btn-icon me-2&quot; @onclick=&quot;OnDoctorCancelButtonClick&quot;&gt;
+				&lt;i class=&quot;oi oi-x&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; Cancel
+			&lt;/button&gt;
+		&lt;/div&gt;
+	&lt;/EditForm&gt;
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[16,2,16,43,0],[17,1,17,2,0],[29,14,29,21,0],[29,23,29,36,0],[29,37,29,39,0],[29,40,29,47,0],[30,4,30,5,0],[32,11,32,23,0],[33,11,33,26,0],[34,11,34,24,0],[35,11,35,29,0],[38,122,38,146,0],[41,117,41,142,0],[44,119,44,146,0],[50,4,50,5,0],[53,1,53,2,0],[55,2,55,21,0],[56,1,56,2,0],[90,1,90,2,0],[92,2,92,21,0],[93,1,93,2,0],[123,1,123,2,0]]);
+    </script>
+  </body>
+</html>

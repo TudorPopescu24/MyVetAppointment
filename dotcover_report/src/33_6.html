@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Users\Tudor Popescu\Desktop\I.NET\Project\VetExpert\VetExpert\VetExpert.API\Validators\CreatePetDtoValidator.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using FluentValidation;
+using VetExpert.API.Dto;
+
+namespace VetExpert.API.Validators
+{
+    public class CreatePetDtoValidator : AbstractValidator&lt;CreatePetDto&gt;
+    {
+        public CreatePetDtoValidator()
+        {
+            RuleFor(x =&gt; x.UserId).NotEmpty().NotNull();
+            RuleFor(x =&gt; x.Name).NotEmpty().NotNull();
+            RuleFor(x =&gt; x.TypeOfPet).NotEmpty().NotNull();
+            RuleFor(x =&gt; x.Age).NotNull();
+            RuleFor(x =&gt; x.Weight).NotNull();
+            RuleFor(x =&gt; x.IsVaccinated).NotNull();
+
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[8,9,8,39,0],[9,9,9,10,0],[10,13,10,57,0],[11,13,11,55,0],[12,13,12,60,0],[13,13,13,43,0],[14,13,14,46,0],[15,13,15,52,0],[17,9,17,10,0]]);
+    </script>
+  </body>
+</html>

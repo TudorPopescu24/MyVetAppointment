@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Users\Tudor Popescu\Desktop\I.NET\Project\VetExpert\VetExpert\VetExpert.Application\Handlers\Bills\GetAllBillsQueryHandler.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using AutoMapper;
+using MediatR;
+using VetExpert.Application.Queries.Bills;
+using VetExpert.Application.Response.Bills;
+using VetExpert.Domain;
+using VetExpert.Infrastructure;
+
+namespace VetExpert.Application.Handlers.Bills
+{
+	public class GetAllBillsQueryHandler : IRequestHandler&lt;GetAllBillsQuery, List&lt;BillResponse&gt;&gt;
+	{
+		private readonly IRepository&lt;Bill&gt; _repository;
+		private readonly IMapper _mapper;
+
+		public GetAllBillsQueryHandler(IRepository&lt;Bill&gt; repository, IMapper mapper)
+		{
+			_repository = repository;
+			_mapper = mapper;
+		}
+
+		public async Task&lt;List&lt;BillResponse&gt;&gt; Handle(GetAllBillsQuery request, CancellationToken cancellationToken)
+		{
+			var result = _mapper.Map&lt;List&lt;BillResponse&gt;&gt;(await _repository.GetAll());
+
+			return result;
+		}
+	}
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[15,3,15,79,1],[16,3,16,4,1],[17,4,17,29,1],[18,4,18,21,1],[19,3,19,4,1],[22,3,22,4,1],[23,4,23,77,1],[25,4,25,18,1],[26,3,26,4,1]]);
+    </script>
+  </body>
+</html>

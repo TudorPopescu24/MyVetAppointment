@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Users\Tudor Popescu\Desktop\I.NET\Project\VetExpert\VetExpert\VetExpert.Domain\Clinic.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using FluentValidation;
+using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace VetExpert.Domain
+{
+    public class Clinic
+    {
+        public Guid Id { get; set; } = Guid.NewGuid();
+
+        [Required(ErrorMessage = &quot;Name of the clinic is required.&quot;)]
+        public string Name { get; set; } = string.Empty;
+
+        public string Email { get; set; } = string.Empty;
+
+        public string? WebsiteUrl { get; set; }
+
+        public string? Address { get; set; }
+
+        public virtual ICollection&lt;Doctor&gt; Doctors { get; set; } = new List&lt;Doctor&gt;();
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[9,26,9,30,1],[9,31,9,35,0],[9,40,9,54,1],[12,30,12,34,1],[12,35,12,39,1],[12,44,12,56,1],[14,31,14,35,1],[14,36,14,40,1],[14,45,14,57,1],[16,37,16,41,1],[16,42,16,46,1],[18,34,18,38,1],[18,39,18,43,1],[20,54,20,58,1],[20,59,20,63,0],[20,68,20,86,1]]);
+    </script>
+  </body>
+</html>

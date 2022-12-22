@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Users\Tudor Popescu\Desktop\I.NET\Project\VetExpert\VetExpert\VetExpert.API\Controllers\AdminController.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using AutoMapper;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using VetExpert.API.Dto;
+using VetExpert.Domain;
+using VetExpert.Infrastructure;
+
+namespace VetExpert.API.Controllers
+{
+    [Route(&quot;api/[controller]&quot;)]
+    [ApiController]
+    public class AdminController : ControllerBase
+    {
+        private readonly IRepository&lt;Admin&gt; _adminRepository;
+        private readonly IMapper _mapper;
+
+
+        public AdminController(IRepository&lt;Admin&gt; adminRepository, IMapper mapper)
+        {
+            _adminRepository = adminRepository;
+            _mapper = mapper;
+        }
+
+        [HttpGet]
+        public async Task&lt;IActionResult&gt; Get()
+        {
+            var admins = await _adminRepository.GetAll();
+            return Ok(admins);
+        }
+
+        [HttpPost]
+        public async Task&lt;IActionResult&gt; Create([FromBody] CreateAdminDto adminDto)
+        {
+            var admin = _mapper.Map&lt;Admin&gt;(adminDto);
+
+            await _adminRepository.Add(admin);
+            await _adminRepository.SaveChangesAsync();
+
+            return Created(nameof(Get), admin);
+        }
+
+        [HttpDelete(&quot;{adminId:guid}&quot;)]
+        public async Task&lt;IActionResult&gt; Delete(Guid adminId)
+        {
+            var admin = await _adminRepository.Get(adminId);
+            if (admin == null)
+            {
+                return NotFound();
+            }
+
+            _adminRepository.Delete(admin);
+            await _adminRepository.SaveChangesAsync();
+
+            return Ok();
+        }
+
+        [HttpPut(&quot;{adminId:guid}&quot;)]
+        public async Task&lt;IActionResult&gt; Update(Guid adminId,
+            [FromBody] CreateAdminDto adminDto)
+        {
+            var admin = await _adminRepository.Get(adminId);
+            if (admin == null)
+            {
+                return NotFound();
+            }
+
+            admin.UserName = adminDto.UserName;
+
+            _adminRepository.Update(admin);
+            await _adminRepository.SaveChangesAsync();
+
+            return Ok(admin);
+        }
+    }
+}
+
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[18,9,18,83,1],[19,9,19,10,1],[20,13,20,48,1],[21,13,21,30,1],[22,9,22,10,1],[26,9,26,10,1],[27,13,27,58,1],[28,13,28,31,1],[29,9,29,10,1],[33,9,33,10,1],[34,13,34,54,1],[36,13,36,47,1],[37,13,37,55,1],[39,13,39,48,1],[40,9,40,10,1],[44,9,44,10,0],[45,13,45,61,0],[46,13,46,31,0],[47,13,47,14,0],[48,17,48,35,0],[51,13,51,44,0],[52,13,52,55,0],[54,13,54,25,0],[55,9,55,10,0],[60,9,60,10,0],[61,13,61,61,0],[62,13,62,31,0],[63,13,63,14,0],[64,17,64,35,0],[67,13,67,48,0],[69,13,69,44,0],[70,13,70,55,0],[72,13,72,30,0],[73,9,73,10,0]]);
+    </script>
+  </body>
+</html>

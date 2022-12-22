@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Users\Tudor Popescu\Desktop\I.NET\Project\VetExpert\VetExpert\VetExpert.IntegrationTesting\PromotionsControllerTests.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using FluentAssertions;
+using Newtonsoft.Json;
+using System.Net.Http.Json;
+using VetExpert.API.Dto;
+using Xunit;
+
+namespace VetExpert.IntegrationTesting
+{
+    [Collection(&quot;Database tests&quot;)]
+    public class PromotionsControllerTests :  IDisposable
+    {
+        private const string ApiURL = &quot;/api/Promotions&quot;;
+
+
+        [Fact]
+        public async void When_CreatedPromotion_Then_ShouldReturnPromotionInTheGetRequest()
+        {
+            //CleanDatabases();
+            var http_client = new CustomWebApplicationFactory&lt;Program&gt;().CreateClient();
+            
+            var getPromotionResult = await http_client.GetStringAsync(ApiURL);
+            // Assert
+            
+            var promotions = JsonConvert.DeserializeObject&lt;List&lt;CreatePromotionDto&gt;&gt;(getPromotionResult);
+
+            promotions.Count.Should().Be(1);
+            promotions.Should().HaveCount(1);
+            promotions.Should().NotBeNull();
+            Dispose();
+        }
+        private static CreatePromotionDto CreateSUT()
+        {
+            // Arrange
+            return new CreatePromotionDto
+            {
+                ClinicId= Guid.NewGuid(),
+                Name = &quot;Test-Promotion&quot;,
+                Description = &quot;Test-Description&quot;
+
+            };
+        }
+
+        public void Dispose()
+        {
+            //CleanDatabases();
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[17,9,17,10,1],[19,13,19,89,1],[21,13,21,79,1],[24,13,24,106,1],[26,13,26,45,1],[27,13,27,46,1],[28,13,28,45,1],[29,13,29,23,1],[30,9,30,10,1],[32,9,32,10,0],[34,13,40,15,0],[41,9,41,10,0],[44,9,44,10,1],[46,9,46,10,1]]);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Users\Tudor Popescu\Desktop\I.NET\Project\VetExpert\VetExpert\VetExpert.Application\Commands\Bills\UpdateBillCommand.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using MediatR;
+using VetExpert.Application.Response.Bills;
+
+namespace VetExpert.Application.Commands.Bills
+{
+	public class UpdateBillCommand : IRequest&lt;BillResponse&gt;
+	{
+		public Guid BillId { get; set; }
+
+		public int Value { get; set; } = 0;
+
+		public string Currency { get; set; } = string.Empty;
+
+		public DateTime DateTime { get; set; } = DateTime.Now;
+
+		public Guid UserId { get; set; }
+
+		public Guid ClinicId { get; set; }
+	}
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[8,24,8,28,0],[8,29,8,33,0],[10,22,10,26,0],[10,27,10,31,0],[10,36,10,37,0],[12,28,12,32,0],[12,33,12,37,0],[12,42,12,54,0],[14,30,14,34,0],[14,35,14,39,0],[14,44,14,56,0],[16,24,16,28,0],[16,29,16,33,0],[18,26,18,30,0],[18,31,18,35,0]]);
+    </script>
+  </body>
+</html>

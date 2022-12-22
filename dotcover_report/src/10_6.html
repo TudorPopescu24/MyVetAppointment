@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Users\Tudor Popescu\Desktop\I.NET\Project\VetExpert\VetExpert\VetExpert.API\Controllers\PromotionsController.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using AutoMapper;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+using VetExpert.API.Dto;
+using VetExpert.API.Mapping;
+using VetExpert.Domain;
+using VetExpert.Infrastructure;
+
+namespace VetExpert.API.Controllers
+{
+    [Route(&quot;api/[controller]&quot;)]
+    [ApiController]
+    public class PromotionsController : ControllerBase
+    {
+        private readonly IRepository&lt;Clinic&gt; _clinicRepository;
+        private readonly IRepository&lt;Promotion&gt; _promotionRepository;
+        private readonly IMapper _mapper;
+
+        public PromotionsController(IRepository&lt;Clinic&gt; clinicRepository, IRepository&lt;Promotion&gt; promotioncRepository, IMapper mapper )
+        {
+            _clinicRepository = clinicRepository;
+            _promotionRepository = promotioncRepository;
+            _mapper = mapper;
+        }
+
+        [HttpGet]
+        public async Task&lt;IActionResult&gt; Get()
+        {
+            var promotions = await _promotionRepository.GetAll();
+            return Ok(promotions);
+        }
+
+        [HttpGet(&quot;{promotionId:guid}&quot;)]
+        public async Task&lt;IActionResult&gt; Get(Guid promotionId)
+        {
+            var promotion = await _promotionRepository.Get(promotionId);
+            if (promotion == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(promotion);
+        }
+
+        [HttpPost]
+
+        public async Task&lt;IActionResult&gt; Create([FromBody] CreatePromotionDto promotionDto)
+        {
+            // var clinic = await _clinicRepository.Get(promotionDto.ClinicId);
+
+            var clinic = _mapper.Map&lt;Clinic&gt;(promotionDto);
+
+
+            if (clinic == null)
+            {
+                return NotFound();
+            }
+
+            var promotion = new Promotion
+            {
+                Name = promotionDto.Name,
+                Description = promotionDto.Description
+            };
+
+           await _promotionRepository.Add(promotion);
+           await _promotionRepository.SaveChangesAsync();
+
+            return Created(nameof(Get), promotion);
+        }
+
+
+        [HttpDelete(&quot;{promotionId:guid}&quot;)]
+        public async Task&lt;IActionResult&gt; Delete(Guid promotionId)
+        {
+            var promotion = await _promotionRepository.Get(promotionId);
+            if (promotion == null)
+            {
+                return NotFound();
+            }
+
+            _promotionRepository.Delete(promotion);
+            await _promotionRepository.SaveChangesAsync();
+
+            return Ok();
+        }
+
+        [HttpPut(&quot;{promotionId:guid}&quot;)]
+        public async Task&lt;IActionResult&gt; Update(Guid promotionId,
+            [FromBody] CreatePromotionDto promotionDto)
+        {
+            var promotion = await _promotionRepository.Get(promotionId);
+            if (promotion == null)
+            {
+                return NotFound();
+            }
+
+            promotion.Name = promotionDto.Name;
+            promotion.Description = promotionDto.Description;
+
+            _promotionRepository.Update(promotion);
+            await _promotionRepository.SaveChangesAsync();
+
+            return Ok(promotion);
+        }
+
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[20,9,20,136,1],[21,9,21,10,1],[22,13,22,50,1],[23,13,23,57,1],[24,13,24,30,1],[25,9,25,10,1],[29,9,29,10,1],[30,13,30,66,1],[31,13,31,35,1],[32,9,32,10,1],[36,9,36,10,0],[37,13,37,73,0],[38,13,38,35,0],[39,13,39,14,0],[40,17,40,35,0],[43,13,43,34,0],[44,9,44,10,0],[49,9,49,10,0],[52,13,52,60,0],[55,13,55,32,0],[56,13,56,14,0],[57,17,57,35,0],[60,13,64,15,0],[66,12,66,54,0],[67,12,67,58,0],[69,13,69,52,0],[70,9,70,10,0],[75,9,75,10,0],[76,13,76,73,0],[77,13,77,35,0],[78,13,78,14,0],[79,17,79,35,0],[82,13,82,52,0],[83,13,83,59,0],[85,13,85,25,0],[86,9,86,10,0],[91,9,91,10,0],[92,13,92,73,0],[93,13,93,35,0],[94,13,94,14,0],[95,17,95,35,0],[98,13,98,48,0],[99,13,99,62,0],[101,13,101,52,0],[102,13,102,59,0],[104,13,104,34,0],[105,9,105,10,0]]);
+    </script>
+  </body>
+</html>

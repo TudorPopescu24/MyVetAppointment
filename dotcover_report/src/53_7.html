@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Users\Tudor Popescu\Desktop\I.NET\Project\VetExpert\VetExpert\VetExpert.UI\Services\Implementations\UserService.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using VetExpert.UI.Services.Interfaces;
+using VetExpert.Domain;
+using System.Net.Http.Json;
+using Newtonsoft.Json;
+
+namespace VetExpert.UI.Services.Implementations
+{
+    public class UserService : IUserService
+    {
+        private const string ApiURL = &quot;https://localhost:7231/api/User&quot;;
+        private readonly HttpClient httpClient;
+
+        public UserService(HttpClient httpClient)
+        {
+            this.httpClient = httpClient;
+        }
+
+        public async Task&lt;IEnumerable&lt;User&gt;?&gt; GetAllUsers()
+        {
+            var result = await httpClient.GetStringAsync(ApiURL);
+
+            return JsonConvert.DeserializeObject&lt;IEnumerable&lt;User&gt;&gt;(result);
+        }
+
+        public async Task InsertUser(User user)
+        {
+            await httpClient.PostAsJsonAsync(ApiURL, user);
+        }
+
+        public async Task UpdateUser(User user)
+        {
+            await httpClient.PutAsJsonAsync($&quot;{ApiURL}/{user.Id}&quot;, user);
+        }
+
+        public async Task DeleteUser(Guid userId)
+        {
+            await httpClient.DeleteAsync($&quot;{ApiURL}/{userId}&quot;);
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[13,9,13,50,0],[14,9,14,10,0],[15,13,15,42,0],[16,9,16,10,0],[19,9,19,10,0],[20,13,20,66,0],[22,13,22,77,0],[23,9,23,10,0],[26,9,26,10,0],[27,13,27,60,0],[28,9,28,10,0],[31,9,31,10,0],[32,13,32,74,0],[33,9,33,10,0],[36,9,36,10,0],[37,13,37,64,0],[38,9,38,10,0]]);
+    </script>
+  </body>
+</html>

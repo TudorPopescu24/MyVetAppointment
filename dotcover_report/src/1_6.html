@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Users\Tudor Popescu\Desktop\I.NET\Project\VetExpert\VetExpert\VetExpert.API\Configuration\ConfigureServices.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using FluentValidation;
+using FluentValidation.AspNetCore;
+using MediatR;
+using Microsoft.EntityFrameworkCore;
+using System.Reflection;
+using VetExpert.Domain;
+using VetExpert.Infrastructure;
+
+namespace VetExpert.API.Configuration
+{
+	public static class ConfigureServices
+	{
+		public static IServiceCollection RegisterServices(this IServiceCollection services, IConfiguration configuration)
+		{
+			services.AddAutoMapper(Assembly.GetExecutingAssembly());
+			services.AddMediatR(Assembly.GetExecutingAssembly());
+			services.AddFluentValidationAutoValidation();
+			services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+
+			services.AddCors(options =&gt;
+			{
+				options.AddPolicy(&quot;vetExpertCors&quot;,
+					policy =&gt;
+					{
+						policy.WithOrigins(&quot;https://localhost:7116&quot;,
+											&quot;http://localhost:5116&quot;,
+											&quot;https://localhost:44338&quot;)
+											.AllowAnyHeader()
+											.AllowAnyMethod();
+					});
+			});
+
+			services.AddDbContext&lt;MainDbContext&gt;(options =&gt; options.UseSqlite(configuration.GetConnectionString(&quot;MyVetAppointmentDb&quot;), b =&gt; b.MigrationsAssembly(typeof(MainDbContext).Assembly.FullName)));
+			services.AddScoped(typeof(IRepository&lt;&gt;), typeof(Repository&lt;&gt;));
+
+			return services;
+		}
+	}
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[14,3,14,4,1],[15,4,15,60,1],[16,4,16,57,1],[17,4,17,49,1],[18,4,18,72,1],[20,4,21,4,1],[21,4,21,5,1],[21,5,22,5,1],[22,5,24,6,1],[24,6,24,7,1],[24,7,25,7,1],[25,7,29,30,1],[29,30,30,6,1],[30,6,30,7,1],[30,7,30,9,1],[30,9,31,4,1],[31,4,31,5,1],[31,5,31,7,1],[33,4,33,52,1],[33,52,33,132,0],[33,132,33,193,0],[33,193,33,194,0],[33,194,33,196,1],[34,4,34,68,1],[36,4,36,20,1],[37,3,37,4,1]]);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Users\Tudor Popescu\Desktop\I.NET\Project\VetExpert\VetExpert\VetExpert.UI\Pages\Users\IndexPage.razor.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using Microsoft.AspNetCore.Components;
+using System;
+using VetExpert.Domain;
+using VetExpert.UI.Services.Implementations;
+using VetExpert.UI.Services.Interfaces;
+
+namespace VetExpert.UI.Pages.Users
+{
+    public partial class IndexPageBase : ComponentBase
+    {
+        [Inject]
+        private IUserService UserService { get; set; } = default!;
+
+		[Inject]
+		private IPetService PetService { get; set; } = default!;
+
+		protected List&lt;User&gt;? Users { get; set; } = null;
+
+        protected bool ShowUserForm { get; set; } = false;
+		protected bool ShowPetForm { get; set; } = false;
+
+        protected User User { get; set; } = new User();
+
+		protected Pet Pet { get; set; } = new Pet();
+
+        protected bool IsNewEntity { get; set; } = false;
+
+        protected async override Task OnInitializedAsync()
+        {
+            await ReadUsersAsync();
+		}
+
+        protected void OnAddButtonClick()
+        {
+            User = new User();
+			IsNewEntity = true;
+			ShowUserForm = true;
+		}
+
+		protected void OnAddPetClick(User user)
+		{
+			Pet = new Pet
+			{
+				UserId = user.Id,
+				User = user
+			};
+
+			ShowPetForm = true;
+		}
+
+		protected void OnEditButtonClick(User editUser)
+		{
+			User = new User
+			{
+				Id = editUser.Id,
+				Name = editUser.Name,
+				Email = editUser.Email,
+				PhoneNumber = editUser.PhoneNumber,
+				Address = editUser.Address
+
+			};
+			IsNewEntity = false;
+			ShowUserForm = true;
+		}
+
+		protected void OnCancelButtonClick()
+        {
+			ShowUserForm = false;
+		}
+
+		protected async Task OnValidSubmitAsync()
+        {
+			if (IsNewEntity)
+			{
+				await UserService.InsertUser(User);
+			}
+			else
+			{
+				await UserService.UpdateUser(User);
+			}
+
+			ShowUserForm = false;
+
+			await ReadUsersAsync();
+		}
+
+		protected async Task OnDeleteAsync(User deleteUser)
+		{
+			await UserService.DeleteUser(deleteUser.Id);
+
+			await ReadUsersAsync();
+		}
+
+		protected void OnPetCancelButtonClick()
+		{
+			ShowPetForm = false;
+		}
+
+		protected async Task OnPetValidSubmitAsync()
+		{
+			await PetService.InsertPet(Pet);
+
+			ShowPetForm = false;
+		}
+
+
+		private async Task ReadUsersAsync()
+        {
+            Users = (await UserService.GetAllUsers()).ToList();
+        }
+
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[12,44,12,48,0],[12,49,12,53,0],[12,58,12,66,0],[15,36,15,40,0],[15,41,15,45,0],[15,50,15,58,0],[17,33,17,37,0],[17,38,17,42,0],[17,47,17,51,0],[19,39,19,43,0],[19,44,19,48,0],[19,53,19,58,0],[20,32,20,36,0],[20,37,20,41,0],[20,46,20,51,0],[22,31,22,35,0],[22,36,22,40,0],[22,45,22,55,0],[24,23,24,27,0],[24,28,24,32,0],[24,37,24,46,0],[26,38,26,42,0],[26,43,26,47,0],[26,52,26,57,0],[29,9,29,10,0],[30,13,30,36,0],[31,3,31,4,0],[34,9,34,10,0],[35,13,35,31,0],[36,4,36,23,0],[37,4,37,24,0],[38,3,38,4,0],[41,3,41,4,0],[42,4,46,6,0],[48,4,48,23,0],[49,3,49,4,0],[52,3,52,4,0],[53,4,61,6,0],[62,4,62,24,0],[63,4,63,24,0],[64,3,64,4,0],[67,9,67,10,0],[68,4,68,25,0],[69,3,69,4,0],[72,9,72,10,0],[73,4,73,20,0],[74,4,74,5,0],[75,5,75,40,0],[76,4,76,5,0],[78,4,78,5,0],[79,5,79,40,0],[80,4,80,5,0],[82,4,82,25,0],[84,4,84,27,0],[85,3,85,4,0],[88,3,88,4,0],[89,4,89,48,0],[91,4,91,27,0],[92,3,92,4,0],[95,3,95,4,0],[96,4,96,24,0],[97,3,97,4,0],[100,3,100,4,0],[101,4,101,36,0],[103,4,103,24,0],[104,3,104,4,0],[108,9,108,10,0],[109,13,109,64,0],[110,9,110,10,0]]);
+    </script>
+  </body>
+</html>
