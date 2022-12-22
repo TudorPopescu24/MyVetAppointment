@@ -30,6 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\VetExpert.Application\VetExpert.Application.csproj" />
     <ProjectReference Include="..\VetExpert.Domain\VetExpert.Domain.csproj" />
     <ProjectReference Include="..\VetExpert.Infrastructure\VetExpert.Infrastructure.csproj" />
   </ItemGroup>

@@ -1,5 +1,6 @@
 using System.Text.Json.Serialization;
 using VetExpert.API.Configuration;
+using VetExpert.Application;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,7 @@ builder.Services.AddControllers()
 		x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
 
 builder.Services.RegisterServices(builder.Configuration);
+builder.Services.AddApplicationServices();
 
 var app = builder.Build();
 
