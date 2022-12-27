@@ -94,12 +94,12 @@ namespace VetExpert.API.Controllers
                 return NotFound();
             }
 
-            petDto.Name = petDto.Name;
-            petDto.TypeOfPet = petDto.TypeOfPet;
-            petDto.Age = petDto.Age;
-            petDto.Weight = petDto.Weight;
-            petDto.IsVaccinated = petDto.IsVaccinated;
-            petDto.DateOfVaccine = petDto.DateOfVaccine;
+            pet.Name = petDto.Name;
+            pet.TypeOfPet = petDto.TypeOfPet;
+            pet.Age = petDto.Age;
+            pet.Weight = petDto.Weight;
+            pet.IsVaccinated = petDto.IsVaccinated;
+            pet.DateOfVaccine = petDto.DateOfVaccine;
 
             _petRepository.Update(pet);
             await _petRepository.SaveChangesAsync();
