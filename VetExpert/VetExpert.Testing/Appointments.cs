@@ -21,9 +21,7 @@ namespace VetExpert.Testing
 
             Assert.AreNotEqual(appointment.Id, Guid.Empty);
             Assert.IsNotNull(appointment.DateTime);
-            Assert.AreNotEqual(appointment.PetId, Guid.Empty);
             Assert.IsNotNull(appointment.Pet);
-            Assert.AreNotEqual(appointment.DoctorId, Guid.Empty);
             Assert.IsNotNull(appointment.Doctor);
 
 

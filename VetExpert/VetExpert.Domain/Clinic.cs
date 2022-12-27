@@ -6,7 +6,7 @@ namespace VetExpert.Domain
 {
     public class Clinic
     {
-        public Guid Id { get; set; } = Guid.NewGuid();
+        public Guid Id { get; set; }
 
         [Required(ErrorMessage = "Name of the clinic is required.")]
         public string Name { get; set; } = string.Empty;
@@ -18,5 +18,10 @@ namespace VetExpert.Domain
         public string? Address { get; set; }
 
         public virtual ICollection<Doctor> Doctors { get; set; } = new List<Doctor>();
+
+        public Clinic()
+        {
+            Id = Guid.NewGuid();
+        }
     }
 }

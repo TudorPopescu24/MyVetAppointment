@@ -4,7 +4,7 @@ namespace VetExpert.Domain
 {
     public class Bill
     {
-        public Guid Id { get; set; } = Guid.NewGuid();
+        public Guid Id { get; set; }
 
         public int Value { get; set; } = 0;
 
@@ -22,5 +22,9 @@ namespace VetExpert.Domain
 
         public virtual Clinic Clinic { get; set; } = new Clinic();
 
+        public Bill()
+        {
+	        Id = Guid.NewGuid();
+        }
     }
 }

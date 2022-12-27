@@ -20,30 +20,14 @@ namespace VetExpert.Testing
 
 
             Assert.AreNotEqual(pet.Id, Guid.Empty);
-            Assert.AreNotEqual(pet.UserId, Guid.Empty);
             Assert.IsNotNull(pet.Name);
             Assert.IsNotNull(pet.IsVaccinated);
             Assert.IsNotNull(pet.Age);
-            Assert.IsNotNull(pet.DateOfVaccine);
             Assert.IsNotNull(pet.TypeOfPet);
             Assert.IsNotNull(pet.User);
 
 
 
         }
-
-        [TestMethod]
-
-        public void PetVaccineInfo()
-        {
-            Pet pet = new Pet();
-
-            pet.IsVaccinated = true;
-
-            Assert.IsNotNull(pet.DateOfVaccine);
-
-
-        }
-
     }
 }

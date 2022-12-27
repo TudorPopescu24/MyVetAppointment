@@ -4,7 +4,7 @@ namespace VetExpert.Domain
 {
     public class Doctor
     {
-        public Guid Id { get; set; } = Guid.NewGuid();
+        public Guid Id { get; set; }
 
 		[Required(ErrorMessage = "First Name is required.")]
 		public string FirstName { get; set; } = string.Empty;
@@ -18,5 +18,10 @@ namespace VetExpert.Domain
         public virtual Clinic Clinic { get; set; } = new Clinic();
 
         public virtual ICollection<DoctorSpecialization> DoctorSpecializations { get; set; } = new List<DoctorSpecialization>();
+
+        public Doctor()
+        {
+            Id = Guid.NewGuid();
+        }
     }
 }

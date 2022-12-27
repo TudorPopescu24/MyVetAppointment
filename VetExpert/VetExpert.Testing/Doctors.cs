@@ -19,7 +19,6 @@ namespace VetExpert.Testing
 
 
             Assert.AreNotEqual(doctor.Id, Guid.Empty);
-            Assert.AreNotEqual(doctor.ClinicId, Guid.Empty);
             Assert.IsNotNull(doctor.FirstName);
             Assert.IsNotNull(doctor.LastName);
             Assert.IsNotNull(doctor.Email);

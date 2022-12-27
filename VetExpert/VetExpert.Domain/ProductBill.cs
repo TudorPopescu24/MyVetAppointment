@@ -8,7 +8,7 @@ namespace VetExpert.Domain
 {
     public class ProductBill
     {
-        public Guid Id { get; set; } = Guid.NewGuid();
+        public Guid Id { get; set; }
 
         public int Quantity { get; set; } = 0;
 
@@ -19,5 +19,10 @@ namespace VetExpert.Domain
         public Guid DrugId { get; set; } = Guid.Empty;
 
         public virtual Drug Drug { get; set; } = new Drug();
+
+        public ProductBill()
+        {
+	        Id = Guid.NewGuid();
+        }
     }
 }

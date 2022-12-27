@@ -2,7 +2,7 @@
 {
     public class Drug
     {
-        public Guid Id { get; set; } = Guid.NewGuid();
+        public Guid Id { get; set; }
 
         public string Name { get; set; } = string.Empty;
 
@@ -16,5 +16,9 @@
 
         public virtual ICollection<DrugStock> DrugStocks { get; set; } = new List<DrugStock>();
 
+        public Drug()
+        {
+            Id = Guid.NewGuid();
+        }
     }
 }

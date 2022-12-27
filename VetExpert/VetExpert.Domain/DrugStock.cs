@@ -2,7 +2,7 @@
 {
     public class DrugStock
     {
-        public Guid Id { get; set; } = Guid.NewGuid();
+        public Guid Id { get; set; }
 
         public int Quantity { get; set; } = 0;
 
@@ -11,5 +11,10 @@
         public Guid DrugId { get; set; } = Guid.Empty;
 
         public virtual Drug Drug { get; set; } = new Drug();
+
+        public DrugStock()
+        {
+	        Id = Guid.NewGuid();
+        }
     }
 }

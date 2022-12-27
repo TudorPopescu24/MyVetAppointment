@@ -47,21 +47,7 @@ namespace VetExpert.API.Controllers
 
         public async Task<IActionResult> Create([FromBody] CreatePromotionDto promotionDto)
         {
-            // var clinic = await _clinicRepository.Get(promotionDto.ClinicId);
-
-            var clinic = _mapper.Map<Clinic>(promotionDto);
-
-
-            if (clinic == null)
-            {
-                return NotFound();
-            }
-
-            var promotion = new Promotion
-            {
-                Name = promotionDto.Name,
-                Description = promotionDto.Description
-            };
+            var promotion = _mapper.Map<Promotion>(promotionDto);
 
            await _promotionRepository.Add(promotion);
            await _promotionRepository.SaveChangesAsync();
@@ -90,6 +76,7 @@ namespace VetExpert.API.Controllers
             [FromBody] CreatePromotionDto promotionDto)
         {
             var promotion = await _promotionRepository.Get(promotionId);
+
             if (promotion == null)
             {
                 return NotFound();
@@ -97,6 +84,7 @@ namespace VetExpert.API.Controllers
 
             promotion.Name = promotionDto.Name;
             promotion.Description = promotionDto.Description;
+            promotion.Value = promotionDto.Value;
 
             _promotionRepository.Update(promotion);
             await _promotionRepository.SaveChangesAsync();

@@ -4,7 +4,7 @@ namespace VetExpert.Domain
 {
     public class User
     {
-        public Guid Id { get; set; } = Guid.NewGuid();
+        public Guid Id { get; set; }
 
 		[Required(ErrorMessage = "Name is required.")]
 		public string Name { get; set; } = string.Empty;
@@ -16,5 +16,10 @@ namespace VetExpert.Domain
 		public string? Address { get; set; }
 
 		public virtual ICollection<Pet> Pets { get; set; } = new List<Pet>();
+
+		public User()
+		{
+			Id = Guid.NewGuid();
+		}
 	}
 }
