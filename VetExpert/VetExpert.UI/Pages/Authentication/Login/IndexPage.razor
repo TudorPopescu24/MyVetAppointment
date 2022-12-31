@@ -1,0 +1,26 @@
+﻿@page "/login"
+@inherits IndexPageBase
+
+<h3>Login</h3>
+
+<EditForm Model="User" OnValidSubmit="HandleLogin">
+	<div class="row">
+		<div class="form-group col-6 mt-3">
+			<label>Name</label>
+			<InputText class="form-control form-control-lg w-100" @bind-Value="User.Username"/>
+		</div>
+	</div>
+
+	<div class="row">
+
+		<div class="form-group col-6 mt-3">
+	<label>Password</label>
+	<InputText class="form-control form-control-lg w-100" type="password" @bind-Value="User.Password"/>
+		</div>
+	</div>
+
+
+	<button class="btn btn-primary btn-lg btn-icon mt-3" type="submit">
+		Login
+	</button>
+</EditForm>

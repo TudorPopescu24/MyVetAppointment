@@ -5,6 +5,7 @@ using VetExpert.Domain;
 using System.Net.Http.Json;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Components.Authorization;
 using Newtonsoft.Json;
 
 namespace VetExpert.UI.Services.Implementations

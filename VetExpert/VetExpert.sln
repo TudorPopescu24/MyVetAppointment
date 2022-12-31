@@ -29,7 +29,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VetExpert.IntegrationTestin
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{FA9F1F8B-8227-47BD-86F0-F05CA4B8BFFC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VetExpert.Application", "VetExpert.Application\VetExpert.Application.csproj", "{1600DA5F-DC3A-4404-8626-F0BA36A3EE72}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VetExpert.Application", "VetExpert.Application\VetExpert.Application.csproj", "{1600DA5F-DC3A-4404-8626-F0BA36A3EE72}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
