@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Text.Json;
 using Blazored.LocalStorage;
 using Microsoft.AspNetCore.Components.Authorization;
+using VetExpert.Domain;
 
 namespace VetExpert.UI.Authentication
 {
@@ -16,6 +17,7 @@ namespace VetExpert.UI.Authentication
 			_localStorage = localStorage;
 			_httpClient = httpClient;
 		}
+
 		public override async Task<AuthenticationState> GetAuthenticationStateAsync()
 		{
 			string token = await _localStorage.GetItemAsStringAsync("token");

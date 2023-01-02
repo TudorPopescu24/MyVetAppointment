@@ -1,6 +1,9 @@
-﻿using Blazored.LocalStorage;
+﻿using System.Security.Claims;
+using Blazored.LocalStorage;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
+using Newtonsoft.Json.Linq;
+using VetExpert.Domain;
 using VetExpert.Domain.Dto;
 using VetExpert.UI.Services.Interfaces;
 
@@ -17,15 +20,39 @@ namespace VetExpert.UI.Pages.Authentication.Login
 		[Inject]
 		private IAuthenticationService AuthenticationService { get; set; } = default!;
 
+		[Inject]
+		private NavigationManager NavigationManager { get; set; } = default!;
+
+
 		protected UserLoginDto User = new UserLoginDto();
+
+		protected bool HasError { get; set; } = false;
+
+		protected string ErrorMessage { get; set; } = string.Empty;
 
 		protected async Task HandleLogin()
 		{
-			var token = await AuthenticationService.Login(User);
+			(bool responseSuccess, string responseMessage) = await AuthenticationService.Login(User);
 
-			await LocalStorageService.SetItemAsync("token", token);
+			if (responseSuccess)
+			{
+				HasError = false;
+				ErrorMessage = string.Empty;
 
-			await AuthenticationStateProvider.GetAuthenticationStateAsync();
+				await LocalStorageService.SetItemAsync("token", responseMessage);
+
+				var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+
+				if (authState.User.HasClaim(ClaimTypes.Role, UserRole.Admin))
+				{
+					NavigationManager.NavigateTo("clinics");
+				}
+			}
+			else
+			{
+				HasError = true;
+				ErrorMessage = responseMessage;
+			}
 		}
 	}
 }

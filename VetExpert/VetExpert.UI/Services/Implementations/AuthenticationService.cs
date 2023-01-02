@@ -14,13 +14,13 @@ namespace VetExpert.UI.Services.Implementations
 			this.httpClient = httpClient;
 		}
 
-		public async Task<string> Login(UserLoginDto user)
+		public async Task<(bool, string)> Login(UserLoginDto user)
 		{
 			var result = await httpClient.PostAsJsonAsync(ApiURL, user);
 
 			var token = await result.Content.ReadAsStringAsync();
 
-			return token;
+			return (result.IsSuccessStatusCode, token);
 		}
 	}
 }

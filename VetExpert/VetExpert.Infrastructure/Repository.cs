@@ -41,6 +41,13 @@ namespace VetExpert.Infrastructure
                 .Where(predicate).ToListAsync();
         }
 
+        public async Task<TEntity?> FindEntity(Expression<Func<TEntity, bool>> predicate)
+        {
+			return await context.Set<TEntity>()
+				.AsQueryable()
+				.Where(predicate).FirstOrDefaultAsync();
+		}
+
 		public void Update(TEntity entity)
 		{
 			context.Update(entity);
@@ -55,6 +62,5 @@ namespace VetExpert.Infrastructure
 		{
 			await context.SaveChangesAsync();
 		}
-
 	}
 }

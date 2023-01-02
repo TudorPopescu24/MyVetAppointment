@@ -35,6 +35,8 @@ namespace VetExpert.Infrastructure
 
         public DbSet<Promotion> Promotions { get; set; }
 
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<DoctorSpecialization>()

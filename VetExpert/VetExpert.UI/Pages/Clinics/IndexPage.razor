@@ -1,6 +1,6 @@
 ﻿@page "/clinics"
 @inherits IndexPageBase
-@attribute [Authorize]
+@attribute [Authorize(Roles = UserRole.Admin)]
 
 <PageTitle>Clinics</PageTitle>
 <link href='https://fonts.googleapis.com/css?family=Acme' rel='stylesheet'>
@@ -122,12 +122,3 @@
 		</div>
 	</EditForm>
 }
-
-<AuthorizeView Roles="Iron Man">
-	<Authorized>
-		<span>You are authorized as @context.User.Identity.Name</span>
-	</Authorized>
-	<NotAuthorized>
-		<span>You are not authorized</span>
-	</NotAuthorized>
-</AuthorizeView>

@@ -17,6 +17,10 @@ namespace VetExpert.Domain
 
 		public virtual ICollection<Pet> Pets { get; set; } = new List<Pet>();
 
+		public Guid ApplicationUserId { get; set; } = Guid.Empty;
+
+		public virtual ApplicationUser ApplicationUser { get; set; } = new ApplicationUser();
+
 		public User()
 		{
 			Id = Guid.NewGuid();

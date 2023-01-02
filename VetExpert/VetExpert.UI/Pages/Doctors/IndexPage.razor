@@ -1,5 +1,6 @@
 ﻿@page "/doctors"
 @inherits IndexPageBase
+@attribute [Authorize(Roles = UserRole.Admin)]
 
 <PageTitle>Doctors</PageTitle>
 <link href='https://fonts.googleapis.com/css?family=Acme' rel='stylesheet'>

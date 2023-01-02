@@ -4,6 +4,6 @@ namespace VetExpert.UI.Services.Interfaces
 {
 	public interface IAuthenticationService
 	{
-		Task<string> Login(UserLoginDto user);
+		Task<(bool, string)> Login(UserLoginDto user);
 	}
 }

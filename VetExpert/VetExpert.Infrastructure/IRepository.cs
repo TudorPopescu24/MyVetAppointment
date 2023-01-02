@@ -10,7 +10,8 @@ namespace VetExpert.Infrastructure
 		Task<TEntity?> Get(Guid id);
 		Task<IEnumerable<TEntity>> GetAll();
 		Task<IEnumerable<TEntity>> Find(Expression<Func<TEntity, bool>> predicate);
-        void SaveChanges();
+		Task<TEntity?> FindEntity(Expression<Func<TEntity, bool>> predicate);
+		void SaveChanges();
 		Task SaveChangesAsync();
     }
 }

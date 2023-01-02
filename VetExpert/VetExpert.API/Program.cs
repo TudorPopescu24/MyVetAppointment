@@ -24,6 +24,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseCors("vetExpertCors");
 
+app.UseAuthentication();
+
 app.UseAuthorization();
 
 app.MapControllers();

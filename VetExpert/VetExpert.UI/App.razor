@@ -9,10 +9,9 @@
 		<NotFound>
 			<AuthorizeView>
 				<Authorized>
-					<PageTitle>Not found</PageTitle>
-					<LayoutView Layout="@typeof(MainLayout)">
-						<p role="alert">Sorry, there's nothing at this address.</p>
-					</LayoutView>
+					@{
+						NavigationManager.NavigateTo("clinics");
+					}
 				</Authorized>
 				<NotAuthorized>
 					@{
