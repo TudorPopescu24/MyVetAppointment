@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\raluca nastasa\\Documents\\Facultate III\\DOTNET proj 2\\MyVetAppointment\\VetExpert\\VetExpert.Domain\\VetExpert.Domain.csproj": {}
+    "C:\\Users\\ilinc\\Desktop\\FACULTATE\\An.III.Sem.I\\.NET\\PROIECT BUN A DOUA INCERCARE\\MyVetAppointment\\VetExpert\\VetExpert.Domain\\VetExpert.Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\raluca nastasa\\Documents\\Facultate III\\DOTNET proj 2\\MyVetAppointment\\VetExpert\\VetExpert.Domain\\VetExpert.Domain.csproj": {
+    "C:\\Users\\ilinc\\Desktop\\FACULTATE\\An.III.Sem.I\\.NET\\PROIECT BUN A DOUA INCERCARE\\MyVetAppointment\\VetExpert\\VetExpert.Domain\\VetExpert.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\raluca nastasa\\Documents\\Facultate III\\DOTNET proj 2\\MyVetAppointment\\VetExpert\\VetExpert.Domain\\VetExpert.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\ilinc\\Desktop\\FACULTATE\\An.III.Sem.I\\.NET\\PROIECT BUN A DOUA INCERCARE\\MyVetAppointment\\VetExpert\\VetExpert.Domain\\VetExpert.Domain.csproj",
         "projectName": "VetExpert.Domain",
-        "projectPath": "C:\\Users\\raluca nastasa\\Documents\\Facultate III\\DOTNET proj 2\\MyVetAppointment\\VetExpert\\VetExpert.Domain\\VetExpert.Domain.csproj",
-        "packagesPath": "C:\\Users\\raluca nastasa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\raluca nastasa\\Documents\\Facultate III\\DOTNET proj 2\\MyVetAppointment\\VetExpert\\VetExpert.Domain\\obj\\",
+        "projectPath": "C:\\Users\\ilinc\\Desktop\\FACULTATE\\An.III.Sem.I\\.NET\\PROIECT BUN A DOUA INCERCARE\\MyVetAppointment\\VetExpert\\VetExpert.Domain\\VetExpert.Domain.csproj",
+        "packagesPath": "C:\\Users\\ilinc\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ilinc\\Desktop\\FACULTATE\\An.III.Sem.I\\.NET\\PROIECT BUN A DOUA INCERCARE\\MyVetAppointment\\VetExpert\\VetExpert.Domain\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\raluca nastasa\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\ilinc\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,7 +22,8 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://packagesource": {}
         },
         "frameworks": {
           "net7.0": {
@@ -65,7 +62,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
