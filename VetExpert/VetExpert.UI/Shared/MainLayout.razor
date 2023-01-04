@@ -4,30 +4,30 @@
 @inject AuthenticationStateProvider AuthenticationStateProvider
 
 <div class="page">
-	<AuthorizeView>
-		<div class="sidebar">
-			<NavMenu/>
-		</div>
-	</AuthorizeView>
+    <AuthorizeView>
+        <div class="sidebar">
+            <NavMenu />
+        </div>
+    </AuthorizeView>
 
-	<main>
-		<AuthorizeView>
-			<div class="top-row px-4">
-				<button @onclick="Logout" class="btn btn-danger btn-lg btn-icon">Log out</button>
-			</div>
-		</AuthorizeView>
+    <main>
+        <AuthorizeView>
+            <div class="top-row px-4">
+                <button @onclick="Logout" class="oi oi-account-logout"></button>
+            </div>
+        </AuthorizeView>
 
-		<article class="content px-4">
-			@Body
-		</article>
-	</main>
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
 </div>
 
 @code
 {
-	async Task Logout()
-	{
-		await LocalStorageService.RemoveItemAsync("token");
-		NavigationManager.NavigateTo("login", true);
-	}
+    async Task Logout()
+    {
+        await LocalStorageService.RemoveItemAsync("token");
+        NavigationManager.NavigateTo("login", true);
+    }
 }
