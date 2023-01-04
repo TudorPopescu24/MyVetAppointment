@@ -1,4 +1,4 @@
-﻿@page "/clinics"
+﻿@page "/admin/clinics"
 @inherits IndexPageBase
 @attribute [Authorize(Roles = UserRole.Admin)]
 
@@ -13,8 +13,11 @@
     </button>
 </div>
 
-
-@if (Clinics != null && Clinics.Count > 0)
+@if (Clinics == null)
+{
+	<Loader></Loader>
+}
+else
 {
     <div class="box-2">
         <table class="table">

@@ -19,6 +19,10 @@ namespace VetExpert.Domain
 
         public virtual ICollection<Doctor> Doctors { get; set; } = new List<Doctor>();
 
+        public Guid ApplicationUserId { get; set; } = Guid.Empty;
+
+        public virtual ApplicationUser ApplicationUser { get; set; } = new ApplicationUser();
+
         public Clinic()
         {
             Id = Guid.NewGuid();

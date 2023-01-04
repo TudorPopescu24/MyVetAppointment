@@ -45,7 +45,15 @@ namespace VetExpert.UI.Pages.Authentication.Login
 
 				if (authState.User.HasClaim(ClaimTypes.Role, UserRole.Admin))
 				{
-					NavigationManager.NavigateTo("clinics");
+					NavigationManager.NavigateTo("admin/clinics");
+				}
+				else if (authState.User.HasClaim(ClaimTypes.Role, UserRole.User))
+				{
+					NavigationManager.NavigateTo("user/pets");
+				}
+				else if (authState.User.HasClaim(ClaimTypes.Role, UserRole.Clinic))
+				{
+					NavigationManager.NavigateTo("clinic/doctors");
 				}
 			}
 			else

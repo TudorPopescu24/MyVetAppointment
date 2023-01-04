@@ -9,5 +9,7 @@
         public string? WebsiteUrl { get; set; }
 
         public string? Address { get; set; }
+
+        public Guid ApplicationUserId { get; set; }
     }
 }

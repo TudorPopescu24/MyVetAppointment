@@ -1,10 +1,13 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Components;
 using System;
 using VetExpert.Domain;
+using VetExpert.Domain.Dto;
+using VetExpert.UI.Dto;
 using VetExpert.UI.Services.Implementations;
 using VetExpert.UI.Services.Interfaces;
 
-namespace VetExpert.UI.Pages.Users
+namespace VetExpert.UI.Pages.Admin.Users
 {
     public partial class IndexPageBase : ComponentBase
     {
@@ -14,12 +17,18 @@ namespace VetExpert.UI.Pages.Users
 		[Inject]
 		private IPetService PetService { get; set; } = default!;
 
-		protected List<User>? Users { get; set; } = null;
+        [Inject]
+        private IAuthenticationService AuthenticationService { get; set; } = default!;
+
+		[Inject]
+        private IMapper Mapper { get; set; } = default!;
+
+        protected List<User>? Users { get; set; } = null;
 
         protected bool ShowUserForm { get; set; } = false;
 		protected bool ShowPetForm { get; set; } = false;
 
-        protected User User { get; set; } = new User();
+        protected CreateUserDto User { get; set; } = new CreateUserDto();
 
 		protected Pet Pet { get; set; } = new Pet();
 
@@ -32,7 +41,7 @@ namespace VetExpert.UI.Pages.Users
 
         protected void OnAddButtonClick()
         {
-            User = new User();
+            User = new CreateUserDto();
 			IsNewEntity = true;
 			ShowUserForm = true;
 		}
@@ -50,16 +59,16 @@ namespace VetExpert.UI.Pages.Users
 
 		protected void OnEditButtonClick(User editUser)
 		{
-			User = new User
+			User = new CreateUserDto
 			{
 				Id = editUser.Id,
 				Name = editUser.Name,
 				Email = editUser.Email,
 				PhoneNumber = editUser.PhoneNumber,
 				Address = editUser.Address
-
 			};
-			IsNewEntity = false;
+            User.UserName = User.Password = User.ConfirmPassword = "Password"; //no validation error
+            IsNewEntity = false;
 			ShowUserForm = true;
 		}
 
@@ -71,12 +80,18 @@ namespace VetExpert.UI.Pages.Users
 		protected async Task OnValidSubmitAsync()
         {
 			if (IsNewEntity)
-			{
-				await UserService.InsertUser(User);
+            {
+                var appUserId = await CreateApplicationUser();
+
+                var user = Mapper.Map<User>(User);
+				user.ApplicationUserId = appUserId;
+
+                await UserService.InsertUser(user);
 			}
 			else
 			{
-				await UserService.UpdateUser(User);
+                var user = Mapper.Map<User>(User);
+                await UserService.UpdateUser(user);
 			}
 
 			ShowUserForm = false;
@@ -109,5 +124,17 @@ namespace VetExpert.UI.Pages.Users
             Users = (await UserService.GetAllUsers()).ToList();
         }
 
+        private async Task<Guid> CreateApplicationUser()
+        {
+            UserLoginDto userLoginDto = new UserLoginDto
+            {
+                Username = User.UserName,
+                Password = User.Password
+            };
+
+            ApplicationUser appUser = await AuthenticationService.RegisterClient(userLoginDto);
+
+            return appUser.Id;
+        }
     }
 }

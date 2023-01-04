@@ -1,0 +1,64 @@
+﻿<div class="loader-container">
+	<span class="loader"></span>
+</div>
+
+<style>
+	.loader-container {
+		position: relative;
+		width: 100%;
+		text-align: center;
+		padding: 2rem 0;
+	}
+
+	.loader {
+		width: 10px;
+		height: 10px;
+		border-radius: 50%;
+		display: block;
+		margin: 15px auto;
+		position: relative;
+		color: #023A1F;
+		left: -100px;
+		box-sizing: border-box;
+		animation: shadowRolling 2s linear infinite;
+	}
+
+	@@keyframes shadowRolling {
+	0% {
+		box-shadow: 0px 0 rgba(2, 58, 31, 0), 0px 0 rgba(2, 58, 31, 0), 0px 0 rgba(2, 58, 31, 0), 0px 0 rgba(2, 58, 31, 0);
+	}
+
+	12% {
+		box-shadow: 100px 0 #023A1F, 0px 0 rgba(2, 58, 31, 0), 0px 0 rgba(2, 58, 31, 0), 0px 0 rgba(2, 58, 31, 0);
+	}
+
+	25% {
+		box-shadow: 110px 0 #023A1F, 100px 0 #023A1F, 0px 0 rgba(2, 58, 31, 0), 0px 0 rgba(2, 58, 31, 0);
+	}
+
+	36% {
+		box-shadow: 120px 0 #023A1F, 110px 0 #023A1F, 100px 0 #023A1F, 0px 0 rgba(2, 58, 31, 0);
+	}
+
+	50% {
+		box-shadow: 130px 0 #023A1F, 120px 0 #023A1F, 110px 0 #023A1F, 100px 0 #023A1F;
+	}
+
+	62% {
+		box-shadow: 200px 0 rgba(2, 58, 31, 0), 130px 0 #023A1F, 120px 0 #023A1F, 110px 0 #023A1F;
+	}
+
+	75% {
+		box-shadow: 200px 0 rgba(2, 58, 31, 0), 200px 0 rgba(2, 58, 31, 0), 130px 0 #023A1F, 120px 0 #023A1F;
+	}
+
+	87% {
+		box-shadow: 200px 0 rgba(2, 58, 31, 0), 200px 0 rgba(2, 58, 31, 0), 200px 0 rgba(2, 58, 31, 0), 130px 0 #023A1F;
+	}
+
+	100% {
+		box-shadow: 200px 0 rgba(2, 58, 31, 0), 200px 0 rgba(2, 58, 31, 0), 200px 0 rgba(2, 58, 31, 0), 200px 0 rgba(2, 58, 31, 0);
+	}
+	}
+
+</style>

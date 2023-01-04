@@ -291,19 +291,18 @@ main[b-lpapoe1k8e] {
     margin-left: auto;
     margin-right: auto;
     background-color: #CCD7D8;
-    box-shadow: 20px;
     width: auto;
     height: auto;
     text-align: center;
-    padding: 50px;
+    padding: 25px;
     border-radius: 7px;
     position: fixed;
-    top: 25%;
+    top: 10%;
     bottom: 0;
     left: 0;
     right: 0;
     width: 50%;
-    height: 500px;
+    height: 600px;
     z-index: 100;
 }
 
@@ -566,4 +565,8 @@ img, svg {
     font-family: 'Rancho';
     font-weight: bold;
     color:white;
+}
+
+tr td:last-child {
+    width: 200px;
 }

@@ -12,13 +12,15 @@ namespace VetExpert.API.Controllers
     public class UserController : ControllerBase
     {
         private readonly IRepository<User> _userRepository;
+        private readonly IRepository<ApplicationUser> _appUserRepository;
         private readonly IMapper _mapper;
 
 
-        public UserController(IRepository<User> userRepository, IMapper mapper)
+        public UserController(IRepository<User> userRepository,  IMapper mapper, IRepository<ApplicationUser> appUserRepository)
         {
             _userRepository = userRepository;
-            _mapper= mapper;
+            _mapper = mapper;
+            _appUserRepository = appUserRepository;
         }
 
         [HttpGet]
@@ -32,6 +34,9 @@ namespace VetExpert.API.Controllers
         public async Task<IActionResult> Create([FromBody] CreateUserDto userDto)
         {
             var user = _mapper.Map<User>(userDto);
+            var appUser = await _appUserRepository.Get(userDto.ApplicationUserId);
+            user.ApplicationUser = appUser;
+            user.ApplicationUserId = appUser.Id;
             await _userRepository.Add(user);
             await _userRepository.SaveChangesAsync();
 
