@@ -34,13 +34,13 @@ namespace VetExpert.UI.Services.Implementations
             return JsonConvert.DeserializeObject<ApplicationUser>(responseMessage);
         }
 
-        public async Task<(bool, string)> RegisterClinic(UserLoginDto user)
+        public async Task<ApplicationUser> RegisterClinic(UserLoginDto user)
         {
             var result = await httpClient.PostAsJsonAsync($"{ApiURL}/clinic/register", user);
 
-            var token = await result.Content.ReadAsStringAsync();
+            var responseMessage = await result.Content.ReadAsStringAsync();
 
-            return (result.IsSuccessStatusCode, token);
+            return JsonConvert.DeserializeObject<ApplicationUser>(responseMessage);
         }
     }
 }

@@ -34,9 +34,17 @@ namespace VetExpert.API.Controllers
         public async Task<IActionResult> Create([FromBody] CreateUserDto userDto)
         {
             var user = _mapper.Map<User>(userDto);
+
             var appUser = await _appUserRepository.Get(userDto.ApplicationUserId);
+
+            if (appUser == null)
+            {
+                return NotFound();
+            }
+
             user.ApplicationUser = appUser;
             user.ApplicationUserId = appUser.Id;
+
             await _userRepository.Add(user);
             await _userRepository.SaveChangesAsync();
 

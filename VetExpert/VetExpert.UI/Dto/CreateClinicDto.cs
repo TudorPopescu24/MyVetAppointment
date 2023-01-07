@@ -2,7 +2,7 @@
 
 namespace VetExpert.UI.Dto
 {
-    public class CreateUserDto
+    public class CreateClinicDto
     {
         public Guid Id { get; set; }
 
@@ -13,7 +13,7 @@ namespace VetExpert.UI.Dto
         [EmailAddress(ErrorMessage = "Email is not valid.")]
         public string Email { get; set; } = string.Empty;
 
-		public string? PhoneNumber { get; set; }
+        public string? WebsiteUrl { get; set; }
 
         public string? Address { get; set; }
 

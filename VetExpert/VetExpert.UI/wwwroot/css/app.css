@@ -291,8 +291,6 @@ main[b-lpapoe1k8e] {
     margin-left: auto;
     margin-right: auto;
     background-color: #CCD7D8;
-    width: auto;
-    height: auto;
     text-align: center;
     padding: 25px;
     border-radius: 7px;
@@ -302,7 +300,7 @@ main[b-lpapoe1k8e] {
     left: 0;
     right: 0;
     width: 50%;
-    height: 600px;
+    height: fit-content;
     z-index: 100;
 }
 

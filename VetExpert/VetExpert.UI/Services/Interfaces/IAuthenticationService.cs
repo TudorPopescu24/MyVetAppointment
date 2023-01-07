@@ -7,6 +7,6 @@ namespace VetExpert.UI.Services.Interfaces
 	{
 		Task<(bool, string)> Login(UserLoginDto user);
         Task<ApplicationUser> RegisterClient(UserLoginDto user);
-        Task<(bool, string)> RegisterClinic(UserLoginDto user);
+        Task<ApplicationUser> RegisterClinic(UserLoginDto user);
     }
 }
