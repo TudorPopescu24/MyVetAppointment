@@ -1,9 +1,12 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Components;
 using System;
 using VetExpert.Domain;
+using VetExpert.Domain.Dto;
+using VetExpert.UI.Dto;
 using VetExpert.UI.Services.Interfaces;
 
-namespace VetExpert.UI.Pages.Clinics
+namespace VetExpert.UI.Pages.Admin.Clinics
 {
     public partial class IndexPageBase : ComponentBase
     {
@@ -13,13 +16,19 @@ namespace VetExpert.UI.Pages.Clinics
 		[Inject]
 		private IDoctorService DoctorService { get; set; } = default!;
 
-		protected List<Clinic>? Clinics { get; set; } = null;
+        [Inject]
+        private IAuthenticationService AuthenticationService { get; set; } = default!;
+
+        [Inject]
+        private IMapper Mapper { get; set; } = default!;
+
+        protected List<Clinic>? Clinics { get; set; } = null;
 
         protected bool ShowClinicForm { get; set; } = false;
 
 		protected bool ShowDoctorForm { get; set; } = false;
 
-        protected Clinic Clinic { get; set; } = new Clinic();
+        protected CreateClinicDto Clinic { get; set; } = new CreateClinicDto();
 
 		protected Doctor Doctor { get; set; } = new Doctor();
 
@@ -32,7 +41,7 @@ namespace VetExpert.UI.Pages.Clinics
 
         protected void OnAddButtonClick()
         {
-            Clinic = new Clinic();
+            Clinic = new CreateClinicDto();
 			IsNewEntity = true;
 			ShowClinicForm = true;
 		}
@@ -50,7 +59,7 @@ namespace VetExpert.UI.Pages.Clinics
 
 		protected void OnEditButtonClick(Clinic editClinic)
 		{
-			Clinic = new Clinic
+			Clinic = new CreateClinicDto
 			{
 				Id = editClinic.Id,
 				Name = editClinic.Name,
@@ -58,7 +67,8 @@ namespace VetExpert.UI.Pages.Clinics
 				Email = editClinic.Email,
 				WebsiteUrl = editClinic.WebsiteUrl
 			};
-			IsNewEntity = false;
+            Clinic.UserName = Clinic.Password = Clinic.ConfirmPassword = "Password"; //no validation error
+            IsNewEntity = false;
 			ShowClinicForm = true;
 		}
 
@@ -76,11 +86,18 @@ namespace VetExpert.UI.Pages.Clinics
         {
 			if (IsNewEntity)
 			{
-				await ClinicService.InsertClinic(Clinic);
+                var appUserId = await CreateApplicationUser();
+
+                var clinic = Mapper.Map<Clinic>(Clinic);
+                clinic.ApplicationUserId = appUserId;
+
+                await ClinicService.InsertClinic(clinic);
 			}
 			else
 			{
-				await ClinicService.UpdateClinic(Clinic);
+                var clinic = Mapper.Map<Clinic>(Clinic);
+
+                await ClinicService.UpdateClinic(clinic);
 			}
 
 			ShowClinicForm = false;
@@ -102,10 +119,22 @@ namespace VetExpert.UI.Pages.Clinics
 			ShowDoctorForm = false;
 		}
 
-
 		private async Task ReadClinicsAsync()
         {
 			Clinics = (await ClinicService.GetAllClinics()).ToList();
 		}
-	}
+
+        private async Task<Guid> CreateApplicationUser()
+        {
+            UserLoginDto userLoginDto = new UserLoginDto
+            {
+                Username = Clinic.UserName,
+                Password = Clinic.Password
+            };
+
+            ApplicationUser appUser = await AuthenticationService.RegisterClinic(userLoginDto);
+
+            return appUser.Id;
+        }
+    }
 }

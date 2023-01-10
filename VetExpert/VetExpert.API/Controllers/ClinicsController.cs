@@ -14,13 +14,16 @@ namespace VetExpert.API.Controllers
     public class ClinicsController : ControllerBase
     {
         private readonly IRepository<Clinic> _clinicRepository;
+        private readonly IRepository<ApplicationUser> _appUserRepository;
         private readonly IMapper _mapper;
 
 		public ClinicsController(IRepository<Clinic> clinicRepository,
-            IMapper mapper)
+            IMapper mapper,
+            IRepository<ApplicationUser> appUserRepository)
         {
             _clinicRepository = clinicRepository;
             _mapper = mapper;
+            _appUserRepository = appUserRepository;
         }
 
         [HttpGet]
@@ -49,7 +52,17 @@ namespace VetExpert.API.Controllers
         {
             var clinic = _mapper.Map<Clinic>(clinicDto);
 
-			await _clinicRepository.Add(clinic);
+            var appUser = await _appUserRepository.Get(clinicDto.ApplicationUserId);
+
+            if (appUser == null)
+            {
+                return NotFound();
+            }
+
+            clinic.ApplicationUser = appUser;
+            clinic.ApplicationUserId = appUser.Id;
+
+            await _clinicRepository.Add(clinic);
 			await _clinicRepository.SaveChangesAsync();
 
             return Created(nameof(Get), clinic);

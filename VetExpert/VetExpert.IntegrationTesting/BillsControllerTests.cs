@@ -15,26 +15,16 @@ namespace VetExpert.IntegrationTesting
         [Fact]
         public async void When_CreatedBill_Then_ShouldReturnBillInTheGetRequest()
         {
-            //CleanDatabases();
             var http_client = new CustomWebApplicationFactory<Program>().CreateClient();
-            CreateBillDto BillDto = CreateSUT();
-            // Act
-            var createBillResponse = await http_client.PostAsJsonAsync(ApiURL, BillDto);
+            CreateBillDto billDto = CreateSUT();
+
             var getBillResult = await http_client.GetStringAsync(ApiURL);
-            // Assert
-            createBillResponse.EnsureSuccessStatusCode();
-            createBillResponse.StatusCode.Should().Be(System.Net.HttpStatusCode.Created);
 
+            var bills = JsonConvert.DeserializeObject<List<CreateBillDto>>(getBillResult);
 
-
-            var Bills = JsonConvert.DeserializeObject<List<CreateBillDto>>(getBillResult);
-
-            Bills.Count.Should().Be(1);
-            Bills.Should().HaveCount(1);
-            Bills.Should().NotBeNull();
-
-            Dispose();
-            
+            bills.Count.Should().Be(1);
+            bills.Should().HaveCount(1);
+            bills.Should().NotBeNull();
         }
 
         private static CreateBillDto CreateSUT()

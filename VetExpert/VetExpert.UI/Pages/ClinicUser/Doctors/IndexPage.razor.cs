@@ -3,7 +3,7 @@ using System;
 using VetExpert.Domain;
 using VetExpert.UI.Services.Interfaces;
 
-namespace VetExpert.UI.Pages.Doctors
+namespace VetExpert.UI.Pages.ClinicUser.Doctors
 {
     public partial class IndexPageBase : ComponentBase
     {

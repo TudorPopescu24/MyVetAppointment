@@ -51,13 +51,13 @@ namespace VetExpert.API.Controllers
 				return BadRequest("No token key was provided.");
 			}
 
-			string token = AuthenticationExtension.CreateToken(user, tokenKey);
+			string token = AuthenticationExtension.CreateToken(user, user.Role, tokenKey);
 
 			return Ok(token);
 		}
 
-		[HttpPost("register")]
-		public async Task<ActionResult<ApplicationUser>> Register(UserLoginDto request)
+		[HttpPost("client/register")]
+		public async Task<ActionResult<ApplicationUser>> RegisterClient(UserLoginDto request)
 		{
 			var existingUser = await _appUserRepository.FindEntity(x => x.UserName == request.Username);
 
@@ -80,6 +80,31 @@ namespace VetExpert.API.Controllers
 
 			return Ok(user);
 		}
-		
-	}
+
+        [HttpPost("clinic/register")]
+        public async Task<ActionResult<ApplicationUser>> RegisterClinic(UserLoginDto request)
+        {
+            var existingUser = await _appUserRepository.FindEntity(x => x.UserName == request.Username);
+
+            if (existingUser != null)
+            {
+                return BadRequest("Username is already being used.");
+            }
+
+            var user = new ApplicationUser();
+
+            AuthenticationExtension.CreatePasswordHash(request.Password, out byte[] passwordHash, out byte[] passwordSalt);
+
+            user.UserName = request.Username;
+            user.Role = UserRole.Clinic;
+            user.PasswordHash = passwordHash;
+            user.PasswordSalt = passwordSalt;
+
+            await _appUserRepository.Add(user);
+            await _appUserRepository.SaveChangesAsync();
+
+            return Ok(user);
+        }
+
+    }
 }

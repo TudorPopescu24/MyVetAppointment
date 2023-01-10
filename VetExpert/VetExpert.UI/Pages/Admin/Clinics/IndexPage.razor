@@ -1,0 +1,158 @@
+﻿@page "/admin/clinics"
+@inherits IndexPageBase
+@attribute [Authorize(Roles = UserRole.Admin)]
+
+<PageTitle>Clinics</PageTitle>
+<link href='https://fonts.googleapis.com/css?family=Acme' rel='stylesheet'>
+<div class="d-flex flex-row">
+    <div class="d-flex flex-column">
+        <h1>Clinics</h1>
+    </div>
+    <button class="btn btn-primary btn-lg btn-icon ms-auto" style="height: 3rem" @onclick="OnAddButtonClick">
+        <i class="oi oi-plus" aria-hidden="true"></i> Add clinic
+    </button>
+</div>
+
+@if (Clinics == null)
+{
+	<Loader></Loader>
+}
+else
+{
+    <div class="box-2">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Email</th>
+                    <th>Website</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Clinic clinic in Clinics)
+                {
+                    <tr>
+                        <td>@clinic.Name</td>
+                        <td>@clinic.Address</td>
+                        <td>@clinic.Email</td>
+                        <td>@clinic.WebsiteUrl</td>
+                        <td>
+                            <div class="d-flex flex-row align-items-center">
+                                <button class="btn btn-light btn-circle px-2 me-2" title="Add doctor" @onclick="(async () => OnAddDoctorClick(clinic))">
+                                    <i class="oi oi-plus"></i>
+                                </button>
+                                <button class="btn btn-light btn-circle px-2 me-2" title="Edit clinic" @onclick="(() => OnEditButtonClick(clinic))">
+                                    <i class="oi oi-pencil"></i>
+                                </button>
+                                <button class="btn btn-light btn-circle px-2" tile="Delete clinic" @onclick="(async () => await OnDeleteAsync(clinic))">
+                                    <i class="oi oi-trash"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+    @if (ShowClinicForm)
+    {
+        <div class="overlay">
+            <div class="box">
+                <h3 class="mt-4">Add/Edit Clinic:</h3>
+
+                <EditForm Model="Clinic" OnValidSubmit="OnValidSubmitAsync">
+                    <DataAnnotationsValidator />
+                    <ValidationSummary />
+                    <div class="row">
+                        <div class="form-group col-6 mt-3">
+                            <label>Name</label>
+                            <InputText class="form-control form-control-lg w-100" @bind-Value="Clinic.Name" />
+                        </div>
+                        <div class="form-group col-6 mt-3">
+                            <label>Address</label>
+                            <InputText class="form-control form-control-lg w-100" @bind-Value="Clinic.Address" />
+                        </div>
+                        <div class="form-group col-6 mt-3">
+                            <label>Email</label>
+                            <InputText class="form-control form-control-lg w-100" @bind-Value="Clinic.Email" />
+                        </div>
+	                    <div class="form-group col-6 mt-3">
+		                    <label>Website URL</label>
+		                    <InputText class="form-control form-control-lg w-100" @bind-Value="Clinic.WebsiteUrl" />
+	                    </div>
+	                    @if (IsNewEntity)
+	                    {
+		                    <div class="form-group col-4 mt-3">
+			                    <label>Username</label>
+                                <InputText class="form-control form-control-lg w-100" @bind-Value="Clinic.UserName" />
+
+		                    </div>
+		                    <div class="form-group col-4 mt-3">
+			                    <label>Password</label>
+                                <input type="password" class="form-control form-control-lg w-100" @bind="Clinic.Password" />
+		                    </div>
+		                    <div class="form-group col-4 mt-3">
+			                    <label>Confirm password</label>
+                                <input type="password" class="form-control form-control-lg w-100" @bind="Clinic.ConfirmPassword" />
+
+		                    </div>
+	                    }
+                    </div>
+
+                    <div class="d-flex flex-row-reverse mt-3">
+                        <button class="btn btn-primary btn-lg btn-icon" type="submit">
+                            <i class="oi oi-plus" aria-hidden="true"></i> Save
+                        </button>
+                        <button class="btn btn-secondary btn-lg btn-icon me-2" @onclick="OnCancelButtonClick">
+                            <i class="oi oi-x" aria-hidden="true"></i> Cancel
+                        </button>
+                    </div>
+                </EditForm>
+            </div>
+        </div>
+
+    }
+
+
+    @if (ShowDoctorForm)
+    {
+        <div class="overlay">
+            <div class="box">
+                <h3 class="mt-4">Add Doctor for Clinic:</h3>
+
+                <EditForm Model="Doctor" OnValidSubmit="OnDoctorValidSubmitAsync">
+                    <DataAnnotationsValidator />
+                    <ValidationSummary />
+                    <div class="row">
+                        <div class="form-group col-6 mt-3">
+                            <label>First Name</label>
+                            <InputText class="form-control form-control-lg w-100" @bind-Value="Doctor.FirstName" />
+                        </div>
+                        <div class="form-group col-6 mt-3">
+                            <label>Last Name</label>
+                            <InputText class="form-control form-control-lg w-100" @bind-Value="Doctor.LastName" />
+                        </div>
+                        <div class="form-group col-6 mt-3">
+                            <label>Email</label>
+                            <InputText class="form-control form-control-lg w-100" @bind-Value="Doctor.Email" />
+                        </div>
+                    </div>
+
+                    <div class="d-flex flex-row-reverse mt-3">
+                        <button class="btn btn-primary btn-lg btn-icon" type="submit">
+                            <i class="oi oi-plus" aria-hidden="true"></i> Save
+                        </button>
+                        <button class="btn btn-secondary btn-lg btn-icon me-2" @onclick="OnDoctorCancelButtonClick">
+                            <i class="oi oi-x" aria-hidden="true"></i> Cancel
+                        </button>
+                    </div>
+                </EditForm>
+            </div>
+        </div>
+
+    }
+}

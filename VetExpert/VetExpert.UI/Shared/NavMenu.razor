@@ -1,27 +1,54 @@
-﻿<link href='https://fonts.googleapis.com/css?family=Rancho' rel='stylesheet'>
+﻿@using VetExpert.Domain
+<link href='https://fonts.googleapis.com/css?family=Rancho' rel='stylesheet'>
 <div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="">VetExpert</a>
+        <a class="navbar-brand" href=""> <img src="grup.png"></a>
         <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
             <span class="navbar-toggler-icon"></span>
         </button>
     </div>
 </div>
 
-<div class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu">
-    <nav class="flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="clinics" Match="NavLinkMatch.All">
-                <i class="oi oi-calendar" aria-hidden="true"></i> Clinics
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="users">
-                <i class="oi oi-people" aria-hidden="true"></i> Users
-            </NavLink>
-        </div>
-    </nav>
-</div>
+<AuthorizeView Roles="@UserRole.Admin">
+	<div class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu">
+		<nav class="flex-column mt-4">
+			<div class="nav-item px-3">
+				<NavLink class="nav-link" href="admin/clinics" Match="NavLinkMatch.All">
+					<i class="oi oi-calendar" aria-hidden="true"></i> Clinics
+				</NavLink>
+			</div>
+			<div class="nav-item px-3">
+				<NavLink class="nav-link" href="admin/users">
+					<i class="oi oi-people" aria-hidden="true"></i> Clients
+				</NavLink>
+			</div>
+		</nav>
+	</div>
+</AuthorizeView>
+
+<AuthorizeView Roles="@UserRole.User">
+	<div class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu">
+		<nav class="flex-column mt-4">
+			<div class="nav-item px-3">
+				<NavLink class="nav-link" href="client/pets" Match="NavLinkMatch.All">
+					<i class="oi oi-calendar" aria-hidden="true"></i> Pets
+				</NavLink>
+			</div>
+		</nav>
+	</div>
+</AuthorizeView>
+
+<AuthorizeView Roles="@UserRole.Clinic">
+	<div class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu">
+		<nav class="flex-column mt-4">
+			<div class="nav-item px-3">
+				<NavLink class="nav-link" href="clinic/doctors" Match="NavLinkMatch.All">
+					<i class="oi oi-calendar" aria-hidden="true"></i> Doctors
+				</NavLink>
+			</div>
+		</nav>
+	</div>
+</AuthorizeView>
 
 @code {
     private bool collapseNavMenu = true;

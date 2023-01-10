@@ -1,4 +1,5 @@
-﻿@inject NavigationManager NavigationManager;
+﻿@using VetExpert.Domain
+@inject NavigationManager NavigationManager;
 
 <CascadingAuthenticationState>
 	<Router AppAssembly="@typeof(App).Assembly">
@@ -7,12 +8,28 @@
 			<FocusOnNavigate RouteData="@routeData" Selector="h1"/>
 		</Found>
 		<NotFound>
-			<AuthorizeView>
+			<AuthorizeView Roles="@UserRole.Admin">
 				<Authorized>
 					@{
-						NavigationManager.NavigateTo("clinics");
+						NavigationManager.NavigateTo("admin/clinics");
 					}
 				</Authorized>
+			</AuthorizeView>
+			<AuthorizeView Roles="@UserRole.User">
+				<Authorized>
+					@{
+						NavigationManager.NavigateTo("client/pets");
+					}
+				</Authorized>
+			</AuthorizeView>
+			<AuthorizeView Roles="@UserRole.Clinic">
+				<Authorized>
+					@{
+						NavigationManager.NavigateTo("clinic/doctors");
+					}
+				</Authorized>
+			</AuthorizeView>
+			<AuthorizeView>
 				<NotAuthorized>
 					@{
 						NavigationManager.NavigateTo("login");

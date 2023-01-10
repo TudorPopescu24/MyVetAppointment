@@ -1,0 +1,170 @@
+﻿@page "/admin/users"
+@inherits IndexPageBase
+@attribute [Authorize(Roles = UserRole.Admin)]
+
+<PageTitle>Users</PageTitle>
+<link href='https://fonts.googleapis.com/css?family=Acme' rel='stylesheet'>
+<div class="d-flex flex-row">
+    <div class="d-flex flex-column">
+        <h1>Clients</h1>
+    </div>
+    <button class="btn btn-primary btn-lg btn-icon ms-auto" style="height: 3rem" @onclick="OnAddButtonClick">
+        <i class="oi oi-plus" aria-hidden="true"></i> Add user
+    </button>
+</div>
+
+
+@if (Users == null)
+{
+    <Loader></Loader>
+}
+else
+{
+    <div class="box-2">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (User user in Users)
+                {
+                    <tr>
+                        <td>@user.Name</td>
+                        <td>@user.Address</td>
+                        <td>@user.Email</td>
+                        <td>@user.PhoneNumber</td>
+                        <td>
+                            <div class="d-flex flex-row align-items-center">
+                                <button class="btn btn-light btn-circle px-2 me-2" title="Add pet" @onclick="(async () => OnAddPetClick(user))">
+                                    <i class="oi oi-plus"></i>
+                                </button>
+                                <button class="btn btn-light btn-circle px-2 me-2" @onclick="(() => OnEditButtonClick(user))">
+                                    <i class="oi oi-pencil"></i>
+                                </button>
+                                <button class="btn btn-light btn-circle px-2" @onclick="(async () => await OnDeleteAsync(user))">
+                                    <i class="oi oi-trash"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
+@if (ShowUserForm)
+{
+    <div class="overlay">
+        <div class="box">
+            <h3>Add/Edit Client:</h3>
+
+            <EditForm Model="User" OnValidSubmit="OnValidSubmitAsync">
+                <DataAnnotationsValidator />
+                <ValidationSummary />
+                <div class="row">
+                    <div class="form-group col-6 mt-3">
+                        <label>Name</label>
+                        <InputText class="form-control form-control-lg w-100" @bind-Value="User.Name" />
+                    </div>
+		            <div class="form-group col-6 mt-3">
+			            <label>Email</label>
+			            <InputText class="form-control form-control-lg w-100" @bind-Value="User.Email" />
+		            </div>
+	                <div class="form-group col-6 mt-3">
+		                <label>Address</label>
+		                <InputText class="form-control form-control-lg w-100" @bind-Value="User.Address" />
+	                </div>
+	                <div class="form-group col-6 mt-3">
+		                <label>Phone Number</label>
+		                <InputText class="form-control form-control-lg w-100" @bind-Value="User.PhoneNumber" />
+	                </div>
+	                @if (IsNewEntity)
+	                {
+                        <div class="form-group col-4 mt-3">
+			                <label>Username</label>
+			                <InputText class="form-control form-control-lg w-100" @bind-Value="User.UserName" />
+
+		                </div>
+                        <div class="form-group col-4 mt-3">
+			                <label>Password</label>
+			                <input type="password" class="form-control form-control-lg w-100" @bind="User.Password" />
+		                </div>
+                        <div class="form-group col-4 mt-3">
+			                <label>Confirm password</label>
+                            <input type="password" class="form-control form-control-lg w-100" @bind="User.ConfirmPassword" />
+
+		                </div>
+	                }
+                </div>
+
+                <div class="d-flex flex-row-reverse mt-3">
+                    <button class="btn btn-primary btn-lg btn-icon" type="submit">
+                        <i class="oi oi-plus" aria-hidden="true"></i> Save
+                    </button>
+                    <button class="btn btn-secondary btn-lg btn-icon me-2" @onclick="OnCancelButtonClick">
+                        <i class="oi oi-x" aria-hidden="true"></i> Cancel
+                    </button>
+                </div>
+            </EditForm>
+        </div>
+    </div>
+}
+
+
+@if (ShowPetForm)
+{
+    <div class="overlay">
+        <div class="box">
+            <h3 class="mt-4">Add Pet for Client:</h3>
+
+            <EditForm Model="Pet" OnValidSubmit="OnPetValidSubmitAsync">
+                <DataAnnotationsValidator />
+                <ValidationSummary />
+                <div class="row">
+                    <div class="form-group col-6 mt-3">
+                        <label>Name</label>
+                        <InputText class="form-control form-control-lg w-100" @bind-Value="Pet.Name" />
+                    </div>
+                    <div class="form-group col-6 mt-3">
+                        <label>Type of Pet</label>
+                        <InputText class="form-control form-control-lg w-100" @bind-Value="Pet.TypeOfPet" />
+                    </div>
+                    <div class="form-group col-6 mt-3">
+                        <label>Weight</label>
+                        <InputNumber class="form-control form-control-lg w-100" @bind-Value="Pet.Weight" />
+                    </div>
+                    <div class="form-group col-6 mt-3">
+                        <label>Age</label>
+                        <InputNumber class="form-control form-control-lg w-100" @bind-Value="Pet.Age" />
+                    </div>
+                    <div class="form-group col-6 mt-3">
+                        <label>Vaccinated</label>
+                        <label class="container">
+                            <InputCheckbox class="checkmark" @bind-Value="Pet.IsVaccinated" />
+                        </label>
+                    </div>
+                    <div class="form-group col-6 mt-3">
+                        <label>Date of Vaccine</label>
+                        <InputDate class="form-control form-control-lg w-100" @bind-Value="Pet.DateOfVaccine" />
+                    </div>
+                </div>
+
+                <div class="d-flex flex-row-reverse mt-3">
+                    <button class="btn btn-primary btn-lg btn-icon" type="submit">
+                        <i class="oi oi-plus" aria-hidden="true"></i> Save
+                    </button>
+                    <button class="btn btn-secondary btn-lg btn-icon me-2" @onclick="OnPetCancelButtonClick">
+                        <i class="oi oi-x" aria-hidden="true"></i> Cancel
+                    </button>
+                </div>
+            </EditForm>
+        </div>
+    </div>
+}

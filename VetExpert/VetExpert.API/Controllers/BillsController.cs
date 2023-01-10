@@ -1,10 +1,8 @@
-﻿using AutoMapper;
-using MediatR;
-using Microsoft.AspNetCore.Mvc;
+﻿using VetExpert.Domain;
 using VetExpert.API.Dto;
-using VetExpert.Application.Commands.Bills;
-using VetExpert.Application.Queries.Bills;
-using VetExpert.Application.Response.Bills;
+using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
+using VetExpert.Infrastructure;
 
 namespace VetExpert.API.Controllers
 {
@@ -12,51 +10,78 @@ namespace VetExpert.API.Controllers
     [ApiController]
     public class BillsController : ControllerBase
     {
+        private readonly IRepository<Bill> _billRepository;
+        private readonly IRepository<Drug> _drugRepository;
         private readonly IMapper _mapper;
-        private readonly IMediator _mediator;
 
-        public BillsController(
-            IMapper mapper,
-            IMediator mediator)
+
+        public BillsController(IRepository<Bill> billRepository, IRepository<Drug> drugRepository, IMapper mapper)
         {
+            _billRepository = billRepository;
+            _drugRepository = drugRepository;
             _mapper = mapper;
-            _mediator = mediator;
         }
 
 
         [HttpGet]
-        public async Task<List<BillResponse>> Get()
+        public async Task<IActionResult> Get()
         {
-            return await _mediator.Send(new GetAllBillsQuery());
+            var bills = await _billRepository.GetAll();
+
+            return Ok(bills);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Create([FromBody] CreateBillCommand billCommand)
-        {
-            var result = await _mediator.Send(billCommand);
 
-            return Ok(result);
+
+        //Cred ca trebuie din prima id-urile la clinica si user si primul drug 
+
+        [HttpPost]
+        public async Task<IActionResult> Create([FromBody] CreateBillDto billDto)
+        {
+            var bill = _mapper.Map<Bill>(billDto);
+
+            await _billRepository.Add(bill);
+            await _billRepository.SaveChangesAsync();
+
+            return Created(nameof(Get), bill);
+        }
+
+
+
+        [HttpPut]
+        public async Task<IActionResult> AddDrugs(Guid billId,
+            Guid drugId)
+        {
+            var bill = await _billRepository.Get(billId);
+            if (bill == null)
+            {
+                return NotFound();
+            }
+
+            var drug = await _drugRepository.Get(drugId);
+            if (drug == null)
+            {
+                return NotFound();
+            }
+
+
+            return NoContent();
         }
 
 
         [HttpDelete("{billId:guid}")]
         public async Task<IActionResult> Delete(Guid billId)
         {
-            await _mediator.Send(new DeleteBillCommand { BillId = billId });
+            var bill = await _billRepository.Get(billId);
+            if (bill == null)
+            {
+                return NotFound();
+            }
+
+            _billRepository.Delete(bill);
+            await _billRepository.SaveChangesAsync();
 
             return Ok();
-        }
-
-        [HttpPut("{billId:guid}")]
-        public async Task<IActionResult> Update(Guid billId,
-            [FromBody] CreateBillDto billDto)
-        {
-            var billCommand = _mapper.Map<UpdateBillCommand>(billDto);
-            billCommand.BillId = billId;
-
-            var result = await _mediator.Send(billCommand);
-
-            return Ok(result);
         }
     }
 }

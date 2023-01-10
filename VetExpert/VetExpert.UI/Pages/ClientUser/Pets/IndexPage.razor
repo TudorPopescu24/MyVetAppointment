@@ -1,6 +1,6 @@
-﻿@page "/pets"
+﻿@page "/client/pets"
 @inherits IndexPageBase
-@attribute [Authorize(Roles = UserRole.Admin)]
+@attribute [Authorize(Roles = UserRole.User)]
 
 <PageTitle>Pets</PageTitle>
 <link href='https://fonts.googleapis.com/css?family=Acme' rel='stylesheet'>

@@ -27,12 +27,12 @@ namespace VetExpert.API.Helpers
 			}
 		}
 
-		public static string CreateToken(ApplicationUser userCredentials, string tokenKey)
+		public static string CreateToken(ApplicationUser userCredentials, string userRole, string tokenKey)
 		{
 			List<Claim> claims = new List<Claim>
 			{
 				new Claim(ClaimTypes.Name, userCredentials.UserName),
-				new Claim(ClaimTypes.Role, "Admin")
+				new Claim(ClaimTypes.Role, userRole)
 			};
 
 			var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(tokenKey));
