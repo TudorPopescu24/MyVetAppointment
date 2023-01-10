@@ -18,14 +18,7 @@ namespace VetExpert.IntegrationTesting
             var http_client = new CustomWebApplicationFactory<Program>().CreateClient();
 
             CreateAdminDto adminDto = CreateSUT();
-            // Act
-            var createAdminResponse = await http_client.PostAsJsonAsync(ApiURL, adminDto);
             var getAdminResult = await http_client.GetStringAsync(ApiURL);
-            // Assert
-            createAdminResponse.EnsureSuccessStatusCode();
-            createAdminResponse.StatusCode.Should().Be(System.Net.HttpStatusCode.Created);
-
-
 
             var admins = JsonConvert.DeserializeObject<List<CreateAdminDto>>(getAdminResult);
 

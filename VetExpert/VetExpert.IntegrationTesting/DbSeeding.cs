@@ -10,25 +10,27 @@ namespace VetExpert.IntegrationTesting
 {
     public class DbSeeding
     {
-        public static List<Clinic> clinics= new List<Clinic>();
-        public static List<User> users = new List<User>();
-        public static List<Pet> pets = new List<Pet>();
+        public static List<Admin> admins = new List<Admin>();        
         public static List<Appointment> appointments = new List<Appointment>();
+        public static List<Bill> bills = new List<Bill>();  
+        public static List<Clinic> clinics= new List<Clinic>();
         public static List<Doctor> doctors = new List<Doctor>();
+        public static List<Drug> drugs = new List<Drug>();
+        public static List<DrugStock> drugStocks = new List<DrugStock>();     
+        public static List<Pet> pets = new List<Pet>();
         public static List<Specialization> specializations = new List<Specialization>();
+        public static List<User> users = new List<User>();
 
         public static void InitializeDbForTests(MainDbContext db)
         {
-            
-            //usrs
+            //users
             users = GetSeedingUsers();
             db.Users.AddRange(users);
-            //clinics
 
             //pets
             pets = GetSeedingPets();
             db.Pets.AddRange(pets);
-            
+
             //clinics
             clinics=GetSeedingClinics();
             db.Clinics.AddRange(clinics);
@@ -37,7 +39,6 @@ namespace VetExpert.IntegrationTesting
             doctors = GetSeedingDoctors();
             db.Doctors.AddRange(doctors);
 
-            //
             //appointments
             appointments = GetSeedingAppointments();
             db.Appointments.AddRange(appointments);
@@ -45,12 +46,27 @@ namespace VetExpert.IntegrationTesting
             //promotions
             db.Promotions.AddRange(GetSeedingPromotions());
 
+            //specializations
             specializations = GetSeedingSpecialization();
             db.Specializations.AddRange(specializations);
-            db.SaveChanges();
 
-        
-            
+            //admins
+            admins = GetSeedingAdmins();
+            db.Admins.AddRange(admins);
+
+             //drugs
+            drugs = GetSeedingDrugs();
+            db.Drugs.AddRange(drugs);
+
+            //bills
+            bills = GetSeedingBills();
+            db.Bills.AddRange(bills);
+
+            //drugStocks
+            drugStocks = GetSeedingDrugStocks();
+            db.DrugStocks.AddRange(drugStocks);
+
+            db.SaveChanges();
         }
 
         public static void ReinitializeDbForTests(MainDbContext db)
@@ -64,8 +80,69 @@ namespace VetExpert.IntegrationTesting
             db.Clinics.RemoveRange(db.Clinics);
             db.Appointments.RemoveRange(db.Appointments);
             db.Doctors.RemoveRange(db.Doctors);
+            db.Admins.RemoveRange(db.Admins);
+            db.Bills.RemoveRange(db.Bills);
 
             InitializeDbForTests(db);
+        }
+
+        public static List<Admin> GetSeedingAdmins()
+        {
+            return new List<Admin>()
+            {
+                new Admin
+                {
+                    UserName = "admin1"
+                }
+
+            };
+        }
+
+        public static List<Drug> GetSeedingDrugs()
+        {
+            return new List<Drug>()
+            {
+                new Drug
+                {
+                    Name = "Vetomune Twist Off",
+                    Manufacturer = "VetExpert",
+                    Weight = 120,
+                    Prospect = "VetoMune 120mg este un produs care sprijina imbunatatirea imunitatii non-specifice la caini si pisici",
+                    Price = 130
+                }
+
+            };
+        }
+
+
+        public static List<DrugStock> GetSeedingDrugStocks()
+        {
+            return new List<DrugStock>()
+            {
+                new DrugStock
+                {
+                    Quantity = 12,
+                    ExpirationDate = new DateTime(2023, 1, 23),
+                    DrugId = drugs[0].Id,
+                    Drug = drugs[0]
+                }
+
+            };
+        }
+
+        public static List<Bill> GetSeedingBills()
+        {
+            return new List<Bill>()
+            {
+                new Bill
+                {
+                   Drugs = drugs,
+                   UserId = users[0].Id,
+                   ClinicId = clinics[0].Id,
+                   Clinic = clinics[0]
+                }
+
+            };
         }
 
         public static List<Promotion> GetSeedingPromotions()
