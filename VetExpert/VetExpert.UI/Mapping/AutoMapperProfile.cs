@@ -13,6 +13,9 @@ namespace VetExpert.UI.Mapping
 
             CreateMap<CreateClinicDto, Clinic>();
             CreateMap<Clinic, CreateClinicDto>();
-        }
+
+			CreateMap<CreateDoctorDto, Doctor>();
+			CreateMap<Doctor, CreateDoctorDto>();
+		}
     }
 }

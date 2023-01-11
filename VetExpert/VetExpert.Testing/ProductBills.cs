@@ -18,7 +18,9 @@ namespace VetExpert.Testing
 
 
             Assert.AreNotEqual(productBill.Id, Guid.Empty);
-            Assert.IsNotNull(productBill.Quantity);
+            Assert.AreEqual(productBill.BillId, Guid.Empty);
+            Assert.AreEqual(productBill.DrugId, Guid.Empty);
+            Assert.AreEqual(productBill.Quantity, 0);
             Assert.IsNotNull(productBill.Bill);
             Assert.IsNotNull(productBill.Drug);
 
