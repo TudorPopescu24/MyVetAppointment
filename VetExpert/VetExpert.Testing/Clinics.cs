@@ -23,7 +23,6 @@ namespace VetExpert.Testing
             Assert.IsNotNull(clinic.Name);
             Assert.IsNotNull(clinic.Email);
             Assert.IsNotNull(clinic.Doctors);
-            Assert.IsNotNull(clinic.Email);
 
 
         }
