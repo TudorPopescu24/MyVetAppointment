@@ -40,6 +40,7 @@ namespace VetExpert.UI.Pages.ClientUser.Pets
 		{
 			Pet = new Pet
 			{
+				TypeOfPet = nameof(PetType.Dog),
 				UserId = CurrentUserId
 			};
 			IsNewEntity = true;

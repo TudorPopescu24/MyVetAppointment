@@ -22,9 +22,11 @@ namespace VetExpert.UI.Services.Implementations
 			return JsonConvert.DeserializeObject<IEnumerable<Appointment>>(result);
 		}
 
-		public async Task InsertAppointment(Appointment appointment)
+		public async Task<bool> InsertAppointment(Appointment appointment)
 		{
-			await httpClient.PostAsJsonAsync(ApiURL, appointment);
+			var result = await httpClient.PostAsJsonAsync(ApiURL, appointment);
+
+			return result.IsSuccessStatusCode;
 		}
 
 		public async Task UpdateAppointment(Appointment appointment)

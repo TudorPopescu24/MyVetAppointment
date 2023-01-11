@@ -111,7 +111,7 @@ namespace VetExpert.API.Controllers
         }
 
         [HttpPost("{doctorId:guid}/specializations/{specializationId:guid}")]
-        public async Task<IActionResult> RegisterSpecialization(Guid doctorId, Guid specialiationId)
+        public async Task<IActionResult> RegisterSpecialization(Guid doctorId, Guid specializationId)
         {
             var doctor = await _doctorRepository.Get(doctorId);
 
@@ -120,7 +120,7 @@ namespace VetExpert.API.Controllers
                 return NotFound();
             }
 
-            var specialization = await _specializationRepository.Get(specialiationId);
+            var specialization = await _specializationRepository.Get(specializationId);
 
             if (specialization == null)
             {
@@ -129,7 +129,9 @@ namespace VetExpert.API.Controllers
 
             DoctorSpecialization doctorSpecialization = new DoctorSpecialization
             {
-                DoctorId = doctor.Id,
+	            Doctor = doctor,
+	            DoctorId = doctor.Id,
+                Specialization = specialization,
                 SpecializationId = specialization.Id
             };
 

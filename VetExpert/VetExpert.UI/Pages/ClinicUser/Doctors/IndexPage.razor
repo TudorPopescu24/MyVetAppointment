@@ -39,10 +39,10 @@ else
 						<td>@doctor.Email</td>
 						<td>
 							<div class="d-flex flex-row align-items-center">
-								<button class="btn btn-light btn-circle px-2 me-2" title="Edit doctor" @onclick="(() => OnEditButtonClick(doctor))">
+								<button class="btn btn-primary btn-circle px-2 me-2" title="Edit doctor" @onclick="(() => OnEditButtonClick(doctor))">
 									<i class="bi bi-pencil"></i>
 								</button>
-								<button class="btn btn-light btn-circle px-2" tile="Delete doctor" @onclick="(async () => await OnDeleteAsync(doctor))">
+								<button class="btn btn-primary btn-circle px-2" tile="Delete doctor" @onclick="(async () => await OnDeleteAsync(doctor))">
 									<i class="bi bi-trash"></i>
 								</button>
 							</div>

@@ -40,10 +40,10 @@ else
                         <td>@clinic.WebsiteUrl</td>
                         <td>
                             <div class="d-flex flex-row align-items-center">
-                                <button class="btn btn-light btn-circle px-2 me-2" title="Edit clinic" @onclick="(() => OnEditButtonClick(clinic))">
+                                <button class="btn btn-primary btn-circle px-2 me-2" title="Edit clinic" @onclick="(() => OnEditButtonClick(clinic))">
                                     <i class="bi bi-pencil"></i>
                                 </button>
-                                <button class="btn btn-light btn-circle px-2" tile="Delete clinic" @onclick="(async () => await OnDeleteAsync(clinic))">
+                                <button class="btn btn-primary btn-circle px-2" tile="Delete clinic" @onclick="(async () => await OnDeleteAsync(clinic))">
                                     <i class="bi bi-trash"></i>
                                 </button>
                             </div>

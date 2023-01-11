@@ -12,9 +12,11 @@ namespace VetExpert.Domain
 		[Required(ErrorMessage = "Type of pet is required.")]
 		public string TypeOfPet { get; set; } = string.Empty;
 
-        public int Age { get; set; } = 0;
+		[Required(ErrorMessage = "Age is required.")]
+		public int Age { get; set; } = 0;
 
-        public int Weight { get; set; } = 0;
+		[Required(ErrorMessage = "Weight is required.")]
+		public int Weight { get; set; } = 0;
 
         public bool IsVaccinated { get; set; } = false;
 	

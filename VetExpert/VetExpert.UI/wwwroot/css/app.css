@@ -568,3 +568,23 @@ img, svg {
 tr td:last-child {
     width: 200px;
 }
+
+td {
+    vertical-align: middle;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.alert.alert-primary {
+    background-color: #71AB8F;
+    border-color: #71AB8F;
+    color: #009090;
+}
+
+.alert.alert-danger {
+    background-color: #F5B8A3;
+    border-color: #F5B8A3;
+    color: #F10000;
+}
