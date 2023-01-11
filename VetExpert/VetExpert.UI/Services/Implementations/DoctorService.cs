@@ -27,7 +27,7 @@ namespace VetExpert.UI.Services.Implementations
 
 
 
-		public async Task<IEnumerable<Doctor>> GetAllDoctors()
+		public async Task<IEnumerable<Doctor>?> GetAllDoctors()
 		{
 			var result = await httpClient.GetStringAsync(ApiURL);
 

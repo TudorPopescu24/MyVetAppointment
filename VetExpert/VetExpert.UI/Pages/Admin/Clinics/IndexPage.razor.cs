@@ -13,9 +13,6 @@ namespace VetExpert.UI.Pages.Admin.Clinics
         [Inject]
         private IClinicService ClinicService { get; set; } = default!;
 
-		[Inject]
-		private IDoctorService DoctorService { get; set; } = default!;
-
         [Inject]
         private IAuthenticationService AuthenticationService { get; set; } = default!;
 
@@ -26,11 +23,7 @@ namespace VetExpert.UI.Pages.Admin.Clinics
 
         protected bool ShowClinicForm { get; set; } = false;
 
-		protected bool ShowDoctorForm { get; set; } = false;
-
         protected CreateClinicDto Clinic { get; set; } = new CreateClinicDto();
-
-		protected Doctor Doctor { get; set; } = new Doctor();
 
 		protected bool IsNewEntity { get; set; } = false;
 
@@ -44,17 +37,6 @@ namespace VetExpert.UI.Pages.Admin.Clinics
             Clinic = new CreateClinicDto();
 			IsNewEntity = true;
 			ShowClinicForm = true;
-		}
-
-		protected void OnAddDoctorClick(Clinic clinic)
-		{
-			Doctor = new Doctor
-			{
-				ClinicId = clinic.Id,
-				Clinic = clinic
-			};
-
-			ShowDoctorForm = true;
 		}
 
 		protected void OnEditButtonClick(Clinic editClinic)
@@ -75,11 +57,6 @@ namespace VetExpert.UI.Pages.Admin.Clinics
 		protected void OnCancelButtonClick()
         {
 			ShowClinicForm = false;
-		}
-
-		protected void OnDoctorCancelButtonClick()
-		{
-			ShowDoctorForm = false;
 		}
 
 		protected async Task OnValidSubmitAsync()
@@ -110,13 +87,6 @@ namespace VetExpert.UI.Pages.Admin.Clinics
 			await ClinicService.DeleteClinic(deleteClinic.Id);
 
 			await ReadClinicsAsync();
-		}
-
-		protected async Task OnDoctorValidSubmitAsync()
-		{
-			await DoctorService.InsertDoctor(Doctor);
-
-			ShowDoctorForm = false;
 		}
 
 		private async Task ReadClinicsAsync()
