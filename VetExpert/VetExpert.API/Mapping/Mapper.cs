@@ -41,9 +41,8 @@ namespace VetExpert.API.Mapping
             CreateMap<User, CreateUserDto>();
             CreateMap<CreateUserDto, User>();
 
-
-
-
-        }
+            CreateMap<Pet, CreatePetDto>();
+            CreateMap<CreatePetDto, Pet>();
+		}
     }
 }

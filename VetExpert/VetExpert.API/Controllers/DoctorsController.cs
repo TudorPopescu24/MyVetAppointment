@@ -64,6 +64,9 @@ namespace VetExpert.API.Controllers
 
             var doctor = _mapper.Map<Doctor>(doctorDto);
 
+            doctor.Clinic = clinic;
+            doctor.ClinicId = clinic.Id;
+
             await _doctorRepository.Add(doctor);
             await _doctorRepository.SaveChangesAsync();
 

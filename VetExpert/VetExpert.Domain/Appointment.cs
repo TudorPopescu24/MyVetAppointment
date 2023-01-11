@@ -6,6 +6,8 @@ namespace VetExpert.Domain
 
 		public DateTime DateTime { get; set; } = DateTime.Now;
 
+		public bool IsConfirmed { get; set; } = false;
+
 		public Guid PetId { get; set; } = Guid.Empty;
 
 		public virtual Pet Pet { get; set; } = new Pet();

@@ -49,6 +49,9 @@ namespace VetExpert.Infrastructure
                 .HasOne(x => x.Specialization)
                 .WithMany(x => x.DoctorSpecializations)
                 .HasForeignKey(x => x.SpecializationId);
+
+            modelBuilder.Entity<Appointment>().Navigation(x => x.Doctor).AutoInclude();
+            modelBuilder.Entity<Appointment>().Navigation(x => x.Pet).AutoInclude();
         }
     }
 }

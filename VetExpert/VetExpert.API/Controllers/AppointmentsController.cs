@@ -38,25 +38,32 @@ namespace VetExpert.API.Controllers
 
 
 
-        [HttpPost("{appointmentId:guid}")]
+        [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateAppointmentDto appointmentDto)
         {
 
             var pet = await _petRepository.Get(appointmentDto.PetId);
+
             if (pet == null)
             {
                 return NotFound();
             }
-            var doctor = _doctorRepository.Get(appointmentDto.DoctorId);
+
+            var doctor = await _doctorRepository.Get(appointmentDto.DoctorId);
+
             if (doctor == null)
             {
                 return NotFound();
             }
 
-
             Appointment appointment = _mapper.Map<Appointment>(appointmentDto);
 
-            await _appointmentRepository.Add(appointment);
+            appointment.Pet = pet;
+            appointment.PetId = pet.Id;
+            appointment.Doctor = doctor;
+            appointment.DoctorId = doctor.Id;
+
+			await _appointmentRepository.Add(appointment);
             await _appointmentRepository.SaveChangesAsync();
 
             return Created(nameof(Get), appointment);

@@ -53,14 +53,15 @@ namespace VetExpert.API.Controllers
         {
             var user = await _userRepository.Get(petDto.UserId);
 
-
-
             if (user == null)
             {
                 return NotFound();
             }
 
             var pet = _mapper.Map<Pet>(petDto);
+
+            pet.User = user;
+            pet.UserId = user.Id;
 
             await _petRepository.Add(pet);
             await _petRepository.SaveChangesAsync();
