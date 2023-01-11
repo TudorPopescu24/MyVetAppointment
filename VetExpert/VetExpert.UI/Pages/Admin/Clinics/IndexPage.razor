@@ -3,12 +3,12 @@
 @attribute [Authorize(Roles = UserRole.Admin)]
 
 <PageTitle>Clinics</PageTitle>
-<link href='https://fonts.googleapis.com/css?family=Acme' rel='stylesheet'>
+
 <div class="d-flex flex-row">
     <div class="d-flex flex-column">
         <h1>Clinics</h1>
     </div>
-    <button class="btn btn-primary btn-lg btn-icon ms-auto" style="height: 3rem" @onclick="OnAddButtonClick">
+    <button class="btn btn-primary btn-lg ms-auto" style="height: 3rem" @onclick="OnAddButtonClick">
         <i class="oi oi-plus" aria-hidden="true"></i> Add clinic
     </button>
 </div>
@@ -41,10 +41,10 @@ else
                         <td>
                             <div class="d-flex flex-row align-items-center">
                                 <button class="btn btn-light btn-circle px-2 me-2" title="Edit clinic" @onclick="(() => OnEditButtonClick(clinic))">
-                                    <i class="oi oi-pencil"></i>
+                                    <i class="bi bi-pencil"></i>
                                 </button>
                                 <button class="btn btn-light btn-circle px-2" tile="Delete clinic" @onclick="(async () => await OnDeleteAsync(clinic))">
-                                    <i class="oi oi-trash"></i>
+                                    <i class="bi bi-trash"></i>
                                 </button>
                             </div>
                         </td>

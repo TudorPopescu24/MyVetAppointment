@@ -22,7 +22,16 @@ namespace VetExpert.UI.Services.Implementations
             return JsonConvert.DeserializeObject<IEnumerable<User>>(result);
         }
 
-        public async Task InsertUser(User user)
+        public async Task<User> GetByAppUserId(Guid appUserId)
+        {
+	        var apiUrl = $"{ApiURL}/applicationUser/{appUserId}";
+
+			var result = await httpClient.GetStringAsync(apiUrl);
+
+			return JsonConvert.DeserializeObject<User?>(result);
+		}
+
+		public async Task InsertUser(User user)
         {
             await httpClient.PostAsJsonAsync(ApiURL, user);
         }
@@ -36,5 +45,5 @@ namespace VetExpert.UI.Services.Implementations
         {
             await httpClient.DeleteAsync($"{ApiURL}/{userId}");
         }
-    }
+	}
 }

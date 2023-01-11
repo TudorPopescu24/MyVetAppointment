@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VetExpert.Infrastructure;
 
@@ -10,9 +11,11 @@ using VetExpert.Infrastructure;
 namespace MyVetAppointment.Infrastructure.Migrations
 {
     [DbContext(typeof(MainDbContext))]
-    partial class MainDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230111115745_InitialCreate8")]
+    partial class InitialCreate8
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.0");
@@ -65,9 +68,6 @@ namespace MyVetAppointment.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid>("ClinicId")
-                        .HasColumnType("TEXT");
-
                     b.Property<DateTime>("DateTime")
                         .HasColumnType("TEXT");
 
@@ -80,18 +80,11 @@ namespace MyVetAppointment.Infrastructure.Migrations
                     b.Property<Guid>("PetId")
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("TEXT");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("ClinicId");
 
                     b.HasIndex("DoctorId");
 
                     b.HasIndex("PetId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Appointments");
                 });
@@ -370,12 +363,6 @@ namespace MyVetAppointment.Infrastructure.Migrations
 
             modelBuilder.Entity("VetExpert.Domain.Appointment", b =>
                 {
-                    b.HasOne("VetExpert.Domain.Clinic", "Clinic")
-                        .WithMany()
-                        .HasForeignKey("ClinicId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("VetExpert.Domain.Doctor", "Doctor")
                         .WithMany()
                         .HasForeignKey("DoctorId")
@@ -388,19 +375,9 @@ namespace MyVetAppointment.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("VetExpert.Domain.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Clinic");
-
                     b.Navigation("Doctor");
 
                     b.Navigation("Pet");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("VetExpert.Domain.Bill", b =>

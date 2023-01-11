@@ -25,11 +25,18 @@ namespace VetExpert.UI.Services.Implementations
 			await httpClient.PutAsJsonAsync($"{ApiURL}/{pet.Id}", pet);
 		}
 
-
-
 		public async Task<IEnumerable<Pet>> GetAllPets()
 		{
 			var result = await httpClient.GetStringAsync(ApiURL);
+
+			return JsonConvert.DeserializeObject<IEnumerable<Pet>>(result);
+		}
+
+		public async Task<IEnumerable<Pet>> GetClientPets(Guid userId)
+		{
+			var apiUrl = $"{ApiURL}/client/{userId}";
+
+			var result = await httpClient.GetStringAsync(apiUrl);
 
 			return JsonConvert.DeserializeObject<IEnumerable<Pet>>(result);
 		}

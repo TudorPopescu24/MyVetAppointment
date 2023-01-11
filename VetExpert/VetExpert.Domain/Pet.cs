@@ -9,7 +9,8 @@ namespace VetExpert.Domain
 		[Required(ErrorMessage = "Name is required.")]
 		public string Name { get; set; } = string.Empty;
 
-        public string TypeOfPet { get; set; } = string.Empty;
+		[Required(ErrorMessage = "Type of pet is required.")]
+		public string TypeOfPet { get; set; } = string.Empty;
 
         public int Age { get; set; } = 0;
 

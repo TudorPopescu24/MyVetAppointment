@@ -30,7 +30,15 @@ namespace VetExpert.API.Controllers
             return Ok(users);
         }
 
-        [HttpPost]
+        [HttpGet("applicationUser/{appUserId:guid}")]
+        public async Task<IActionResult> Get(Guid appUserId)
+        {
+	        var user = await _userRepository.FindEntity(x => x.ApplicationUserId == appUserId);
+
+	        return Ok(user);
+        }
+
+		[HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateUserDto userDto)
         {
             var user = _mapper.Map<User>(userDto);

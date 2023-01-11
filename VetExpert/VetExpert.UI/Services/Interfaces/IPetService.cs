@@ -6,6 +6,7 @@ namespace VetExpert.UI.Services.Interfaces
 	{
 		Task InsertPet(Pet pet);
 		Task<IEnumerable<Pet>> GetAllPets();
+		Task<IEnumerable<Pet>> GetClientPets(Guid userId);
 		Task UpdatePet(Pet pet);
 		Task DeletePet(Guid petId);
 	}

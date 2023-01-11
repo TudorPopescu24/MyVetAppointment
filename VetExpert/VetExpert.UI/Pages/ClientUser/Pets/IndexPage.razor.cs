@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Authorization;
 using System;
+using System.Security.Claims;
 using VetExpert.Domain;
 using VetExpert.UI.Services.Interfaces;
 
@@ -8,8 +10,17 @@ namespace VetExpert.UI.Pages.ClientUser.Pets
     public partial class IndexPageBase : ComponentBase
     {
 
+	    [Inject] 
+	    private IPetService PetService { get; set; } = default!;
+
 		[Inject]
-		private IPetService PetService { get; set; }
+		private IUserService UserService { get; set; } = default!;
+
+		[Inject]
+		private AuthenticationStateProvider AuthenticationStateProvider { get; set; } = default!;
+
+		protected Guid CurrentUserId { get; set; } = Guid.Empty;
+
 		protected List<Pet>? Pets { get; set; } = null;
 
 		protected Pet Pet { get; set; } = new Pet();
@@ -19,15 +30,20 @@ namespace VetExpert.UI.Pages.ClientUser.Pets
 		protected bool ShowPetForm { get; set; } = false;
 
 
-
 		protected async override Task OnInitializedAsync()
 		{
+			await GetCurrentUserId();
 			await ReadPetsAsync();
 		}
 
-		private async Task ReadPetsAsync()
-        {
-			Pets = (await PetService.GetAllPets()).ToList();
+		protected void OnAddButtonClick()
+		{
+			Pet = new Pet
+			{
+				UserId = CurrentUserId
+			};
+			IsNewEntity = true;
+			ShowPetForm = true;
 		}
 
 		protected void OnEditButtonClick(Pet editPet)
@@ -40,7 +56,8 @@ namespace VetExpert.UI.Pages.ClientUser.Pets
 				Weight = editPet.Weight,
 				Age= editPet.Age,
 				IsVaccinated= editPet.IsVaccinated,
-				DateOfVaccine= editPet.DateOfVaccine
+				DateOfVaccine= editPet.DateOfVaccine,
+				UserId = CurrentUserId
 			};
 			IsNewEntity = false;
 			ShowPetForm = true;
@@ -48,9 +65,14 @@ namespace VetExpert.UI.Pages.ClientUser.Pets
 
 		protected async Task OnValidSubmitAsync()
 		{
-			
+			if (IsNewEntity)
+			{
+				await PetService.InsertPet(Pet);
+			}
+			else
+			{
 				await PetService.UpdatePet(Pet);
-			
+			}
 
 			ShowPetForm = false;
 
@@ -67,6 +89,20 @@ namespace VetExpert.UI.Pages.ClientUser.Pets
 		protected void OnCancelButtonClick()
 		{
 			ShowPetForm = false;
+		}
+
+		private async Task GetCurrentUserId()
+		{
+			var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+			var applicationUserId = authState.User.Claims.Where(x => x.Type == ClaimTypes.NameIdentifier).Select(x => new Guid(x.Value)).FirstOrDefault();
+
+			var user = await UserService.GetByAppUserId(applicationUserId);
+			CurrentUserId = user.Id;
+		}
+
+		private async Task ReadPetsAsync()
+		{
+			Pets = (await PetService.GetClientPets(CurrentUserId)).ToList();
 		}
 	}
 }

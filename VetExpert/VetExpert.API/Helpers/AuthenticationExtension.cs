@@ -32,7 +32,8 @@ namespace VetExpert.API.Helpers
 			List<Claim> claims = new List<Claim>
 			{
 				new Claim(ClaimTypes.Name, userCredentials.UserName),
-				new Claim(ClaimTypes.Role, userRole)
+				new Claim(ClaimTypes.Role, userRole),
+				new Claim(ClaimTypes.NameIdentifier, userCredentials.Id.ToString())
 			};
 
 			var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(tokenKey));
