@@ -47,6 +47,14 @@ namespace VetExpert.API.Controllers
 	        return Ok(bills);
         }
 
+        [HttpGet("client/{userId:guid}")]
+        public async Task<IActionResult> GetClientBills(Guid userId)
+        {
+	        var bills = await _billRepository.Find(x => x.UserId == userId);
+
+	        return Ok(bills);
+        }
+
 		[HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateBillDto billDto)
         {

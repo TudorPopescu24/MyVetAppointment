@@ -11,7 +11,7 @@ namespace VetExpert.UI.Pages.ClinicUser.Doctors
     {
 
 		[Inject]
-		private IDoctorService DoctorService { get; set; }
+		private IDoctorService DoctorService { get; set; } = default!;
 
 		[Inject]
 		private IClinicService ClinicService { get; set; } = default!;
