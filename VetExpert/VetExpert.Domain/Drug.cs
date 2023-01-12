@@ -13,6 +13,9 @@
         public string Prospect { get; set; } = string.Empty;
 
         public int Price { get; set; } = 0;
+        public Guid ClinicId { get; set; } = Guid.Empty;
+        public virtual Clinic Clinic { get; set; } = new Clinic();
+
 
         public Guid ClinicId { get; set; } = Guid.Empty;
 

@@ -1,0 +1,43 @@
+﻿@page "/client/bills"
+@inherits IndexPageBase
+@attribute [Authorize(Roles = UserRole.User)]
+
+<PageTitle>Bills</PageTitle>
+
+<div class="d-flex flex-row">
+	<div class="d-flex flex-column">
+		<h1>Bills</h1>
+	</div>
+</div>
+
+
+@if (Bills == null)
+{
+	<Loader></Loader>
+}
+else
+{
+	<div class="box-2">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Client</th>
+					<th>Billing date</th>
+					<th>Billing value</th>
+					<th>Currency</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (Bill bill in Bills) 
+				{
+					<tr>
+						<td>@bill.User.Name</td>
+						<td>@bill.DateTime.ToString("dd.MM.yyyy")</td>
+						<td>@bill.Value</td>
+						<td>@bill.Currency</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	</div>
+}

@@ -21,11 +21,29 @@ namespace VetExpert.UI.Pages.Admin.Clinics
 
         protected List<Clinic>? Clinics { get; set; } = null;
 
+        protected Guid DeleteClinicId { get; set; } = Guid.Empty;
+
         protected bool ShowClinicForm { get; set; } = false;
 
         protected CreateClinicDto Clinic { get; set; } = new CreateClinicDto();
 
 		protected bool IsNewEntity { get; set; } = false;
+
+        public bool ShowDeleteConfirmationPop { get; set; }
+        [Parameter] public string Message { get; set; } = "Are you sure?";
+        [Parameter] public EventCallback<bool> ConfirmedChanged { get; set; } 
+
+        public async Task DeleteConfirmation(bool value)
+        {
+            ShowDeleteConfirmationPop = false;
+            await ConfirmedChanged.InvokeAsync(value);
+        }
+
+        public void ShowDeleteConfirmation(Clinic clinic)
+        {
+            DeleteClinicId = clinic.Id;
+            ShowDeleteConfirmationPop = true;
+        }
 
         protected async override Task OnInitializedAsync()
         {
@@ -64,16 +82,13 @@ namespace VetExpert.UI.Pages.Admin.Clinics
 			if (IsNewEntity)
 			{
                 var appUserId = await CreateApplicationUser();
-
                 var clinic = Mapper.Map<Clinic>(Clinic);
                 clinic.ApplicationUserId = appUserId;
-
                 await ClinicService.InsertClinic(clinic);
 			}
 			else
 			{
                 var clinic = Mapper.Map<Clinic>(Clinic);
-
                 await ClinicService.UpdateClinic(clinic);
 			}
 
@@ -82,14 +97,16 @@ namespace VetExpert.UI.Pages.Admin.Clinics
 			await ReadClinicsAsync();
 		}
 
-		protected async Task OnDeleteAsync(Clinic deleteClinic)
-		{
-			await ClinicService.DeleteClinic(deleteClinic.Id);
 
-			await ReadClinicsAsync();
-		}
 
-		private async Task ReadClinicsAsync()
+        protected async Task OnDeleteAsync()
+        {
+            await ClinicService.DeleteClinic(DeleteClinicId);
+            ShowDeleteConfirmationPop = false;
+            await ReadClinicsAsync();
+        }
+
+        private async Task ReadClinicsAsync()
         {
 			Clinics = (await ClinicService.GetAllClinics()).ToList();
 		}

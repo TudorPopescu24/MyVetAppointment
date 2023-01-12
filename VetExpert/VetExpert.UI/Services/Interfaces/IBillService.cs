@@ -8,5 +8,6 @@ public interface IBillService
     Task UpdateBill(Bill bill);
     Task<IEnumerable<Bill>> GetAllBills();
     Task<IEnumerable<Bill>> GetClinicBills(Guid clinicId);
-    Task DeleteBill(Guid billId);
+    Task<IEnumerable<Bill>> GetClientBills(Guid userId);
+	Task DeleteBill(Guid billId);
 }

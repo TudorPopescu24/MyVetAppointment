@@ -41,6 +41,15 @@ namespace VetExpert.UI.Services.Implementations
 			return JsonConvert.DeserializeObject<IEnumerable<Bill>>(result);
 		}
 
+		public async Task<IEnumerable<Bill>> GetClientBills(Guid userId)
+		{
+			var apiUrl = $"{ApiURL}/client/{userId}";
+
+			var result = await httpClient.GetStringAsync(apiUrl);
+
+			return JsonConvert.DeserializeObject<IEnumerable<Bill>>(result);
+		}
+
 		public async Task DeleteBill(Guid billId)
 		{
 			await httpClient.DeleteAsync($"{ApiURL}/{billId}");

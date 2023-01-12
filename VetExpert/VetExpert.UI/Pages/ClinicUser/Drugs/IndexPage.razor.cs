@@ -5,13 +5,13 @@ using System.Security.Claims;
 using VetExpert.Domain;
 using VetExpert.UI.Services.Interfaces;
 
-namespace VetExpert.UI.Pages.ClinicUser.Doctors
+namespace VetExpert.UI.Pages.ClinicUser.Drugs
 {
 	public partial class IndexPageBase : ComponentBase
     {
 
 		[Inject]
-		private IDoctorService DoctorService { get; set; } = default!;
+		private IDrugService DrugService { get; set; }
 
 		[Inject]
 		private IClinicService ClinicService { get; set; } = default!;
@@ -24,44 +24,46 @@ namespace VetExpert.UI.Pages.ClinicUser.Doctors
 
 		protected Guid CurrentClinicId { get; set; } = Guid.Empty;
 
-		protected List<Doctor>? Doctors { get; set; } = null;
+		protected List<Drug>? Drugs { get; set; } = null;
 
-		protected Doctor Doctor { get; set; } = new Doctor();
+		protected Drug Drug { get; set; } = new Drug();
 
 
 		protected bool IsNewEntity { get; set; } = false;
 
-		protected bool ShowDoctorForm { get; set; } = false;
+		protected bool ShowDrugForm { get; set; } = false;
 
 		protected async override Task OnInitializedAsync()
 		{
 			await GetCurrentClinicId();
-			await ReadDoctorsAsync();
+			await ReadDrugsAsync();
 		}
 
 		protected void OnAddButtonClick()
 		{
-			Doctor = new Doctor
+			Drug = new Drug
 			{
 				ClinicId = CurrentClinicId
 			};
 			IsNewEntity = true;
-			ShowDoctorForm = true;
+			ShowDrugForm = true;
 		}
 
 
-		protected void OnEditButtonClick(Doctor editDoctor)
+		protected void OnEditButtonClick(Drug editDrug)
 		{
-			Doctor = new Doctor
+			Drug = new Drug
 			{
-				Id = editDoctor.Id,
-				FirstName = editDoctor.FirstName,
-				LastName = editDoctor.LastName,
-				Email = editDoctor.Email,
+				Id = editDrug.Id,
+				Name = editDrug.Name,
+				Manufacturer = editDrug.Manufacturer,
+				Weight = editDrug.Weight,
+				Prospect= editDrug.Prospect,
+				Price= editDrug.Price,
 				ClinicId = CurrentClinicId
 			};
 			IsNewEntity = false;
-			ShowDoctorForm = true;
+			ShowDrugForm = true;
 		}
 
 		protected async Task OnValidSubmitAsync()
@@ -69,31 +71,31 @@ namespace VetExpert.UI.Pages.ClinicUser.Doctors
 			if (IsNewEntity)
 			{
 
-				var doctor = Mapper.Map<Doctor>(Doctor);
-				await DoctorService.InsertDoctor(doctor);
+				var drug = Mapper.Map<Drug>(Drug);
+				await DrugService.InsertDrug(drug);
 			}
 			else
 			{
-				var doctor = Mapper.Map<Doctor>(Doctor);
-				await DoctorService.UpdateDoctor(doctor);
+				var drug = Mapper.Map<Drug>(Drug);
+				await DrugService.UpdateDrug(drug);
 			}
 
-			ShowDoctorForm = false;
+			ShowDrugForm = false;
 
-			await ReadDoctorsAsync();
+			await ReadDrugsAsync();
 		}
 
 
-		protected async Task OnDeleteAsync(Doctor deleteDoctor)
+		protected async Task OnDeleteAsync(Drug deleteDrug)
 		{
-			await DoctorService.DeleteDoctor(deleteDoctor.Id);
+			await DrugService.DeleteDrug(deleteDrug.Id);
 
-			await ReadDoctorsAsync();
+			await ReadDrugsAsync();
 		}
 
 		protected void OnCancelButtonClick()
 		{
-			ShowDoctorForm = false;
+			ShowDrugForm = false;
 		}
 
 		private async Task GetCurrentClinicId()
@@ -105,9 +107,9 @@ namespace VetExpert.UI.Pages.ClinicUser.Doctors
 			CurrentClinicId = clinic.Id;
 		}
 
-		private async Task ReadDoctorsAsync()
+		private async Task ReadDrugsAsync()
 		{
-			 Doctors = (await DoctorService.GetClinicDoctors(CurrentClinicId)).ToList();
+			 Drugs = (await DrugService.GetClinicDrugs(CurrentClinicId)).ToList();
 		}
 	}
 }
