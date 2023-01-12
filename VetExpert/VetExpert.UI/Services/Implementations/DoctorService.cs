@@ -25,11 +25,19 @@ namespace VetExpert.UI.Services.Implementations
 			await httpClient.PutAsJsonAsync($"{ApiURL}/{doctor.Id}", doctor);
 		}
 
-
-
-		public async Task<IEnumerable<Doctor>?> GetAllDoctors()
+		public async Task<IEnumerable<Doctor>> GetAllDoctors()
 		{
 			var result = await httpClient.GetStringAsync(ApiURL);
+
+			return JsonConvert.DeserializeObject<IEnumerable<Doctor>>(result);
+		}
+
+		public async Task<IEnumerable<Doctor>> GetClinicDoctors(Guid clinicId)
+
+		{
+			var apiUrl = $"{ApiURL}/clinic/{clinicId}";
+
+			var result = await httpClient.GetStringAsync(apiUrl);
 
 			return JsonConvert.DeserializeObject<IEnumerable<Doctor>>(result);
 		}
@@ -38,5 +46,6 @@ namespace VetExpert.UI.Services.Implementations
 		{
 			await httpClient.DeleteAsync($"{ApiURL}/{doctorId}");
 		}
+
 	}
 }

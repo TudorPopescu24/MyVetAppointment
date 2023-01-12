@@ -1,16 +1,11 @@
-﻿using System.Text.Json;
-using System;
-using VetExpert.UI.Services.Interfaces;
-using VetExpert.Domain;
+﻿using Newtonsoft.Json;
 using System.Net.Http.Json;
-using System.Collections.Generic;
-using System.Text.Json.Serialization;
-using Microsoft.AspNetCore.Components.Authorization;
-using Newtonsoft.Json;
+using VetExpert.Domain;
+using VetExpert.UI.Services.Interfaces;
 
 namespace VetExpert.UI.Services.Implementations
 {
-    public class ClinicService : IClinicService
+	public class ClinicService : IClinicService
     {
         private const string ApiURL = "https://localhost:7231/api/Clinics";
         private readonly HttpClient httpClient;
@@ -20,13 +15,20 @@ namespace VetExpert.UI.Services.Implementations
             this.httpClient = httpClient;
         }
 
-        public async Task<IEnumerable<Clinic>> GetAllClinics()
+        public async Task<IEnumerable<Clinic>?> GetAllClinics()
         {
             var result = await httpClient.GetStringAsync(ApiURL);
 
             return JsonConvert.DeserializeObject<IEnumerable<Clinic>>(result);
         }
+		public async Task<Clinic> GetByAppUserId(Guid appUserId)
+		{
+			var apiUrl = $"{ApiURL}/applicationUser/{appUserId}";
 
+			var result = await httpClient.GetStringAsync(apiUrl);
+
+			return JsonConvert.DeserializeObject<Clinic?>(result);
+		}
 		public async Task InsertClinic(Clinic clinic)
 		{
 			await httpClient.PostAsJsonAsync(ApiURL, clinic);
@@ -41,5 +43,8 @@ namespace VetExpert.UI.Services.Implementations
 		{
 			await httpClient.DeleteAsync($"{ApiURL}/{clinicId}");
 		}
+
+		
+
 	}
 }

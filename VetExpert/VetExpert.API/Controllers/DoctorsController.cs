@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using VetExpert.API.Dto;
+using VetExpert.API.Mapping;
 using VetExpert.Domain;
 using VetExpert.Infrastructure;
 
@@ -52,7 +53,15 @@ namespace VetExpert.API.Controllers
             return Ok(doctor);
         }
 
-        [HttpPost]
+		[HttpGet("clinic/{clinicId:guid}")]
+		public async Task<IActionResult> GetClinicDoctors(Guid clinicId)
+		{
+			var doctors = await _doctorRepository.Find(x => x.ClinicId == clinicId);
+
+			return Ok(doctors);
+		}
+
+		[HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateDoctorDto doctorDto)
         {
             var clinic = await _clinicRepository.Get(doctorDto.ClinicId);

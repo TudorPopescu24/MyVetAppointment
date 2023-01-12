@@ -30,22 +30,29 @@ namespace VetExpert.API.Controllers
         public async Task<IActionResult> Get()
         {
             var clinics = await _clinicRepository.GetAll();
-
             return Ok(clinics);
         }
 
-        [HttpGet("{clinicId:guid}")]
-        public async Task<IActionResult> Get(Guid clinicId)
-        {
-            var clinic = await _clinicRepository.Get(clinicId);
+		[HttpGet("applicationUser/{appUserId:guid}")]
+		public async Task<IActionResult> Get(Guid appUserId)
+		{
+			var clinic = await _clinicRepository.FindEntity(x => x.ApplicationUserId == appUserId);
 
-            if (clinic == null)
-            {
-                return NotFound();
-            }
+			return Ok(clinic);
+		}
 
-            return Ok(clinic);
-        }
+		//[HttpGet("{clinicId:guid}")]
+  //      public async Task<IActionResult> Get(Guid clinicId)
+  //      {
+  //          var clinic = await _clinicRepository.Get(clinicId);
+
+  //          if (clinic == null)
+  //          {
+  //              return NotFound();
+  //          }
+
+  //          return Ok(clinic);
+  //      }
 
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateClinicDto clinicDto)
