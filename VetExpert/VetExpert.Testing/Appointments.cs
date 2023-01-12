@@ -22,7 +22,7 @@ namespace VetExpert.Testing
             Assert.AreNotEqual(appointment.Id, Guid.Empty);
             Assert.IsNotNull(appointment.DateTime);
             Assert.IsNotNull(appointment.Pet);
-            Assert.IsNotNull(appointment.Doctor);
+            Assert.IsNotNull(appointment.Clinic);
 
 
         }

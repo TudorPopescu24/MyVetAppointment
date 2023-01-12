@@ -20,10 +20,6 @@ namespace VetExpert.Domain
 
 		public virtual Clinic Clinic { get; set; } = new Clinic();
 
-		public Guid DoctorId { get; set; } = Guid.Empty;
-
-		public virtual Doctor Doctor { get; set; } = new Doctor();
-
 		public Appointment()
 		{
 			Id = Guid.NewGuid();

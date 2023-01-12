@@ -8,7 +8,7 @@ namespace VetExpert.API.Validators
         public CreateAppointmentDtoValidator()
         {
             RuleFor(x => x.PetId).NotEmpty().NotNull();
-            RuleFor(x => x.DoctorId).NotEmpty().NotNull();
+            RuleFor(x => x.ClinicId).NotEmpty().NotNull();
             RuleFor(x => x.DateTime).NotEmpty().NotNull();
         }
     }

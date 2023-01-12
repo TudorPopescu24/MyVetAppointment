@@ -22,9 +22,20 @@ namespace VetExpert.UI.Services.Implementations
 			return JsonConvert.DeserializeObject<IEnumerable<Appointment>>(result);
 		}
 
-		public async Task InsertAppointment(Appointment appointment)
+		public async Task<IEnumerable<Appointment>> GetUserAppointments(Guid userId)
 		{
-			await httpClient.PostAsJsonAsync(ApiURL, appointment);
+			string apiUrl = $"{ApiURL}/user/{userId}";
+
+			var result = await httpClient.GetStringAsync(apiUrl);
+
+			return JsonConvert.DeserializeObject<IEnumerable<Appointment>>(result);
+		}
+
+		public async Task<bool> InsertAppointment(Appointment appointment)
+		{
+			var result = await httpClient.PostAsJsonAsync(ApiURL, appointment);
+
+			return result.IsSuccessStatusCode;
 		}
 
 		public async Task UpdateAppointment(Appointment appointment)
@@ -32,9 +43,9 @@ namespace VetExpert.UI.Services.Implementations
 			await httpClient.PutAsJsonAsync($"{ApiURL}/{appointment.Id}", appointment);
 		}
 
-		public async Task DeleteUser(Guid userId)
+		public async Task DeleteAppointment(Guid appointmentId)
 		{
-			await httpClient.DeleteAsync($"{ApiURL}/{userId}");
+			await httpClient.DeleteAsync($"{ApiURL}/{appointmentId}");
 		}
 	}
 }

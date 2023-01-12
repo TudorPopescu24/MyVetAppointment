@@ -50,8 +50,15 @@ namespace VetExpert.Infrastructure
                 .WithMany(x => x.DoctorSpecializations)
                 .HasForeignKey(x => x.SpecializationId);
 
-            modelBuilder.Entity<Appointment>().Navigation(x => x.Doctor).AutoInclude();
+            modelBuilder.Entity<Appointment>().Navigation(x => x.Clinic).AutoInclude();
             modelBuilder.Entity<Appointment>().Navigation(x => x.Pet).AutoInclude();
+            
+            modelBuilder.Entity<Doctor>().Navigation(x => x.DoctorSpecializations).AutoInclude();
+            
+            modelBuilder.Entity<Specialization>().Navigation(x => x.DoctorSpecializations).AutoInclude();
+            
+			modelBuilder.Entity<DoctorSpecialization>().Navigation(x => x.Specialization).AutoInclude();
+
         }
-    }
+	}
 }

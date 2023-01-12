@@ -8,9 +8,6 @@
 	<div class="d-flex flex-column">
 		<h1>Appointments</h1>
 	</div>
-	<button class="btn btn-primary btn-lg ms-auto" style="height: 3rem" @*@onclick="OnAddButtonClick"*@>
-		<i class="oi oi-plus" aria-hidden="true"></i> Add appointment
-	</button>
 </div>
 
 @if (Appointments == null)
@@ -26,7 +23,7 @@ else
 				<th>Date</th>
 				<th>Time</th>
 				<th>Pet</th>
-				<th>Doctor</th>
+				<th>Clinic</th>
 				<th>Confirmed</th>
 				<th>Actions</th>
 			</tr>
@@ -35,17 +32,26 @@ else
 			@foreach (Appointment appointment in Appointments)
 			{
 				<tr>
-					<td>@appointment.DateTime.ToString("dd-MM-yyyy")</td>
-					<td>@appointment.DateTime.ToString("hh:mm")</td>
+					<td>@appointment.DateTime.ToString("dd.MM.yyyy")</td>
+					<td>@appointment.DateTime.ToString("HH:mm")</td>
 					<td>@appointment.Pet.Name</td>
-					<td>@appointment.Doctor.LastName @appointment.Doctor.FirstName</td>
-					<td>@appointment.IsConfirmed</td>
+					<td>@appointment.Clinic.Name</td>
+					<td>
+						@if (appointment.IsConfirmed)
+						{
+							<span class="text-primary ms-4"><i class="bi bi-check-circle"></i></span>
+						}
+						else
+						{
+							<span class="text-danger ms-4"><i class="bi bi-x-circle"></i></span>
+						}
+					</td>
 					<td>
 						<div class="d-flex flex-row align-items-center">
-							<button class="btn btn-light btn-circle px-2 me-2" @*@onclick=""*@>
+							<button class="btn btn-primary btn-circle px-2 me-2" disabled="@appointment.IsConfirmed" @onclick="() => OnEditAppointmentClick(appointment)">
 								<i class="bi bi-pencil"></i>
 							</button>
-							<button class="btn btn-light btn-circle px-2" @*@onclick=""*@>
+								<button class="btn btn-primary btn-circle px-2" disabled="@appointment.IsConfirmed" @onclick="async () => await OnDeleteAsync(appointment)">
 								<i class="bi bi-trash"></i>
 							</button>
 						</div>
@@ -54,5 +60,46 @@ else
 			}
 			</tbody>
 		</table>
+	</div>
+}
+
+@if (ShowAppointmentForm)
+{
+	<div class="overlay">
+		<div class="box">
+			<h3 class="mt-4">Edit appointment</h3>
+
+			<EditForm Model="Appointment" OnValidSubmit="OnValidSubmitAsync">
+				<DataAnnotationsValidator />
+				<ValidationSummary />
+				<div class="row">
+					<div class="form-group col-6 mt-3">
+						<label>Select your pet</label>
+						<select class="form-control form-control-lg w-100" @bind="Appointment.PetId">
+							@if (Pets != null)
+							{
+								@foreach (Pet pet in Pets)
+								{
+									<option value="@pet.Id">@pet.Name</option>
+								}
+							}
+						</select>
+					</div>
+					<div class="form-group col-6 mt-3">
+						<label>Appointment date</label>
+						<input type="datetime-local" class="form-control form-control-lg w-100" @bind="Appointment.DateTime" @bind:event="oninput"/>
+					</div>
+				</div>
+
+				<div class="d-flex flex-row-reverse mt-3">
+					<button class="btn btn-primary btn-lg btn-icon" type="submit">
+						<i class="oi oi-plus" aria-hidden="true"></i> Save
+					</button>
+					<button class="btn btn-secondary btn-lg btn-icon me-2" @onclick="OnCancelAppointmentButtonClick">
+						<i class="oi oi-x" aria-hidden="true"></i> Cancel
+					</button>
+				</div>
+			</EditForm>
+		</div>
 	</div>
 }

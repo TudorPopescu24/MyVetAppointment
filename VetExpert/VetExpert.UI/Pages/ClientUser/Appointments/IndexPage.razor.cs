@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Authorization;
+using System.Security.Claims;
 using VetExpert.Domain;
 using VetExpert.UI.Services.Implementations;
 using VetExpert.UI.Services.Interfaces;
@@ -10,58 +12,77 @@ namespace VetExpert.UI.Pages.ClientUser.Appointments
 		[Inject]
 		private IAppointmentService AppointmentService { get; set; } = default!;
 
-		[Inject]
-		private IPetService PetService { get; set; } = default!;
+        [Inject]
+        private IUserService UserService { get; set; } = default!;
+
+        [Inject]
+        private IPetService PetService { get; set; } = default!;
 
 		[Inject]
-		private IDoctorService DoctorService { get; set; } = default!;
+        private AuthenticationStateProvider AuthenticationStateProvider { get; set; } = default!;
 
-		[Inject]
-		private IClinicService ClinicService { get; set; } = default!;
+        protected Guid CurrentUserId { get; set; } = Guid.Empty;
 
-		[Inject]
-		private IAuthenticationService AuthenticationService { get; set; } = default!;
+        protected List<Pet>? Pets { get; set; } = null;
 
-		protected IList<Appointment>? Appointments { get; set; } = null;
+        protected IList<Appointment>? Appointments { get; set; } = null;
 
-		protected IList<Doctor>? Doctors { get; set; } = null;
+        protected Appointment Appointment { get; set; } = new Appointment();
 
-		protected IList<Pet>? Pets { get; set; } = null;
-
-		protected IList<Clinic>? Clinics { get; set; } = null;
-
-		protected bool ShowPetForm { get; set; } = false;
-
-		protected Appointment Appointment { get; set; } = new Appointment();
-
-		protected bool IsNewEntity { get; set; } = false;
+        protected bool ShowAppointmentForm { get; set; } = false;
 
 		protected async override Task OnInitializedAsync()
 		{
-			await ReadDoctorsAsync();
+			await GetCurrentUserId();
 			await ReadPetsAsync();
-			await ReadClinicsAsync();
 			await ReadAppointmentsAsync();
 		}
 
-		private async Task ReadAppointmentsAsync()
+		protected async Task OnEditAppointmentClick(Appointment appointment)
 		{
-			Appointments = (await AppointmentService.GetAllAppointments()).ToList();
+			Appointment = appointment;
+
+			ShowAppointmentForm = true;
 		}
 
-		private async Task ReadDoctorsAsync()
+		protected void OnCancelAppointmentButtonClick()
 		{
-			Doctors = (await DoctorService.GetAllDoctors()).ToList();
+			ShowAppointmentForm = false;
+		}
+
+		protected async Task OnValidSubmitAsync()
+		{
+			await AppointmentService.UpdateAppointment(Appointment);
+
+			ShowAppointmentForm = false;
+
+			await ReadAppointmentsAsync();
+		}
+
+		protected async Task OnDeleteAsync(Appointment appointment)
+		{
+			await AppointmentService.DeleteAppointment(appointment.Id);
+
+			await ReadAppointmentsAsync();
+		}
+
+		private async Task GetCurrentUserId()
+		{
+			var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+			var applicationUserId = authState.User.Claims.Where(x => x.Type == ClaimTypes.NameIdentifier).Select(x => new Guid(x.Value)).FirstOrDefault();
+
+			var user = await UserService.GetByAppUserId(applicationUserId);
+			CurrentUserId = user.Id;
 		}
 
 		private async Task ReadPetsAsync()
 		{
-			Pets = (await PetService.GetAllPets()).ToList();
+			Pets = (await PetService.GetClientPets(CurrentUserId)).ToList();
 		}
 
-		private async Task ReadClinicsAsync()
+		private async Task ReadAppointmentsAsync()
 		{
-			Clinics = (await ClinicService.GetAllClinics()).ToList();
+			Appointments = (await AppointmentService.GetUserAppointments(CurrentUserId)).ToList();
 		}
 	}
 }

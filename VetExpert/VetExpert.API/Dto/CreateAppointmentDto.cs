@@ -4,8 +4,10 @@
     {
         public Guid PetId { get; set; }
 
-        public Guid DoctorId { get; set; }
+        public Guid ClinicId { get; set; }
 
-		public DateTime DateTime { get; set; } = DateTime.Now;
+        public Guid UserId { get; set; }
+
+        public DateTime DateTime { get; set; } = DateTime.Now;
 	}
 }

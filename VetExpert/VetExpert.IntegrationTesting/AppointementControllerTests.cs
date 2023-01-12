@@ -33,7 +33,7 @@ namespace VetExpert.IntegrationTesting
             // Arrange
             return new CreateAppointmentDto
             {
-              DoctorId=Guid.NewGuid(),
+              ClinicId =Guid.NewGuid(),
               PetId=Guid.NewGuid()
 
             };

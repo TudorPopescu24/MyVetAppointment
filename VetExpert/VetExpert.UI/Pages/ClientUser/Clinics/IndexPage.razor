@@ -1,0 +1,105 @@
+﻿@page "/client/clinics"
+@inherits IndexPageBase
+@attribute [Authorize(Roles = UserRole.User)]
+
+<PageTitle>Clinics</PageTitle>
+
+<div class="d-flex flex-row">
+	<div class="d-flex flex-column">
+		<h1>Clinics</h1>
+	</div>
+</div>
+
+<div style="color: white" class="alert alert-dismissible fade show mt-2 mb-2 @(Success == null ? "hidden" : (Success == true ? "alert-primary": "alert-danger"))" role="alert">
+	@if (Success == true)
+	{
+		<strong>Success!</strong> <span>Appointment was saved successfully.</span>
+	}
+	else if (Success == false)
+	{
+		<strong>Error!</strong> <span>There was an error trying to save the appointment.</span>
+	}
+</div>
+
+@if (Clinics == null)
+{
+	<Loader></Loader>
+}
+else
+{
+    <div class="box-2">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Email</th>
+                    <th>Website</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Clinic clinic in Clinics)
+                {
+                    <tr>
+                        <td>@clinic.Name</td>
+                        <td>@clinic.Address</td>
+                        <td>@clinic.Email</td>
+                        <td>@clinic.WebsiteUrl</td>
+	                    <td>
+		                    <button class="btn btn-primary btn-circle px-2 me-1" title="Make appointment" @onclick="(async () => await OnMakeAppointmentClick(clinic))">
+			                    <i class="bi bi-calendar-check"></i>
+		                    </button>
+		                    <button class="btn btn-primary btn-circle px-2" title="See doctors" @onclick="(async () => await OnSeeDoctorsClick(clinic))">
+                                <i class="fas fa-user-md"></i>
+		                    </button>
+	                    </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
+@if (ShowAppointmentForm)
+{
+		<div class="overlay">
+			<div class="box">
+				<h3 class="mt-4">Make appointment</h3>
+
+				<EditForm Model="Appointment" OnValidSubmit="OnValidSubmitAsync">
+					<DataAnnotationsValidator />
+					<ValidationSummary />
+					<div class="row">
+						<div class="form-group col-6 mt-3">
+							<label>Select your pet</label>
+							<select class="form-control form-control-lg w-100" @bind="Appointment.PetId">
+								<option value="@Guid.Empty" selected disabled>Select your pet...</option>
+								@if (Pets != null)
+								{
+									@foreach (Pet pet in Pets)
+									{
+										<option value="@pet.Id">@pet.Name</option>
+									}
+								}
+							</select>
+						</div>
+						<div class="form-group col-6 mt-3">
+							<label>Appointment date</label>
+							<input type="datetime-local" class="form-control form-control-lg w-100" @bind="Appointment.DateTime" @bind:event="oninput"/>
+						</div>
+					</div>
+
+					<div class="d-flex flex-row-reverse mt-3">
+						<button class="btn btn-primary btn-lg btn-icon" type="submit">
+							<i class="oi oi-plus" aria-hidden="true"></i> Save
+						</button>
+						<button class="btn btn-secondary btn-lg btn-icon me-2" @onclick="OnCancelAppointmentButtonClick">
+							<i class="oi oi-x" aria-hidden="true"></i> Cancel
+						</button>
+					</div>
+				</EditForm>
+			</div>
+		</div>
+}
+

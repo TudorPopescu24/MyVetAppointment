@@ -41,10 +41,10 @@ else
                         <td>@user.PhoneNumber</td>
                         <td>
                             <div class="d-flex flex-row align-items-center">
-                                <button class="btn btn-light btn-circle px-2 me-2" @onclick="(() => OnEditButtonClick(user))">
+                                <button class="btn btn-primary btn-circle px-2 me-2" @onclick="(() => OnEditButtonClick(user))">
                                     <i class="bi bi-pencil"></i>
                                 </button>
-                                <button class="btn btn-light btn-circle px-2" @onclick="(async () => await OnDeleteAsync(user))">
+                                <button class="btn btn-primary btn-circle px-2" @onclick="(async () => await OnDeleteAsync(user))">
                                     <i class="bi bi-trash"></i>
                                 </button>
                             </div>
