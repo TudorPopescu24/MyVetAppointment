@@ -8,6 +8,8 @@ namespace VetExpert.Domain
 
 		public bool IsConfirmed { get; set; } = false;
 
+		public string Details { get; set; } = string.Empty;
+
 		public Guid UserId { get; set; } = Guid.Empty;
 
 		public virtual User User { get; set; } = new User();

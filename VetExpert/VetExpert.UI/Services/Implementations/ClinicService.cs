@@ -21,6 +21,7 @@ namespace VetExpert.UI.Services.Implementations
 
             return JsonConvert.DeserializeObject<IEnumerable<Clinic>>(result);
         }
+
 		public async Task<Clinic> GetByAppUserId(Guid appUserId)
 		{
 			var apiUrl = $"{ApiURL}/applicationUser/{appUserId}";
@@ -29,6 +30,7 @@ namespace VetExpert.UI.Services.Implementations
 
 			return JsonConvert.DeserializeObject<Clinic?>(result);
 		}
+
 		public async Task InsertClinic(Clinic clinic)
 		{
 			await httpClient.PostAsJsonAsync(ApiURL, clinic);

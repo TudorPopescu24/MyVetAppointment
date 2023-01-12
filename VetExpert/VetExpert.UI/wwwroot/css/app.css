@@ -589,9 +589,8 @@ td {
     color: #F10000;
 }
 
-#position-cancel {
-    margin-right: 1rem !important;
-}
-#position-delete {
-    margin-right: 22rem !important;
+.close-btn {
+    float: right;
+    margin-top: -40px;
+    cursor: pointer;
 }

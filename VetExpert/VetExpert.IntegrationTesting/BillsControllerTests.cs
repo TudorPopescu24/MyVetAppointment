@@ -27,6 +27,21 @@ namespace VetExpert.IntegrationTesting
             bills.Should().NotBeNull();
         }
 
+        //[Fact]
+        //public async void When_CreatingBill_Then_ShouldReturnCreatedBillInTheGetRequest()
+        //{
+        //    var http_client = new CustomWebApplicationFactory<Program>().CreateClient();
+        //    CreateBillDto billDto = CreateSUT();
+        //    var postResult = await http_client.PostAsJsonAsync(ApiURL, billDto);
+        //    postResult.EnsureSuccessStatusCode();
+        //    var getResult = await http_client.GetStringAsync(ApiURL);
+        //    var bills = JsonConvert.DeserializeObject<List<CreateBillDto>>(getResult);
+
+        //    //bills.Should().Contain(billDto);
+        //    bills.Should().HaveCount(1);
+        //    bills.Should().NotBeNull();
+        //}
+
         private static CreateBillDto CreateSUT()
         {
             // Arrange

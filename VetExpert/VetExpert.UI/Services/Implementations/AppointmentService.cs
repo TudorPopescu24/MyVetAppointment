@@ -31,6 +31,15 @@ namespace VetExpert.UI.Services.Implementations
 			return JsonConvert.DeserializeObject<IEnumerable<Appointment>>(result);
 		}
 
+		public async Task<IEnumerable<Appointment>> GetClinicAppointments(Guid clinicId)
+		{
+			string apiUrl = $"{ApiURL}/clinic/{clinicId}";
+
+			var result = await httpClient.GetStringAsync(apiUrl);
+
+			return JsonConvert.DeserializeObject<IEnumerable<Appointment>>(result);
+		}
+
 		public async Task<bool> InsertAppointment(Appointment appointment)
 		{
 			var result = await httpClient.PostAsJsonAsync(ApiURL, appointment);

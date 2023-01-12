@@ -88,6 +88,10 @@ else
 							<label>Appointment date</label>
 							<input type="datetime-local" class="form-control form-control-lg w-100" @bind="Appointment.DateTime" @bind:event="oninput"/>
 						</div>
+						<div class="form-group col-12 mt-3">
+							<label>Details</label>
+							<InputTextArea class="form-control form-control-lg w-100" style="height: 10rem" @bind-Value="Appointment.Details"/>
+						</div>
 					</div>
 
 					<div class="d-flex flex-row-reverse mt-3">

@@ -28,6 +28,22 @@ namespace VetExpert.IntegrationTesting
             promotions.Should().NotBeNull();
             Dispose();
         }
+
+        [Fact]
+        public async void When_CreatingPromotion_Then_ShouldReturnCreatedPromotionInTheGetRequest()
+        {
+            var http_client = new CustomWebApplicationFactory<Program>().CreateClient();
+            CreatePromotionDto promotionDto = CreateSUT();
+            var postResult = await http_client.PostAsJsonAsync(ApiURL, promotionDto);
+            postResult.EnsureSuccessStatusCode();
+            var getResult = await http_client.GetStringAsync(ApiURL);
+            var promotions = JsonConvert.DeserializeObject<List<CreatePromotionDto>>(getResult);
+
+            //promotions.Should().Contain(promotionDto);
+            promotions.Should().HaveCount(2);
+            promotions.Should().NotBeNull();
+        }
+
         private static CreatePromotionDto CreateSUT()
         {
             // Arrange

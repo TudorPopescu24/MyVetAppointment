@@ -6,7 +6,8 @@ public interface IAppointmentService
 {
     Task<IEnumerable<Appointment>> GetAllAppointments();
     Task<IEnumerable<Appointment>> GetUserAppointments(Guid userId);
-    Task<bool> InsertAppointment(Appointment appointment);
+    Task<IEnumerable<Appointment>> GetClinicAppointments(Guid clinicId);
+	Task<bool> InsertAppointment(Appointment appointment);
     Task UpdateAppointment(Appointment appointment);
     Task DeleteAppointment(Guid appointmentId);
 }

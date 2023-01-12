@@ -1,0 +1,154 @@
+﻿@page "/clinic/appointments"
+@inherits IndexPageBase
+@attribute [Authorize(Roles = UserRole.Clinic)]
+
+<PageTitle>Appointments</PageTitle>
+
+<div class="d-flex flex-row">
+	<div class="d-flex flex-column">
+		<h1>Appointments</h1>
+	</div>
+</div>
+
+@if (Appointments == null)
+{
+	<Loader></Loader>
+}
+else
+{
+	<div class="box-2">
+		<table class="table">
+			<thead>
+			<tr>
+				<th>Client</th>
+				<th>Date</th>
+				<th>Time</th>
+				<th>Pet</th>
+				<th>Confirmed</th>
+				<th>Actions</th>
+			</tr>
+			</thead>
+			<tbody>
+			@foreach (Appointment appointment in Appointments)
+			{
+				<tr>
+					<td>@appointment.User.Name</td>
+					<td>@appointment.DateTime.ToString("dd.MM.yyyy")</td>
+					<td>@appointment.DateTime.ToString("HH:mm")</td>
+					<td>@appointment.Pet.Name</td>
+					<td>
+						@if (appointment.IsConfirmed)
+						{
+							<span class="text-primary ms-4"><i class="bi bi-check-circle"></i></span>
+						}
+						else
+						{
+							<span class="text-danger ms-4"><i class="bi bi-x-circle"></i></span>
+						}
+					</td>
+					<td>
+						<div class="d-flex flex-row align-items-center">
+							<button class="btn btn-primary btn-circle px-2 me-2" title="View information about appointment" @onclick="() => OnInfoPopupClick(appointment)">
+								<i class="bi-info-lg"></i>
+							</button>
+							@if (appointment.IsConfirmed == false)
+							{
+								<button class="btn btn-success btn-circle px-2 me-2" title="Accept appointment" @onclick="async () => await OnAcceptAppointmentClick(appointment)">
+									<i class="bi-check-lg"></i>
+								</button>
+								<button class="btn btn-danger btn-circle px-2" title="Decline appointment" @onclick="async () => await OnDeclineAppointmentClick(appointment)">
+									<i class="bi bi-x-lg"></i>
+								</button>
+							}
+							@if (appointment.IsConfirmed == true && appointment.DateTime < DateTime.Now)
+							{
+								<button class="btn btn-primary btn-circle px-2" title="Write bill" @onclick="() => OnAddButtonClick(appointment)">
+										<i class="bi bi-file-earmark-text"></i>
+								</button>
+							}
+						</div>
+					</td>
+				</tr>
+			}
+			</tbody>
+		</table>
+	</div>
+}
+
+@if (ShowInfoPopup)
+{
+	<div class="overlay">
+		<div class="box">
+			<div class="w-100">
+				<h3 class="m-auto">Appointment Information</h3>
+				<a class="close-btn" title="Close popup" @onclick="OnInfoPopupClose">
+					<i class="bi bi-x-lg"></i>
+				</a>
+			</div>
+			<div class="row mt-3">
+				<div class="d-flex flex-column col-4">
+					<h5 class="fw-bold">Client details:</h5>
+					<span><b>Name: </b>@SelectedAppointment.User.Name</span>
+					<span><b>Email: </b>@SelectedAppointment.User.Email</span>
+					<span><b>Phone number: </b>@SelectedAppointment.User.PhoneNumber</span>
+					<span><b>Address: </b>@SelectedAppointment.User.Address</span>
+				</div>
+				<div class="d-flex flex-column col-4">
+					<h5 class="fw-bold">Pet details:</h5>
+					<span><b>Name: </b>@SelectedAppointment.Pet.Name</span>
+					<span><b>Type: </b>@SelectedAppointment.Pet.TypeOfPet</span>
+					<span><b>Age: </b>@SelectedAppointment.Pet.Age years</span>
+					<span><b>Weight: </b>@SelectedAppointment.Pet.Weight kg</span>
+					<span><b>Is vaccinated: </b>@SelectedAppointment.Pet.IsVaccinated</span>
+					@if (SelectedAppointment.Pet.IsVaccinated)
+					{
+						<span><b>Vaccine date: </b>@SelectedAppointment.Pet.DateOfVaccine.Value.ToString("dd.MM.yyyy")</span>
+					}
+				</div>
+				<div class="d-flex flex-column col-4">
+					<h5 class="fw-bold">Appointment details:</h5>
+					<span><b>Date: </b>@SelectedAppointment.DateTime.ToString("dd.MM.yyyy")</span>
+					<span><b>Time: </b>@SelectedAppointment.DateTime.ToString("HH:mm")</span>
+					<span><b>Details: </b>@SelectedAppointment.Details</span>
+				</div>
+			</div>
+		</div>
+	</div>
+}
+
+@if (ShowBillForm)
+{
+	<div class="overlay">
+		<div class="box">
+			<h3 class="mt-4">Add Bill for client <b>@BillingClientName</b>:</h3>
+
+			<EditForm Model="Bill" OnValidSubmit="OnBillValidSubmitAsync">
+				<DataAnnotationsValidator />
+				<ValidationSummary />
+				<div class="row">
+					<div class="form-group col-4 mt-3">
+						<label>Billing date</label>
+						<InputDate class="form-control form-control-lg w-100" @bind-Value="Bill.DateTime" />
+					</div>
+					<div class="form-group col-4 mt-3">
+						<label>Bill value</label>
+						<InputNumber class="form-control form-control-lg w-100" @bind-Value="Bill.Value" />
+					</div>
+					<div class="form-group col-4 mt-3">
+						<label>Currency</label>
+						<InputText class="form-control form-control-lg w-100" @bind-Value="Bill.Currency" />
+					</div>
+				</div>
+
+				<div class="d-flex flex-row-reverse mt-3">
+					<button class="btn btn-primary btn-lg btn-icon" type="submit">
+						<i class="oi oi-plus" aria-hidden="true"></i> Save
+					</button>
+					<button class="btn btn-secondary btn-lg btn-icon me-2" @onclick="OnCancelButtonClick">
+						<i class="oi oi-x" aria-hidden="true"></i> Cancel
+					</button>
+				</div>
+			</EditForm>
+		</div>
+	</div>
+}

@@ -8,7 +8,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers()
 	.AddJsonOptions(x =>
-		x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
+		x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
 builder.Services.RegisterServices(builder.Configuration);
 builder.Services.AddApplicationServices();
