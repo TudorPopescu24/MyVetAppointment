@@ -1,0 +1,105 @@
+﻿@page "/clinic/drugs"
+@inherits IndexPageBase
+@attribute [Authorize(Roles = UserRole.Clinic)]
+
+<PageTitle>Drugs</PageTitle>
+<link href='https://fonts.googleapis.com/css?family=Acme' rel='stylesheet'>
+<div class="d-flex flex-row">
+	<div class="d-flex flex-column">
+		<h1>Drugs</h1>
+	</div>
+	<button class="btn btn-primary btn-lg btn-icon ms-auto" style="height: 3rem" @onclick="OnAddButtonClick">
+		<i class="oi oi-plus" aria-hidden="true"></i> Add Doctor
+	</button>
+</div>
+
+
+@if (Drugs == null)
+{
+	<Loader></Loader>
+}
+else
+{
+	<div class="box-2">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Manufacturer</th>
+					<th>Weight</th>
+					<th>Prospect</th>
+					<th>Price</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (Drug drug in Drugs) 
+				{
+					<tr>
+						<th>@drug.Name</th>
+						<th>@drug.Manufacturer</th>
+						<th>@drug.Weight</th>
+						<th>@drug.Prospect</th>
+						<th>@drug.Price</th>
+						<td>
+							<div class="d-flex flex-row align-items-center">
+								<button class="btn btn-primary btn-circle px-2 me-2" title="Edit drug" @onclick="(() => OnEditButtonClick(drug))">
+									<i class="bi bi-pencil"></i>
+								</button>
+								<button class="btn btn-primary btn-circle px-2" tile="Delete doctor" @onclick="(async () => await OnDeleteAsync(drug))">
+									<i class="bi bi-trash"></i>
+								</button>
+							</div>
+						</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	</div>
+
+
+	@if (ShowDrugForm)
+	{
+		<div class="overlay">
+			<div class="box">
+				<h3 class="mt-4">Add Drug for Clinic:</h3>
+
+				<EditForm Model="Drug" OnValidSubmit="OnValidSubmitAsync">
+					<DataAnnotationsValidator />
+					<ValidationSummary />
+					<div class="row">
+						<div class="form-group col-6 mt-3">
+							<label>Name</label>
+							<InputText class="form-control form-control-lg w-100" @bind-Value="Drug.Name" />
+						</div>
+						<div class="form-group col-6 mt-3">
+							<label>Manufacturer</label>
+							<InputText class="form-control form-control-lg w-100" @bind-Value="Drug.Manufacturer" />
+						</div>
+						<div class="form-group col-6 mt-3">
+							<label>Weight</label>
+							<InputNumber class="form-control form-control-lg w-100" @bind-Value="Drug.Weight" />
+						</div>
+						<div class="form-group col-6 mt-3">
+							<label>Prospect</label>
+							<InputText class="form-control form-control-lg w-100" @bind-Value="Drug.Prospect" />
+						</div>
+						<div class="form-group col-6 mt-3">
+							<label>Price</label>
+							<InputNumber class="form-control form-control-lg w-100" @bind-Value="Drug.Price" />
+						</div>
+					</div>
+
+					<div class="d-flex flex-row-reverse mt-3">
+						<button class="btn btn-primary btn-lg btn-icon" type="submit">
+							<i class="oi oi-plus" aria-hidden="true"></i> Save
+						</button>
+						<button class="btn btn-secondary btn-lg btn-icon me-2" @onclick="OnCancelButtonClick">
+							<i class="oi oi-x" aria-hidden="true"></i> Cancel
+						</button>
+					</div>
+				</EditForm>
+			</div>
+		</div>
+	}
+}

@@ -588,3 +588,10 @@ td {
     border-color: #F5B8A3;
     color: #F10000;
 }
+
+#position-cancel {
+    margin-right: 1rem !important;
+}
+#position-delete {
+    margin-right: 22rem !important;
+}
