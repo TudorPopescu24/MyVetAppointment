@@ -1,7 +1,10 @@
 ﻿using FluentAssertions;
 using Newtonsoft.Json;
+using System.Net;
 using System.Net.Http.Json;
+using System.Text;
 using VetExpert.API.Dto;
+using VetExpert.Domain;
 using Xunit;
 
 namespace VetExpert.IntegrationTesting
@@ -33,20 +36,63 @@ namespace VetExpert.IntegrationTesting
             
         }
 
-        //[Fact]
-        //public async void When_CreatingClinic_Then_ShouldReturnCreatedClinicInTheGetRequest()
-        //{
-        //    var http_client = new CustomWebApplicationFactory<Program>().CreateClient();
-        //    CreateClinicDto clinicDto = CreateSUT();
-        //    var postResult = await http_client.PostAsJsonAsync(ApiURL, clinicDto);
-        //    postResult.EnsureSuccessStatusCode();
-        //    var getResult = await http_client.GetStringAsync(ApiURL);
-        //    var clinics = JsonConvert.DeserializeObject<List<CreateClinicDto>>(getResult);
+        [Fact]
+        public async void When_DeleteUser_Then_ShouldReturn_CorrectNumber_Of_Users()
+        {
+            var http_client = new CustomWebApplicationFactory<Program>().CreateClient();
+            var getUserResultFirst = await http_client.GetStringAsync(ApiURL);
+            var users_first = JsonConvert.DeserializeObject<List<CreateUserDto>>(getUserResultFirst);
+            var deleteUser = await http_client.DeleteAsync(ApiURL + "/" + DbSeeding.clinics[0].Id);
+            deleteUser.StatusCode.Should().Be(HttpStatusCode.OK);
+            var getUserResult = await http_client.GetStringAsync(ApiURL);
+            var users = JsonConvert.DeserializeObject<List<CreateClinicDto>>(getUserResult);
+            users.Count.Should().Be(users_first.Count - 1);
+        }
 
-        //    //clinics.Should().Contain(clinicDto);
-        //    clinics.Should().HaveCount(1);
-        //    clinics.Should().NotBeNull();
-        //}
+        [Fact]
+        public async void When_UpdateUser_Then_ShouldReturn_CorrectUser()
+        {
+            var http_client = new CustomWebApplicationFactory<Program>().CreateClient();
+            var user_modified = CreateClinicDTO(DbSeeding.clinics[0]);
+            var json = JsonConvert.SerializeObject(user_modified, Formatting.Indented,
+                new JsonSerializerSettings()
+                {
+                    ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+                }
+            );
+            var stringContent = new StringContent(json, Encoding.UTF8, "application/json");
+            var updateUser = await http_client.PutAsync(ApiURL + "/" + DbSeeding.clinics[0].Id, stringContent);
+            var getUserResult = await http_client.GetStringAsync(ApiURL);
+            var users = JsonConvert.DeserializeObject<List<CreateClinicDto>>(getUserResult);
+            int counter = 0;
+            foreach (var user in users)
+            {
+                if (user.Name.Equals("TEST_CLINIC"))
+                    counter++;
+                if (user.Name.Equals("name"))
+                    counter = 100;
+            }
+
+            updateUser.StatusCode.Should().Be(HttpStatusCode.OK);
+
+            counter.Should().Be(1);
+
+        }
+
+        public CreateClinicDto CreateClinicDTO(Clinic d)
+        {
+            return new CreateClinicDto
+            {
+                Email = d.Email,
+                Address = d.Address,
+                ApplicationUserId = d.ApplicationUserId,
+                Name = "TEST_CLINIC",
+                WebsiteUrl = "http.site"
+
+            };
+
+        }
+
 
         private static CreateClinicDto CreateSUT()
         {

@@ -2,6 +2,7 @@
 {
     public class CreateBillDto
     {
+        public  Guid Id { get; set; }
         public int Value { get; set; } = 0;
 
         public string Currency { get; set; } = string.Empty;

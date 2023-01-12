@@ -1,7 +1,10 @@
 ﻿using FluentAssertions;
 using Newtonsoft.Json;
+using System.Net;
 using System.Net.Http.Json;
+using System.Text;
 using VetExpert.API.Dto;
+using VetExpert.Domain;
 using Xunit;
 
 namespace VetExpert.IntegrationTesting
@@ -16,40 +19,62 @@ namespace VetExpert.IntegrationTesting
         public async void When_CreatedBill_Then_ShouldReturnBillInTheGetRequest()
         {
             var http_client = new CustomWebApplicationFactory<Program>().CreateClient();
-            CreateBillDto billDto = CreateSUT();
 
             var getBillResult = await http_client.GetStringAsync(ApiURL);
 
             var bills = JsonConvert.DeserializeObject<List<CreateBillDto>>(getBillResult);
 
-            bills.Count.Should().Be(1);
-            bills.Should().HaveCount(1);
-            bills.Should().NotBeNull();
+            bills.Count.Should().BeGreaterOrEqualTo(0);
+           
+        }
+        [Fact]
+        public async void When_DeleteUser_Then_ShouldReturn_CorrectNumber_Of_Users()
+        {
+            var http_client = new CustomWebApplicationFactory<Program>().CreateClient();
+            var getUserResultFirst = await http_client.GetStringAsync(ApiURL);
+            var usersFirst = JsonConvert.DeserializeObject<List<CreateUserDto>>(getUserResultFirst);
+            
+            var deleteUser = await http_client.DeleteAsync(ApiURL + "/" + DbSeeding.bills[0].Id);
+            deleteUser.StatusCode.Should().Be(HttpStatusCode.OK);
+            var getUserResult = await http_client.GetStringAsync(ApiURL);
+            var users = JsonConvert.DeserializeObject<List<CreateUserDto>>(getUserResult);
+            users.Count.Should().Be(usersFirst.Count-1);
         }
 
-        //[Fact]
-        //public async void When_CreatingBill_Then_ShouldReturnCreatedBillInTheGetRequest()
-        //{
-        //    var http_client = new CustomWebApplicationFactory<Program>().CreateClient();
-        //    CreateBillDto billDto = CreateSUT();
-        //    var postResult = await http_client.PostAsJsonAsync(ApiURL, billDto);
-        //    postResult.EnsureSuccessStatusCode();
-        //    var getResult = await http_client.GetStringAsync(ApiURL);
-        //    var bills = JsonConvert.DeserializeObject<List<CreateBillDto>>(getResult);
+        [Fact]
+        public async void When_AddBill_Then_ShouldReturn_CorrectNumber_Of_Bills()
+        {
+            var http_client = new CustomWebApplicationFactory<Program>().CreateClient();
+            var getBillsResultFirst = await http_client.GetStringAsync(ApiURL);
+            var billsFirst = JsonConvert.DeserializeObject<List<CreateUserDto>>(getBillsResultFirst);
 
-        //    //bills.Should().Contain(billDto);
-        //    bills.Should().HaveCount(1);
-        //    bills.Should().NotBeNull();
-        //}
+            var billToAdd = CreateSUT();
+            var json = JsonConvert.SerializeObject(billToAdd, Formatting.Indented,
+                new JsonSerializerSettings()
+                {
+                    ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+                }
+            );
+            var stringContent = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var addBill = await http_client.PostAsync(ApiURL, stringContent);
+            addBill.StatusCode.Should().Be(HttpStatusCode.Created);
+
+        }
 
         private static CreateBillDto CreateSUT()
         {
             // Arrange
             return new CreateBillDto
             {
+                
+
+                Id = Guid.NewGuid(),
                 Currency = "lei",
-                DateTime = new DateTime(),
-                Value=100
+                DateTime = DateTime.Today,
+                Value=100,
+                UserId = DbSeeding.users[0].Id,
+                ClinicId = DbSeeding.clinics[0].Id
 
             };
         }

@@ -21,6 +21,7 @@ namespace VetExpert.IntegrationTesting
         public static List<Specialization> specializations = new List<Specialization>();
         public static List<User> users = new List<User>();
 
+        
         public static void InitializeDbForTests(MainDbContext db)
         {
             //users
@@ -183,7 +184,7 @@ namespace VetExpert.IntegrationTesting
                 new Clinic
                 {
                    Address="ADD",
-                   Email = "email",
+                   Email = "email@email.com",
                    Name= "name",
                    WebsiteUrl= "url"
                 }
@@ -194,11 +195,14 @@ namespace VetExpert.IntegrationTesting
 
         public static List<User> GetSeedingUsers()
         {
+
+           
             List<User> userList = new List<User>  {
                 new User
-                {
+                { 
+                   Id=Guid.Parse("07C6AFAA-476D-43EC-AC92-15B6B3F708B7"),
                    Address="ADD",
-                   Email = "email",
+                   Email = "email@email.com",
                    Name= "name",
                   PhoneNumber= "000"
                 }
@@ -232,9 +236,9 @@ namespace VetExpert.IntegrationTesting
                 new Appointment
                 {
                   DateTime = DateTime.Now,
-                  Doctor= doctors[0],
+                  Clinic = clinics[0],
                   Pet =pets[0],
-                  DoctorId = doctors[0].Id,
+                  ClinicId = doctors[0].Id,
                   PetId = pets[0].Id
 
                 }
