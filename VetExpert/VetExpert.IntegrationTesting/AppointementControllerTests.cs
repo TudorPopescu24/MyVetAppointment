@@ -28,12 +28,27 @@ namespace VetExpert.IntegrationTesting
             
         }
 
+        //[Fact]
+        //public async void When_CreatingAppointment_Then_ShouldReturnCreatedAppointmentInTheGetRequest()
+        //{
+        //    var http_client = new CustomWebApplicationFactory<Program>().CreateClient();
+        //    CreateAppointmentDto appointmentDto = CreateSUT();
+        //    var postResult = await http_client.PostAsJsonAsync(ApiURLToGet, appointmentDto);
+        //    postResult.EnsureSuccessStatusCode();
+        //    var getResult = await http_client.GetStringAsync(ApiURLToPost);
+        //    var appointments = JsonConvert.DeserializeObject<List<CreateAppointmentDto>>(getResult);
+
+        //    //appointments.Should().Contain(appointmentDto);
+        //    appointments.Should().HaveCount(1);
+        //    appointments.Should().NotBeNull();
+        //}
+
         private static CreateAppointmentDto CreateSUT()
         {
             // Arrange
             return new CreateAppointmentDto
             {
-              ClinicId =Guid.NewGuid(),
+              DoctorId=Guid.NewGuid(),
               PetId=Guid.NewGuid()
 
             };

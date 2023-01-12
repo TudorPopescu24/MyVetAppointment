@@ -31,6 +31,21 @@ namespace VetExpert.IntegrationTesting
             
         }
 
+        //[Fact]
+        //public async void When_CreatingPet_Then_ShouldReturnCreatedPetInTheGetRequest()
+        //{
+        //    var http_client = new CustomWebApplicationFactory<Program>().CreateClient();
+        //    CreatePetDto petDto = CreateSUT();
+        //    var postResult = await http_client.PostAsJsonAsync(ApiURL, petDto);
+        //    postResult.EnsureSuccessStatusCode();
+        //    var getResult = await http_client.GetStringAsync(ApiURL);
+        //    var pets = JsonConvert.DeserializeObject<List<CreatePetDto>>(getResult);
+
+        //    //pets.Should().Contain(petDto);
+        //    pets.Should().HaveCount(1);
+        //    pets.Should().NotBeNull();
+        //}
+
         private static CreatePetDto CreateSUT(User user)
         {
             // Arrange

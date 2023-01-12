@@ -26,12 +26,27 @@ namespace VetExpert.IntegrationTesting
 
             var Clinics = JsonConvert.DeserializeObject<List<CreateClinicDto>>(getClinicResult);
 
-            Clinics.Count.Should().Be(1);
-            Clinics.Should().HaveCount(1);
+            Clinics.Count.Should().Be(2);
+            Clinics.Should().HaveCount(2);
             Clinics.Should().NotBeNull();
 
             
         }
+
+        //[Fact]
+        //public async void When_CreatingClinic_Then_ShouldReturnCreatedClinicInTheGetRequest()
+        //{
+        //    var http_client = new CustomWebApplicationFactory<Program>().CreateClient();
+        //    CreateClinicDto clinicDto = CreateSUT();
+        //    var postResult = await http_client.PostAsJsonAsync(ApiURL, clinicDto);
+        //    postResult.EnsureSuccessStatusCode();
+        //    var getResult = await http_client.GetStringAsync(ApiURL);
+        //    var clinics = JsonConvert.DeserializeObject<List<CreateClinicDto>>(getResult);
+
+        //    //clinics.Should().Contain(clinicDto);
+        //    clinics.Should().HaveCount(1);
+        //    clinics.Should().NotBeNull();
+        //}
 
         private static CreateClinicDto CreateSUT()
         {

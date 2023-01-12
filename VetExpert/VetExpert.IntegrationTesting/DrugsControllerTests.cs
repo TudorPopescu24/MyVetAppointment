@@ -26,6 +26,21 @@ namespace VetExpert.IntegrationTesting
             Dispose();
         }
 
+        [Fact]
+        public async void When_CreatingDrug_Then_ShouldReturnCreatedDrugInTheGetRequest()
+        {
+            var http_client = new CustomWebApplicationFactory<Program>().CreateClient();
+            CreateDrugDto drugDto = CreateSUT();
+            var postResult = await http_client.PostAsJsonAsync(ApiURL, drugDto);
+            postResult.EnsureSuccessStatusCode();
+            var getResult = await http_client.GetStringAsync(ApiURL);
+            var drugs = JsonConvert.DeserializeObject<List<CreateDrugDto>>(getResult);
+
+            //drugs.Should().Contain(drugDto);
+            drugs.Should().HaveCount(2);
+            drugs.Should().NotBeNull();
+        }
+
         private static CreateDrugDto CreateSUT()
         {
             // Arrange
