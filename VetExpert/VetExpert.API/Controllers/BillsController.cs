@@ -12,13 +12,21 @@ namespace VetExpert.API.Controllers
     {
         private readonly IRepository<Bill> _billRepository;
         private readonly IRepository<Drug> _drugRepository;
+        private readonly IRepository<User> _userRepository;
+        private readonly IRepository<Clinic> _clinicRepository;
         private readonly IMapper _mapper;
 
 
-        public BillsController(IRepository<Bill> billRepository, IRepository<Drug> drugRepository, IMapper mapper)
+        public BillsController(IRepository<Bill> billRepository, 
+	        IRepository<Drug> drugRepository, 
+            IRepository<User> userRepository,
+            IRepository<Clinic> clinicRepository,
+	        IMapper mapper)
         {
             _billRepository = billRepository;
             _drugRepository = drugRepository;
+            _userRepository = userRepository;
+            _clinicRepository = clinicRepository;
             _mapper = mapper;
         }
 
@@ -31,16 +39,39 @@ namespace VetExpert.API.Controllers
             return Ok(bills);
         }
 
+        [HttpGet("clinic/{clinicId:guid}")]
+        public async Task<IActionResult> GetClinicBills(Guid clinicId)
+        {
+	        var bills = await _billRepository.Find(x => x.ClinicId == clinicId);
 
+	        return Ok(bills);
+        }
 
-        //Cred ca trebuie din prima id-urile la clinica si user si primul drug 
-
-        [HttpPost]
+		[HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateBillDto billDto)
         {
-            var bill = _mapper.Map<Bill>(billDto);
+	        var user = await _userRepository.Get(billDto.UserId);
 
-            await _billRepository.Add(bill);
+	        if (user == null)
+	        {
+		        return NotFound();
+	        }
+
+	        var clinic = await _clinicRepository.Get(billDto.ClinicId);
+
+	        if (clinic == null)
+	        {
+		        return NotFound();
+	        }
+
+			var bill = _mapper.Map<Bill>(billDto);
+
+			bill.User = user;
+			bill.UserId = user.Id;
+			bill.Clinic = clinic;
+			bill.ClinicId = clinic.Id;
+
+			await _billRepository.Add(bill);
             await _billRepository.SaveChangesAsync();
 
             return Created(nameof(Get), bill);

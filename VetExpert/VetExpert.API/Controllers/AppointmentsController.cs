@@ -42,7 +42,15 @@ namespace VetExpert.API.Controllers
         {
 	        var app = await _appointmentRepository.Find(x => x.UserId == userId);
 
-	        return Ok(app);
+	        return Ok(app.OrderBy(x => x.DateTime));
+        }
+
+        [HttpGet("clinic/{clinicId}")]
+        public async Task<IActionResult> GetClinicAppointments(Guid clinicId)
+        {
+	        var app = await _appointmentRepository.Find(x => x.ClinicId == clinicId);
+
+	        return Ok(app.OrderBy(x => x.IsConfirmed).ThenBy(x => x.DateTime));
         }
 
 
@@ -106,6 +114,8 @@ namespace VetExpert.API.Controllers
 
 	        appointment.Pet = pet;
 	        appointment.PetId = pet.Id;
+	        appointment.IsConfirmed = appointmentDto.IsConfirmed;
+	        appointment.Details = appointmentDto.Details;
 	        appointment.DateTime = appointmentDto.DateTime;
 	        
 	        _appointmentRepository.Update(appointment);

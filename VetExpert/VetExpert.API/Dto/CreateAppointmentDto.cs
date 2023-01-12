@@ -9,5 +9,9 @@
         public Guid UserId { get; set; }
 
         public DateTime DateTime { get; set; } = DateTime.Now;
-	}
+
+        public bool IsConfirmed { get; set; }
+
+        public string Details { get; set; } = string.Empty;
+    }
 }

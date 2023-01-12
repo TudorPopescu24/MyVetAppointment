@@ -588,3 +588,9 @@ td {
     border-color: #F5B8A3;
     color: #F10000;
 }
+
+.close-btn {
+    float: right;
+    margin-top: -40px;
+    cursor: pointer;
+}

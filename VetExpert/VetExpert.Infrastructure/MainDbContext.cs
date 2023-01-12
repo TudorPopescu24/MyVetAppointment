@@ -52,7 +52,8 @@ namespace VetExpert.Infrastructure
 
             modelBuilder.Entity<Appointment>().Navigation(x => x.Clinic).AutoInclude();
             modelBuilder.Entity<Appointment>().Navigation(x => x.Pet).AutoInclude();
-            
+            modelBuilder.Entity<Appointment>().Navigation(x => x.User).AutoInclude();
+
             modelBuilder.Entity<Doctor>().Navigation(x => x.DoctorSpecializations).AutoInclude();
             
             modelBuilder.Entity<Specialization>().Navigation(x => x.DoctorSpecializations).AutoInclude();

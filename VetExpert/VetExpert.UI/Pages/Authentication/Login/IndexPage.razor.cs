@@ -53,7 +53,7 @@ namespace VetExpert.UI.Pages.Authentication.Login
 				}
 				else if (authState.User.HasClaim(ClaimTypes.Role, UserRole.Clinic))
 				{
-					NavigationManager.NavigateTo("clinic/doctors");
+					NavigationManager.NavigateTo("clinic/appointments");
 				}
 			}
 			else
