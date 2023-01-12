@@ -1,5 +1,7 @@
 ﻿@using VetExpert.Domain
-<link href='https://fonts.googleapis.com/css?family=Rancho' rel='stylesheet'>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
+
 <div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href=""> <img src="grup.png"></a>
@@ -31,7 +33,12 @@
 		<nav class="flex-column mt-4">
 			<div class="nav-item px-3">
 				<NavLink class="nav-link" href="client/pets" Match="NavLinkMatch.All">
-					<i class="oi oi-calendar" aria-hidden="true"></i> Pets
+					<i class="fas fa-dog me-2" aria-hidden="true"></i> Pets
+				</NavLink>
+			</div>
+			<div class="nav-item px-3">
+				<NavLink class="nav-link" href="client/appointments">
+					<i class="bi bi-calendar-check me-2"></i> Appointments
 				</NavLink>
 			</div>
 		</nav>

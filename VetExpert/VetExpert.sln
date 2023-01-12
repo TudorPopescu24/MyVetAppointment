@@ -8,6 +8,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{8B20439F-6D21-4940-B6B8-33A61F7CF29C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{9DECCD82-28C0-42EA-8844-BD78B25ACC3A}"
+	ProjectSection(SolutionItems) = preProject
+		VetExpert.Infrastructure\Repository.cs = VetExpert.Infrastructure\Repository.cs
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebUI", "WebUI", "{D43431BC-1C58-4916-B36F-1F17FEED96CB}"
 EndProject

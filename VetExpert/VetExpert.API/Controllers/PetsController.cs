@@ -26,15 +26,15 @@ namespace VetExpert.API.Controllers
 
         }
 
-
         [HttpGet]
         public async Task<IActionResult> Get()
         {
             var pets = await _petRepository.GetAll();
+
             return Ok(pets);
         }
 
-        [HttpGet("{petId:guid}")]
+		[HttpGet("{petId:guid}")]
         public async Task<IActionResult> Get(Guid petId)
         {
             var pet = await _petRepository.Get(petId);
@@ -47,13 +47,19 @@ namespace VetExpert.API.Controllers
             return Ok(pet);
         }
 
-        [HttpPost]
+        [HttpGet("client/{userId:guid}")]
+        public async Task<IActionResult> GetClientPets(Guid userId)
+        {
+	        var pets = await _petRepository.Find(x => x.UserId == userId);
+
+	        return Ok(pets);
+        }
+
+		[HttpPost]
 
         public async Task<IActionResult> Create([FromBody] CreatePetDto petDto)
         {
             var user = await _userRepository.Get(petDto.UserId);
-
-
 
             if (user == null)
             {
@@ -61,6 +67,9 @@ namespace VetExpert.API.Controllers
             }
 
             var pet = _mapper.Map<Pet>(petDto);
+
+            pet.User = user;
+            pet.UserId = user.Id;
 
             await _petRepository.Add(pet);
             await _petRepository.SaveChangesAsync();
