@@ -41,7 +41,16 @@ else
 					<td>@pet.TypeOfPet</td>
 					<td>@pet.Weight</td>
 					<td>@pet.Age</td>
-					<td>@pet.IsVaccinated</td>
+					<td>
+						@if (pet.IsVaccinated)
+						{
+							<span class="text-primary ms-4"><i class="bi bi-check-circle"></i></span>
+						}
+						else
+						{
+							<span class="text-danger ms-4"><i class="bi bi-x-circle"></i></span>
+						}
+					</td>
 					<td>
 						@if (pet.IsVaccinated == false || pet.DateOfVaccine == null)
 						{

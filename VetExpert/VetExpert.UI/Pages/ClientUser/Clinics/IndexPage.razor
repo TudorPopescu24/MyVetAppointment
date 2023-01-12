@@ -10,7 +10,7 @@
 	</div>
 </div>
 
-<div class="alert alert-dismissible fade show mt-2 mb-2 @(Success == null ? "hidden" : (Success == true ? "alert-primary": "alert-danger"))" role="alert">
+<div style="color: white" class="alert alert-dismissible fade show mt-2 mb-2 @(Success == null ? "hidden" : (Success == true ? "alert-primary": "alert-danger"))" role="alert">
 	@if (Success == true)
 	{
 		<strong>Success!</strong> <span>Appointment was saved successfully.</span>
@@ -86,7 +86,7 @@ else
 						</div>
 						<div class="form-group col-6 mt-3">
 							<label>Appointment date</label>
-							<InputDate class="form-control form-control-lg w-100" @bind-Value="Appointment.DateTime" />
+							<input type="datetime-local" class="form-control form-control-lg w-100" @bind="Appointment.DateTime" @bind:event="oninput"/>
 						</div>
 					</div>
 

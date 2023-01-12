@@ -37,8 +37,16 @@ namespace VetExpert.API.Controllers
             return Ok(app);
         }
 
+        [HttpGet("user/{userId}")]
+        public async Task<IActionResult> GetUserAppointments(Guid userId)
+        {
+	        var app = await _appointmentRepository.Find(x => x.UserId == userId);
 
-        [HttpPost]
+	        return Ok(app);
+        }
+
+
+		[HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateAppointmentDto appointmentDto)
         {
 
@@ -78,11 +86,36 @@ namespace VetExpert.API.Controllers
             return Created(nameof(Get), appointment);
         }
 
+        [HttpPut("{appointmentId:guid}")]
+        public async Task<IActionResult> Update(Guid appointmentId,
+	        [FromBody] CreateAppointmentDto appointmentDto)
+        {
+	        var appointment = await _appointmentRepository.Get(appointmentId);
+
+	        if (appointment == null)
+	        {
+		        return NotFound();
+	        }
+
+	        var pet = await _petRepository.Get(appointmentDto.PetId);
+
+	        if (pet == null)
+	        {
+		        return NotFound();
+	        }
+
+	        appointment.Pet = pet;
+	        appointment.PetId = pet.Id;
+	        appointment.DateTime = appointmentDto.DateTime;
+	        
+	        _appointmentRepository.Update(appointment);
+	        await _appointmentRepository.SaveChangesAsync();
+
+	        return Ok(appointment);
+        }
 
 
-
-
-        [HttpDelete("{appointmentId:guid}")]
+		[HttpDelete("{appointmentId:guid}")]
         public async Task<IActionResult> Delete(Guid appointmentId)
         {
             var appointment = await _appointmentRepository.Get(appointmentId);
