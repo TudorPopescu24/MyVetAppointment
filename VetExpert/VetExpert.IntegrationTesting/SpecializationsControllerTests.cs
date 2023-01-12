@@ -28,6 +28,21 @@ namespace VetExpert.IntegrationTesting
             Dispose();
         }
 
+        [Fact]
+        public async void When_CreatingSpecialization_Then_ShouldReturnCreatedSpecializationInTheGetRequest()
+        {
+            var http_client = new CustomWebApplicationFactory<Program>().CreateClient();
+            CreateSpecializationDto specializationDto = CreateSUT();
+            var postResult = await http_client.PostAsJsonAsync(ApiURL, specializationDto);
+            postResult.EnsureSuccessStatusCode();
+            var getResult = await http_client.GetStringAsync(ApiURL);
+            var specializations = JsonConvert.DeserializeObject<List<CreateSpecializationDto>>(getResult);
+
+            //specializations.Should().Contain(specializationDto);
+            specializations.Should().HaveCount(2);
+            specializations.Should().NotBeNull();
+        }
+
         private static CreateSpecializationDto CreateSUT()
         {
             // Arrange

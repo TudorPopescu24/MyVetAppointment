@@ -232,9 +232,9 @@ namespace VetExpert.IntegrationTesting
                 new Appointment
                 {
                   DateTime = DateTime.Now,
-                  Clinic= clinics[0],
+                  Doctor= doctors[0],
                   Pet =pets[0],
-                  ClinicId = clinics[0].Id,
+                  DoctorId = doctors[0].Id,
                   PetId = pets[0].Id
 
                 }

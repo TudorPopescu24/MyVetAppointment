@@ -30,6 +30,21 @@ namespace VetExpert.IntegrationTesting
             Dispose();
         }
 
+        //[Fact]
+        //public async void When_CreatingDoctor_Then_ShouldReturnCreatedDoctorInTheGetRequest()
+        //{
+        //    var http_client = new CustomWebApplicationFactory<Program>().CreateClient();
+        //    CreateDoctorDto doctorDto = CreateSUT();
+        //    var postResult = await http_client.PostAsJsonAsync(ApiURL, doctorDto);
+        //    postResult.EnsureSuccessStatusCode();
+        //    var getResult = await http_client.GetStringAsync(ApiURL);
+        //    var doctors = JsonConvert.DeserializeObject<List<CreateDoctorDto>>(getResult);
+
+        //    //doctors.Should().Contain(doctorDto);
+        //    doctors.Should().HaveCount(1);
+        //    doctors.Should().NotBeNull();
+        //}
+
         private static CreateDoctorDto CreateSUT()
         {
             // Arrange
