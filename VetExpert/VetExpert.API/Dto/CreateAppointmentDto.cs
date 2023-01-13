@@ -8,6 +8,8 @@
 
         public Guid UserId { get; set; }
 
+        public Guid DoctorId { get; set; }
+
         public DateTime DateTime { get; set; } = DateTime.Now;
 
         public bool IsConfirmed { get; set; }

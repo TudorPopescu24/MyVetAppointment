@@ -27,7 +27,30 @@ namespace VetExpert.UI.Pages.Admin.Users
 
         protected bool IsNewEntity { get; set; } = false;
 
-        protected async override Task OnInitializedAsync()
+		protected Guid DeleteUserId { get; set; } = Guid.Empty;
+
+		public bool ShowDeleteConfirmationPop { get; set; }
+		[Parameter] public EventCallback<bool> ConfirmedChanged { get; set; }
+
+		public async Task DeleteConfirmation(bool value)
+		{
+			ShowDeleteConfirmationPop = false;
+			await ConfirmedChanged.InvokeAsync(value);
+		}
+
+		public void ShowDeleteConfirmation(User user)
+		{
+			DeleteUserId = user.Id;
+			ShowDeleteConfirmationPop = true;
+		}
+
+		protected async Task OnDeleteAsync()
+		{
+			await UserService.DeleteUser(DeleteUserId);
+			ShowDeleteConfirmationPop = false;
+			await ReadUsersAsync();
+		}
+		protected async override Task OnInitializedAsync()
         {
             await ReadUsersAsync();
 		}
@@ -77,13 +100,6 @@ namespace VetExpert.UI.Pages.Admin.Users
 			}
 
 			ShowUserForm = false;
-
-			await ReadUsersAsync();
-		}
-
-		protected async Task OnDeleteAsync(User deleteUser)
-		{
-			await UserService.DeleteUser(deleteUser.Id);
 
 			await ReadUsersAsync();
 		}

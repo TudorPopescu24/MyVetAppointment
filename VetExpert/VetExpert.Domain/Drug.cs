@@ -14,14 +14,9 @@
 
         public int Price { get; set; } = 0;
         public Guid ClinicId { get; set; } = Guid.Empty;
-        public virtual Clinic Clinic { get; set; } = new Clinic();
+		public virtual Clinic Clinic { get; set; } = new Clinic();
 
-
-        public Guid ClinicId { get; set; } = Guid.Empty;
-
-        public virtual Clinic Clinic { get; set; } = new Clinic();
-
-        public virtual ICollection<DrugStock> DrugStocks { get; set; } = new List<DrugStock>();
+		public virtual ICollection<DrugStock> DrugStocks { get; set; } = new List<DrugStock>();
 
         public Drug()
         {

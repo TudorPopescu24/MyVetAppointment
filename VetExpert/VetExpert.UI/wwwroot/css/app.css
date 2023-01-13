@@ -594,3 +594,11 @@ td {
     margin-top: -40px;
     cursor: pointer;
 }
+
+#position-delete {
+    margin-right: 22rem !important;
+}
+
+#position-cancel {
+    margin-right: 1rem!important;
+}

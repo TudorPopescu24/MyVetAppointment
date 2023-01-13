@@ -25,6 +25,7 @@ namespace VetExpert.UI.Configuration
 			services.AddScoped<IPetService, PetService>();
 			services.AddScoped<IAppointmentService, AppointmentService>();
 			services.AddScoped<IBillService, BillService>();
+			services.AddScoped<IDrugService, DrugService>();
 
 			services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(hostEnvironment.BaseAddress) });
 

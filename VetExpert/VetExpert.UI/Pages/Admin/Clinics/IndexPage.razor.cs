@@ -30,7 +30,6 @@ namespace VetExpert.UI.Pages.Admin.Clinics
 		protected bool IsNewEntity { get; set; } = false;
 
         public bool ShowDeleteConfirmationPop { get; set; }
-        [Parameter] public string Message { get; set; } = "Are you sure?";
         [Parameter] public EventCallback<bool> ConfirmedChanged { get; set; } 
 
         public async Task DeleteConfirmation(bool value)
@@ -45,7 +44,14 @@ namespace VetExpert.UI.Pages.Admin.Clinics
             ShowDeleteConfirmationPop = true;
         }
 
-        protected async override Task OnInitializedAsync()
+		protected async Task OnDeleteAsync()
+		{
+			await ClinicService.DeleteClinic(DeleteClinicId);
+			ShowDeleteConfirmationPop = false;
+			await ReadClinicsAsync();
+		}
+
+		protected async override Task OnInitializedAsync()
         {
             await ReadClinicsAsync();
 		}
@@ -96,15 +102,6 @@ namespace VetExpert.UI.Pages.Admin.Clinics
 
 			await ReadClinicsAsync();
 		}
-
-
-
-        protected async Task OnDeleteAsync()
-        {
-            await ClinicService.DeleteClinic(DeleteClinicId);
-            ShowDeleteConfirmationPop = false;
-            await ReadClinicsAsync();
-        }
 
         private async Task ReadClinicsAsync()
         {

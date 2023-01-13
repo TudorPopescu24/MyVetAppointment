@@ -44,7 +44,7 @@ else
                                 <button class="btn btn-primary btn-circle px-2 me-2" @onclick="(() => OnEditButtonClick(user))">
                                     <i class="bi bi-pencil"></i>
                                 </button>
-                                <button class="btn btn-primary btn-circle px-2" @onclick="(async () => await OnDeleteAsync(user))">
+                                <button class="btn btn-primary btn-circle px-2" @onclick="(() => ShowDeleteConfirmation(user))">
                                     <i class="bi bi-trash"></i>
                                 </button>
                             </div>
@@ -55,6 +55,19 @@ else
         </table>
     </div>
 }
+
+    @if (ShowDeleteConfirmationPop)
+    {
+    <div class="overlay">
+        <div class="box">
+            <h3 class="mt-4">Are you sure you want do delete this?</h3>
+                <div class="d-flex flex-row-reverse mt-3">
+                    <button class="btn btn-primary btn-lg btn-icon" id="position-delete" type="submit" aria-hidden="true" @onclick="() => OnDeleteAsync()">Delete</button>
+                    <button class="btn btn-secondary btn-lg btn-icon" id="position-cancel"  @onclick="() => DeleteConfirmation(false)">Cancel</button>
+                </div>
+        </div>
+    </div>
+    }
 
 @if (ShowUserForm)
 {

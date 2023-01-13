@@ -1,8 +1,6 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using VetExpert.API.Dto;
-using VetExpert.API.Mapping;
 using VetExpert.Domain;
 using VetExpert.Infrastructure;
 
