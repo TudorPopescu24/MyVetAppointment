@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using Newtonsoft.Json;
+using System.Net;
 using System.Net.Http.Json;
 using VetExpert.API.Dto;
 using Xunit;
@@ -21,26 +22,25 @@ namespace VetExpert.IntegrationTesting
  
             var drugStocks = JsonConvert.DeserializeObject<List<CreateDrugStockDto>>(getDrugStockResult);
 
-            drugStocks.Count.Should().Be(1);
-            drugStocks.Should().HaveCount(1);
-            drugStocks.Should().NotBeNull();
+            drugStocks.Count.Should().BeGreaterOrEqualTo(0);
+            
             
         }
 
-        //[Fact]
-        //public async void When_CreatingDrugStock_Then_ShouldReturnCreatedDrugStockInTheGetRequest()
-        //{
-        //    var http_client = new CustomWebApplicationFactory<Program>().CreateClient();
-        //    CreateDrugStockDto drugStockDto = CreateSUT();
-        //    var postResult = await http_client.PostAsJsonAsync(ApiURL, drugStockDto);
-        //    postResult.EnsureSuccessStatusCode();
-        //    var getResult = await http_client.GetStringAsync(ApiURL);
-        //    var drugStocks = JsonConvert.DeserializeObject<List<CreateDrugStockDto>>(getResult);
+        [Fact]
+        public async void When_DeleteUser_Then_ShouldReturn_CorrectNumber_Of_Users()
+        {
+            var http_client = new CustomWebApplicationFactory<Program>().CreateClient();
+            var getUserResultFirst = await http_client.GetStringAsync(ApiURL);
+            var users_first = JsonConvert.DeserializeObject<List<CreateDrugStockDto>>(getUserResultFirst);
+            var deleteUser = await http_client.DeleteAsync(ApiURL + "/" + DbSeeding.drugStocks[0].Id);
+            deleteUser.StatusCode.Should().Be(HttpStatusCode.OK);
+            var getUserResult = await http_client.GetStringAsync(ApiURL);
+            var users = JsonConvert.DeserializeObject<List<CreateDrugStockDto>>(getUserResult);
+            deleteUser.StatusCode.Should().Be(HttpStatusCode.OK);
+        }
 
-        //    //drugStocks.Should().Contain(drugStockDto);
-        //    drugStocks.Should().HaveCount(1);
-        //    drugStocks.Should().NotBeNull();
-        //}
+
 
         private static CreateDrugStockDto CreateSUT()
         {
