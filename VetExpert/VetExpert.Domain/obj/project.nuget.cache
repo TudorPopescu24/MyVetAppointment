@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "+BgXvhNCMPfjEsxCA4zdxsZsqqfqbIG6q7K0JtX2cfqszrNo6B/Latc6w0q37vjAJkt6gE0eDuF6vaFMR/TVTA==",
+  "dgSpecHash": "H8NM7PFW4RDtoHZ1/s/VgiW/nkDKFk+wHFira+M+cZnRQZyfO+HrITfZXIbs2NCkGoymenU2pupyFqHCmP7qdw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\raluca nastasa\\Documents\\Facultate III\\dotnet project\\MyVetAppointment\\VetExpert\\VetExpert.Domain\\VetExpert.Domain.csproj",
+  "projectFilePath": "C:\\Users\\Tudor Popescu\\Desktop\\.NET PROJ\\MyVetAppointment\\VetExpert\\VetExpert.Domain\\VetExpert.Domain.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\raluca nastasa\\.nuget\\packages\\fluentvalidation\\11.4.0\\fluentvalidation.11.4.0.nupkg.sha512"
+    "C:\\Users\\Tudor Popescu\\.nuget\\packages\\fluentvalidation\\11.4.0\\fluentvalidation.11.4.0.nupkg.sha512"
   ],
   "logs": []
 }
