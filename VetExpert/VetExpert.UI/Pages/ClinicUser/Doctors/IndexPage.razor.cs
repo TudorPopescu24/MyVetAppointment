@@ -24,6 +24,8 @@ namespace VetExpert.UI.Pages.ClinicUser.Doctors
 
 		protected Guid CurrentClinicId { get; set; } = Guid.Empty;
 
+		protected Guid DeleteDoctorId { get; set; } = Guid.Empty;
+
 		protected List<Doctor>? Doctors { get; set; } = null;
 
 		protected Doctor Doctor { get; set; } = new Doctor();
@@ -32,6 +34,28 @@ namespace VetExpert.UI.Pages.ClinicUser.Doctors
 		protected bool IsNewEntity { get; set; } = false;
 
 		protected bool ShowDoctorForm { get; set; } = false;
+
+		public bool ShowDeleteConfirmationPop { get; set; }
+		[Parameter] public EventCallback<bool> ConfirmedChanged { get; set; }
+
+		public async Task DeleteConfirmation(bool value)
+		{
+			ShowDeleteConfirmationPop = false;
+			await ConfirmedChanged.InvokeAsync(value);
+		}
+
+		public void ShowDeleteConfirmation(Doctor doctor)
+		{
+			DeleteDoctorId = doctor.Id;
+			ShowDeleteConfirmationPop = true;
+		}
+
+		protected async Task OnDeleteAsync()
+		{
+			await DoctorService.DeleteDoctor(DeleteDoctorId);
+			ShowDeleteConfirmationPop = false;
+			await ReadDoctorsAsync();
+		}
 
 		protected async override Task OnInitializedAsync()
 		{
@@ -79,14 +103,6 @@ namespace VetExpert.UI.Pages.ClinicUser.Doctors
 			}
 
 			ShowDoctorForm = false;
-
-			await ReadDoctorsAsync();
-		}
-
-
-		protected async Task OnDeleteAsync(Doctor deleteDoctor)
-		{
-			await DoctorService.DeleteDoctor(deleteDoctor.Id);
 
 			await ReadDoctorsAsync();
 		}

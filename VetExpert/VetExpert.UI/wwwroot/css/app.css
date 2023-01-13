@@ -521,7 +521,7 @@ h4 {
 
 .text {
     color: white;
-    margin-left: 60px;
+    margin-left: 38px;
     font-size: 40px;
     font-family: 'Rancho';
     font-weight: 900;
@@ -595,10 +595,18 @@ td {
     cursor: pointer;
 }
 
-#position-delete {
-    margin-right: 22rem !important;
+#position-cancel {
+    margin-right: 1rem !important;
 }
 
-#position-cancel {
-    margin-right: 1rem!important;
+#center-buttons {
+    justify-content: center;
+}
+
+.login-img {
+    position: absolute;
+    top: 870px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }

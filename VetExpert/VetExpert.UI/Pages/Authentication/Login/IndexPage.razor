@@ -5,12 +5,9 @@
         <div class="wave"></div>
         <div class="wave"></div>
     </div>
-
+    <a class="login-img" href=""> <img src="grup.png"></a>
     <div class="main">
         <div class="login">
-
-
-
 
             @if (HasError)
             {
@@ -18,7 +15,6 @@
                     <p id="text-error">Invalid username or password!</p>
                 </span>
             }
-
 
             <EditForm Model="User" OnValidSubmit="HandleLogin">
                 <div class="login-fields">

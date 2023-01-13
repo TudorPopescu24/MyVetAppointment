@@ -21,6 +21,8 @@ namespace VetExpert.UI.Pages.ClientUser.Pets
 
 		protected Guid CurrentUserId { get; set; } = Guid.Empty;
 
+		protected Guid DeletePetId { get; set; } = Guid.Empty;
+
 		protected List<Pet>? Pets { get; set; } = null;
 
 		protected Pet Pet { get; set; } = new Pet();
@@ -29,6 +31,27 @@ namespace VetExpert.UI.Pages.ClientUser.Pets
 
 		protected bool ShowPetForm { get; set; } = false;
 
+		public bool ShowDeleteConfirmationPop { get; set; }
+		[Parameter] public EventCallback<bool> ConfirmedChanged { get; set; }
+
+		public async Task DeleteConfirmation(bool value)
+		{
+			ShowDeleteConfirmationPop = false;
+			await ConfirmedChanged.InvokeAsync(value);
+		}
+
+		public void ShowDeleteConfirmation(Pet pet)
+		{
+			DeletePetId = pet.Id;
+			ShowDeleteConfirmationPop = true;
+		}
+
+		protected async Task OnDeleteAsync()
+		{
+			await PetService.DeletePet(DeletePetId);
+			ShowDeleteConfirmationPop = false;
+			await ReadPetsAsync();
+		}
 
 		protected async override Task OnInitializedAsync()
 		{
@@ -76,13 +99,6 @@ namespace VetExpert.UI.Pages.ClientUser.Pets
 			}
 
 			ShowPetForm = false;
-
-			await ReadPetsAsync();
-		}
-
-		protected async Task OnDeleteAsync(Pet deletePet)
-		{
-			await PetService.DeletePet(deletePet.Id);
 
 			await ReadPetsAsync();
 		}

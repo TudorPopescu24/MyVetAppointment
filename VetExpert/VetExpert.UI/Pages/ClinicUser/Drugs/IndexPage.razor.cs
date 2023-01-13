@@ -24,6 +24,8 @@ namespace VetExpert.UI.Pages.ClinicUser.Drugs
 
 		protected Guid CurrentClinicId { get; set; } = Guid.Empty;
 
+		protected Guid DeleteDrugId { get; set; } = Guid.Empty;
+
 		protected List<Drug>? Drugs { get; set; } = null;
 
 		protected Drug Drug { get; set; } = new Drug();
@@ -32,6 +34,28 @@ namespace VetExpert.UI.Pages.ClinicUser.Drugs
 		protected bool IsNewEntity { get; set; } = false;
 
 		protected bool ShowDrugForm { get; set; } = false;
+
+		public bool ShowDeleteConfirmationPop { get; set; }
+		[Parameter] public EventCallback<bool> ConfirmedChanged { get; set; }
+
+		public async Task DeleteConfirmation(bool value)
+		{
+			ShowDeleteConfirmationPop = false;
+			await ConfirmedChanged.InvokeAsync(value);
+		}
+
+		public void ShowDeleteConfirmation(Drug drug)
+		{
+			DeleteDrugId = drug.Id;
+			ShowDeleteConfirmationPop = true;
+		}
+
+		protected async Task OnDeleteAsync()
+		{
+			await DrugService.DeleteDrug(DeleteDrugId);
+			ShowDeleteConfirmationPop = false;
+			await ReadDrugsAsync();
+		}
 
 		protected async override Task OnInitializedAsync()
 		{
@@ -48,7 +72,6 @@ namespace VetExpert.UI.Pages.ClinicUser.Drugs
 			IsNewEntity = true;
 			ShowDrugForm = true;
 		}
-
 
 		protected void OnEditButtonClick(Drug editDrug)
 		{
@@ -81,14 +104,6 @@ namespace VetExpert.UI.Pages.ClinicUser.Drugs
 			}
 
 			ShowDrugForm = false;
-
-			await ReadDrugsAsync();
-		}
-
-
-		protected async Task OnDeleteAsync(Drug deleteDrug)
-		{
-			await DrugService.DeleteDrug(deleteDrug.Id);
 
 			await ReadDrugsAsync();
 		}

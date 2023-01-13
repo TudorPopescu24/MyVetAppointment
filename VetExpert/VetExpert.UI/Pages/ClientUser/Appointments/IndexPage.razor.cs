@@ -23,13 +23,37 @@ namespace VetExpert.UI.Pages.ClientUser.Appointments
 
         protected Guid CurrentUserId { get; set; } = Guid.Empty;
 
-        protected List<Pet>? Pets { get; set; } = null;
+		protected Guid DeleteAppointmentId { get; set; } = Guid.Empty;
+
+		protected List<Pet>? Pets { get; set; } = null;
 
         protected IList<Appointment>? Appointments { get; set; } = null;
 
         protected Appointment Appointment { get; set; } = new Appointment();
 
         protected bool ShowAppointmentForm { get; set; } = false;
+
+		public bool ShowDeleteConfirmationPop { get; set; }
+		[Parameter] public EventCallback<bool> ConfirmedChanged { get; set; }
+
+		public async Task DeleteConfirmation(bool value)
+		{
+			ShowDeleteConfirmationPop = false;
+			await ConfirmedChanged.InvokeAsync(value);
+		}
+
+		public void ShowDeleteConfirmation(Appointment appointment)
+		{
+			DeleteAppointmentId = appointment.Id;
+			ShowDeleteConfirmationPop = true;
+		}
+
+		protected async Task OnDeleteAsync()
+		{
+			await AppointmentService.DeleteAppointment(DeleteAppointmentId);
+			ShowDeleteConfirmationPop = false;
+			await ReadAppointmentsAsync();
+		}
 
 		protected async override Task OnInitializedAsync()
 		{
@@ -55,13 +79,6 @@ namespace VetExpert.UI.Pages.ClientUser.Appointments
 			await AppointmentService.UpdateAppointment(Appointment);
 
 			ShowAppointmentForm = false;
-
-			await ReadAppointmentsAsync();
-		}
-
-		protected async Task OnDeleteAsync(Appointment appointment)
-		{
-			await AppointmentService.DeleteAppointment(appointment.Id);
 
 			await ReadAppointmentsAsync();
 		}
