@@ -27,14 +27,16 @@ namespace VetExpert.API.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var drugStocks = await _drugRepository.GetAll();
-            return Ok(drugStocks);
+            var drugStocks = await _drugStockRepository.GetAll();
+
+            return Ok(drugStocks.OrderBy(x => x.Drug.Name).ThenBy(x => x.ExpirationDate));
         }
 
         [HttpGet("{drugStockId:guid}")]
         public async Task<IActionResult> Get(Guid drugStockId)
         {
             var drugStock = await _drugStockRepository.Get(drugStockId);
+
             if (drugStock == null)
             {
                 return NotFound();
@@ -46,8 +48,7 @@ namespace VetExpert.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateDrugStockDto drugStockDto)
         {
-
-         var drug = await _drugRepository.Get(drugStockDto.DrugId);
+			var drug = await _drugRepository.Get(drugStockDto.DrugId);
 
             if (drug == null)
             {
@@ -56,7 +57,10 @@ namespace VetExpert.API.Controllers
 
             var drugStock = _mapper.Map<DrugStock>(drugStockDto);
 
-            await _drugStockRepository.Add(drugStock);
+            drugStock.Drug = drug;
+            drugStock.DrugId = drug.Id;
+
+			await _drugStockRepository.Add(drugStock);
             await _drugStockRepository.SaveChangesAsync();
 
             return Created(nameof(Get), drugStock);

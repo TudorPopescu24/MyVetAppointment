@@ -1,20 +1,20 @@
-﻿@page "/clinic/drugs"
+﻿@page "/clinic/drugstocks"
 @inherits IndexPageBase
 @attribute [Authorize(Roles = UserRole.Clinic)]
 
-<PageTitle>Drugs</PageTitle>
+<PageTitle>Drug stocks</PageTitle>
 <link href='https://fonts.googleapis.com/css?family=Acme' rel='stylesheet'>
 <div class="d-flex flex-row">
 	<div class="d-flex flex-column">
-		<h1>Drugs</h1>
+		<h1>Drug stocks</h1>
 	</div>
 	<button class="btn btn-primary btn-lg btn-icon ms-auto" style="height: 3rem" @onclick="OnAddButtonClick">
-		<i class="oi oi-plus" aria-hidden="true"></i> Add Drug
+		<i class="oi oi-plus" aria-hidden="true"></i> Add Drug Stock
 	</button>
 </div>
 
 
-@if (Drugs == null)
+@if (DrugStocks == null)
 {
 	<Loader></Loader>
 }
@@ -24,29 +24,25 @@ else
 		<table class="table">
 			<thead>
 				<tr>
-					<th>Name</th>
-					<th>Manufacturer</th>
-					<th>Weight (g)</th>
-					<th>Prospect</th>
-					<th>Price (RON)</th>
+					<th>Drug</th>
+					<th>Quantity</th>
+					<th>Expiration date</th>
 					<th>Actions</th>
 				</tr>
 			</thead>
 			<tbody>
-				@foreach (Drug drug in Drugs) 
+				@foreach (DrugStock drugStock in DrugStocks)
 				{
 					<tr>
-						<td>@drug.Name</td>
-						<td>@drug.Manufacturer</td>
-						<td>@drug.Weight</td>
-						<td>@drug.Prospect</td>
-						<td>@drug.Price</td>
+						<td>@drugStock.Drug.Name</td>
+						<td>@drugStock.Quantity</td>
+						<td>@drugStock.ExpirationDate.ToString("dd.MM.yyyy")</td>
 						<td>
 							<div class="d-flex flex-row align-items-center">
-								<button class="btn btn-primary btn-circle px-2 me-2" title="Edit drug" @onclick="(() => OnEditButtonClick(drug))">
+								<button class="btn btn-primary btn-circle px-2 me-2" title="Edit drug" @onclick="(() => OnEditButtonClick(drugStock))">
 									<i class="bi bi-pencil"></i>
 								</button>
-								<button class="btn btn-primary btn-circle px-2" tile="Delete doctor" @onclick="(() => ShowDeleteConfirmation(drug))">
+								<button class="btn btn-primary btn-circle px-2" tile="Delete doctor" @onclick="(() => ShowDeleteConfirmation(drugStock))">
 									<i class="bi bi-trash"></i>
 								</button>
 							</div>
@@ -70,35 +66,36 @@ else
 		</div>
 	}
 
-	@if (ShowDrugForm)
+	@if (ShowDrugStockForm)
 	{
 		<div class="overlay">
 			<div class="box">
-				<h3 class="mt-4">Add Drug for Clinic:</h3>
+				<h3 class="mt-4">Add/Edit Drug Stock:</h3>
 
-				<EditForm Model="Drug" OnValidSubmit="OnValidSubmitAsync">
+				<EditForm Model="DrugStock" OnValidSubmit="OnValidSubmitAsync">
 					<DataAnnotationsValidator />
 					<ValidationSummary />
 					<div class="row">
-						<div class="form-group col-6 mt-3">
-							<label>Name</label>
-							<InputText class="form-control form-control-lg w-100" @bind-Value="Drug.Name" />
+						<div class="form-group col-4 mt-3">
+							<label>Select drug</label>
+							<select class="form-control form-control-lg w-100" @bind="DrugStock.DrugId">
+								<option value="@Guid.Empty" selected disabled>Select drug...</option>
+								@if (Drugs != null)
+								{
+									@foreach (Drug drug in Drugs)
+									{
+										<option value="@drug.Id">@drug.Name</option>
+									}
+								}
+							</select>
 						</div>
-						<div class="form-group col-6 mt-3">
-							<label>Manufacturer</label>
-							<InputText class="form-control form-control-lg w-100" @bind-Value="Drug.Manufacturer" />
+						<div class="form-group col-4 mt-3">
+							<label>Quantity</label>
+							<InputNumber class="form-control form-control-lg w-100" @bind-Value="DrugStock.Quantity"/>
 						</div>
-						<div class="form-group col-6 mt-3">
-							<label>Weight(g)</label>
-							<InputNumber class="form-control form-control-lg w-100" @bind-Value="Drug.Weight" />
-						</div>
-						<div class="form-group col-6 mt-3">
-							<label>Prospect</label>
-							<InputText class="form-control form-control-lg w-100" @bind-Value="Drug.Prospect" />
-						</div>
-						<div class="form-group col-6 mt-3">
-							<label>Price(RON)</label>
-							<InputNumber class="form-control form-control-lg w-100" @bind-Value="Drug.Price" />
+						<div class="form-group col-4 mt-3">
+							<label>Expiration date</label>
+							<InputDate class="form-control form-control-lg w-100" @bind-Value="DrugStock.ExpirationDate"/>
 						</div>
 					</div>
 

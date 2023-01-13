@@ -62,6 +62,8 @@ namespace VetExpert.Infrastructure
 
 			modelBuilder.Entity<Bill>().Navigation(x => x.User).AutoInclude();
 			modelBuilder.Entity<Bill>().Navigation(x => x.Clinic).AutoInclude();
-		}
+
+			modelBuilder.Entity<DrugStock>().Navigation(x => x.Drug).AutoInclude();
+        }
 	}
 }
